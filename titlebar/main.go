@@ -2,7 +2,7 @@
 // Linux or the macOS layout with `app.os`; this file only wires the buttons to
 // the Window control methods.
 //
-// Run with: go run -ldflags=-linkmode=internal ./examples/titlebar
+// Run with: go run -ldflags=-linkmode=internal ./titlebar
 package main
 
 import (
@@ -18,7 +18,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	win, err := app.LoadWindowFile("examples/titlebar/titlebar.goi", ui.WithHotReload(true))
+	win, err := app.LoadWindowFile("titlebar/titlebar.goi", ui.WithHotReload(true))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

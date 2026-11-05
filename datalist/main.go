@@ -2,7 +2,7 @@
 //
 // The design declares its values and handlers in a `bridge` block; Go fills the
 // values with ui.SetData and the handlers with ui.SetHandler.
-// Run with: go run -ldflags=-linkmode=internal ./examples/datalist
+// Run with: go run -ldflags=-linkmode=internal ./datalist
 package main
 
 import (
@@ -33,7 +33,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	win, err := app.LoadWindow(ui.DirFS("examples/datalist"), "main.goi",
+	win, err := app.LoadWindow(ui.DirFS("datalist"), "main.goi",
 		ui.WithHotReload(true), ui.WithSize(520, 560))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)

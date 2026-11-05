@@ -2,7 +2,7 @@ module github.com/goi-gui/examples
 
 go 1.27.3
 
-require github.com/goi-gui/goi v0.0.0-20261105150921-3af1135e8b9e
+require github.com/goi-gui/goi v0.0.0
 
 require (
 	git.sr.ht/~jackmordaunt/go-toast v1.1.2 // indirect
@@ -23,13 +23,13 @@ require (
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.27.0 // indirect
 	github.com/go-text/typesetting v0.3.4 // indirect
-	github.com/go-webgpu/goffi v0.6.8 // indirect
+	github.com/go-webgpu/goffi v0.6.3 // indirect
 	github.com/go-webgpu/webgpu v0.5.5 // indirect
 	github.com/godbus/dbus/v5 v5.1.0 // indirect
 	github.com/gogpu/gpucontext v0.31.3 // indirect
-	github.com/gogpu/gputypes v0.8.2 // indirect
-	github.com/gogpu/naga v0.21.2 // indirect
-	github.com/gogpu/wgpu v0.34.7 // indirect
+	github.com/gogpu/gputypes v0.8.0 // indirect
+	github.com/gogpu/naga v0.19.0 // indirect
+	github.com/gogpu/wgpu v0.34.5 // indirect
 	github.com/jackmordaunt/icns/v3 v3.0.1 // indirect
 	github.com/josephspurrier/goversioninfo v1.7.0 // indirect
 	github.com/ksckaan1/logger v0.4.0 // indirect
@@ -57,3 +57,7 @@ require (
 	golang.org/x/text v0.43.0 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 )
+
+// The examples live next to a checkout of the framework, so the local tree is
+// what they build against. Drop this to build against the module proxy.
+replace github.com/goi-gui/goi => ../goi

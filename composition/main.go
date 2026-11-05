@@ -1,6 +1,6 @@
 // Command composition shows one design split across several .goi files.
 //
-// Run with: go run -ldflags=-linkmode=internal ./examples/composition
+// Run with: go run -ldflags=-linkmode=internal ./composition
 package main
 
 import (
@@ -18,7 +18,7 @@ func main() {
 	}
 	// The directory is the asset container: imports resolve inside it, and hot
 	// reload watches every file the design reads.
-	win, err := app.LoadWindow(ui.DirFS("examples/composition"), "Main.goi",
+	win, err := app.LoadWindow(ui.DirFS("composition"), "Main.goi",
 		ui.WithHotReload(true), ui.WithSize(1024, 720))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)

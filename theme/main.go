@@ -1,7 +1,7 @@
 // Theme: the built-in light and dark schemes plus a brand scheme the app
 // registers by name, which a .goi file can then select with `theme: brand`.
 //
-// Run with: go run -ldflags=-linkmode=internal ./examples/theme
+// Run with: go run -ldflags=-linkmode=internal ./theme
 package main
 
 import (
@@ -44,7 +44,7 @@ func main() {
 		os.Exit(1)
 	}
 	win, err := app.LoadWindowFile(
-		"examples/theme/theme.goi",
+		"theme/theme.goi",
 		ui.WithHotReload(true),
 		ui.WithSize(560, 620),
 		ui.WithTheme("brand", brand()),

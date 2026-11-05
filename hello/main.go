@@ -1,7 +1,7 @@
 // Command hello draws nested boxes with radii and borders, the visual check for
 // the renderer.
 //
-// Run with: go run -ldflags=-linkmode=internal ./examples/hello
+// Run with: go run -ldflags=-linkmode=internal ./hello
 package main
 
 import (
@@ -17,7 +17,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	if _, err := app.LoadWindowFile("examples/hello/hello.goi", ui.WithHotReload(true)); err != nil {
+	if _, err := app.LoadWindowFile("hello/hello.goi", ui.WithHotReload(true)); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}

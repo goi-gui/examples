@@ -1,6 +1,6 @@
 // SVG: one icon file recoloured by the design, by a theme role, and from Go.
 //
-// Run with: go run -ldflags=-linkmode=internal ./examples/svg
+// Run with: go run -ldflags=-linkmode=internal ./svg
 package main
 
 import (
@@ -16,7 +16,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	win, err := app.LoadWindowFile("examples/svg/svg.goi", ui.WithHotReload(true))
+	win, err := app.LoadWindowFile("svg/svg.goi", ui.WithHotReload(true))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

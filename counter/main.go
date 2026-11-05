@@ -1,7 +1,7 @@
 // Command counter is the framework's smoke test: a window loaded from a .goi
 // file, buttons whose handlers update a label through the typed property API.
 //
-// Run with: go run -ldflags=-linkmode=internal ./examples/counter
+// Run with: go run -ldflags=-linkmode=internal ./counter
 package main
 
 import (
@@ -24,7 +24,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	win, err := app.LoadWindowFile("examples/counter/counter.goi", ui.WithHotReload(true))
+	win, err := app.LoadWindowFile("counter/counter.goi", ui.WithHotReload(true))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

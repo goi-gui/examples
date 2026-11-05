@@ -1,6 +1,6 @@
 // Command scroll shows the `scroll` property and the Go offset API.
 //
-// Run with: go run -ldflags=-linkmode=internal ./examples/scroll
+// Run with: go run -ldflags=-linkmode=internal ./scroll
 package main
 
 import (
@@ -16,7 +16,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	win, err := app.LoadWindowFile("examples/scroll/scroll.goi", ui.WithHotReload(true))
+	win, err := app.LoadWindowFile("scroll/scroll.goi", ui.WithHotReload(true))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

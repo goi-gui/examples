@@ -1,7 +1,7 @@
 // Command window shows the Window element's own properties: the size limits,
 // `disableResize` and `fullscreen`, and how a set from Go reaches the platform.
 //
-// Run with: go run -ldflags=-linkmode=internal ./examples/window
+// Run with: go run -ldflags=-linkmode=internal ./window
 package main
 
 import (
@@ -17,7 +17,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	win, err := app.LoadWindowFile("examples/window/window.goi", ui.WithHotReload(true))
+	win, err := app.LoadWindowFile("window/window.goi", ui.WithHotReload(true))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

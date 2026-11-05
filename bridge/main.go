@@ -3,7 +3,7 @@
 //
 // The .goi files declare the handlers and which event calls each one; this file
 // supplies the bodies with ui.SetHandler and appends every event to the log.
-// Run with: go run -ldflags=-linkmode=internal ./examples/bridge
+// Run with: go run -ldflags=-linkmode=internal ./bridge
 package main
 
 import (
@@ -28,7 +28,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	win, err := app.LoadWindow(ui.DirFS("examples/bridge"), "main.goi",
+	win, err := app.LoadWindow(ui.DirFS("bridge"), "main.goi",
 		ui.WithHotReload(true), ui.WithSize(560, 720))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)

@@ -3,7 +3,7 @@
 // It is the visual reference for the component set and doubles as a manual
 // test: click, type, drag and scroll.
 //
-// Run with: go run -ldflags=-linkmode=internal ./examples/gallery
+// Run with: go run -ldflags=-linkmode=internal ./gallery
 package main
 
 import (
@@ -57,7 +57,7 @@ func main() {
 	// Without Parse, flag.Arg never sees the path: the gallery would always open
 	// its own design and ignore the argument.
 	flag.Parse()
-	path := "examples/gallery/gallery.goi"
+	path := "gallery/gallery.goi"
 	if arg := flag.Arg(0); arg != "" {
 		path = arg
 	}
