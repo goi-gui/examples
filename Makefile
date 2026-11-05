@@ -42,10 +42,12 @@ window:
 format:
 	$(RUN) ./format
 
+FMT := go run github.com/goi-gui/goi/cmd/goifmt
+
 fmt:
-	go run ./cmd/goifmt -w .
+	$(FMT) -w .
 
 fmt-list:
-	go run ./cmd/goifmt -l .
+	$(FMT) -l .
 
 .PHONY: search spike counter gallery hello scroll typography composition theme titlebar datalist bridge svg window format fmt fmt-list
