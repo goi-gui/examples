@@ -110,6 +110,28 @@ Window {
 			}
 		}
 
+		// A switch picks one arm by value, with comma-separated cases and an
+		// optional default. The subject is an ordinary expression, so this
+		// follows bridge.Step as the counter changes.
+		switch bridge.Step > 9 ? "many" : "few" {
+		case "many":
+			Text {
+				text:  "That is a lot of steps."
+				role:  "bodyMedium"
+				color: primary
+			}
+		case "few", "none":
+			Text {
+				text:  "Step a few more times."
+				role:  "bodyMedium"
+				color: onSurfaceVariant
+			}
+		default:
+			Text {
+				text: "Unreachable, but valid."
+			}
+		}
+
 		Text {
 			id:    log
 			text:  "No events yet."
