@@ -1,27 +1,31 @@
-// Window properties: the size limits, disabling the user's resize, and
+// Window properties: the size limits, resize, minimize, maximize and
 // fullscreen. Each switch is a normal .goi property, so it can come from an
 // expression as well as from the literal below.
 //
-// Run with: go run -ldflags=-linkmode=internal ./examples/window
+// Run with: go run -ldflags=-linkmode=internal ./window
 
 bridge {
 	SetMin      func()
 	ClearLimits func()
+	Minimize    func()
+	Maximize    func()
 }
 
 Window {
-	id:            main
-	title:         "Window"
-	width:         760
-	height:        620
+	id:          main
+	title:       "Window"
+	width:       760
+	height:      660
 	// Go can change these too: w.Root().SetMinWidth(...) writes the same cell.
-	minWidth:      420
-	minHeight:     360
-	maxWidth:      1100
-	maxHeight:     900
-	disableResize: false
-	fullscreen:    false
-	theme:         app.systemMode
+	minWidth:    420
+	minHeight:   360
+	maxWidth:    1100
+	maxHeight:   900
+	resizable:   true
+	minimizable: true
+	maximizable: true
+	fullscreen:  false
+	theme:       app.systemMode
 
 	Column {
 		spacing: 0
@@ -76,13 +80,23 @@ Window {
 					spacing: 12
 
 					Text {
-						text: "Resize and fullscreen"
+						text: "Chrome"
 						role: "titleMedium"
 					}
 
 					Switch {
 						id:    lockResize
 						label: "Disable resize"
+					}
+
+					Switch {
+						id:    lockMin
+						label: "Disable minimize"
+					}
+
+					Switch {
+						id:    lockMax
+						label: "Disable maximize"
 					}
 
 					Switch {
@@ -106,18 +120,30 @@ Window {
 					spacing: 12
 
 					Text {
-						text: "From Go"
+						text: "State and Go"
 						role: "titleMedium"
 					}
 
+					// The platform reports these back every frame, so they follow
+					// the title bar buttons too, not only what Go asked for.
 					Text {
-						text: "Window properties are reactive: setting them from Go reaches the platform on the next frame, no reload needed."
+						id:   state
+						text: "windowed · language tr"
 						role: "bodySmall"
-						wrap: true
 					}
 
 					Row {
 						spacing: 8
+
+						Button {
+							label:   "Minimize"
+							onClick: bridge.Minimize()
+						}
+
+						Button {
+							label:   "Maximize"
+							onClick: bridge.Maximize()
+						}
 
 						Button {
 							label:   "Set min 600×500"
