@@ -5,6 +5,7 @@
 
 bridge {
 	Pick func(index int)
+	Draw func(index int)
 }
 
 Window {
@@ -47,21 +48,21 @@ Window {
 						mainAxisAlign: center
 
 						SVG {
-							src:    "star.svg"
+							src:    "goi://star.svg"
 							color:  primary
 							width:  48
 							height: 48
 						}
 
 						SVG {
-							src:    "star.svg"
+							src:    "goi://star.svg"
 							color:  tertiary
 							width:  48
 							height: 48
 						}
 
 						SVG {
-							src:    "star.svg"
+							src:    "goi://star.svg"
 							color:  error
 							width:  48
 							height: 48
@@ -90,7 +91,7 @@ Window {
 
 					SVG {
 						id:     live
-						src:    "star.svg"
+						src:    "goi://star.svg"
 						color:  primary
 						width:  72
 						height: 72
@@ -141,7 +142,7 @@ Window {
 					// placeholder until the file lands, and the viewBox sizes
 					// the icon when width and height are omitted.
 					SVG {
-						src:        "https://raw.githubusercontent.com/goi-gui/goi/master/examples/gallery/star.svg"
+						src:        "https://raw.githubusercontent.com/goi-gui/examples/main/gallery/star.svg"
 						color:      secondary
 						width:      64
 						height:     64
@@ -154,6 +155,45 @@ Window {
 						role:  "bodySmall"
 						wrap:  true
 						width: { base: 280, md: 360 }
+					}
+				}
+			}
+
+			Card {
+				width:   440
+				variant: outlined
+
+				Column {
+					spacing:        16
+					crossAxisAlign: center
+
+					Text {
+						text: "A document from Go"
+						role: "titleMedium"
+					}
+
+					// No src at all: SetDataString/SetDataBytes supply the
+					// drawing, and color still applies to its currentColor.
+					SVG {
+						id:     inline
+						color:  tertiary
+						width:  64
+						height: 64
+					}
+
+					Row {
+						spacing:       8
+						mainAxisAlign: center
+
+						Button {
+							label:   "Star"
+							onClick: bridge.Draw(0)
+						}
+
+						Button {
+							label:   "Bolt"
+							onClick: bridge.Draw(1)
+						}
 					}
 				}
 			}

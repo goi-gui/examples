@@ -9,6 +9,8 @@ package main
 import (
 	"flag"
 	"fmt"
+	"image"
+	"image/color"
 	"os"
 	"path/filepath"
 	"time"
@@ -81,6 +83,11 @@ func main() {
 	themeChosen := false
 
 	if err := win.Bind(func(w *ui.Window) error {
+		// An image that exists only in Go: SetImage takes any image.Image, so a
+		// chart or a screenshot needs no file and no src.
+		if gen, err := ui.ByID[*ui.Image](w, "generated"); err == nil {
+			gen.SetImage(gradient(180, 120))
+		}
 		show := func(i int) {
 			if i < 0 || i >= len(pages) {
 				return
@@ -381,4 +388,20 @@ func selectChildren(b *ui.NodeBase, i int) {
 		}
 		n++
 	}
+}
+
+// gradient is the in-memory picture the gallery hands to Image.SetImage.
+func gradient(w, h int) image.Image {
+	m := image.NewRGBA(image.Rect(0, 0, w, h))
+	for y := 0; y < h; y++ {
+		for x := 0; x < w; x++ {
+			m.Set(x, y, color.RGBA{
+				R: uint8(0x67 + x*80/w),
+				G: uint8(0x50 + y*90/h),
+				B: uint8(0xA4 - x*40/w),
+				A: 0xFF,
+			})
+		}
+	}
+	return m
 }
