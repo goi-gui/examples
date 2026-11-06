@@ -281,6 +281,55 @@ Window {
 				}
 			}
 
+			// ----------------------------------------------------------- shadow
+			Column {
+				spacing: 12
+
+				Text {
+					text: "Shadow"
+					role: "titleMedium"
+				}
+
+				// Text shadows follow the glyphs, like CSS text-shadow: an
+				// offset copy per layer, softened by the blur.
+				Text {
+					text:   "Soft shadow"
+					role:   "displaySmall"
+					shadow: 0 4 8 onSurfaceVariant
+				}
+
+				Text {
+					text:   "Outlined text"
+					role:   "displaySmall"
+					shadow: -1 0 #000000, 0 1 #000000, 1 0 #000000, 0 -1 #000000
+				}
+
+				Text {
+					text:   "Glow"
+					role:   "displaySmall"
+					color:  primary
+					shadow: 0 0 12 primary
+				}
+
+				// A box shadow borrows box-shadow: offsets, blur, spread and an
+				// optional inset, and the first layer is on top.
+				Rectangle {
+					width:      240
+					height:     120
+					radius:     16
+					background: surfaceContainerHigh
+					shadow:     0 2 4 #00000026, 0 12 32 4 #0000001f
+				}
+
+				Rectangle {
+					width:      240
+					height:     120
+					radius:     16
+					background: surfaceContainerHighest
+					shadow:     0 6 16 #00000059 inset
+				}
+			}
+
 			// -------------------------------------------------------------- row
 			Column {
 				spacing: 8
