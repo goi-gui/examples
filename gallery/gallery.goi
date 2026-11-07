@@ -104,6 +104,7 @@ Window {
 						spacing:        24
 						padding:        { base: 16, md: 24, lg: 32, xl: 64 }
 						crossAxisAlign: start
+						scrollbarColor: #00ff00
 
 						Column {
 							spacing: 10

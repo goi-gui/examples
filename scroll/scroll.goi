@@ -8,8 +8,8 @@
 // The bar hides itself two seconds after the pointer leaves unless
 // `autoHideScrollbar: false`; `hideScrollbar: true` removes it, and
 // `scrollShadow: true` fades an edge while content is hidden there. The thumb
-// is draggable, and `scrollbarWidth` makes it easier to hit. `opacity` fades
-// at the bottom of the page.
+// is draggable, `scrollbarWidth` makes it easier to hit, and `scrollbarColor`
+// tints it. `opacity` fades at the bottom of the page.
 
 Window {
 	id:     main
@@ -88,6 +88,7 @@ Window {
 			scroll:         true
 			scrollShadow:   true
 			scrollbarWidth: 6
+			scrollbarColor: primary
 			spacing:        8
 
 			Card {
