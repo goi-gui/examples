@@ -18,11 +18,12 @@ Window {
 		}
 
 		Column {
-			id:      page
-			flex:    1
-			scroll:  true
-			spacing: 24
-			padding: 24
+			id:           page
+			flex:         1
+			scroll:       true
+			spacing:      24
+			padding:      20
+			scrollShadow: true
 
 			// ---------------------------------------------------- type scale
 			Column {
