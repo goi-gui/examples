@@ -4,6 +4,11 @@
 // too, and the click it started on is cancelled. A container scrolls when it
 // sets `scroll: true`; a Row scrolls sideways, everything else vertically.
 // A scroll container still needs a bounded main-axis size, here `flex: 1`.
+//
+// The bar hides itself two seconds after the pointer leaves unless
+// `autoHideScrollbar: false`; `hideScrollbar: true` removes it, and
+// `scrollShadow: true` fades an edge while content is hidden there. The thumb
+// is draggable. `opacity` fades at the bottom of the page.
 
 Window {
 	id:     main
@@ -28,9 +33,10 @@ Window {
 
 		// A Row scrolls horizontally: the chips overflow the 488 dp strip.
 		Row {
-			id:      strip
-			scroll:  true
-			spacing: 8
+			id:           strip
+			scroll:       true
+			scrollShadow: true
+			spacing:      8
 
 			Chip {
 				label: "one"
@@ -76,10 +82,11 @@ Window {
 		// A Column scrolls vertically. The axis must be bounded, here by a
 		// height; flex: 1 works when the parent bounds the main axis too.
 		Column {
-			id:      page
-			height:  340
-			scroll:  true
-			spacing: 8
+			id:           page
+			height:       340
+			scroll:       true
+			scrollShadow: true
+			spacing:      8
 
 			Card {
 				label:      "Card 1"
@@ -143,6 +150,32 @@ Window {
 			Button {
 				id:    end
 				label: "End"
+			}
+		}
+
+		// Opacity fades the box and everything inside it. A percentage is the
+		// same range: 35% is 0.35.
+		Row {
+			spacing: 12
+
+			Rectangle {
+				width:      80
+				height:     40
+				radius:     8
+				background: primary
+			}
+
+			Rectangle {
+				width:      80
+				height:     40
+				radius:     8
+				background: primary
+				opacity:    35%
+			}
+
+			Text {
+				text: "opacity 1 and 35%"
+				role: "labelMedium"
 			}
 		}
 	}
