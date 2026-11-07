@@ -31,6 +31,7 @@ Window {
 				visible:       { base: false, sm: true }
 				// Room under the theme switch, so it does not touch the edge.
 				paddingBottom: 16
+				scroll:        false
 
 				NavigationItem {
 					label:    "Buttons"
@@ -737,6 +738,7 @@ Window {
 
 							Carousel {
 								height: 200
+								gap:    10
 
 								Card {
 									width:      220

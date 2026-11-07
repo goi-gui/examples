@@ -8,7 +8,8 @@
 // The bar hides itself two seconds after the pointer leaves unless
 // `autoHideScrollbar: false`; `hideScrollbar: true` removes it, and
 // `scrollShadow: true` fades an edge while content is hidden there. The thumb
-// is draggable. `opacity` fades at the bottom of the page.
+// is draggable, and `scrollbarWidth` makes it easier to hit. `opacity` fades
+// at the bottom of the page.
 
 Window {
 	id:     main
@@ -82,11 +83,12 @@ Window {
 		// A Column scrolls vertically. The axis must be bounded, here by a
 		// height; flex: 1 works when the parent bounds the main axis too.
 		Column {
-			id:           page
-			height:       340
-			scroll:       true
-			scrollShadow: true
-			spacing:      8
+			id:             page
+			height:         340
+			scroll:         true
+			scrollShadow:   true
+			scrollbarWidth: 6
+			spacing:        8
 
 			Card {
 				label:      "Card 1"
