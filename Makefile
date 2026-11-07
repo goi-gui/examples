@@ -30,6 +30,9 @@ i18n:
 cursor:
 	$(RUN) ./cursor
 
+table:
+	$(RUN) ./table
+
 titlebar:
 	$(RUN) ./titlebar
 
@@ -56,4 +59,4 @@ fmt:
 fmt-list:
 	$(FMT) -l .
 
-.PHONY: search spike counter gallery hello scroll typography composition theme titlebar datalist bridge svg window format fmt fmt-list i18n cursor
+.PHONY: search spike counter gallery hello scroll typography composition theme titlebar datalist bridge svg window format fmt fmt-list i18n cursor table

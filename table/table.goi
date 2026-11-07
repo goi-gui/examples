@@ -1,0 +1,223 @@
+// Table: a sortable data grid the app fills from Go.
+//
+// Columns are TableColumn children; `key` is what Go sorts by, `width` is a
+// fixed width (omit it to share the leftover space), and `sortable` makes the
+// header clickable. Rows are built by the loop, one TableRow per person, with
+// one TableCell per column in order.
+//
+// Clicking a sortable header sorts; clicking a row selects it. The buttons call
+// the same operations from Go (SortBy, SetSelectedRow).
+
+bridge {
+	people []person
+	count  int
+}
+
+type person {
+	name string
+	role string
+	team string
+	age  int
+}
+
+Window {
+	id:     main
+	title:  "Table"
+	width:  900
+	height: 780
+	theme:  app.systemMode
+
+	Column {
+		spacing: 0
+
+		TopAppBar {
+			label: "Table"
+			icon:  "table_chart"
+		}
+
+		Column {
+			id:             page
+			flex:           1
+			scroll:         true
+			padding:        24
+			spacing:        16
+			crossAxisAlign: start
+
+			Text {
+				text: "Team directory"
+				role: "headlineSmall"
+			}
+
+			Text {
+				text:  "A sortable header shows a hand and an arrow. Rows are selectable, stripes are optional, and SortBy / SetSelectedRow do the same from Go."
+				role:  "bodyMedium"
+				wrap:  true
+				width: 100%
+			}
+
+			Row {
+				spacing: 8
+
+				Button {
+					id:      sortName
+					label:   "Sort by name"
+					variant: tonal
+				}
+
+				Button {
+					id:      sortAge
+					label:   "Sort by age, descending"
+					variant: tonal
+				}
+
+				Button {
+					id:      clearSort
+					label:   "Declaration order"
+					variant: text
+				}
+
+				Button {
+					id:      selectFirst
+					label:   "Select first row"
+					variant: text
+				}
+			}
+
+			Table {
+				id:      people
+				width:   100%
+				striped: true
+
+				TableColumn {
+					key:      "name"
+					label:    "Name"
+					width:    200
+					sortable: true
+				}
+
+				TableColumn {
+					key:      "role"
+					label:    "Role"
+					sortable: true
+				}
+
+				TableColumn {
+					key:      "team"
+					label:    "Team"
+					width:    140
+					sortable: true
+				}
+
+				TableColumn {
+					key:      "age"
+					label:    "Age"
+					width:    80
+					align:    end
+					numeric:  true
+					sortable: true
+				}
+
+				for i, p := range bridge.people {
+					TableRow {
+						TableCell {
+							text: p.name
+						}
+
+						TableCell {
+							text: p.role
+						}
+
+						TableCell {
+							text: p.team
+						}
+
+						TableCell {
+							text: formatf("%d", p.age)
+						}
+					}
+				}
+			}
+
+			Text {
+				text: formatf("%d people", bridge.count)
+				role: "labelLarge"
+			}
+
+			Text {
+				id:   sorted
+				text: "declaration order"
+				role: "labelMedium"
+			}
+
+			Text {
+				id:   selected
+				text: "no row selected"
+				role: "labelMedium"
+			}
+
+			Divider {}
+
+			// A second table with different chrome: no header, short rows, no
+			// surface of its own, and an icon in the first column.
+			Text {
+				text: "Recent activity"
+				role: "titleMedium"
+			}
+
+			Text {
+				text:  "The same component with variant: plain, showHeader: false and rowHeight: 36."
+				role:  "bodySmall"
+				wrap:  true
+				width: 100%
+			}
+
+			Table {
+				id:         activity
+				variant:    plain
+				showHeader: false
+				rowHeight:  36
+
+				TableColumn {
+					width: 260
+				}
+
+				TableColumn {
+					width: 160
+				}
+
+				TableRow {
+					TableCell {
+						text: "Build passed on linux/amd64"
+						icon: check_circle
+					}
+
+					TableCell {
+						text: "2 minutes ago"
+					}
+				}
+
+				TableRow {
+					TableCell {
+						text: "Release v0.4.7 published"
+						icon: cloud_upload
+					}
+
+					TableCell {
+						text: "1 hour ago"
+					}
+				}
+
+				TableRow {
+					TableCell {
+						text: "Two tests skipped"
+						icon: warning
+					}
+
+					TableCell {
+						text: "yesterday"
+					}
+				}
+			}
+		}
+	}
+}
