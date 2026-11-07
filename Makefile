@@ -27,6 +27,9 @@ theme:
 i18n:
 	$(RUN) ./i18n
 
+cursor:
+	$(RUN) ./cursor
+
 titlebar:
 	$(RUN) ./titlebar
 
@@ -53,4 +56,4 @@ fmt:
 fmt-list:
 	$(FMT) -l .
 
-.PHONY: search spike counter gallery hello scroll typography composition theme titlebar datalist bridge svg window format fmt fmt-list i18n
+.PHONY: search spike counter gallery hello scroll typography composition theme titlebar datalist bridge svg window format fmt fmt-list i18n cursor

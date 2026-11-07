@@ -1,0 +1,444 @@
+// Cursor: every CSS pointer shape, one tile each. Hover a tile and the pointer
+// changes; a child inherits the nearest cursor until it declares its own.
+
+Window {
+	id:     main
+	title:  "Cursor"
+	width:  760
+	height: 720
+	theme:  app.systemMode
+
+	Column {
+		spacing: 0
+
+		TopAppBar {
+			label: "Cursor"
+			icon:  "ads_click"
+		}
+
+		Column {
+			flex:           1
+			scroll:         true
+			padding:        24
+			spacing:        20
+			crossAxisAlign: start
+
+			Text {
+				text: "Pointer shapes"
+				role: "headlineSmall"
+			}
+
+			Text {
+				text:  "Each tile sets cursor to one CSS value. The declaration is inherited by everything inside the tile, and cursor: auto gives the element back to the framework."
+				role:  "bodyMedium"
+				wrap:  true
+				width: 100%
+			}
+
+			// ------------------------------------------------ pointer and text
+			Column {
+				spacing: 12
+
+				Text {
+					text: "Pointer and text"
+					role: "titleMedium"
+				}
+
+				Wrap {
+					spacing: 12
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     pointer
+						label:      "pointer"
+						supporting: "links, buttons"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     text
+						label:      "text"
+						supporting: "editable text"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     vertical - text
+						label:      "vertical-text"
+						supporting: "vertical writing"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     context - menu
+						label:      "context-menu"
+						supporting: "opens a menu"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     help
+						label:      "help"
+						supporting: "needs an answer"
+					}
+
+					// No tile inheriting `none` is reachable, so it hides the
+					// pointer only while it is over this card.
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     none
+						label:      "none"
+						supporting: "pointer hidden"
+					}
+				}
+			}
+
+			// ------------------------------------------------ drag and status
+			Column {
+				spacing: 12
+
+				Text {
+					text: "Drag and status"
+					role: "titleMedium"
+				}
+
+				Wrap {
+					spacing: 12
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     grab
+						label:      "grab"
+						supporting: "ready to drag"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     grabbing
+						label:      "grabbing"
+						supporting: "being dragged"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     move
+						label:      "move"
+						supporting: "moves things"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     all - scroll
+						label:      "all-scroll"
+						supporting: "any direction"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     not - allowed
+						label:      "not-allowed"
+						supporting: "cannot drop"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     no - drop
+						label:      "no-drop"
+						supporting: "drop refused"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     copy
+						label:      "copy"
+						supporting: "duplicates"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     alias
+						label:      "alias"
+						supporting: "creates a link"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     wait
+						label:      "wait"
+						supporting: "blocked"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     progress
+						label:      "progress"
+						supporting: "busy, usable"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     zoom - in
+						label:      "zoom-in"
+						supporting: "magnify"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     zoom - out
+						label:      "zoom-out"
+						supporting: "shrink"
+					}
+				}
+			}
+
+			// ------------------------------------------------ crosshair and resize
+			Column {
+				spacing: 12
+
+				Text {
+					text: "Crosshair and resize"
+					role: "titleMedium"
+				}
+
+				Wrap {
+					spacing: 12
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     crosshair
+						label:      "crosshair"
+						supporting: "precise point"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     cell
+						label:      "cell"
+						supporting: "select a cell"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     col - resize
+						label:      "col-resize"
+						supporting: "column width"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     row - resize
+						label:      "row-resize"
+						supporting: "row height"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     ew - resize
+						label:      "ew-resize"
+						supporting: "horizontal"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     ns - resize
+						label:      "ns-resize"
+						supporting: "vertical"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     nesw - resize
+						label:      "nesw-resize"
+						supporting: "diagonal"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     nwse - resize
+						label:      "nwse-resize"
+						supporting: "diagonal"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     n - resize
+						label:      "n-resize"
+						supporting: "top edge"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     e - resize
+						label:      "e-resize"
+						supporting: "right edge"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     s - resize
+						label:      "s-resize"
+						supporting: "bottom edge"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     w - resize
+						label:      "w-resize"
+						supporting: "left edge"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     ne - resize
+						label:      "ne-resize"
+						supporting: "corner"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     nw - resize
+						label:      "nw-resize"
+						supporting: "corner"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     se - resize
+						label:      "se-resize"
+						supporting: "corner"
+					}
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     sw - resize
+						label:      "sw-resize"
+						supporting: "corner"
+					}
+				}
+			}
+
+			// ------------------------------------------------ inheritance and auto
+			Column {
+				spacing: 12
+
+				Text {
+					text: "Inheritance and auto"
+					role: "titleMedium"
+				}
+
+				Text {
+					text:  "The row below declares grab. Its cards inherit it, the middle one overrides it, and the button says cursor: auto, so it gets the framework's own hand back."
+					role:  "bodySmall"
+					wrap:  true
+					width: 100%
+				}
+
+				Row {
+					cursor:  grab
+					spacing: 12
+
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						label:      "inherits grab"
+						supporting: "no cursor written"
+					}
+
+					// A child's own value wins over the inherited one.
+					Card {
+						width:      164
+						height:     76
+						variant:    outlined
+						cursor:     help
+						label:      "help"
+						supporting: "declares its own"
+					}
+
+					// auto stops inheritance, so the button shows its own hand
+					// again instead of the row's grab.
+					Button {
+						id:      clickMe
+						label:   "click me"
+						variant: tonal
+						cursor:  auto
+					}
+				}
+
+				Text {
+					id:   clicks
+					text: "0 clicks on the grab button"
+					role: "labelMedium"
+				}
+			}
+		}
+	}
+}
