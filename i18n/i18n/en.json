@@ -1,0 +1,12 @@
+{
+	"app": {
+		"title": "Translations"
+	},
+	"welcome_message": "Welcome",
+	"settings": {
+		"theme": "Theme",
+		"language": "Language"
+	},
+	"welcome_with_name": "Welcome, %s",
+	"only_english": "This line has no German or Turkish entry, so the fallback shows it."
+}

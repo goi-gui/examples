@@ -1,0 +1,88 @@
+// Translations: every text here comes from i18n/*.json through t(...).
+//
+// A nested key uses dots; extra arguments fill the entry's verbs, exactly like
+// formatf. app.language is the active code and follows the desktop until Go
+// calls SetLanguage. Delete the i18n folder and the keys themselves show, which
+// is the optional case.
+
+Window {
+	id:     main
+	title:  "Translations"
+	width:  520
+	height: 460
+
+	Column {
+		spacing: 0
+
+		TopAppBar {
+			label: t("app.title")
+		}
+
+		Column {
+			flex:           1
+			padding:        24
+			spacing:        16
+			crossAxisAlign: start
+
+			Text {
+				text: t("welcome_message")
+				role: "headlineSmall"
+			}
+
+			Text {
+				text: t("settings.theme")
+				role: "bodyMedium"
+			}
+
+			Text {
+				text: t("settings.language")
+				role: "bodyMedium"
+			}
+
+			Text {
+				text: t("welcome_with_name", "Kaan")
+				role: "bodyMedium"
+			}
+
+			Text {
+				text: t("only_english")
+				role: "labelMedium"
+			}
+
+			Row {
+				spacing: 8
+
+				Button {
+					id:      btnEn
+					label:   "English"
+					variant: tonal
+				}
+
+				Button {
+					id:      btnTr
+					label:   "Türkçe"
+					variant: tonal
+				}
+
+				Button {
+					id:      btnDe
+					label:   "Deutsch"
+					variant: tonal
+				}
+
+				Button {
+					id:      btnSystem
+					label:   "System"
+					variant: text
+				}
+			}
+
+			// app.language is the active code; the fallback explains a missing
+			// translation instead of leaving a blank.
+			Text {
+				text: formatf("%s / %s", app.language, app.systemLanguage)
+				role: "labelSmall"
+			}
+		}
+	}
+}

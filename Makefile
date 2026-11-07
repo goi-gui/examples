@@ -24,6 +24,9 @@ composition:
 theme:
 	$(RUN) ./theme
 
+i18n:
+	$(RUN) ./i18n
+
 titlebar:
 	$(RUN) ./titlebar
 

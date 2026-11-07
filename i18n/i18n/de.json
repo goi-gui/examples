@@ -1,0 +1,11 @@
+{
+	"app": {
+		"title": "Übersetzungen"
+	},
+	"welcome_message": "Willkommen",
+	"settings": {
+		"theme": "Thema",
+		"language": "Sprache"
+	},
+	"welcome_with_name": "Willkommen, %s"
+}

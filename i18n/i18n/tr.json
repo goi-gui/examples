@@ -1,0 +1,11 @@
+{
+	"app": {
+		"title": "Çeviriler"
+	},
+	"welcome_message": "Hoşgeldiniz",
+	"settings": {
+		"theme": "Tema",
+		"language": "Dil"
+	},
+	"welcome_with_name": "Hoşgeldin, %s"
+}
