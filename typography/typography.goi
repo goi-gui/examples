@@ -1,6 +1,7 @@
-// Typography: the M3 type scale, explicit size and weight, and text wrapping.
-// Every sample is a Text element, so this page is also the visual check for the
-// shaper: the same string in five weights must advance differently.
+// Typography: the M3 type scale, explicit size and weight, style and
+// decoration, and text wrapping. Every sample is a Text element, so this page
+// is also the visual check for the shaper: the same string in five weights must
+// advance differently.
 
 Window {
 	id:    main
@@ -278,6 +279,120 @@ Window {
 				Text {
 					text: "Above: explicit newlines."
 					role: "labelMedium"
+				}
+			}
+
+			// ----------------------------------------------------------- style
+			Column {
+				spacing: 12
+				width:   520
+
+				Text {
+					text: "Style and decoration"
+					role: "titleMedium"
+				}
+
+				// fontWeight takes the CSS keywords or any number. bolder and
+				// lighter are relative to the role's own weight.
+				Text {
+					text:       "fontWeight: bold"
+					fontSize:   20
+					fontWeight: bold
+				}
+
+				Text {
+					text:       "fontWeight: 600 (draws as 700)"
+					fontSize:   20
+					fontWeight: 600
+				}
+
+				Text {
+					text:       "fontWeight: bolder than bodyMedium"
+					role:       "bodyMedium"
+					fontWeight: bolder
+				}
+
+				Text {
+					text:       "fontWeight: lighter than bodyMedium (300)"
+					role:       "bodyMedium"
+					fontWeight: lighter
+				}
+
+				Text {
+					text:      "fontStyle: italic"
+					fontSize:  20
+					fontStyle: italic
+				}
+
+				// A decoration combines the strokes; the style picks how each
+				// stroke is drawn.
+				Text {
+					text:       "underline"
+					fontSize:   20
+					decoration: underline
+				}
+
+				Text {
+					text:       "overline"
+					fontSize:   20
+					decoration: overline
+				}
+
+				Text {
+					text:       "line-through"
+					fontSize:   20
+					decoration: line-through
+				}
+
+				Text {
+					text:       "underline overline"
+					fontSize:   20
+					decoration: underline overline
+				}
+
+				Text {
+					text:            "decorationStyle: wavy"
+					fontSize:        20
+					decoration:      underline
+					decorationStyle: wavy
+				}
+
+				Text {
+					text:            "decorationStyle: dotted"
+					fontSize:        20
+					decoration:      underline
+					decorationStyle: dotted
+				}
+
+				Text {
+					text:            "decorationStyle: dashed"
+					fontSize:        20
+					decoration:      underline
+					decorationStyle: dashed
+				}
+
+				Text {
+					text:            "decorationStyle: double"
+					fontSize:        20
+					decoration:      underline
+					decorationStyle: double
+				}
+
+				Text {
+					text:                "thick red underline"
+					fontSize:            20
+					decoration:          underline
+					decorationThickness: 4
+					decorationColor:     #ff0000
+				}
+
+				Text {
+					text:            "Italic, wavy, primary colour"
+					role:            "bodyLarge"
+					fontStyle:       italic
+					decoration:      underline
+					decorationStyle: wavy
+					decorationColor: primary
 				}
 			}
 
