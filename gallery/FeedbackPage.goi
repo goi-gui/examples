@@ -1,0 +1,111 @@
+Column {
+	id:             pageFeedback
+	visible:        false
+	scroll:         true
+	spacing:        24
+	padding:        20
+	crossAxisAlign: start
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Progress"
+			role: "titleMedium"
+		}
+
+		LinearProgress {
+			value: 0.6
+			width: { base: 280, md: 420 }
+		}
+
+		Row {
+			spacing:        24
+			crossAxisAlign: center
+
+			CircularProgress {
+				value: 0.65
+			}
+
+			LoadingIndicator {}
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Badges"
+			role: "titleMedium"
+		}
+
+		Wrap {
+			spacing: 16
+
+			Badge {}
+
+			Badge {
+				label: "12"
+			}
+
+			Badge {
+				label: "99+"
+			}
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Dialog and sheets"
+			role: "titleMedium"
+		}
+
+		Wrap {
+			spacing: 16
+
+			Dialog {
+				label:      "Reset settings?"
+				supporting: "This cannot be undone."
+				width:      280
+				height:     168
+			}
+
+			Column {
+				spacing: 12
+
+				BottomSheet {
+					label:  "Bottom sheet"
+					width:  280
+					height: 132
+				}
+
+				SideSheet {
+					label:  "Side sheet"
+					width:  280
+					height: 132
+				}
+			}
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Snackbar and tooltip"
+			role: "titleMedium"
+		}
+
+		Snackbar {
+			label: "Saved to your library"
+			width: { base: 280, md: 420 }
+		}
+
+		Tooltip {
+			label: "Tooltip text"
+			width: 120
+		}
+	}
+}

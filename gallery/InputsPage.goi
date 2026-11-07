@@ -1,0 +1,243 @@
+Column {
+	id:             pageInputs
+	visible:        false
+	scroll:         true
+	spacing:        24
+	padding:        20
+	crossAxisAlign: start
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Selection"
+			role: "titleMedium"
+		}
+
+		Checkbox {
+			id:      check
+			label:   "Checkbox"
+			checked: true
+			width:   220
+		}
+
+		RadioButton {
+			label:   "Radio button"
+			checked: true
+			width:   220
+		}
+
+		Switch {
+			id:      switchOn
+			label:   "Switch"
+			checked: true
+			width:   220
+		}
+
+		// iconOn/iconOff override icon; empty means no glyph.
+		Switch {
+			label:   "Switch with icons"
+			checked: true
+			iconOn:  check
+			iconOff: close
+			width:   240
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Slider"
+			role: "titleMedium"
+		}
+
+		Slider {
+			id:    slider
+			value: 0.4
+			min:   0
+			max:   1
+			width: { base: 280, md: 360 }
+		}
+
+		Text {
+			text: "Drag the handle, or use the arrow keys."
+			role: "bodySmall"
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Chips"
+			role: "titleMedium"
+		}
+
+		Wrap {
+			spacing: 8
+
+			Chip {
+				label: "Assist"
+				icon:  event
+			}
+
+			Chip {
+				label:    "Filter"
+				variant:  filter
+				selected: true
+			}
+
+			Chip {
+				label:   "Input"
+				variant: input
+			}
+
+			Chip {
+				label:   "Suggestion"
+				variant: suggestion
+			}
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Text fields"
+			role: "titleMedium"
+		}
+
+		TextField {
+			id:          field
+			label:       "Label"
+			placeholder: "Filled text field"
+			variant:     filled
+			width:       { base: 280, md: 360 }
+		}
+
+		TextField {
+			label:       "Label"
+			placeholder: "Outlined field"
+			variant:     outlined
+			width:       { base: 280, md: 360 }
+		}
+
+		TextField {
+			label:   "Email"
+			text:    "user@example.com"
+			icon:    mail
+			variant: filled
+			width:   { base: 280, md: 360 }
+		}
+
+		TextField {
+			label:       "Supporting text"
+			placeholder: "With a helper line"
+			supporting:  "Shown under the field"
+			variant:     outlined
+			width:       { base: 280, md: 360 }
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Search bar"
+			role: "titleMedium"
+		}
+
+		SearchBar {
+			placeholder: "Search components"
+			width:       { base: 280, md: 400 }
+		}
+
+		Text {
+			text: "Click it and type: the value scrolls and selects."
+			role: "bodySmall"
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Text area"
+			role: "titleMedium"
+		}
+
+		TextArea {
+			id:          notes
+			label:       "Notes"
+			placeholder: "Enter starts a new line"
+			text:        "A multiline field: Enter adds a line, Home and End work per line, and the caret scrolls when the text outgrows the box."
+			supporting:  "supporting text sits under the field"
+			width:       { base: 300, md: 420 }
+			height:      140
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Code"
+			role: "titleMedium"
+		}
+
+		Code {
+			language: go
+			showCopy: true
+			width:    { base: 300, md: 520 }
+			text:     "// A highlighted block\nfunc bind(w *ui.Window) error {\n\tbtn := ui.MustByID[*ui.Button](w, \"go\")\n\tbtn.OnClick(func(ui.ClickEvent) {\n\t\tfmt.Println(\"clicked\")\n\t})\n\treturn nil\n}"
+		}
+
+		Code {
+			language: py
+			variant:  outlined
+			width:    { base: 300, md: 520 }
+			text:     "# spans: keywords, strings, numbers, comments\nfor i in range(3):\n    print(\"easing\", i, 0.5)"
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Date picker"
+			role: "titleMedium"
+		}
+
+		Text {
+			id:   dateValue
+			text: "No date picked"
+			role: "bodySmall"
+		}
+
+		DatePicker {
+			id:    datePicker
+			label: "Select date"
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Time picker"
+			role: "titleMedium"
+		}
+
+		Text {
+			id:   timeValue
+			text: "No time picked"
+			role: "bodySmall"
+		}
+
+		TimePicker {
+			id:    timePicker
+			label: "Select time"
+		}
+	}
+}

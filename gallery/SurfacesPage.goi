@@ -1,0 +1,258 @@
+Column {
+	id:             pageSurfaces
+	visible:        false
+	scroll:         true
+	spacing:        24
+	padding:        20
+	crossAxisAlign: start
+
+	Column {
+		spacing: 12
+
+		Text {
+			text: "Cards"
+			role: "titleMedium"
+		}
+
+		Grid {
+			columns: { base: 1, md: 2, lg: 3 }
+			spacing: 12
+
+			Card {
+				label:      "Elevated"
+				supporting: "Surface container low"
+				height:     96
+			}
+
+			Card {
+				label:      "Filled"
+				supporting: "Highest container"
+				variant:    filled
+				height:     96
+			}
+
+			Card {
+				label:      "Outlined"
+				supporting: "1dp outline"
+				variant:    outlined
+				height:     96
+			}
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Image"
+			role: "titleMedium"
+		}
+
+		Wrap {
+			spacing: 12
+
+			// cover crops to fill the box; contain letterboxes.
+			Image {
+				src:    "goi://sample.jpg"
+				width:  180
+				height: 120
+				radius: 12
+			}
+
+			Image {
+				src:        "goi://sample.jpg"
+				fit:        contain
+				width:      180
+				height:     120
+				radius:     12
+				background: surfaceContainerHigh
+			}
+
+			Image {
+				src:    "goi://sample.jpg"
+				fit:    fill
+				width:  180
+				height: 120
+				radius: 12
+			}
+
+			// No src: Go supplies the bitmap with SetImage.
+			Image {
+				id:          generated
+				width:       180
+				height:      120
+				radius:      12
+				fit:         cover
+				borderColor: primary
+				borderWidth: 1
+			}
+		}
+
+		Text {
+			text:  "PNG, JPEG and GIF, decoded once and packed into one GPU atlas. fit picks cover, contain or fill. The last one is drawn in Go with SetImage, so it needs no file."
+			role:  "bodySmall"
+			wrap:  true
+			width: { base: 280, md: 420 }
+		}
+
+		Wrap {
+			spacing: 12
+
+			// currentColor takes the design's colour, so one file
+			// serves every theme role.
+			SVG {
+				src:    "goi://star.svg"
+				color:  primary
+				width:  48
+				height: 48
+			}
+
+			SVG {
+				src:    "goi://star.svg"
+				color:  tertiary
+				width:  48
+				height: 48
+			}
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Carousel"
+			role: "titleMedium"
+		}
+
+		Carousel {
+			height: 200
+			gap:    10
+
+			Card {
+				width:      220
+				label:      "One"
+				supporting: "Scroll sideways"
+				variant:    filled
+			}
+
+			Card {
+				width:      220
+				label:      "Two"
+				supporting: "Drag or use the wheel"
+			}
+
+			Card {
+				width:      220
+				label:      "Three"
+				supporting: "The strip clips"
+				variant:    outlined
+			}
+
+			Card {
+				width:      220
+				label:      "Four"
+				supporting: "Last item"
+				variant:    filled
+			}
+		}
+
+		Text {
+			text: "A horizontally scrolling strip: the wheel over it moves it sideways."
+			role: "bodySmall"
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "List"
+			role: "titleMedium"
+		}
+
+		List {
+			width: { base: 100%, md: 420 }
+
+			ListItem {
+				label:        "List item"
+				icon:         person
+				trailingIcon: chevron_right
+			}
+
+			ListItem {
+				label:      "Two lines"
+				supporting: "Supporting text"
+				icon:       photo
+			}
+
+			Divider {}
+
+			ListItem {
+				label:    "Selected"
+				icon:     star
+				selected: true
+			}
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Tabs"
+			role: "titleMedium"
+		}
+
+		Tabs {
+			width: { base: 100%, md: 420 }
+
+			Tab {
+				label:    "Overview"
+				selected: true
+			}
+
+			Tab {
+				label: "Specs"
+			}
+
+			Tab {
+				label: "Details"
+			}
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Menu"
+			role: "titleMedium"
+		}
+
+		Menu {
+			width: 260
+
+			MenuItem {
+				label: "Cut"
+				icon:  content_cut
+			}
+
+			MenuItem {
+				label: "Copy"
+				icon:  content_copy
+			}
+
+			MenuItem {
+				label: "Paste"
+				icon:  content_paste
+			}
+
+			Divider {}
+
+			MenuItem {
+				label: "More…"
+				icon:  more_horiz
+			}
+		}
+	}
+}

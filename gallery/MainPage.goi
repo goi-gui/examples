@@ -1,0 +1,227 @@
+// The Material 3 component gallery, split into one page per category.
+//
+// Navigation follows the M3 window size classes: a bottom navigation bar in the
+// compact layout, a navigation rail from 640dp up. The app-bar menu opens a
+// modal drawer that lists the same categories, so the pattern works even when a
+// bar or rail is off screen.
+//
+// Every page is an independent scrolling column; Go shows one at a time.
+
+import MotionPage "./MotionPage.goi"
+import ButtonsPage "./ButtonsPage.goi"
+import InputsPage "./InputsPage.goi"
+import SurfacesPage "./SurfacesPage.goi"
+import FeedbackPage "./FeedbackPage.goi"
+import LayoutPage "./LayoutPage.goi"
+
+Window {
+	id:    main
+	title: "Material 3 components"
+	theme: app.systemMode
+
+	Stack {
+		Row {
+			spacing: 0
+
+			// ---- medium and expanded: rail
+			NavigationRail {
+				id:            rail
+				visible:       { base: false, sm: true }
+				// Room under the theme switch, so it does not touch the edge.
+				paddingTop:    16
+				paddingBottom: 16
+				scroll:        true
+
+				NavigationItem {
+					label:    "Buttons"
+					icon:     smart_button
+					selected: true
+				}
+
+				NavigationItem {
+					label: "Inputs"
+					icon:  tune
+				}
+
+				NavigationItem {
+					label: "Surfaces"
+					icon:  layers
+				}
+
+				NavigationItem {
+					label: "Feedback"
+					icon:  notifications
+				}
+
+				NavigationItem {
+					label: "Layout"
+					icon:  dashboard
+				}
+
+				NavigationItem {
+					label: "Motion"
+					icon:  animation
+				}
+
+				// The theme lives at the bottom of the rail, where a rail puts its
+				// own actions, instead of floating in the app bar.
+				Rectangle {
+					flex: 1
+				}
+
+				Switch {
+					id:        railTheme
+					width:     52
+					alignSelf: center
+					checked:   app.dark
+					// Checked means dark, so the checked thumb carries the moon.
+					iconOn:    dark_mode
+					iconOff:   light_mode
+				}
+			}
+
+			Column {
+				spacing: 0
+				flex:    1
+
+				TopAppBar {
+					id:    appbar
+					label: "Buttons"
+					// The hamburger is the compact-only way into the drawer: at
+					// sm and up the rail is on screen, so the bar drops it.
+					icon:  { base: menu, sm: "" }
+				}
+
+				// ---- one page at a time
+				Stack {
+					flex: 1
+
+					ButtonsPage {}
+
+					InputsPage {}
+
+					SurfacesPage {}
+
+					FeedbackPage {}
+
+					LayoutPage {}
+
+					MotionPage {}
+				}
+
+				// ============================================== motion
+				// ---- compact: bottom bar
+				NavigationBar {
+					id:      navbar
+					visible: { base: true, sm: false }
+
+					NavigationItem {
+						label:    "Buttons"
+						icon:     smart_button
+						selected: true
+					}
+
+					NavigationItem {
+						label: "Inputs"
+						icon:  tune
+					}
+
+					NavigationItem {
+						label: "Surfaces"
+						icon:  layers
+					}
+
+					NavigationItem {
+						label: "Feedback"
+						icon:  notifications
+					}
+
+					NavigationItem {
+						label: "Layout"
+						icon:  dashboard
+					}
+
+					NavigationItem {
+						label: "Motion"
+						icon:  animation
+					}
+				}
+			}
+		}
+
+		// ---- modal drawer: the same categories, for when a bar or rail is out of
+		// reach, plus the overlay pattern itself.
+		Rectangle {
+			id:         scrim
+			background: #00000052
+			visible:    false
+		}
+
+		Positioned {
+			id:      drawerFrame
+			left:    0
+			top:     0
+			bottom:  0
+			width:   320
+			visible: false
+
+			NavigationDrawer {
+				label: "Categories"
+
+				NavigationItem {
+					id:       drawerButtons
+					label:    "Buttons"
+					icon:     smart_button
+					selected: true
+				}
+
+				NavigationItem {
+					id:    drawerInputs
+					label: "Inputs"
+					icon:  tune
+				}
+
+				NavigationItem {
+					id:    drawerSurfaces
+					label: "Surfaces"
+					icon:  layers
+				}
+
+				NavigationItem {
+					id:    drawerFeedback
+					label: "Feedback"
+					icon:  notifications
+				}
+
+				NavigationItem {
+					id:    drawerLayout
+					label: "Layout"
+					icon:  dashboard
+				}
+
+				NavigationItem {
+					id:    drawerMotion
+					label: "Motion"
+					icon:  animation
+				}
+
+				// Same place a rail keeps its own actions: pinned to the bottom,
+				// after a spacer, so the list can grow above it.
+				Rectangle {
+					flex: 1
+				}
+
+				Switch {
+					id:           drawerTheme
+					label:        "Dark mode"
+					checked:      app.dark
+					iconOn:       dark_mode
+					iconOff:      light_mode
+					marginLeft:   12
+					marginRight:  12
+					marginBottom: 16
+				}
+			}
+		}
+	}
+}

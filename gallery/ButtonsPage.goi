@@ -1,0 +1,265 @@
+Column {
+	id:             pageButtons
+	scroll:         true
+	spacing:        24
+	crossAxisAlign: start
+	padding:        20
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Buttons"
+			role: "titleMedium"
+		}
+
+		Wrap {
+			spacing: 8
+
+			Button {
+				label: "Filled"
+			}
+
+			Button {
+				label:   "Tonal"
+				variant: tonal
+			}
+
+			Button {
+				label:   "Outlined"
+				variant: outlined
+			}
+
+			Button {
+				label:   "Text"
+				variant: text
+			}
+
+			Button {
+				label:   "Elevated"
+				variant: elevated
+			}
+
+			Button {
+				label: "With icon"
+				icon:  add
+			}
+
+			Button {
+				label:    "Disabled"
+				disabled: true
+			}
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Icon buttons"
+			role: "titleMedium"
+		}
+
+		Wrap {
+			spacing: 8
+
+			IconButton {
+				icon: favorite
+			}
+
+			IconButton {
+				icon:    favorite
+				variant: filled
+			}
+
+			IconButton {
+				icon:    favorite
+				variant: tonal
+			}
+
+			IconButton {
+				icon:    favorite
+				variant: outlined
+			}
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Button group"
+			role: "titleMedium"
+		}
+
+		ButtonGroup {
+			spacing: 8
+
+			Button {
+				label:   "Back"
+				icon:    arrow_back
+				variant: tonal
+			}
+
+			Button {
+				label:   "Next"
+				icon:    arrow_forward
+				variant: tonal
+			}
+		}
+
+		Text {
+			text: "A row that shares one gap and one alignment, so the actions read as a set."
+			role: "bodySmall"
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "FAB"
+			role: "titleMedium"
+		}
+
+		Wrap {
+			spacing: 16
+
+			FAB {
+				icon: edit
+				size: sm
+			}
+
+			FAB {
+				icon: add
+			}
+
+			FAB {
+				label:   "Compose"
+				icon:    edit
+				variant: extended
+			}
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "FAB menu"
+			role: "titleMedium"
+		}
+
+		FABMenu {
+			id:       fabMenu
+			icon:     add
+			expanded: true
+
+			FAB {
+				icon: edit
+				size: sm
+			}
+
+			FAB {
+				icon: photo
+				size: sm
+			}
+
+			FAB {
+				icon: share
+				size: sm
+			}
+		}
+
+		Text {
+			text: "The actions stack above the FAB while expanded; a closed menu has none."
+			role: "bodySmall"
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Split button"
+			role: "titleMedium"
+		}
+
+		SplitButton {
+			label: "Split"
+			icon:  add
+			width: 200
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Segmented button: radio"
+			role: "titleMedium"
+		}
+
+		Row {
+			spacing: 0
+
+			SegmentedButton {
+				label:   "Day"
+				width:   84
+				variant: single
+			}
+
+			SegmentedButton {
+				label:    "Week"
+				width:    84
+				variant:  single
+				selected: true
+			}
+
+			SegmentedButton {
+				label:   "Month"
+				width:   96
+				variant: single
+			}
+		}
+
+		Text {
+			text: "variant: single keeps exactly one selected."
+			role: "bodySmall"
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Segmented button: checkbox"
+			role: "titleMedium"
+		}
+
+		Row {
+			spacing: 0
+
+			SegmentedButton {
+				label: "Bold"
+				width: 84
+			}
+
+			SegmentedButton {
+				label:    "Italic"
+				width:    84
+				selected: true
+			}
+
+			SegmentedButton {
+				label: "Underline"
+				width: 108
+			}
+		}
+
+		Text {
+			text: "The default toggles each segment on its own; clicking a selected one clears it."
+			role: "bodySmall"
+		}
+	}
+}

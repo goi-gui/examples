@@ -1,0 +1,689 @@
+bridge {
+	rows []galleryRow
+}
+
+type galleryRow {
+	title      string
+	supporting string
+}
+
+Column {
+	id:             pageLayout
+	visible:        false
+	scroll:         true
+	spacing:        24
+	padding:        20
+	crossAxisAlign: start
+
+	// ---- axes: crossAxisAlign across, mainAxisAlign along.
+	Column {
+		spacing: 8
+
+		Text {
+			text: "Alignment axes"
+			role: "titleMedium"
+		}
+
+		Text {
+			text:  "crossAxisAlign places a child across the flow; mainAxisAlign places the run along it. Both default to start."
+			role:  "bodySmall"
+			wrap:  true
+			width: { base: 280, md: 420 }
+		}
+
+		Row {
+			id:             axisRow
+			width:          { base: 280, md: 420 }
+			height:         56
+			spacing:        8
+			crossAxisAlign: center
+			mainAxisAlign:  spaceBetween
+
+			Rectangle {
+				width:      40
+				height:     40
+				radius:     8
+				background: primary
+			}
+
+			Rectangle {
+				width:      40
+				height:     24
+				radius:     8
+				background: secondary
+			}
+
+			Rectangle {
+				width:      40
+				height:     32
+				radius:     8
+				background: tertiary
+			}
+		}
+
+		Column {
+			width:          { base: 280, md: 420 }
+			height:         96
+			spacing:        6
+			crossAxisAlign: center
+			mainAxisAlign:  spaceAround
+
+			Rectangle {
+				width:      90
+				height:     20
+				radius:     6
+				background: primaryContainer
+			}
+
+			Rectangle {
+				width:      60
+				height:     20
+				radius:     6
+				background: secondaryContainer
+			}
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Title bar"
+			role: "titleMedium"
+		}
+
+		// The same design can carry both platforms: app.os picks
+		// one at runtime. Here they are plain rows inside the
+		// page; with titleBar: custom on the Window, a TitleBar
+		// also drags the window and the outer edge resizes it.
+		TitleBar {
+			height:         40
+			paddingLeft:    12
+			paddingRight:   4
+			spacing:        4
+			crossAxisAlign: center
+			background:     surfaceContainerHigh
+			radius:         8
+
+			Text {
+				text: "Linux and Windows Custom Titlebar"
+				role: "labelMedium"
+			}
+
+			Rectangle {
+				flex: 1
+			}
+
+			IconButton {
+				icon:    remove
+				variant: text
+				size:    sm
+			}
+
+			IconButton {
+				icon:    crop_square
+				variant: text
+				size:    sm
+			}
+
+			IconButton {
+				icon:    close
+				variant: text
+				size:    sm
+			}
+		}
+
+		TitleBar {
+			height:         40
+			paddingLeft:    12
+			paddingRight:   12
+			spacing:        4
+			crossAxisAlign: center
+			background:     surfaceContainerHigh
+			radius:         8
+			gap:            10
+
+			Row {
+				gap:            10
+				crossAxisAlign: center
+
+				Rectangle {
+					width:       18
+					height:      18
+					background:  #fc5753
+					borderColor: #df4744
+					borderWidth: 2
+					radius:      10
+				}
+
+				Rectangle {
+					width:       18
+					height:      18
+					background:  #fdbc40
+					borderColor: #dea035
+					borderWidth: 2
+					radius:      10
+				}
+
+				Rectangle {
+					width:       18
+					height:      18
+					background:  #36c84b
+					borderColor: #27aa35
+					borderWidth: 2
+					radius:      10
+				}
+			}
+
+			Text {
+				text: "macOS Custom Titlebar"
+				role: "labelMedium"
+			}
+		}
+
+		Text {
+			text:  "visible: app.os == \"linux\" picks a bar per platform; only one of the two above exists at runtime."
+			role:  "bodySmall"
+			wrap:  true
+			width: { base: 280, md: 460 }
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Toolbar"
+			role: "titleMedium"
+		}
+
+		Toolbar {
+			spacing: 4
+
+			IconButton {
+				icon: undo
+			}
+
+			IconButton {
+				icon: redo
+			}
+
+			Divider {
+				variant:     vertical
+				height:      24
+				marginLeft:  6
+				marginRight: 6
+			}
+
+			IconButton {
+				icon: format_bold
+			}
+
+			IconButton {
+				icon: format_italic
+			}
+
+			IconButton {
+				icon: format_underlined
+			}
+
+			Divider {
+				variant:     vertical
+				height:      24
+				marginLeft:  6
+				marginRight: 6
+			}
+
+			IconButton {
+				icon: share
+			}
+		}
+
+		Text {
+			text: "A floating row of actions in one pill."
+			role: "bodySmall"
+		}
+	}
+
+	Column {
+		spacing: 12
+
+		Text {
+			text: "ClipRRect"
+			role: "titleMedium"
+		}
+
+		Row {
+			spacing: 12
+
+			ClipRRect {
+				radius: 24
+				width:  96
+				height: 96
+
+				Rectangle {
+					background: primary
+				}
+
+				// The strip runs past the box and is cut at the
+				// rounded edge, which is the whole point.
+				Rectangle {
+					width:      200
+					height:     20
+					marginTop:  60
+					background: tertiary
+				}
+			}
+
+			ClipRRect {
+				radius: 8
+				width:  96
+				height: 96
+
+				Image {
+					src: "goi://sample.jpg"
+					fit: cover
+				}
+			}
+
+			ClipRRect {
+				radius: 48
+				width:  96
+				height: 96
+
+				Image {
+					src: "goi://sample.jpg"
+					fit: cover
+				}
+			}
+		}
+
+		Text {
+			text:  "radius rounds the cut; a child wider than the box is clipped, not scaled."
+			role:  "bodySmall"
+			wrap:  true
+			width: { base: 280, md: 460 }
+		}
+	}
+
+	Column {
+		spacing: 12
+
+		Text {
+			text: "Grid"
+			role: "titleMedium"
+		}
+
+		Grid {
+			columns: { base: 1, sm: 2, lg: 3 }
+			spacing: 12
+
+			Card {
+				label:      "One"
+				supporting: "base: 1 column"
+				height:     88
+				variant:    filled
+			}
+
+			Card {
+				label:      "Two"
+				supporting: "sm: 2 columns"
+				height:     88
+			}
+
+			Card {
+				label:      "Three"
+				supporting: "lg: 3 columns"
+				height:     88
+				variant:    outlined
+			}
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Wrap"
+			role: "titleMedium"
+		}
+
+		Wrap {
+			spacing: 8
+
+			Chip {
+				label: "Wrap"
+				icon:  event
+			}
+
+			Chip {
+				label: "Second"
+			}
+
+			Chip {
+				label: "Third"
+			}
+
+			Chip {
+				label: "Fourth"
+			}
+
+			Chip {
+				label: "Fifth"
+			}
+
+			Chip {
+				label: "Sixth"
+			}
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Stack and positioned"
+			role: "titleMedium"
+		}
+
+		Stack {
+			width:  { base: 280, md: 420 }
+			height: 200
+
+			// A Card rather than a coloured Rectangle: the plate
+			// has to follow the theme, and a Card is the M3
+			// surface that does.
+			Card {
+				variant: filled
+				radius:  16
+			}
+
+			Positioned {
+				left: 16
+				top:  16
+
+				Card {
+					label:      "left: 16"
+					supporting: "top: 16"
+					width:      190
+					height:     84
+					variant:    filled
+				}
+			}
+
+			Positioned {
+				right:  16
+				bottom: 16
+
+				Chip {
+					label: "bottom right"
+					icon:  star
+				}
+			}
+
+			Positioned {
+				left:       16
+				right:      16
+				bottom:     64
+				height:     4
+				background: primary
+				radius:     2
+			}
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Expressions"
+			role: "titleMedium"
+		}
+
+		Column {
+			width:   320
+			spacing: 8
+
+			// Named roles instead of hex: these follow the scheme.
+			Rectangle {
+				id:         demoBase
+				width:      240
+				height:     10
+				background: primary
+				radius:     5
+			}
+
+			Rectangle {
+				width:      demoBase.width / 2
+				height:     10
+				background: secondary
+				radius:     5
+			}
+
+			Rectangle {
+				width:      50%
+				height:     10
+				background: tertiary
+				radius:     5
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Conditional: the " + app.mode + " scheme is active."
+				role: "bodyMedium"
+			}
+
+			Rectangle {
+				width:      160
+				height:     8
+				radius:     4
+				background: app.dark ? primaryContainer : inversePrimary
+			}
+		}
+
+		Text {
+			text: "A reference, a division, a comparison, a conditional and a percentage of the parent."
+			role: "bodySmall"
+			wrap: true
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Visibility"
+			role: "titleMedium"
+		}
+
+		Text {
+			text:    "This line appears from sm (640dp) up."
+			role:    "bodyMedium"
+			visible: { base: false, sm: true }
+		}
+
+		Text {
+			text:    "This one only below sm, and the layout closes the gap."
+			role:    "bodyMedium"
+			visible: { base: true, sm: false }
+		}
+	}
+
+	Column {
+		spacing: 8
+
+		Text {
+			text: "Type"
+			role: "titleMedium"
+		}
+
+		Text {
+			text: "Headline medium"
+			role: "headlineMedium"
+		}
+
+		Text {
+			text:   "Title large, weight 900"
+			role:   "titleLarge"
+			weight: 900
+		}
+
+		Text {
+			text:   "Body large at 300"
+			role:   "bodyLarge"
+			weight: 300
+		}
+
+		Text {
+			text:  "Body medium wraps when the column runs out, and the block reserves one line box for every line it draws. Resize the window to watch it reflow."
+			role:  "bodyMedium"
+			wrap:  true
+			width: { base: 280, md: 420, lg: 560 }
+		}
+	}
+
+	// ---- data: one for loop, rows from Go.
+	Column {
+		spacing: 8
+
+		Text {
+			text: "Data rows"
+			role: "titleMedium"
+		}
+
+		Column {
+			id:      dataList
+			spacing: 6
+			width:   { base: 280, md: 420 }
+
+			for _, row := range bridge.rows {
+				ListItem {
+					label:      row.title
+					supporting: row.supporting
+					icon:       circle
+				}
+			}
+		}
+
+		Text {
+			text:  "ui.SetData fills bridge.rows; the loop rebuilds when the list changes."
+			role:  "bodySmall"
+			wrap:  true
+			width: { base: 280, md: 420 }
+		}
+	}
+
+	// ---- conditional: a block switched by a Go-set bool.
+	Column {
+		spacing: 8
+
+		Text {
+			text: "Conditional block"
+			role: "titleMedium"
+		}
+
+		Switch {
+			id:      blockSwitch
+			label:   "Show the wide layout"
+			checked: true
+		}
+
+		if blockSwitch.checked {
+			Card {
+				variant: filled
+				width:   { base: 280, md: 420 }
+
+				Text {
+					text: "The if arm is shown."
+				}
+			}
+		} else {
+			Text {
+				id:    blockElseLabel
+				text:  "The else arm is shown."
+				color: onSurfaceVariant
+			}
+		}
+
+		Text {
+			text:  "Both arms are built; only the matching one is laid out, and the condition re-reads the switch every frame."
+			role:  "bodySmall"
+			wrap:  true
+			width: { base: 280, md: 420 }
+		}
+	}
+
+	// ---- repeat: one hidden template, copies added from Go.
+	Column {
+		spacing: 8
+
+		Text {
+			text: "Repeat"
+			role: "titleMedium"
+		}
+
+		Column {
+			id:      repeatList
+			spacing: 6
+			width:   { base: 280, md: 420 }
+
+			ListItem {
+				template: true
+				label:    "Item"
+				icon:     circle
+			}
+		}
+
+		Text {
+			text:  "Three rows built with ui.Fill from a template: true row; the template itself stays hidden."
+			role:  "bodySmall"
+			wrap:  true
+			width: { base: 280, md: 420 }
+		}
+	}
+
+	Column {
+		spacing: 8
+
+		Text {
+			text: "Selectable text"
+			role: "titleMedium"
+		}
+
+		Text {
+			id:         selectableText
+			text:       "Drag across this paragraph to select it, then press Ctrl+C. Text is not selectable unless it opts in, so a label that happens to sit under the pointer keeps behaving like a label."
+			role:       "bodyMedium"
+			wrap:       true
+			selectable: true
+			width:      { base: 280, md: 420 }
+		}
+	}
+
+	// ---- theme: the same switch as the one at the bottom of the
+	// rail. Both drive one piece of app state.
+	Column {
+		spacing: 8
+
+		Text {
+			text: "Theme"
+			role: "titleMedium"
+		}
+
+		Switch {
+			id:    darkSwitch
+			label: "Dark mode"
+			width: 220
+		}
+
+		Text {
+			text:  "Every colour comes from the M3 scheme, so the whole page follows: surfaces, text, icons and state layers."
+			role:  "bodySmall"
+			wrap:  true
+			width: { base: 280, md: 420 }
+		}
+	}
+}

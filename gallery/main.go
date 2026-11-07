@@ -59,7 +59,7 @@ func main() {
 	// Without Parse, flag.Arg never sees the path: the gallery would always open
 	// its own design and ignore the argument.
 	flag.Parse()
-	path := "gallery/gallery.goi"
+	path := "gallery/MainPage.goi"
 	if arg := flag.Arg(0); arg != "" {
 		path = arg
 	}
