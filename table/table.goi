@@ -99,12 +99,13 @@ Window {
 					key:      "role"
 					label:    "Role"
 					sortable: true
+					width:    200
 				}
 
 				TableColumn {
 					key:      "team"
 					label:    "Team"
-					width:    140
+					width:    15%
 					sortable: true
 				}
 
@@ -156,6 +157,157 @@ Window {
 			}
 
 			Divider {}
+
+			Text {
+				text: "Variants"
+				role: "titleMedium"
+			}
+
+			Text {
+				text:  "Outlined (the default), filled and plain. Only these three are accepted, because they are the styles the painter has."
+				role:  "bodySmall"
+				wrap:  true
+				width: 100%
+			}
+
+			Row {
+				width:   100%
+				spacing: 16
+
+				Column {
+					flex:    1
+					spacing: 6
+
+					Text {
+						text: "outlined"
+						role: "labelMedium"
+					}
+
+					Table {
+						width: 100%
+
+						TableColumn {
+							label: "Item"
+							width: 50%
+						}
+
+						TableColumn {
+							label: "State"
+							width: 50%
+						}
+
+						TableRow {
+							TableCell {
+								text: "Build"
+							}
+
+							TableCell {
+								text: "passing"
+							}
+						}
+
+						TableRow {
+							TableCell {
+								text: "Tests"
+							}
+
+							TableCell {
+								text: "128"
+							}
+						}
+					}
+				}
+
+				Column {
+					flex:    1
+					spacing: 6
+
+					Text {
+						text: "filled"
+						role: "labelMedium"
+					}
+
+					Table {
+						width:   100%
+						variant: filled
+
+						TableColumn {
+							label: "Item"
+							width: 50%
+						}
+
+						TableColumn {
+							label: "State"
+							width: 50%
+						}
+
+						TableRow {
+							TableCell {
+								text: "Build"
+							}
+
+							TableCell {
+								text: "passing"
+							}
+						}
+
+						TableRow {
+							TableCell {
+								text: "Tests"
+							}
+
+							TableCell {
+								text: "128"
+							}
+						}
+					}
+				}
+
+				Column {
+					flex:    1
+					spacing: 6
+
+					Text {
+						text: "plain"
+						role: "labelMedium"
+					}
+
+					Table {
+						width:   100%
+						variant: plain
+
+						TableColumn {
+							label: "Item"
+							width: 50%
+						}
+
+						TableColumn {
+							label: "State"
+							width: 50%
+						}
+
+						TableRow {
+							TableCell {
+								text: "Build"
+							}
+
+							TableCell {
+								text: "passing"
+							}
+						}
+
+						TableRow {
+							TableCell {
+								text: "Tests"
+							}
+
+							TableCell {
+								text: "128"
+							}
+						}
+					}
+				}
+			}
 
 			// A second table with different chrome: no header, short rows, no
 			// surface of its own, and an icon in the first column.
