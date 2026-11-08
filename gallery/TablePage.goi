@@ -103,19 +103,35 @@ Column {
 		for i, p := range bridge.people {
 			TableRow {
 				TableCell {
-					text: p.name
+					value: p.name
+
+					Text {
+						text: p.name
+					}
 				}
 
 				TableCell {
-					text: p.role
+					value: p.role
+
+					Text {
+						text: p.role
+					}
 				}
 
 				TableCell {
-					text: p.team
+					value: p.team
+
+					Text {
+						text: p.team
+					}
 				}
 
 				TableCell {
-					text: formatf("%d", p.age)
+					value: formatf("%d", p.age)
+
+					Text {
+						text: formatf("%d", p.age)
+					}
 				}
 			}
 		}
@@ -178,21 +194,37 @@ Column {
 
 				TableRow {
 					TableCell {
-						text: "Build"
+						value: "Build"
+
+						Text {
+							text: "Build"
+						}
 					}
 
 					TableCell {
-						text: "passing"
+						value: "passing"
+
+						Text {
+							text: "passing"
+						}
 					}
 				}
 
 				TableRow {
 					TableCell {
-						text: "Tests"
+						value: "Tests"
+
+						Text {
+							text: "Tests"
+						}
 					}
 
 					TableCell {
-						text: "128"
+						value: "128"
+
+						Text {
+							text: "128"
+						}
 					}
 				}
 			}
@@ -223,21 +255,37 @@ Column {
 
 				TableRow {
 					TableCell {
-						text: "Build"
+						value: "Build"
+
+						Text {
+							text: "Build"
+						}
 					}
 
 					TableCell {
-						text: "passing"
+						value: "passing"
+
+						Text {
+							text: "passing"
+						}
 					}
 				}
 
 				TableRow {
 					TableCell {
-						text: "Tests"
+						value: "Tests"
+
+						Text {
+							text: "Tests"
+						}
 					}
 
 					TableCell {
-						text: "128"
+						value: "128"
+
+						Text {
+							text: "128"
+						}
 					}
 				}
 			}
@@ -268,21 +316,172 @@ Column {
 
 				TableRow {
 					TableCell {
-						text: "Build"
+						value: "Build"
+
+						Text {
+							text: "Build"
+						}
 					}
 
 					TableCell {
-						text: "passing"
+						value: "passing"
+
+						Text {
+							text: "passing"
+						}
 					}
 				}
 
 				TableRow {
 					TableCell {
-						text: "Tests"
+						value: "Tests"
+
+						Text {
+							text: "Tests"
+						}
 					}
 
 					TableCell {
-						text: "128"
+						value: "128"
+
+						Text {
+							text: "128"
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// ---- a cell holds children, so it can show anything.
+	Column {
+		spacing: 8
+
+		Text {
+			text: "Cell content"
+			role: "titleMedium"
+		}
+
+		Text {
+			text:  "A TableCell's children are what the row shows; value is only the string sorting reads, so a formatted date can sort by its ISO key."
+			role:  "bodySmall"
+			wrap:  true
+			width: 100%
+		}
+	}
+
+	Table {
+		width: 100%
+
+		TableColumn {
+			label:    "Release"
+			width:    30%
+			sortable: true
+		}
+
+		TableColumn {
+			label:    "Date"
+			width:    25%
+			sortable: true
+		}
+
+		TableColumn {
+			label: "State"
+			width: 45%
+		}
+
+		TableRow {
+			TableCell {
+				value: "v0.5.1"
+
+				Text {
+					text: "v0.5.1"
+				}
+			}
+
+			TableCell {
+				value: "2026-11-08"
+
+				Text {
+					text: "8 Nov 2026"
+				}
+			}
+
+			TableCell {
+				value: "shipped"
+
+				Row {
+					spacing:        8
+					crossAxisAlign: center
+
+					Chip {
+						label:    "shipped"
+						variant:  input
+						selected: true
+					}
+				}
+			}
+		}
+
+		TableRow {
+			TableCell {
+				value: "v0.5.0"
+
+				Text {
+					text: "v0.5.0"
+				}
+			}
+
+			TableCell {
+				value: "2026-08-01"
+
+				Text {
+					text: "1 Aug 2026"
+				}
+			}
+
+			TableCell {
+				value: "shipped"
+
+				Row {
+					spacing:        8
+					crossAxisAlign: center
+
+					Chip {
+						label:   "shipped"
+						variant: input
+					}
+				}
+			}
+		}
+
+		TableRow {
+			TableCell {
+				value: "v0.6.0"
+
+				Text {
+					text: "v0.6.0"
+				}
+			}
+
+			TableCell {
+				value: "2026-12-25"
+
+				Text {
+					text: "25 Dec 2026"
+				}
+			}
+
+			TableCell {
+				value: "planned"
+
+				Row {
+					spacing:        8
+					crossAxisAlign: center
+
+					Chip {
+						label:   "planned"
+						variant: assist
 					}
 				}
 			}
@@ -322,34 +521,58 @@ Column {
 
 		TableRow {
 			TableCell {
-				text: "Build passed on linux/amd64"
-				icon: check_circle
+				value: "Build passed on linux/amd64"
+				icon:  check_circle
+
+				Text {
+					text: "Build passed on linux/amd64"
+				}
 			}
 
 			TableCell {
-				text: "2 minutes ago"
-			}
-		}
+				value: "2 minutes ago"
 
-		TableRow {
-			TableCell {
-				text: "Release v0.5.1 published"
-				icon: cloud_upload
-			}
-
-			TableCell {
-				text: "1 hour ago"
+				Text {
+					text: "2 minutes ago"
+				}
 			}
 		}
 
 		TableRow {
 			TableCell {
-				text: "Two tests skipped"
-				icon: warning
+				value: "Release v0.5.1 published"
+				icon:  cloud_upload
+
+				Text {
+					text: "Release v0.5.1 published"
+				}
 			}
 
 			TableCell {
-				text: "yesterday"
+				value: "1 hour ago"
+
+				Text {
+					text: "1 hour ago"
+				}
+			}
+		}
+
+		TableRow {
+			TableCell {
+				value: "Two tests skipped"
+				icon:  warning
+
+				Text {
+					text: "Two tests skipped"
+				}
+			}
+
+			TableCell {
+				value: "yesterday"
+
+				Text {
+					text: "yesterday"
+				}
 			}
 		}
 	}

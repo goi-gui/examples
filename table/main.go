@@ -83,7 +83,7 @@ func main() {
 			}
 			names := make([]string, 0, len(rows))
 			for _, i := range rows {
-				names = append(names, table.CellText(i, 0))
+				names = append(names, table.CellValue(i, 0))
 			}
 			detail.Text.Set(fmt.Sprintf("selected %d: %s", len(rows), strings.Join(names, ", ")))
 		}

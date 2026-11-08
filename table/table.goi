@@ -93,7 +93,7 @@ Window {
 					key:      "name"
 					label:    "Name"
 					icon:     "person"
-					width:    200
+					width:    25%
 					sortable: true
 				}
 
@@ -101,42 +101,60 @@ Window {
 					key:      "role"
 					label:    "Role"
 					sortable: true
-					width:    200
+					width:    25%
+					icon:     type_specimen
 				}
 
 				TableColumn {
 					key:      "team"
 					label:    "Team"
-					width:    15%
+					width:    25%
 					sortable: true
+					icon:     group
 				}
 
 				TableColumn {
 					key:      "age"
 					label:    "Age"
 					icon:     "cake"
-					width:    80
-					align:    end
+					width:    25%
 					numeric:  true
 					sortable: true
+					align:    start
 				}
 
 				for i, p := range bridge.people {
 					TableRow {
 						TableCell {
-							text: p.name
+							value: p.name
+
+							Text {
+								text: p.name
+							}
 						}
 
 						TableCell {
-							text: p.role
+							value: p.role
+
+							Text {
+								text: p.role
+							}
 						}
 
 						TableCell {
-							text: p.team
+							value: p.team
+
+							Text {
+								text: p.team
+							}
 						}
 
 						TableCell {
-							text: formatf("%d", p.age)
+							value: formatf("%d", p.age)
+
+							Text {
+								text: formatf("%d", p.age)
+							}
 						}
 					}
 				}
@@ -201,21 +219,37 @@ Window {
 
 						TableRow {
 							TableCell {
-								text: "Build"
+								value: "Build"
+
+								Text {
+									text: "Build"
+								}
 							}
 
 							TableCell {
-								text: "passing"
+								value: "passing"
+
+								Text {
+									text: "passing"
+								}
 							}
 						}
 
 						TableRow {
 							TableCell {
-								text: "Tests"
+								value: "Tests"
+
+								Text {
+									text: "Tests"
+								}
 							}
 
 							TableCell {
-								text: "128"
+								value: "128"
+
+								Text {
+									text: "128"
+								}
 							}
 						}
 					}
@@ -246,21 +280,37 @@ Window {
 
 						TableRow {
 							TableCell {
-								text: "Build"
+								value: "Build"
+
+								Text {
+									text: "Build"
+								}
 							}
 
 							TableCell {
-								text: "passing"
+								value: "passing"
+
+								Text {
+									text: "passing"
+								}
 							}
 						}
 
 						TableRow {
 							TableCell {
-								text: "Tests"
+								value: "Tests"
+
+								Text {
+									text: "Tests"
+								}
 							}
 
 							TableCell {
-								text: "128"
+								value: "128"
+
+								Text {
+									text: "128"
+								}
 							}
 						}
 					}
@@ -291,21 +341,37 @@ Window {
 
 						TableRow {
 							TableCell {
-								text: "Build"
+								value: "Build"
+
+								Text {
+									text: "Build"
+								}
 							}
 
 							TableCell {
-								text: "passing"
+								value: "passing"
+
+								Text {
+									text: "passing"
+								}
 							}
 						}
 
 						TableRow {
 							TableCell {
-								text: "Tests"
+								value: "Tests"
+
+								Text {
+									text: "Tests"
+								}
 							}
 
 							TableCell {
-								text: "128"
+								value: "128"
+
+								Text {
+									text: "128"
+								}
 							}
 						}
 					}
@@ -343,34 +409,58 @@ Window {
 
 				TableRow {
 					TableCell {
-						text: "Build passed on linux/amd64"
-						icon: check_circle
+						value: "Build passed on linux/amd64"
+						icon:  check_circle
+
+						Text {
+							text: "Build passed on linux/amd64"
+						}
 					}
 
 					TableCell {
-						text: "2 minutes ago"
-					}
-				}
+						value: "2 minutes ago"
 
-				TableRow {
-					TableCell {
-						text: "Release v0.4.7 published"
-						icon: cloud_upload
-					}
-
-					TableCell {
-						text: "1 hour ago"
+						Text {
+							text: "2 minutes ago"
+						}
 					}
 				}
 
 				TableRow {
 					TableCell {
-						text: "Two tests skipped"
-						icon: warning
+						value: "Release v0.4.7 published"
+						icon:  cloud_upload
+
+						Text {
+							text: "Release v0.4.7 published"
+						}
 					}
 
 					TableCell {
-						text: "yesterday"
+						value: "1 hour ago"
+
+						Text {
+							text: "1 hour ago"
+						}
+					}
+				}
+
+				TableRow {
+					TableCell {
+						value: "Two tests skipped"
+						icon:  warning
+
+						Text {
+							text: "Two tests skipped"
+						}
+					}
+
+					TableCell {
+						value: "yesterday"
+
+						Text {
+							text: "yesterday"
+						}
 					}
 				}
 			}
