@@ -416,13 +416,16 @@ func main() {
 			}
 		}
 
-		// The animated Image demo: both pictures share one clock switch.
+		// The animated Image and SVG demo: one switch drives all three clocks.
 		if sw, err := ui.ByID[*ui.Switch](w, "animPause"); err == nil {
 			sw.OnToggle(func(paused bool) {
 				for _, id := range []string{"gifImage", "apngImage"} {
 					if im, err := ui.ByID[*ui.Image](w, id); err == nil {
-						im.Paused = paused
+						im.Paused.Set(paused)
 					}
+				}
+				if s, err := ui.ByID[*ui.SVG](w, "spinSVG"); err == nil {
+					s.Paused.Set(paused)
 				}
 			})
 		}
