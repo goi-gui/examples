@@ -7,6 +7,84 @@ Column {
 	crossAxisAlign: start
 
 	Column {
+		spacing: 10
+
+		Text {
+			text: "Gradients and CSS colours"
+			role: "titleMedium"
+		}
+
+		Column {
+			width:      520
+			height:     110
+			radius:     16
+			background: "linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%)"
+		}
+
+		Column {
+			width:      520
+			height:     110
+			radius:     16
+			background: "radial-gradient(circle,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%)"
+		}
+
+		Wrap {
+			spacing: 8
+
+			Text {
+				text:       "white"
+				color:      white
+				background: black
+				padding:    6
+				radius:     6
+			}
+
+			Text {
+				text:    "tomato"
+				color:   tomato
+				padding: 6
+			}
+
+			Text {
+				text:    "rebeccapurple"
+				color:   rebeccapurple
+				padding: 6
+			}
+
+			Text {
+				text:    "rgb(42, 123, 155)"
+				color:   "rgb(42, 123, 155)"
+				padding: 6
+			}
+
+			Text {
+				text:    "hsl(200 40% 50%)"
+				color:   "hsl(200 40% 50%)"
+				padding: 6
+			}
+
+			Text {
+				text:    "rgba(0, 0, 0, .5)"
+				color:   "rgba(0, 0, 0, .5)"
+				padding: 6
+			}
+
+			Text {
+				text:    "role"
+				color:   primary
+				padding: 6
+			}
+		}
+
+		Text {
+			text:  "A gradient is a colour value for background; the CSS names, rgb(), rgba(), hsl() and every hex form work anywhere a colour goes."
+			role:  "bodySmall"
+			wrap:  true
+			width: { base: 280, md: 520 }
+		}
+	}
+
+	Column {
 		spacing: 12
 
 		Text {

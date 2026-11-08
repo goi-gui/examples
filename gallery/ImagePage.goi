@@ -139,6 +139,7 @@ Column {
 				src:    "goi://loading.svg"
 				width:  56
 				height: 56
+				color:  primary
 			}
 
 			// A SMIL animation: the arc turns and the stroke shifts colour,
