@@ -49,7 +49,7 @@ Window {
 			}
 
 			Text {
-				text:  "A sortable header shows a hand and an arrow. Rows are selectable, stripes are optional, and SortBy / SetSelectedRow do the same from Go."
+				text:  "A sortable header shows a hand and an arrow. This table is selectable: multiple, so each click adds a row and clicking a selected row drops it. SortBy and SetSelectedRows do the same from Go."
 				role:  "bodyMedium"
 				wrap:  true
 				width: 100%
@@ -77,16 +77,17 @@ Window {
 				}
 
 				Button {
-					id:      selectFirst
-					label:   "Select first row"
+					id:      selectFirstTwo
+					label:   "Select first two"
 					variant: text
 				}
 			}
 
 			Table {
-				id:      people
-				width:   100%
-				striped: true
+				id:         people
+				width:      100%
+				striped:    true
+				selectable: multiple
 
 				TableColumn {
 					key:      "name"
@@ -317,7 +318,7 @@ Window {
 			}
 
 			Text {
-				text:  "The same component with variant: plain, showHeader: false and rowHeight: 36."
+				text:  "The same component with variant: plain, showHeader: false, rowHeight: 36 and selectable: none, so its rows are inert."
 				role:  "bodySmall"
 				wrap:  true
 				width: 100%
@@ -328,6 +329,7 @@ Window {
 				variant:    plain
 				showHeader: false
 				rowHeight:  36
+				selectable: none
 
 				TableColumn {
 					width: 260

@@ -10,6 +10,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/goi-gui/goi/ui"
 )
@@ -67,20 +68,26 @@ func main() {
 				t.Text.Set(fmt.Sprintf("sorted by %q, %s", s.Key, dir))
 			}
 		})
-		// Row selection is a display index, so it always means the row the
-		// reader sees, sorted or not.
-		table.OnSelect(func(i int) {
+		// Selection is a set of display indexes, so it means the rows the reader
+		// sees, sorted or not. The table is `selectable: multiple`; a single
+		// table would hold at most one.
+		showSelection := func() {
 			detail, err := ui.ByID[*ui.Text](w, "selected")
 			if err != nil {
 				return
 			}
-			if i < 0 || i >= len(table.TableRows()) {
+			rows := table.SelectedRows()
+			if len(rows) == 0 {
 				detail.Text.Set("no row selected")
 				return
 			}
-			detail.Text.Set(fmt.Sprintf("selected: %s — %s (%s)",
-				table.CellText(i, 0), table.CellText(i, 1), table.CellText(i, 2)))
-		})
+			names := make([]string, 0, len(rows))
+			for _, i := range rows {
+				names = append(names, table.CellText(i, 0))
+			}
+			detail.Text.Set(fmt.Sprintf("selected %d: %s", len(rows), strings.Join(names, ", ")))
+		}
+		table.OnSelect(func(int) { showSelection() })
 
 		// The buttons are the Go side of sorting: SortBy takes the column key
 		// the design declared, so no index has to be repeated in Go.
@@ -110,10 +117,10 @@ func main() {
 				}
 			})
 		}
-		if b, err := ui.ByID[*ui.Button](w, "selectFirst"); err == nil {
+		if b, err := ui.ByID[*ui.Button](w, "selectFirstTwo"); err == nil {
 			b.OnClick(func(ui.ClickEvent) {
-				table.SetSelectedRow(0)
-				table.Select.Emit(0)
+				table.SetSelectedRows(0, 1)
+				showSelection()
 			})
 		}
 		return nil
