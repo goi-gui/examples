@@ -416,6 +416,17 @@ func main() {
 			}
 		}
 
+		// The animated Image demo: both pictures share one clock switch.
+		if sw, err := ui.ByID[*ui.Switch](w, "animPause"); err == nil {
+			sw.OnToggle(func(paused bool) {
+				for _, id := range []string{"gifImage", "apngImage"} {
+					if im, err := ui.ByID[*ui.Image](w, id); err == nil {
+						im.Paused = paused
+					}
+				}
+			})
+		}
+
 		// Wire the stateful controls so the pages behave, not just draw.
 		if sw, err := ui.ByID[*ui.Switch](w, "switchOn"); err == nil {
 			sw.OnToggle(func(v bool) { fmt.Println("switch:", v) })
