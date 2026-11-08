@@ -563,39 +563,6 @@ Column {
 		}
 	}
 
-	Column {
-		spacing: 8
-
-		Text {
-			text: "Type"
-			role: "titleMedium"
-		}
-
-		Text {
-			text: "Headline medium"
-			role: "headlineMedium"
-		}
-
-		Text {
-			text:   "Title large, weight 900"
-			role:   "titleLarge"
-			weight: 900
-		}
-
-		Text {
-			text:   "Body large at 300"
-			role:   "bodyLarge"
-			weight: 300
-		}
-
-		Text {
-			text:  "Body medium wraps when the column runs out, and the block reserves one line box for every line it draws. Resize the window to watch it reflow."
-			role:  "bodyMedium"
-			wrap:  true
-			width: { base: 280, md: 420, lg: 560 }
-		}
-	}
-
 	// ---- data: one for loop, rows from Go.
 	Column {
 		spacing: 8

@@ -15,9 +15,6 @@ hello:
 scroll:
 	$(RUN) ./scroll
 
-typography:
-	$(RUN) ./typography
-
 composition:
 	$(RUN) ./composition
 
@@ -59,4 +56,4 @@ fmt:
 fmt-list:
 	$(FMT) -l .
 
-.PHONY: search spike counter gallery hello scroll typography composition theme titlebar datalist bridge svg window format fmt fmt-list i18n cursor table
+.PHONY: search spike counter gallery hello scroll composition theme titlebar datalist bridge svg window format fmt fmt-list i18n cursor table

@@ -34,6 +34,7 @@ var pages = []page{
 	{"pageLayout", "Layout"},
 	{"pageMotion", "Motion"},
 	{"pageTable", "Table"},
+	{"pageTypography", "Typography"},
 }
 
 // navIDs are the containers that own a destination selection: the rail and the
@@ -135,7 +136,7 @@ func main() {
 					selectChildren(h.Base(), i)
 				}
 			}
-			for j, id := range []string{"drawerButtons", "drawerInputs", "drawerSurfaces", "drawerFeedback", "drawerLayout", "drawerMotion", "drawerTable"} {
+			for j, id := range []string{"drawerButtons", "drawerInputs", "drawerSurfaces", "drawerFeedback", "drawerLayout", "drawerMotion", "drawerTable", "drawerTypography"} {
 				if item, err := ui.ByID[*ui.NavigationItem](w, id); err == nil {
 					item.M3().Selected.Set(j == i)
 				}
