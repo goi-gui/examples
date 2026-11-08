@@ -1,0 +1,224 @@
+// Image: bitmaps and SVGs, including the animations both can carry.
+//
+// A GIF, an APNG or an SVG with a SMIL animation plays on its own; `loop`,
+// `paused` and the play/pause/stop methods are the transport a design or Go
+// drives.
+
+Column {
+	id:             pageImage
+	visible:        false
+	scroll:         true
+	spacing:        24
+	padding:        20
+	crossAxisAlign: start
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Bitmap"
+			role: "titleMedium"
+		}
+
+		Wrap {
+			spacing: 12
+
+			// cover crops to fill the box; contain letterboxes.
+			Image {
+				src:    "goi://sample.jpg"
+				width:  180
+				height: 120
+				radius: 12
+			}
+
+			Image {
+				src:        "goi://sample.jpg"
+				fit:        contain
+				width:      180
+				height:     120
+				radius:     12
+				background: surfaceContainerHigh
+			}
+
+			Image {
+				src:    "goi://sample.jpg"
+				fit:    fill
+				width:  180
+				height: 120
+				radius: 12
+			}
+
+			// No src: Go supplies the bitmap with SetImage.
+			Image {
+				id:          generated
+				width:       180
+				height:      120
+				radius:      12
+				fit:         cover
+				borderColor: primary
+				borderWidth: 1
+			}
+		}
+
+		Text {
+			text:  "PNG, JPEG and GIF, decoded once and packed into one GPU atlas. fit picks cover, contain or fill. The last one is drawn in Go with SetImage, so it needs no file."
+			role:  "bodySmall"
+			wrap:  true
+			width: { base: 280, md: 420 }
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Animated GIF and APNG"
+			role: "titleMedium"
+		}
+
+		Row {
+			spacing:        16
+			crossAxisAlign: center
+
+			Image {
+				id:     gifImage
+				src:    "goi://pulse.gif"
+				width:  72
+				height: 72
+			}
+
+			Image {
+				id:     apngImage
+				src:    "goi://pulse.png"
+				width:  72
+				height: 72
+			}
+		}
+
+		Text {
+			text:  "Both loop by default. `loop: false` plays one pass and holds the last frame, and `paused: true` starts held; play, pause and stop move them from Go or from an event."
+			role:  "bodySmall"
+			wrap:  true
+			width: { base: 280, md: 420 }
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "SVG"
+			role: "titleMedium"
+		}
+
+		Row {
+			spacing:        16
+			crossAxisAlign: center
+
+			// currentColor takes the design's colour, so one file serves every
+			// theme role.
+			SVG {
+				src:    "goi://star.svg"
+				color:  primary
+				width:  48
+				height: 48
+			}
+
+			SVG {
+				src:    "goi://star.svg"
+				color:  tertiary
+				width:  48
+				height: 48
+			}
+
+			// A SMIL animation: the arc turns and the stroke shifts colour,
+			// both declared in the file.
+			SVG {
+				id:     spinSVG
+				src:    "goi://spinner.svg"
+				width:  56
+				height: 56
+			}
+		}
+
+		Text {
+			text:  "A <animate> or <animateTransform> in the document plays on its own; loop and paused behave the same as on an Image."
+			role:  "bodySmall"
+			wrap:  true
+			width: { base: 280, md: 420 }
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Transport"
+			role: "titleMedium"
+		}
+
+		Text {
+			text:  "The three buttons call the clips by id from the design itself; the switch is wired in Go and drives all of them."
+			role:  "bodySmall"
+			wrap:  true
+			width: { base: 280, md: 420 }
+		}
+
+		Row {
+			spacing: 8
+
+			Button {
+				label:   "Play"
+				variant: tonal
+				onClick: gifImage.play()
+			}
+
+			Button {
+				label:   "Pause"
+				variant: tonal
+				onClick: gifImage.pause()
+			}
+
+			Button {
+				label:   "Stop"
+				variant: tonal
+				onClick: gifImage.stop()
+			}
+
+			Button {
+				label:   "Play SVG"
+				variant: text
+				onClick: spinSVG.play()
+			}
+
+			Button {
+				label:   "Pause SVG"
+				variant: text
+				onClick: spinSVG.pause()
+			}
+
+			Button {
+				label:   "Stop SVG"
+				variant: text
+				onClick: spinSVG.stop()
+			}
+		}
+
+		Row {
+			spacing:        16
+			crossAxisAlign: center
+
+			Switch {
+				id:      animPause
+				label:   "Pause all (Go)"
+				checked: false
+			}
+
+			Switch {
+				id:      animLoop
+				label:   "Loop (Go)"
+				checked: true
+			}
+		}
+	}
+}

@@ -15,6 +15,7 @@ import FeedbackPage "./FeedbackPage.goi"
 import LayoutPage "./LayoutPage.goi"
 import TablePage "./TablePage.goi"
 import TypographyPage "./TypographyPage.goi"
+import ImagePage "./ImagePage.goi"
 
 Window {
 	id:    main
@@ -75,6 +76,11 @@ Window {
 					icon:  text_fields
 				}
 
+				NavigationItem {
+					label: "Image"
+					icon:  image
+				}
+
 				// The theme lives at the bottom of the rail, where a rail puts its
 				// own actions, instead of floating in the app bar.
 				Rectangle {
@@ -123,6 +129,8 @@ Window {
 					TablePage {}
 
 					TypographyPage {}
+
+					ImagePage {}
 				}
 
 				// ============================================== motion
@@ -170,6 +178,11 @@ Window {
 					NavigationItem {
 						label: "Typography"
 						icon:  text_fields
+					}
+
+					NavigationItem {
+						label: "Image"
+						icon:  image
 					}
 				}
 			}
@@ -241,6 +254,12 @@ Window {
 					id:    drawerTypography
 					label: "Typography"
 					icon:  text_fields
+				}
+
+				NavigationItem {
+					id:    drawerImage
+					label: "Image"
+					icon:  image
 				}
 
 				// Same place a rail keeps its own actions: pinned to the bottom,

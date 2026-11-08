@@ -35,6 +35,7 @@ var pages = []page{
 	{"pageMotion", "Motion"},
 	{"pageTable", "Table"},
 	{"pageTypography", "Typography"},
+	{"pageImage", "Image"},
 }
 
 // navIDs are the containers that own a destination selection: the rail and the
@@ -136,7 +137,7 @@ func main() {
 					selectChildren(h.Base(), i)
 				}
 			}
-			for j, id := range []string{"drawerButtons", "drawerInputs", "drawerSurfaces", "drawerFeedback", "drawerLayout", "drawerMotion", "drawerTable", "drawerTypography"} {
+			for j, id := range []string{"drawerButtons", "drawerInputs", "drawerSurfaces", "drawerFeedback", "drawerLayout", "drawerMotion", "drawerTable", "drawerTypography", "drawerImage"} {
 				if item, err := ui.ByID[*ui.NavigationItem](w, id); err == nil {
 					item.M3().Selected.Set(j == i)
 				}
@@ -426,6 +427,21 @@ func main() {
 				}
 				if s, err := ui.ByID[*ui.SVG](w, "spinSVG"); err == nil {
 					s.Paused.Set(paused)
+				}
+			})
+		}
+
+		// loop: false plays one pass and holds the last frame; the switch flips
+		// the same property on every clip.
+		if sw, err := ui.ByID[*ui.Switch](w, "animLoop"); err == nil {
+			sw.OnToggle(func(loop bool) {
+				for _, id := range []string{"gifImage", "apngImage"} {
+					if im, err := ui.ByID[*ui.Image](w, id); err == nil {
+						im.Loop.Set(loop)
+					}
+				}
+				if s, err := ui.ByID[*ui.SVG](w, "spinSVG"); err == nil {
+					s.Loop.Set(loop)
 				}
 			})
 		}
