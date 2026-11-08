@@ -131,6 +131,16 @@ Column {
 				height: 48
 			}
 
+			// A real exported icon: its colours live in a stylesheet (class +
+			// var(--indicator)) and its shape morphs, so both the CSS reader and
+			// path interpolation are exercised here.
+			SVG {
+				id:     loadingSVG
+				src:    "goi://loading.svg"
+				width:  56
+				height: 56
+			}
+
 			// A SMIL animation: the arc turns and the stroke shifts colour,
 			// both declared in the file.
 			SVG {
