@@ -70,6 +70,61 @@ Column {
 		spacing: 10
 
 		Text {
+			text: "Slider shapes"
+			role: "titleMedium"
+		}
+
+		Text {
+			text: "Standard, centered (fills out from 0.5) and range."
+			role: "bodySmall"
+		}
+
+		Slider {
+			value: 0.4
+			min:   0
+			max:   1
+			width: { base: 280, md: 360 }
+		}
+
+		Slider {
+			variant: centered
+			value:   0.7
+			min:     0
+			max:     1
+			width:   { base: 280, md: 360 }
+		}
+
+		Slider {
+			variant: centered
+			center:  0.25
+			value:   0.7
+			min:     0
+			max:     1
+			width:   { base: 280, md: 360 }
+		}
+
+		Slider {
+			variant: range
+			value:   20
+			end:     70
+			min:     0
+			max:     100
+			step:    5
+			width:   { base: 280, md: 360 }
+		}
+
+		Text {
+			text:  "The range slider takes whichever handle is nearer to a press; a fourth slider with a custom center is above it."
+			role:  "bodySmall"
+			wrap:  true
+			width: { base: 280, md: 360 }
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
 			text: "Chips"
 			role: "titleMedium"
 		}
