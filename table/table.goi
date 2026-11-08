@@ -92,6 +92,7 @@ Window {
 				TableColumn {
 					key:      "name"
 					label:    "Name"
+					icon:     "person"
 					width:    200
 					sortable: true
 				}
@@ -113,6 +114,7 @@ Window {
 				TableColumn {
 					key:      "age"
 					label:    "Age"
+					icon:     "cake"
 					width:    80
 					align:    end
 					numeric:  true
