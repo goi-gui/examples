@@ -13,6 +13,7 @@ import InputsPage "./InputsPage.goi"
 import SurfacesPage "./SurfacesPage.goi"
 import FeedbackPage "./FeedbackPage.goi"
 import LayoutPage "./LayoutPage.goi"
+import TablePage "./TablePage.goi"
 
 Window {
 	id:    main
@@ -63,6 +64,11 @@ Window {
 					icon:  animation
 				}
 
+				NavigationItem {
+					label: "Table"
+					icon:  table_chart
+				}
+
 				// The theme lives at the bottom of the rail, where a rail puts its
 				// own actions, instead of floating in the app bar.
 				Rectangle {
@@ -107,6 +113,8 @@ Window {
 					LayoutPage {}
 
 					MotionPage {}
+
+					TablePage {}
 				}
 
 				// ============================================== motion
@@ -144,6 +152,11 @@ Window {
 					NavigationItem {
 						label: "Motion"
 						icon:  animation
+					}
+
+					NavigationItem {
+						label: "Table"
+						icon:  table_chart
 					}
 				}
 			}
@@ -203,6 +216,12 @@ Window {
 					id:    drawerMotion
 					label: "Motion"
 					icon:  animation
+				}
+
+				NavigationItem {
+					id:    drawerTable
+					label: "Table"
+					icon:  table_chart
 				}
 
 				// Same place a rail keeps its own actions: pinned to the bottom,

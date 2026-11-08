@@ -13,6 +13,7 @@ import (
 	"image/color"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/goi-gui/goi/ui"
@@ -32,6 +33,7 @@ var pages = []page{
 	{"pageFeedback", "Feedback"},
 	{"pageLayout", "Layout"},
 	{"pageMotion", "Motion"},
+	{"pageTable", "Table"},
 }
 
 // navIDs are the containers that own a destination selection: the rail and the
@@ -48,6 +50,29 @@ type galleryRow struct {
 // repeatItem is one row of the gallery's Fill demo.
 type repeatItem struct {
 	label, icon string
+}
+
+// person is one row of the Table page, filled with ui.SetData.
+type person struct {
+	Name string `goi:"name"`
+	Role string `goi:"role"`
+	Team string `goi:"team"`
+	Age  int    `goi:"age"`
+}
+
+// people lives outside Bind: Bind runs again after a hot reload, so the rows are
+// app state and Bind only re-applies them.
+var people = []person{
+	{Name: "Kaan", Role: "Framework author", Team: "Core", Age: 31},
+	{Name: "Ada", Role: "Mathematician", Team: "Research", Age: 36},
+	{Name: "Linus", Role: "Kernel maintainer", Team: "Core", Age: 54},
+	{Name: "Grace", Role: "Compiler engineer", Team: "Tooling", Age: 45},
+	{Name: "Alan", Role: "Designer", Team: "Product", Age: 28},
+	{Name: "Margaret", Role: "Flight software", Team: "Research", Age: 41},
+	{Name: "Dennis", Role: "Systems programmer", Team: "Tooling", Age: 39},
+	{Name: "Barbara", Role: "Language designer", Team: "Research", Age: 47},
+	{Name: "Ken", Role: "Systems programmer", Team: "Core", Age: 52},
+	{Name: "Radia", Role: "Network engineer", Team: "Product", Age: 33},
 }
 
 func main() {
@@ -110,7 +135,7 @@ func main() {
 					selectChildren(h.Base(), i)
 				}
 			}
-			for j, id := range []string{"drawerButtons", "drawerInputs", "drawerSurfaces", "drawerFeedback", "drawerLayout", "drawerMotion"} {
+			for j, id := range []string{"drawerButtons", "drawerInputs", "drawerSurfaces", "drawerFeedback", "drawerLayout", "drawerMotion", "drawerTable"} {
 				if item, err := ui.ByID[*ui.NavigationItem](w, id); err == nil {
 					item.M3().Selected.Set(j == i)
 				}
@@ -251,6 +276,72 @@ func main() {
 			{Title: "Printer queue is stuck", Supporting: "Grace"},
 		})
 
+		// The Table page: the same rows, and the Go side of sorting and
+		// selection. SortBy takes the column key the design declared, so no
+		// index is repeated in Go.
+		ui.SetData(w, "people", people)
+		if table, err := ui.ByID[*ui.Table](w, "tablePeople"); err == nil {
+			showSorted := func(key string, ascending bool, cleared bool) {
+				t, err := ui.ByID[*ui.Text](w, "tableSorted")
+				if err != nil {
+					return
+				}
+				if cleared {
+					t.Text.Set("declaration order")
+					return
+				}
+				dir := "ascending"
+				if !ascending {
+					dir = "descending"
+				}
+				t.Text.Set(fmt.Sprintf("sorted by %q, %s", key, dir))
+			}
+			showSelection := func() {
+				t, err := ui.ByID[*ui.Text](w, "tableSelected")
+				if err != nil {
+					return
+				}
+				rows := table.SelectedRows()
+				if len(rows) == 0 {
+					t.Text.Set("no row selected")
+					return
+				}
+				names := make([]string, 0, len(rows))
+				for _, i := range rows {
+					names = append(names, table.CellText(i, 0))
+				}
+				t.Text.Set(fmt.Sprintf("selected %d: %s", len(rows), strings.Join(names, ", ")))
+			}
+			table.OnSort(func(s ui.SortOrder) { showSorted(s.Key, s.Ascending, false) })
+			table.OnSelect(func(int) { showSelection() })
+
+			if b, err := ui.ByID[*ui.Button](w, "tableSortName"); err == nil {
+				b.OnClick(func(ui.ClickEvent) {
+					if table.SortBy("name", true) {
+						showSorted("name", true, false)
+					}
+				})
+			}
+			if b, err := ui.ByID[*ui.Button](w, "tableSortAge"); err == nil {
+				b.OnClick(func(ui.ClickEvent) {
+					if table.SortBy("age", false) {
+						showSorted("age", false, false)
+					}
+				})
+			}
+			if b, err := ui.ByID[*ui.Button](w, "tableClearSort"); err == nil {
+				b.OnClick(func(ui.ClickEvent) {
+					table.SortColumn.Set(-1)
+					showSorted("", true, true)
+				})
+			}
+			if b, err := ui.ByID[*ui.Button](w, "tableSelectFirstTwo"); err == nil {
+				b.OnClick(func(ui.ClickEvent) {
+					table.SetSelectedRows(0, 1)
+					showSelection()
+				})
+			}
+		}
 		// The Layout page's repeat demo: one template row, three copies. A
 		// reload rebuilds the tree, so this runs again from Bind and the rows
 		// come back with the page; Fill replaces them instead of stacking.
