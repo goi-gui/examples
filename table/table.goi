@@ -125,6 +125,8 @@ Window {
 
 				for i, p := range bridge.people {
 					TableRow {
+						background: i == 0 ? theme.primary : ""
+
 						TableCell {
 							value: p.name
 
