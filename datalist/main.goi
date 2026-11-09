@@ -53,14 +53,14 @@ Window {
 
 				Text {
 					text:  "Loading…"
-					color: onSurfaceVariant
+					color: theme.onSurfaceVariant
 				}
 			}
 		} else {
 			Text {
 				text:  formatf("%d tickets", bridge.count)
 				role:  "labelMedium"
-				color: onSurfaceVariant
+				color: theme.onSurfaceVariant
 			}
 
 			for _, ticket := range bridge.tickets {

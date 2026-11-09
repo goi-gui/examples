@@ -73,7 +73,7 @@ Window {
 							id:    current
 							text:  "light"
 							role:  "labelLarge"
-							color: primary
+							color: theme.primary
 						}
 					}
 
@@ -104,35 +104,35 @@ Window {
 							width:      64
 							height:     32
 							radius:     8
-							background: primary
+							background: theme.primary
 						}
 
 						Rectangle {
 							width:      64
 							height:     32
 							radius:     8
-							background: primaryContainer
+							background: theme.primaryContainer
 						}
 
 						Rectangle {
 							width:      64
 							height:     32
 							radius:     8
-							background: secondaryContainer
+							background: theme.secondaryContainer
 						}
 
 						Rectangle {
 							width:      64
 							height:     32
 							radius:     8
-							background: tertiaryContainer
+							background: theme.tertiaryContainer
 						}
 
 						Rectangle {
 							width:      64
 							height:     32
 							radius:     8
-							background: errorContainer
+							background: theme.errorContainer
 						}
 					}
 

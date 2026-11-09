@@ -88,7 +88,7 @@ Window {
 			scroll:         true
 			scrollShadow:   true
 			scrollbarWidth: 6
-			scrollbarColor: primary
+			scrollbarColor: theme.primary
 			spacing:        8
 
 			Card {
@@ -165,14 +165,14 @@ Window {
 				width:      80
 				height:     40
 				radius:     8
-				background: primary
+				background: theme.primary
 			}
 
 			Rectangle {
 				width:      80
 				height:     40
 				radius:     8
-				background: primary
+				background: theme.primary
 				opacity:    35%
 			}
 

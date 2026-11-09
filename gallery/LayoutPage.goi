@@ -43,21 +43,21 @@ Column {
 				width:      40
 				height:     40
 				radius:     8
-				background: primary
+				background: theme.primary
 			}
 
 			Rectangle {
 				width:      40
 				height:     24
 				radius:     8
-				background: secondary
+				background: theme.secondary
 			}
 
 			Rectangle {
 				width:      40
 				height:     32
 				radius:     8
-				background: tertiary
+				background: theme.tertiary
 			}
 		}
 
@@ -72,14 +72,14 @@ Column {
 				width:      90
 				height:     20
 				radius:     6
-				background: primaryContainer
+				background: theme.primaryContainer
 			}
 
 			Rectangle {
 				width:      60
 				height:     20
 				radius:     6
-				background: secondaryContainer
+				background: theme.secondaryContainer
 			}
 		}
 	}
@@ -102,7 +102,7 @@ Column {
 			paddingRight:   4
 			spacing:        4
 			crossAxisAlign: center
-			background:     surfaceContainerHigh
+			background:     theme.surfaceContainerHigh
 			radius:         8
 
 			Text {
@@ -139,7 +139,7 @@ Column {
 			paddingRight:   12
 			spacing:        4
 			crossAxisAlign: center
-			background:     surfaceContainerHigh
+			background:     theme.surfaceContainerHigh
 			radius:         8
 			gap:            10
 
@@ -262,7 +262,7 @@ Column {
 				height: 96
 
 				Rectangle {
-					background: primary
+					background: theme.primary
 				}
 
 				// The strip runs past the box and is cut at the
@@ -271,7 +271,7 @@ Column {
 					width:      200
 					height:     20
 					marginTop:  60
-					background: tertiary
+					background: theme.tertiary
 				}
 			}
 
@@ -426,7 +426,7 @@ Column {
 				right:      16
 				bottom:     64
 				height:     4
-				background: primary
+				background: theme.primary
 				radius:     2
 			}
 		}
@@ -500,21 +500,21 @@ Column {
 				id:         demoBase
 				width:      240
 				height:     10
-				background: primary
+				background: theme.primary
 				radius:     5
 			}
 
 			Rectangle {
 				width:      demoBase.width / 2
 				height:     10
-				background: secondary
+				background: theme.secondary
 				radius:     5
 			}
 
 			Rectangle {
 				width:      50%
 				height:     10
-				background: tertiary
+				background: theme.tertiary
 				radius:     5
 			}
 		}
@@ -622,7 +622,7 @@ Column {
 			Text {
 				id:    blockElseLabel
 				text:  "The else arm is shown."
-				color: onSurfaceVariant
+				color: theme.onSurfaceVariant
 			}
 		}
 

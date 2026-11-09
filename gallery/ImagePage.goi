@@ -37,7 +37,7 @@ Column {
 				width:      180
 				height:     120
 				radius:     12
-				background: surfaceContainerHigh
+				background: theme.surfaceContainerHigh
 			}
 
 			Image {
@@ -55,7 +55,7 @@ Column {
 				height:      120
 				radius:      12
 				fit:         cover
-				borderColor: primary
+				borderColor: theme.primary
 				borderWidth: 1
 			}
 		}
@@ -119,14 +119,14 @@ Column {
 			// theme role.
 			SVG {
 				src:    "goi://star.svg"
-				color:  primary
+				color:  theme.primary
 				width:  48
 				height: 48
 			}
 
 			SVG {
 				src:    "goi://star.svg"
-				color:  tertiary
+				color:  theme.tertiary
 				width:  48
 				height: 48
 			}
@@ -139,7 +139,7 @@ Column {
 				src:    "goi://loading.svg"
 				width:  56
 				height: 56
-				color:  primary
+				color:  theme.primary
 			}
 
 			// A SMIL animation: the arc turns and the stroke shifts colour,

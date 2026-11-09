@@ -71,7 +71,7 @@ Column {
 
 			Text {
 				text:    "role"
-				color:   primary
+				color:   theme.primary
 				padding: 6
 			}
 		}
@@ -81,6 +81,54 @@ Column {
 			role:  "bodySmall"
 			wrap:  true
 			width: { base: 280, md: 520 }
+		}
+
+		Text {
+			text: "Rotate"
+			role: "titleMedium"
+		}
+
+		Row {
+			spacing:        24
+			crossAxisAlign: center
+
+			Column {
+				width:      80
+				height:     56
+				radius:     8
+				background: theme.primaryContainer
+				rotate:     none
+			}
+
+			Column {
+				width:      80
+				height:     56
+				radius:     8
+				background: theme.primaryContainer
+				rotate:     45deg
+			}
+
+			Column {
+				width:      80
+				height:     56
+				radius:     8
+				background: theme.primaryContainer
+				rotate:     90deg
+			}
+
+			Column {
+				width:      80
+				height:     56
+				radius:     8
+				background: theme.primaryContainer
+				rotate:     z 20deg
+			}
+
+			Text {
+				text:   "turned text"
+				role:   "titleMedium"
+				rotate: -8deg
+			}
 		}
 	}
 

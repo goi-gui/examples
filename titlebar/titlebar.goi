@@ -19,7 +19,7 @@ Window {
 			paddingRight:   4
 			spacing:        4
 			crossAxisAlign: center
-			background:     surfaceContainer
+			background:     theme.surfaceContainer
 
 			Text {
 				text: "Custom title bar"
@@ -59,7 +59,7 @@ Window {
 			paddingRight:   12
 			spacing:        4
 			crossAxisAlign: center
-			background:     surfaceContainer
+			background:     theme.surfaceContainer
 
 			IconButton {
 				id:      macClose
@@ -109,12 +109,12 @@ Window {
 
 			Text {
 				text:  "The buttons call ui.Window.Minimize, ToggleMaximize and Close."
-				color: onSurfaceVariant
+				color: theme.onSurfaceVariant
 			}
 
 			Text {
 				text:  "Drag the bar to move the window and the outer edge to resize it."
-				color: onSurfaceVariant
+				color: theme.onSurfaceVariant
 				wrap:  true
 				width: 520
 				align: center

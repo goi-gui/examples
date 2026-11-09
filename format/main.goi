@@ -24,7 +24,7 @@ Window {
 		Text {
 			text:  "formatf reads the bridge on every frame."
 			role:  "bodyMedium"
-			color: onSurfaceVariant
+			color: theme.onSurfaceVariant
 		}
 
 		Text {
@@ -50,7 +50,7 @@ Window {
 		Text {
 			text:  bridge.discount ? "Discount applied" : "No discount"
 			role:  "labelLarge"
-			color: onSurfaceVariant
+			color: theme.onSurfaceVariant
 		}
 
 		Button {
@@ -62,7 +62,7 @@ Window {
 		Text {
 			text:  "Go may override any of these with ui.SetData."
 			role:  "labelSmall"
-			color: onSurfaceVariant
+			color: theme.onSurfaceVariant
 		}
 	}
 }

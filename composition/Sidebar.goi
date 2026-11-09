@@ -12,7 +12,7 @@ Column {
 	width:      280
 	padding:    12
 	spacing:    6
-	background: surfaceContainer
+	background: theme.surfaceContainer
 
 	Text {
 		text: props.title
@@ -22,7 +22,7 @@ Column {
 	Text {
 		text:  props.subtitle
 		role:  "bodySmall"
-		color: onSurfaceVariant
+		color: theme.onSurfaceVariant
 	}
 
 	// An empty rectangle draws nothing but still reserves its height, which is
@@ -57,7 +57,7 @@ Column {
 	Text {
 		text:  "Active: "
 		role:  "labelSmall"
-		color: onSurfaceVariant
+		color: theme.onSurfaceVariant
 	}
 
 	Text {

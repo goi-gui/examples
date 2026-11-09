@@ -33,14 +33,14 @@ Window {
 					Text {
 						text:  "Total"
 						role:  "labelLarge"
-						color: onSurfaceVariant
+						color: theme.onSurfaceVariant
 					}
 
 					Text {
 						id:    label
 						text:  "0"
 						role:  "displayLarge"
-						color: primary
+						color: theme.primary
 					}
 
 					// A Row fills the column's width, so the stepper declares

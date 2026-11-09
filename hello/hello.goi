@@ -8,7 +8,7 @@ Window {
 	// Every colour below is a literal, so the scheme only supplies the default
 	// text colour; `theme: dark` keeps that readable on the dark panel.
 	theme:      dark
-	background: surface
+	background: theme.surface
 
 	Column {
 		padding: 24

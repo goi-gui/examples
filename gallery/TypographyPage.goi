@@ -380,7 +380,7 @@ Column {
 			fontStyle:       italic
 			decoration:      underline
 			decorationStyle: wavy
-			decorationColor: primary
+			decorationColor: theme.primary
 		}
 	}
 
@@ -410,7 +410,7 @@ Column {
 		Text {
 			text:   "Glow"
 			role:   "displaySmall"
-			color:  primary
+			color:  theme.primary
 			shadow: 0 0 12 primary
 		}
 
@@ -420,7 +420,7 @@ Column {
 			width:      240
 			height:     120
 			radius:     16
-			background: surfaceContainerHigh
+			background: theme.surfaceContainerHigh
 			shadow:     0 2 4 #00000026, 0 12 32 4 #0000001f
 		}
 
@@ -428,7 +428,7 @@ Column {
 			width:      240
 			height:     120
 			radius:     16
-			background: surfaceContainerHighest
+			background: theme.surfaceContainerHighest
 			shadow:     0 6 16 #00000059 inset
 		}
 	}

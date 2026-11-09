@@ -34,7 +34,7 @@ Window {
 		Text {
 			text:  "Every control below calls a handler declared in `bridge`."
 			role:  "bodyMedium"
-			color: onSurfaceVariant
+			color: theme.onSurfaceVariant
 		}
 
 		// One value and one handler leave the bridge here and arrive as props.
@@ -118,13 +118,13 @@ Window {
 			Text {
 				text:  "That is a lot of steps."
 				role:  "bodyMedium"
-				color: primary
+				color: theme.primary
 			}
 		case "few", "none":
 			Text {
 				text:  "Step a few more times."
 				role:  "bodyMedium"
-				color: onSurfaceVariant
+				color: theme.onSurfaceVariant
 			}
 		default:
 			Text {
@@ -136,7 +136,7 @@ Window {
 			id:    log
 			text:  "No events yet."
 			role:  "bodyMedium"
-			color: onSurfaceVariant
+			color: theme.onSurfaceVariant
 		}
 	}
 }
