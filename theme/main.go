@@ -1,5 +1,5 @@
 // Theme: the built-in light and dark schemes plus a brand scheme the app
-// registers by name, which a .goi file can then select with `theme: brand`.
+// defines after the window exists, which a .goi file selects with `theme: brand`.
 //
 // Run with: go run -ldflags=-linkmode=internal ./theme
 package main
@@ -47,12 +47,14 @@ func main() {
 		"theme/theme.goi",
 		ui.WithHotReload(true),
 		ui.WithSize(560, 620),
-		ui.WithTheme("brand", brand()),
 	)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
+
+	// Themes are defined by the scheme's own Name, after the window exists.
+	win.DefineTheme(brand())
 
 	// The scheme name is app state: a reload rebuilds the nodes, not the choice.
 	name := "light"

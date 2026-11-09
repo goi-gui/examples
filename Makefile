@@ -21,6 +21,9 @@ composition:
 theme:
 	$(RUN) ./theme
 
+seed:
+	$(RUN) ./seed
+
 i18n:
 	$(RUN) ./i18n
 
@@ -56,4 +59,4 @@ fmt:
 fmt-list:
 	$(FMT) -l .
 
-.PHONY: search spike counter gallery hello scroll composition theme titlebar datalist bridge svg window format fmt fmt-list i18n cursor table
+.PHONY: search spike counter gallery hello scroll composition theme seed titlebar datalist bridge svg window format fmt fmt-list i18n cursor table

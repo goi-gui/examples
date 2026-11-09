@@ -1,0 +1,159 @@
+// Seed: one colour, a whole scheme.
+
+Window {
+	id:     main
+	title:  "Seed colour"
+	width:  520
+	height: 620
+	theme:  lightFromSeed
+
+	Column {
+		spacing: 0
+
+		TopAppBar {
+			label: "Seed colour"
+		}
+
+		Column {
+			flex:           1
+			padding:        24
+			spacing:        20
+			crossAxisAlign: center
+
+			Text {
+				text: "One colour, a whole scheme"
+				role: "titleMedium"
+			}
+
+			Text {
+				text:  "Every role below comes from the seed through a tonal palette."
+				role:  "bodyMedium"
+				wrap:  true
+				width: 420
+				align: center
+			}
+
+			Row {
+				spacing: 12
+
+				Button {
+					id:      seedPurple
+					label:   "Purple"
+					variant: filled
+				}
+
+				Button {
+					id:      seedGreen
+					label:   "Green"
+					variant: tonal
+				}
+
+				Button {
+					id:      seedOrange
+					label:   "Orange"
+					variant: outlined
+				}
+			}
+
+			Row {
+				spacing:        12
+				crossAxisAlign: center
+
+				Text {
+					text: "Dark"
+					role: "labelLarge"
+				}
+
+				Switch {
+					id:      darkSwitch
+					checked: false
+					iconOn:  dark_mode
+					iconOff: light_mode
+				}
+			}
+
+			Card {
+				width:   440
+				variant: filled
+
+				Column {
+					spacing: 16
+
+					Row {
+						spacing: 12
+
+						Column {
+							spacing: 6
+
+							Column {
+								width:      72
+								height:     56
+								radius:     12
+								background: theme.primary
+							}
+
+							Text {
+								text: "primary"
+								role: "labelSmall"
+							}
+						}
+
+						Column {
+							spacing: 6
+
+							Column {
+								width:      72
+								height:     56
+								radius:     12
+								background: theme.primaryContainer
+							}
+
+							Text {
+								text: "container"
+								role: "labelSmall"
+							}
+						}
+
+						Column {
+							spacing: 6
+
+							Column {
+								width:      72
+								height:     56
+								radius:     12
+								background: theme.secondary
+							}
+
+							Text {
+								text: "secondary"
+								role: "labelSmall"
+							}
+						}
+
+						Column {
+							spacing: 6
+
+							Column {
+								width:      72
+								height:     56
+								radius:     12
+								background: theme.tertiary
+							}
+
+							Text {
+								text: "tertiary"
+								role: "labelSmall"
+							}
+						}
+					}
+
+					Text {
+						id:   current
+						text: "lightFromSeed"
+						role: "labelMedium"
+					}
+				}
+			}
+		}
+	}
+}
