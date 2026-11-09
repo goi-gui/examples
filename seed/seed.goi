@@ -1,5 +1,10 @@
 // Seed: one colour, a whole scheme.
 
+bridge {
+	onToggleScheme func(isDark bool)
+	onSetSeedColor func(c color)
+}
+
 Window {
 	id:     main
 	title:  "Seed colour"
@@ -19,6 +24,8 @@ Window {
 			padding:        24
 			spacing:        20
 			crossAxisAlign: center
+			mainAxisAlign:  center
+			paddingBottom:  100
 
 			Text {
 				text: "One colour, a whole scheme"
@@ -33,43 +40,61 @@ Window {
 				align: center
 			}
 
-			Row {
-				spacing: 12
-
-				Button {
-					id:      seedPurple
-					label:   "Purple"
-					variant: filled
-				}
-
-				Button {
-					id:      seedGreen
-					label:   "Green"
-					variant: tonal
-				}
-
-				Button {
-					id:      seedOrange
-					label:   "Orange"
-					variant: outlined
-				}
+			Text {
+				text:      "Select a color"
+				role:      "titleLarge"
+				align:     center
+				marginTop: 40
 			}
 
 			Row {
-				spacing:        12
-				crossAxisAlign: center
+				spacing:       12
+				mainAxisAlign: center
 
-				Text {
-					text: "Dark"
-					role: "labelLarge"
+				Rectangle {
+					background: #411f89
+					width:      30
+					height:     30
+					radius:     15
+					cursor:     pointer
+					onClick:    bridge.onSetSeedColor(#411f89)
 				}
 
-				Switch {
-					id:      darkSwitch
-					checked: false
-					iconOn:  dark_mode
-					iconOff: light_mode
+				Rectangle {
+					background: #ff0000
+					width:      30
+					height:     30
+					radius:     15
+					cursor:     pointer
+					onClick:    bridge.onSetSeedColor(#ff0000)
 				}
+
+				Rectangle {
+					background: #00ff00
+					width:      30
+					height:     30
+					radius:     15
+					cursor:     pointer
+					onClick:    bridge.onSetSeedColor(#00ff00)
+				}
+
+				Rectangle {
+					background: #ffff00
+					width:      30
+					height:     30
+					radius:     15
+					cursor:     pointer
+					onClick:    bridge.onSetSeedColor(#ffff00)
+				}
+			}
+
+			Switch {
+				id:       darkSwitch
+				checked:  false
+				iconOn:   dark_mode
+				iconOff:  light_mode
+				label:    app.dark ? "Dark" : "Light"
+				onToggle: bridge.onToggleScheme(event)
 			}
 
 			Card {
@@ -149,7 +174,7 @@ Window {
 
 					Text {
 						id:   current
-						text: "lightFromSeed"
+						text: formatf("Selected Theme: %s", app.dark ? "darkFromSeed" : "lightFromSeed")
 						role: "labelMedium"
 					}
 				}

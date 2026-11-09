@@ -12,7 +12,10 @@ import (
 	"github.com/goi-gui/goi/ui"
 )
 
-var seeds = []uint32{0x6750A4FF, 0x2E7D32FF, 0xE8710AFF}
+func defineTheme(win *ui.Window, color uint32) {
+	win.DefineTheme(ui.NewThemeFromSeed(color, false))
+	win.DefineTheme(ui.NewThemeFromSeed(color, true))
+}
 
 func main() {
 	app, err := ui.NewApp()
@@ -30,46 +33,24 @@ func main() {
 		os.Exit(1)
 	}
 
-	// State lives outside Bind, because a hot reload runs Bind again.
-	dark := false
-	seed := seeds[0]
+	seed := uint32(0x411F89FF)
 
-	// Both moods are built from the same seed. Their names come from the scheme
-	// itself, and redefining a name replaces it, which is how a new seed lands.
-	define := func() {
-		win.DefineTheme(ui.NewThemeFromSeed(seed, false))
-		win.DefineTheme(ui.NewThemeFromSeed(seed, true))
-	}
-	define()
+	defineTheme(win, seed)
 
 	if err := win.Bind(func(w *ui.Window) error {
-		apply := func() {
-			name := "lightFromSeed"
-			if dark {
-				name = "darkFromSeed"
+		ui.SetHandler(w, "onSetSeedColor", func(color uint32) {
+			seed = color
+			defineTheme(w, seed)
+		})
+
+		ui.SetHandler(w, "onToggleScheme", func(isDark bool) {
+			if isDark {
+				w.Root().Theme.Set("darkFromSeed")
+				return
 			}
-			w.Root().Theme.Set(name)
-			if out, err := ui.ByID[*ui.Text](w, "current"); err == nil {
-				out.Text.Set(name)
-			}
-		}
-		for i, id := range []string{"seedPurple", "seedGreen", "seedOrange"} {
-			i := i
-			if b, err := ui.ByID[*ui.Button](w, id); err == nil {
-				b.OnClick(func(ui.ClickEvent) {
-					seed = seeds[i]
-					define()
-					apply()
-				})
-			}
-		}
-		if sw, err := ui.ByID[*ui.Switch](w, "darkSwitch"); err == nil {
-			sw.OnToggle(func(on bool) {
-				dark = on
-				apply()
-			})
-		}
-		apply()
+			w.Root().Theme.Set("lightFromSeed")
+		})
+
 		return nil
 	}); err != nil {
 		fmt.Fprintln(os.Stderr, err)
