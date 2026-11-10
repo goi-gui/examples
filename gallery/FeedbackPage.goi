@@ -16,7 +16,10 @@ Column {
 
 		LinearProgress {
 			value: 0.6
-			width: { base: 280, md: 420 }
+			width: responsive {
+				base: 280
+				md: 420
+			}
 		}
 
 		Row {
@@ -100,7 +103,10 @@ Column {
 
 		Snackbar {
 			label: "Saved to your library"
-			width: { base: 280, md: 420 }
+			width: responsive {
+				base: 280
+				md: 420
+			}
 		}
 
 		Tooltip {

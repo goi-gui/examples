@@ -1,0 +1,214 @@
+bridge {
+	teams          []Team
+	onToggleScheme func(isDark bool)
+}
+
+type Team {
+	name            string
+	position        int
+	played          int
+	won             int
+	draw            int
+	lost            int
+	goalsFor        int
+	goalsAgainst    int
+	points          int
+	lastFiveResults []string
+	badge           string
+}
+
+Window {
+	maximized: true
+	theme:     app.systemMode
+	title:     "Türkiye Super Lig Standings"
+
+	Column {
+		padding: 20
+		gap:     20
+
+		Row {
+			width:          100%
+			mainAxisAlign:  spaceBetween
+			crossAxisAlign: center
+
+			Text {
+				text: "Türkiye Super Lig Standings"
+				role: titleLarge
+			}
+
+			Switch {
+				onToggle: bridge.onToggleScheme(event)
+				checked:  app.mode == "dark"
+				iconOff:  light_mode
+				iconOn:   dark_mode
+			}
+		}
+
+		Table {
+			width:        100%
+			height:       window.height / 2
+			scroll:       true
+			striped:      true
+			stickyHeader: true
+
+			TableColumn {
+				label:    "#"
+				sortable: true
+			}
+
+			TableColumn {
+				label:    "Name"
+				sortable: true
+			}
+
+			TableColumn {
+				label:    "P"
+				sortable: true
+			}
+
+			TableColumn {
+				label:    "W"
+				sortable: true
+			}
+
+			TableColumn {
+				label:    "D"
+				sortable: true
+			}
+
+			TableColumn {
+				label:    "L"
+				sortable: true
+			}
+
+			TableColumn {
+				label:    "GF"
+				sortable: true
+			}
+
+			TableColumn {
+				label:    "GA"
+				sortable: true
+			}
+
+			TableColumn {
+				label:    "A"
+				sortable: true
+			}
+
+			TableColumn {
+				label:    "PTS"
+				sortable: true
+			}
+
+			TableColumn {
+				label:    "LAST 5"
+				sortable: true
+			}
+
+			for i, team := range bridge.teams {
+				TableRow {
+					TableCell {
+						value: team.position
+
+						Text {
+							text: formatf("%d", team.position)
+						}
+					}
+
+					TableCell {
+						value: team.name
+
+						Text {
+							text: team.name
+						}
+					}
+
+					TableCell {
+						value: team.played
+
+						Text {
+							text: formatf("%d", team.played)
+						}
+					}
+
+					TableCell {
+						value: team.won
+
+						Text {
+							text: formatf("%d", team.won)
+						}
+					}
+
+					TableCell {
+						value: team.draw
+
+						Text {
+							text: formatf("%d", team.draw)
+						}
+					}
+
+					TableCell {
+						value: team.lost
+
+						Text {
+							text: formatf("%d", team.lost)
+						}
+					}
+
+					TableCell {
+						value: team.goalsFor
+
+						Text {
+							text: formatf("%d", team.goalsFor)
+						}
+					}
+
+					TableCell {
+						value: team.goalsAgainst
+
+						Text {
+							text: formatf("%d", team.goalsAgainst)
+						}
+					}
+
+					TableCell {
+						value: team.goalsFor - team.goalsAgainst
+
+						Text {
+							text: formatf("%d", team.goalsFor - team.goalsAgainst)
+						}
+					}
+
+					TableCell {
+						value: team.points
+
+						Text {
+							text:       formatf("%d", team.points)
+							fontWeight: bold
+						}
+					}
+
+					TableCell {
+						value: 0
+
+						Row {
+							gap: 20
+
+							for i, l := range team.lastFiveResults {
+								Text {
+									text: conditional {
+										"✅": l == "W"
+										"🏁": l == "D"
+										"❌": l == "L"
+									}
+									role: titleLarge
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

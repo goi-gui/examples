@@ -29,7 +29,10 @@ Window {
 			// ---- medium and expanded: rail
 			NavigationRail {
 				id:            rail
-				visible:       { base: false, sm: true }
+				visible:       responsive {
+					base: false
+					sm: true
+				}
 				// Room under the theme switch, so it does not touch the edge.
 				paddingTop:    16
 				paddingBottom: 16
@@ -107,7 +110,10 @@ Window {
 					label: "Buttons"
 					// The hamburger is the compact-only way into the drawer: at
 					// sm and up the rail is on screen, so the bar drops it.
-					icon:  { base: menu, sm: "" }
+					icon:  responsive {
+						base: menu
+						sm: ""
+					}
 				}
 
 				// ---- one page at a time
@@ -137,7 +143,10 @@ Window {
 				// ---- compact: bottom bar
 				NavigationBar {
 					id:      navbar
-					visible: { base: true, sm: false }
+					visible: responsive {
+						base: true
+						sm: false
+					}
 
 					NavigationItem {
 						label:    "Buttons"

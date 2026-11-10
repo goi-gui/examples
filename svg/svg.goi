@@ -154,7 +154,10 @@ Window {
 						text:  "Fetched in the background, then rasterized. Width and height here are declared, so layout never waits for the network."
 						role:  "bodySmall"
 						wrap:  true
-						width: { base: 280, md: 360 }
+						width: responsive {
+							base: 280
+							md: 360
+						}
 					}
 				}
 			}

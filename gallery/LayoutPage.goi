@@ -28,12 +28,18 @@ Column {
 			text:  "crossAxisAlign places a child across the flow; mainAxisAlign places the run along it. Both default to start."
 			role:  "bodySmall"
 			wrap:  true
-			width: { base: 280, md: 420 }
+			width: responsive {
+				base: 280
+				md: 420
+			}
 		}
 
 		Row {
 			id:             axisRow
-			width:          { base: 280, md: 420 }
+			width:          responsive {
+				base: 280
+				md: 420
+			}
 			height:         56
 			spacing:        8
 			crossAxisAlign: center
@@ -62,7 +68,10 @@ Column {
 		}
 
 		Column {
-			width:          { base: 280, md: 420 }
+			width:          responsive {
+				base: 280
+				md: 420
+			}
 			height:         96
 			spacing:        6
 			crossAxisAlign: center
@@ -185,7 +194,10 @@ Column {
 			text:  "visible: app.os == \"linux\" picks a bar per platform; only one of the two above exists at runtime."
 			role:  "bodySmall"
 			wrap:  true
-			width: { base: 280, md: 460 }
+			width: responsive {
+				base: 280
+				md: 460
+			}
 		}
 	}
 
@@ -302,7 +314,10 @@ Column {
 			text:  "radius rounds the cut; a child wider than the box is clipped, not scaled."
 			role:  "bodySmall"
 			wrap:  true
-			width: { base: 280, md: 460 }
+			width: responsive {
+				base: 280
+				md: 460
+			}
 		}
 	}
 
@@ -315,7 +330,11 @@ Column {
 		}
 
 		Grid {
-			columns: { base: 1, sm: 2, lg: 3 }
+			columns: responsive {
+				base: 1
+				sm: 2
+				lg: 3
+			}
 			spacing: 12
 
 			Card {
@@ -387,7 +406,10 @@ Column {
 		}
 
 		Stack {
-			width:  { base: 280, md: 420 }
+			width:  responsive {
+				base: 280
+				md: 420
+			}
 			height: 200
 
 			// A Card rather than a coloured Rectangle: the plate
@@ -444,11 +466,17 @@ Column {
 			text:  "zIndex orders siblings when painting, like CSS. Higher paints last, so it lands on top; layout never moves."
 			role:  "bodySmall"
 			wrap:  true
-			width: { base: 280, md: 420 }
+			width: responsive {
+				base: 280
+				md: 420
+			}
 		}
 
 		Stack {
-			width:  { base: 280, md: 420 }
+			width:  responsive {
+				base: 280
+				md: 420
+			}
 			height: 140
 
 			// First in the file, but zIndex 2 paints it last, above the card
@@ -553,13 +581,19 @@ Column {
 		Text {
 			text:    "This line appears from sm (640dp) up."
 			role:    "bodyMedium"
-			visible: { base: false, sm: true }
+			visible: responsive {
+				base: false
+				sm: true
+			}
 		}
 
 		Text {
 			text:    "This one only below sm, and the layout closes the gap."
 			role:    "bodyMedium"
-			visible: { base: true, sm: false }
+			visible: responsive {
+				base: true
+				sm: false
+			}
 		}
 	}
 
@@ -575,7 +609,10 @@ Column {
 		Column {
 			id:      dataList
 			spacing: 6
-			width:   { base: 280, md: 420 }
+			width:   responsive {
+				base: 280
+				md: 420
+			}
 
 			for _, row := range bridge.rows {
 				ListItem {
@@ -590,7 +627,10 @@ Column {
 			text:  "ui.SetData fills bridge.rows; the loop rebuilds when the list changes."
 			role:  "bodySmall"
 			wrap:  true
-			width: { base: 280, md: 420 }
+			width: responsive {
+				base: 280
+				md: 420
+			}
 		}
 	}
 
@@ -612,7 +652,10 @@ Column {
 		if blockSwitch.checked {
 			Card {
 				variant: filled
-				width:   { base: 280, md: 420 }
+				width:   responsive {
+					base: 280
+					md: 420
+				}
 
 				Text {
 					text: "The if arm is shown."
@@ -630,7 +673,10 @@ Column {
 			text:  "Both arms are built; only the matching one is laid out, and the condition re-reads the switch every frame."
 			role:  "bodySmall"
 			wrap:  true
-			width: { base: 280, md: 420 }
+			width: responsive {
+				base: 280
+				md: 420
+			}
 		}
 	}
 
@@ -646,7 +692,10 @@ Column {
 		Column {
 			id:      repeatList
 			spacing: 6
-			width:   { base: 280, md: 420 }
+			width:   responsive {
+				base: 280
+				md: 420
+			}
 
 			ListItem {
 				template: true
@@ -659,7 +708,10 @@ Column {
 			text:  "Three rows built with ui.Fill from a template: true row; the template itself stays hidden."
 			role:  "bodySmall"
 			wrap:  true
-			width: { base: 280, md: 420 }
+			width: responsive {
+				base: 280
+				md: 420
+			}
 		}
 	}
 
@@ -677,7 +729,10 @@ Column {
 			role:       "bodyMedium"
 			wrap:       true
 			selectable: true
-			width:      { base: 280, md: 420 }
+			width:      responsive {
+				base: 280
+				md: 420
+			}
 		}
 	}
 
@@ -701,7 +756,10 @@ Column {
 			text:  "Every colour comes from the M3 scheme, so the whole page follows: surfaces, text, icons and state layers."
 			role:  "bodySmall"
 			wrap:  true
-			width: { base: 280, md: 420 }
+			width: responsive {
+				base: 280
+				md: 420
+			}
 		}
 	}
 }

@@ -51,6 +51,9 @@ window:
 format:
 	$(RUN) ./format
 
+league:
+	$(RUN) ./league
+
 FMT := go run github.com/goi-gui/goi/cmd/goifmt
 
 fmt:
@@ -59,4 +62,4 @@ fmt:
 fmt-list:
 	$(FMT) -l .
 
-.PHONY: search spike counter gallery hello scroll composition theme seed titlebar datalist bridge svg window format fmt fmt-list i18n cursor table
+.PHONY: search spike counter gallery hello scroll composition theme seed titlebar datalist bridge svg window format fmt fmt-list i18n cursor table league
