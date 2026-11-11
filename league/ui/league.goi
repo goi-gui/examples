@@ -44,9 +44,81 @@ Window {
 			}
 		}
 
+		Row {
+			gap: 20
+
+			Row {
+				gap:            10
+				crossAxisAlign: center
+				mainAxisAlign:  center
+
+				Rectangle {
+					background: #0000ff66
+					width:      20
+					height:     20
+					radius:     3
+				}
+
+				Text {
+					text: "UEFA Champions League"
+				}
+			}
+
+			Row {
+				gap:            10
+				crossAxisAlign: center
+				mainAxisAlign:  center
+
+				Rectangle {
+					background: #fa7b1766
+					width:      20
+					height:     20
+					radius:     3
+				}
+
+				Text {
+					text: "UEFA Europe League"
+				}
+			}
+
+			Row {
+				gap:            10
+				crossAxisAlign: center
+				mainAxisAlign:  center
+
+				Rectangle {
+					background: #34a85366
+					width:      20
+					height:     20
+					radius:     3
+				}
+
+				Text {
+					text: "UEFA Conference League"
+				}
+			}
+
+			Row {
+				gap:            10
+				crossAxisAlign: center
+				mainAxisAlign:  center
+
+				Rectangle {
+					background: #ff000066
+					width:      20
+					height:     20
+					radius:     3
+				}
+
+				Text {
+					text: "Relegation Zone"
+				}
+			}
+		}
+
 		Table {
 			width:        100%
-			height:       window.height / 2
+			flex:         1
 			scroll:       true
 			striped:      true
 			stickyHeader: true
@@ -54,11 +126,13 @@ Window {
 			TableColumn {
 				label:    "#"
 				sortable: true
+				width:    70
 			}
 
 			TableColumn {
 				label:    "Name"
 				sortable: true
+				width:    200
 			}
 
 			TableColumn {
@@ -102,12 +176,19 @@ Window {
 			}
 
 			TableColumn {
-				label:    "LAST 5"
-				sortable: true
+				label: "LAST 5"
+				width: 170
 			}
 
 			for i, team := range bridge.teams {
 				TableRow {
+					background: conditional {
+						"#0000ff66": i == 0 || i == 1
+						"#fa7b1766": i == 2 || i == 3
+						"#34a85366": i == 4
+						"#ff000066": i == 15 || i == 16 || i == 17
+					}
+
 					TableCell {
 						value: team.position
 
@@ -119,8 +200,20 @@ Window {
 					TableCell {
 						value: team.name
 
-						Text {
-							text: team.name
+						Row {
+							gap:            10
+							crossAxisAlign: center
+
+							Image {
+								src:    team.badge
+								width:  30
+								height: 30
+								fit:    cover
+							}
+
+							Text {
+								text: team.name
+							}
 						}
 					}
 
@@ -198,9 +291,9 @@ Window {
 							for i, l := range team.lastFiveResults {
 								Text {
 									text: conditional {
-										"✅": l == "W"
-										"🏁": l == "D"
-										"❌": l == "L"
+										"🟢": l == "W"
+										"🟡": l == "D"
+										"🔴": l == "L"
 									}
 									role: titleLarge
 								}
