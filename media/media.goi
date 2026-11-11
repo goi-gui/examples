@@ -1,0 +1,112 @@
+// Audio and video players.
+//
+// `controls: true` draws the built-in bar (play/pause, scrubber, time). Set it
+// to false and the element keeps only its box, which is what a design that draws
+// its own transport wants; every button below calls the same methods a design
+// can call by id.
+//
+// The src is a path inside the design's folder, a machine path, or an http(s)
+// URL. ffmpeg reads it, so any container it knows works.
+
+Window {
+	id:     media
+	title:  "Media"
+	width:  900
+	height: 720
+
+	Column {
+		padding: 24
+		gap:     20
+
+		Text {
+			text: "Video"
+			role: titleMedium
+		}
+
+		Video {
+			id:       video
+			width:    100%
+			height:   320
+			src:      "media/clip.mp4"
+			fit:      contain
+			controls: true
+			loop:     true
+			volume:   0.8
+		}
+
+		Row {
+			gap: 12
+
+			Button {
+				label:   "Play"
+				icon:    play_arrow
+				onClick: video.play()
+			}
+
+			Button {
+				variant: outlined
+				label:   "Pause"
+				icon:    pause
+				onClick: video.pause()
+			}
+
+			Button {
+				variant: text
+				label:   "Restart"
+				icon:    replay
+				onClick: video.seek(0)
+			}
+
+			Button {
+				variant: text
+				label:   "Mute"
+				icon:    volume_off
+				onClick: video.volume(0)
+			}
+
+			Button {
+				variant: text
+				label:   "Full volume"
+				icon:    volume_up
+				onClick: video.volume(1)
+			}
+		}
+
+		Text {
+			text: "Audio"
+			role: titleMedium
+		}
+
+		Audio {
+			id:       audio
+			width:    100%
+			height:   64
+			src:      "media/clip.mp4"
+			controls: true
+		}
+
+		Row {
+			gap: 12
+
+			Button {
+				variant: outlined
+				label:   "Toggle"
+				icon:    play_pause
+				onClick: audio.toggle()
+			}
+
+			Button {
+				variant: text
+				label:   "Skip 5s"
+				icon:    forward_5
+				onClick: audio.seek(5)
+			}
+		}
+
+		Text {
+			id:   status
+			text: "press play"
+			role: bodyMedium
+		}
+	}
+}

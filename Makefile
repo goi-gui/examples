@@ -57,6 +57,9 @@ league:
 charts:
 	$(RUN) ./charts
 
+media:
+	$(RUN) ./media
+
 FMT := go run github.com/goi-gui/goi/cmd/goifmt
 
 fmt:
@@ -65,4 +68,4 @@ fmt:
 fmt-list:
 	$(FMT) -l .
 
-.PHONY: search spike counter gallery hello scroll composition theme seed titlebar datalist bridge svg window format fmt fmt-list i18n cursor table league charts
+.PHONY: search spike counter gallery hello scroll composition theme seed titlebar datalist bridge svg window format fmt fmt-list i18n cursor table league charts media
