@@ -1,0 +1,95 @@
+// Charts: each element picks its own look through properties, and Go gives it
+// the numbers with SetData.
+//
+//	grid, axis    the value lines and the labels
+//	legend        a key for the series
+//	values        the value written next to each point, bar or slice
+//	smooth        a curve instead of straight segments (line, area)
+//	points        a dot at each value (line, scatter)
+//	stacked       add the series instead of grouping them (bar, area)
+//	horizontal    run the bars left to right (bar)
+//	innerRadius   a donut instead of a pie, as a share of the radius
+//	startAngle    where the first slice begins, in degrees
+//	min, max      pin the value scale instead of following the data
+
+bridge {
+	onPick func(name string, index int)
+}
+
+Window {
+	id:     charts
+	title:  "Charts"
+	width:  1100
+	height: 820
+
+	Column {
+		padding: 24
+		gap:     20
+
+		Text {
+			text: "Charts"
+			role: headlineSmall
+		}
+
+		Row {
+			gap: 20
+
+			LineChart {
+				id:       revenue
+				flex:     1
+				height:   240
+				legend:   true
+				points:   true
+				smooth:   true
+				onSelect: bridge.onPick("line", event)
+			}
+
+			AreaChart {
+				id:       costs
+				flex:     1
+				height:   240
+				stacked:  true
+				legend:   true
+				onSelect: bridge.onPick("area", event)
+			}
+		}
+
+		Row {
+			gap: 20
+
+			BarChart {
+				id:       bar
+				flex:     1
+				height:   240
+				legend:   true
+				values:   true
+				onSelect: bridge.onPick("bar", event)
+			}
+
+			PieChart {
+				id:          channels
+				width:       260
+				height:      240
+				innerRadius: 0.55
+				legend:      true
+				values:      true
+				startAngle:  -90
+				onSelect:    bridge.onPick("pie", event)
+			}
+
+			ScatterChart {
+				id:       latency
+				flex:     1
+				height:   240
+				points:   true
+				onSelect: bridge.onPick("scatter", event)
+			}
+		}
+
+		Text {
+			id:   status
+			text: "click a point"
+			role: bodyMedium
+		}
+	}
+}
