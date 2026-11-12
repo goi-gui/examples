@@ -50,6 +50,19 @@ var latency = ui.ChartData{
 	},
 }
 
+var satisfaction = ui.ChartData{
+	Categories: []string{"Speed", "Design", "Support", "Price", "Docs"},
+	Series: []ui.Series{
+		{Label: "2025", Values: []float64{70, 62, 55, 80, 48}},
+		{Label: "2026", Values: []float64{82, 74, 71, 76, 66}},
+	},
+}
+
+var uptime = ui.ChartData{
+	Categories: []string{"Uptime"},
+	Series:     []ui.Series{{Label: "Uptime", Values: []float64{99.4}}},
+}
+
 func main() {
 	app, err := ui.NewApp()
 	if err != nil {
@@ -94,6 +107,18 @@ func main() {
 		}
 		scatter.SetData(latency)
 
+		radar, err := ui.ByID[*ui.RadarChart](w, "satisfaction")
+		if err != nil {
+			return err
+		}
+		radar.SetData(satisfaction)
+
+		gauge, err := ui.ByID[*ui.GaugeChart](w, "uptime")
+		if err != nil {
+			return err
+		}
+		gauge.SetData(uptime)
+
 		status, err := ui.ByID[*ui.Text](w, "status")
 		if err != nil {
 			return err
@@ -118,6 +143,8 @@ func main() {
 		bar.OnSelect(pick("bar", revenue))
 		pie.OnSelect(pick("pie", channels))
 		scatter.OnSelect(pick("scatter", latency))
+		radar.OnSelect(pick("radar", satisfaction))
+		gauge.OnSelect(pick("gauge", uptime))
 		return nil
 	}); err != nil {
 		fmt.Fprintln(os.Stderr, err)

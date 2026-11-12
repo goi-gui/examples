@@ -11,6 +11,9 @@
 //	innerRadius   a donut instead of a pie, as a share of the radius
 //	startAngle    where the first slice begins, in degrees
 //	min, max      pin the value scale instead of following the data
+//
+// A legend entry is a switch: clicking it hides that series and clicking again
+// brings it back, and the value scale follows what is left.
 
 bridge {
 	onPick func(name string, index int)
@@ -86,9 +89,31 @@ Window {
 			}
 		}
 
+		Row {
+			gap: 20
+
+			RadarChart {
+				id:       satisfaction
+				flex:     1
+				height:   260
+				legend:   true
+				points:   true
+				values:   false
+				onSelect: bridge.onPick("radar", event)
+			}
+
+			GaugeChart {
+				id:       uptime
+				width:    320
+				height:   260
+				max:      100
+				onSelect: bridge.onPick("gauge", event)
+			}
+		}
+
 		Text {
 			id:   status
-			text: "click a point"
+			text: "click a point, or a legend entry to hide its series"
 			role: bodyMedium
 		}
 	}
