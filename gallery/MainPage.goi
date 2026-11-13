@@ -17,6 +17,7 @@ import TablePage "./TablePage.goi"
 import TypographyPage "./TypographyPage.goi"
 import MarkdownPage "./MarkdownPage.goi"
 import ImagePage "./ImagePage.goi"
+import ChartsPage "./ChartsPage.goi"
 
 Window {
 	id:    main
@@ -81,8 +82,18 @@ Window {
 				}
 
 				NavigationItem {
+					label: "Markdown"
+					icon:  article
+				}
+
+				NavigationItem {
 					label: "Image"
 					icon:  image
+				}
+
+				NavigationItem {
+					label: "Charts"
+					icon:  bar_chart
 				}
 
 				// The theme lives at the bottom of the rail, where a rail puts its
@@ -140,6 +151,8 @@ Window {
 					MarkdownPage {}
 
 					ImagePage {}
+
+					ChartsPage {}
 				}
 
 				// ============================================== motion
@@ -193,8 +206,18 @@ Window {
 					}
 
 					NavigationItem {
+						label: "Markdown"
+						icon:  article
+					}
+
+					NavigationItem {
 						label: "Image"
 						icon:  image
+					}
+
+					NavigationItem {
+						label: "Charts"
+						icon:  bar_chart
 					}
 				}
 			}
@@ -269,9 +292,21 @@ Window {
 				}
 
 				NavigationItem {
+					id:    drawerMarkdown
+					label: "Markdown"
+					icon:  article
+				}
+
+				NavigationItem {
 					id:    drawerImage
 					label: "Image"
 					icon:  image
+				}
+
+				NavigationItem {
+					id:    drawerCharts
+					label: "Charts"
+					icon:  bar_chart
 				}
 
 				// Same place a rail keeps its own actions: pinned to the bottom,

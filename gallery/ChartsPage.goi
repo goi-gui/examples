@@ -1,0 +1,284 @@
+// Charts: every kind in one page, and every one of them holds its own data in
+// the design. No Go fills these: `categories` names the points, each
+// ChartSeries child is one series, and `colors` gives a pie one colour per
+// slice. A theme role in a list carries its namespace (theme.primary), while a
+// literal is fixed.
+//
+//	textColor   every label the chart writes
+//	gridColor   the value lines, the rings and the gauge track
+//	legend      a key for the series, clickable to hide one
+//	values      the number written next to each point, bar or slice
+//	smooth      a curve instead of straight segments (line, area)
+//	points      a dot at each value (line, scatter, radar)
+//	stacked     add the series instead of grouping them (bar, area)
+//	horizontal  run the bars left to right (bar)
+
+Column {
+	id:             pageCharts
+	visible:        false
+	scroll:         true
+	spacing:        24
+	padding:        20
+	crossAxisAlign: start
+	scrollShadow:   true
+
+	Text {
+		text: "Charts"
+		role: "titleMedium"
+	}
+
+	Text {
+		text:  "Every kind below reads its numbers from this file. Hovering a point shows a tooltip, and the legend entries are switches: click one to hide that series and click again to bring it back."
+		role:  "bodyMedium"
+		wrap:  true
+		width: 640
+	}
+
+	// --------------------------------------------- line and area
+	Row {
+		spacing: 20
+		width:   100%
+
+		Column {
+			flex:    1
+			spacing: 8
+
+			Text {
+				text: "LineChart"
+				role: "labelLarge"
+			}
+
+			LineChart {
+				width:      100%
+				height:     220
+				legend:     true
+				points:     true
+				smooth:     true
+				categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+
+				ChartSeries {
+					label:  "2025"
+					values: [12, 18, 15, 24, 21, 29]
+				}
+
+				ChartSeries {
+					label:  "2026"
+					values: [16, 22, 19, 28, 26, 34]
+					color:  theme.tertiary
+				}
+			}
+		}
+
+		Column {
+			flex:    1
+			spacing: 8
+
+			Text {
+				text: "AreaChart, stacked"
+				role: "labelLarge"
+			}
+
+			AreaChart {
+				width:      100%
+				height:     220
+				legend:     true
+				stacked:    true
+				categories: ["Q1", "Q2", "Q3", "Q4"]
+
+				ChartSeries {
+					label:  "Hosting"
+					values: [4, 5, 6, 7]
+					color:  theme.secondary
+				}
+
+				ChartSeries {
+					label:  "People"
+					values: [8, 9, 10, 11]
+					color:  theme.primary
+				}
+			}
+		}
+	}
+
+	// ---------------------------------------------------- bars
+	Column {
+		spacing: 8
+
+		Text {
+			text: "BarChart: grouped, then stacked horizontally"
+			role: "labelLarge"
+		}
+
+		BarChart {
+			width:      100%
+			height:     240
+			legend:     true
+			values:     true
+			categories: ["Direct", "Search", "Social", "Email"]
+
+			ChartSeries {
+				label:  "This year"
+				values: [42, 27, 18, 13]
+			}
+
+			ChartSeries {
+				label:  "Last year"
+				values: [38, 24, 21, 9]
+				color:  theme.secondary
+			}
+		}
+
+		BarChart {
+			width:      100%
+			height:     220
+			horizontal: true
+			stacked:    true
+			values:     true
+			categories: ["Core", "Tooling", "Product"]
+
+			ChartSeries {
+				label:  "New"
+				values: [12, 8, 5]
+			}
+
+			ChartSeries {
+				label:  "Returning"
+				values: [18, 11, 7]
+				color:  theme.tertiary
+			}
+		}
+	}
+
+	// ------------------------------------ pie, gauge and scatter
+	Row {
+		spacing: 20
+		width:   100%
+
+		Column {
+			flex:    1
+			spacing: 8
+
+			Text {
+				text: "PieChart: a donut with one colour per slice"
+				role: "labelLarge"
+			}
+
+			PieChart {
+				width:       100%
+				height:      240
+				innerRadius: 0.55
+				legend:      true
+				values:      true
+				startAngle:  -90
+				categories:  ["Direct", "Search", "Social", "Email"]
+
+				ChartSeries {
+					values: [42, 27, 18, 13]
+					colors: [theme.primary, theme.tertiary, theme.secondary, theme.error]
+				}
+			}
+		}
+
+		Column {
+			flex:    1
+			spacing: 8
+
+			Text {
+				text: "GaugeChart"
+				role: "labelLarge"
+			}
+
+			GaugeChart {
+				width:  100%
+				height: 240
+				min:    0
+				max:    100
+
+				ChartSeries {
+					label:  "Uptime"
+					values: [99.4]
+				}
+			}
+		}
+	}
+
+	Row {
+		spacing: 20
+		width:   100%
+
+		Column {
+			flex:    1
+			spacing: 8
+
+			Text {
+				text: "ScatterChart"
+				role: "labelLarge"
+			}
+
+			ScatterChart {
+				width:      100%
+				height:     220
+				points:     true
+				categories: ["1", "2", "3", "4", "5", "6"]
+
+				ChartSeries {
+					label:  "Latency"
+					values: [31, 44, 28, 52, 39, 41]
+					color:  theme.error
+				}
+			}
+		}
+
+		Column {
+			flex:    1
+			spacing: 8
+
+			Text {
+				text: "RadarChart"
+				role: "labelLarge"
+			}
+
+			RadarChart {
+				width:      100%
+				height:     220
+				points:     true
+				legend:     true
+				categories: ["Speed", "Design", "Support", "Price", "Docs"]
+
+				ChartSeries {
+					label:  "Us"
+					values: [9, 7, 8, 6, 9]
+				}
+
+				ChartSeries {
+					label:  "Them"
+					values: [6, 8, 5, 9, 4]
+					color:  theme.tertiary
+				}
+			}
+		}
+	}
+
+	// ------------------------------------------------ restyled
+	Column {
+		spacing: 8
+
+		Text {
+			text: "The same data with textColor and gridColor"
+			role: "labelLarge"
+		}
+
+		LineChart {
+			width:      100%
+			height:     200
+			gridColor:  #7f7fff66
+			textColor:  theme.onSurface
+			categories: ["Mon", "Tue", "Wed", "Thu", "Fri"]
+
+			ChartSeries {
+				label:  "Requests"
+				values: [120, 180, 150, 240, 210]
+			}
+		}
+	}
+}

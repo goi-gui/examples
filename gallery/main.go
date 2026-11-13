@@ -35,7 +35,17 @@ var pages = []page{
 	{"pageMotion", "Motion"},
 	{"pageTable", "Table"},
 	{"pageTypography", "Typography"},
+	{"pageMarkdown", "Markdown"},
 	{"pageImage", "Image"},
+	{"pageCharts", "Charts"},
+}
+
+// drawerIDs are the drawer items, one per page and in the same order, so
+// selection and the click handler cannot list a page twice or miss one.
+var drawerIDs = []string{
+	"drawerButtons", "drawerInputs", "drawerSurfaces", "drawerFeedback",
+	"drawerLayout", "drawerMotion", "drawerTable", "drawerTypography",
+	"drawerMarkdown", "drawerImage", "drawerCharts",
 }
 
 // navIDs are the containers that own a destination selection: the rail and the
@@ -137,7 +147,7 @@ func main() {
 					selectChildren(h.Base(), i)
 				}
 			}
-			for j, id := range []string{"drawerButtons", "drawerInputs", "drawerSurfaces", "drawerFeedback", "drawerLayout", "drawerMotion", "drawerTable", "drawerTypography", "drawerImage"} {
+			for j, id := range drawerIDs {
 				if item, err := ui.ByID[*ui.NavigationItem](w, id); err == nil {
 					item.M3().Selected.Set(j == i)
 				}
@@ -238,7 +248,7 @@ func main() {
 		if bar, err := ui.ByID[*ui.NavigationBar](w, "navbar"); err == nil {
 			bar.OnSelect(show)
 		}
-		for j, id := range []string{"drawerButtons", "drawerInputs", "drawerSurfaces", "drawerFeedback", "drawerLayout", "drawerMotion"} {
+		for j, id := range drawerIDs {
 			idx := j
 			if item, err := ui.ByID[*ui.NavigationItem](w, id); err == nil {
 				item.OnClick(func(ui.ClickEvent) {
