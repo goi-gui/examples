@@ -1,0 +1,29 @@
+// Markdown: one document, rendered as ordinary elements. The headings, lists,
+// code block, quote and table below are all built from the Markdown component's
+// source, so scrolling, theming and selection are the same as anywhere else.
+
+Column {
+	id:             pageMarkdown
+	visible:        false
+	scroll:         true
+	spacing:        24
+	padding:        20
+	crossAxisAlign: start
+	scrollShadow:   true
+
+	Column {
+		spacing: 4
+		width:   560
+
+		Text {
+			text: "Markdown"
+			role: "titleMedium"
+		}
+
+		Markdown {
+			id:    mdSample
+			width: 560
+			text:  "# A document\n\nEvery block becomes an element: a heading is a `Text` with a role, this paragraph wraps, and **bold** or [links](https://goi.dev) keep their words.\n\n## Lists\n\n- a bullet\n- another, with a nested run\n  - nested items indent\n  - by their depth\n\n1. ordered items\n2. keep the number\n\n## Code and quotes\n\n```go\nfunc main() {\n\tfmt.Println(\"rendered as a Code block\")\n}\n```\n\n> A quote gets a bar on the left, drawn by a border on the Column that holds it.\n\n---\n\n| property | type | notes |\n|---|---:|---|\n| text | string | the whole document |\n| scroll | bool | a long document scrolls its Column |\n"
+		}
+	}
+}

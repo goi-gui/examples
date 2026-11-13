@@ -15,6 +15,7 @@ import FeedbackPage "./FeedbackPage.goi"
 import LayoutPage "./LayoutPage.goi"
 import TablePage "./TablePage.goi"
 import TypographyPage "./TypographyPage.goi"
+import MarkdownPage "./MarkdownPage.goi"
 import ImagePage "./ImagePage.goi"
 
 Window {
@@ -135,6 +136,8 @@ Window {
 					TablePage {}
 
 					TypographyPage {}
+
+					MarkdownPage {}
 
 					ImagePage {}
 				}

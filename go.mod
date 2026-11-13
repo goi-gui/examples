@@ -46,6 +46,7 @@ require (
 	github.com/srwiley/oksvg v0.0.0-20221011165216-be6e8873101c // indirect
 	github.com/srwiley/rasterx v0.0.0-20220730225603-2ab79fcdd4ef // indirect
 	github.com/tadvi/systray v0.0.0-20190226123456-11a2b8fa57af // indirect
+	github.com/yuin/goldmark v1.8.5 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.opentelemetry.io/otel v1.47.0 // indirect
 	go.opentelemetry.io/otel/log v1.47.0 // indirect
