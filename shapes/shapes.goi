@@ -1,0 +1,215 @@
+// Shapes: the primitives the renderer draws from a signed distance, at the
+// sizes where their quality shows. Circles and rounded boxes are one quad and a
+// distance field, so their edges fade over a pixel instead of stepping; the
+// curved strokes are rounded segments whose step follows the curve's length and
+// the panel's scale.
+//
+// Run with: go run -ldflags=-linkmode=internal ./shapes [-msaa 1|2|4|8]
+
+Window {
+	title:  "Shapes"
+	width:  760
+	height: 900
+
+	Column {
+		id:             pageShapes
+		scroll:         true
+		spacing:        28
+		padding:        24
+		crossAxisAlign: start
+		scrollShadow:   true
+
+		Text {
+			text: "Shapes"
+			role: "titleMedium"
+		}
+
+		// ------------------------------------------------------- circles
+		Column {
+			spacing: 10
+
+			Text {
+				text: "Circles, from 12dp to 96dp"
+				role: "labelLarge"
+			}
+
+			Row {
+				spacing:        16
+				crossAxisAlign: center
+
+				Rectangle {
+					width:      12
+					height:     12
+					radius:     999
+					background: primary
+				}
+
+				Rectangle {
+					width:      20
+					height:     20
+					radius:     999
+					background: primary
+				}
+
+				Rectangle {
+					width:      32
+					height:     32
+					radius:     999
+					background: primary
+				}
+
+				Rectangle {
+					width:      48
+					height:     48
+					radius:     999
+					background: tertiary
+				}
+
+				Rectangle {
+					width:      72
+					height:     72
+					radius:     999
+					background: primary
+				}
+
+				Rectangle {
+					width:      96
+					height:     96
+					radius:     999
+					background: primary
+				}
+			}
+		}
+
+		// ------------------------------------------ rounded rects, radii, borders
+		Column {
+			spacing: 10
+
+			Text {
+				text: "Rounded boxes: radius 0, 4, 12, 24, and a 1dp and 3dp border"
+				role: "labelLarge"
+			}
+
+			Row {
+				spacing:        16
+				crossAxisAlign: center
+
+				Rectangle {
+					width:      64
+					height:     64
+					background: surfaceContainerHighest
+				}
+
+				Rectangle {
+					width:      64
+					height:     64
+					radius:     4
+					background: surfaceContainerHighest
+				}
+
+				Rectangle {
+					width:      64
+					height:     64
+					radius:     12
+					background: surfaceContainerHighest
+				}
+
+				Rectangle {
+					width:      64
+					height:     64
+					radius:     24
+					background: surfaceContainerHighest
+				}
+
+				Rectangle {
+					width:       64
+					height:      64
+					radius:      16
+					background:  surfaceContainerHigh
+					borderWidth: 1
+					borderColor: outline
+				}
+
+				Rectangle {
+					width:       64
+					height:      64
+					radius:      16
+					background:  surface
+					borderWidth: 3
+					borderColor: primary
+				}
+			}
+		}
+
+		// --------------------------------------- thick strokes with round joins
+		Column {
+			spacing: 10
+			width:   520
+
+			Text {
+				text: "Thick strokes: a spline and two wavy progress ribbons"
+				role: "labelLarge"
+			}
+
+			LineChart {
+				width:      100%
+				height:     180
+				points:     true
+				smooth:     true
+				values:     false
+				categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+
+				ChartSeries {
+					label:  "2025"
+					values: [12, 18, 15, 24, 21, 29]
+				}
+
+				ChartSeries {
+					label:  "2026"
+					values: [16, 22, 19, 28, 26, 34]
+					color:  theme.tertiary
+				}
+			}
+
+			LinearProgress {
+				variant:   wavy
+				value:     0.62
+				thickness: 14
+				width:     100%
+			}
+
+			Row {
+				spacing: 24
+
+				CircularProgress {
+					variant:   wavy
+					value:     0.7
+					thickness: 10
+				}
+
+				CircularProgress {
+					value:  0.3
+					width:  64
+					height: 64
+				}
+			}
+		}
+
+		// ------------------------------------------------ a stroked bezier path
+		Column {
+			spacing: 10
+
+			Text {
+				text: "A stroked cubic path with round joins"
+				role: "labelLarge"
+			}
+
+			SVG {
+				src:    "curve.svg"
+				width:  360
+				height: 180
+				color:  primary
+			}
+		}
+	}
+}
