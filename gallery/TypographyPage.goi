@@ -260,7 +260,9 @@ Column {
 		}
 
 		Text {
-			text: "One\nTwo\nThree"
+			text: !"One
+				Two
+				Three"!
 			wrap: true
 		}
 

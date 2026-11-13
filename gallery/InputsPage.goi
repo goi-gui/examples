@@ -284,7 +284,14 @@ Column {
 				base: 300
 				md: 520
 			}
-			text:     "// A highlighted block\nfunc bind(w *ui.Window) error {\n\tbtn := ui.MustByID[*ui.Button](w, \"go\")\n\tbtn.OnClick(func(ui.ClickEvent) {\n\t\tfmt.Println(\"clicked\")\n\t})\n\treturn nil\n}"
+			text:     !"// A highlighted block
+				func bind(w *ui.Window) error {
+					btn := ui.MustByID[*ui.Button](w, "go")
+					btn.OnClick(func(ui.ClickEvent) {
+						fmt.Println("clicked")
+					})
+					return nil
+				}"!
 		}
 
 		Code {
@@ -294,7 +301,9 @@ Column {
 				base: 300
 				md: 520
 			}
-			text:     "# spans: keywords, strings, numbers, comments\nfor i in range(3):\n    print(\"easing\", i, 0.5)"
+			text:     !"# spans: keywords, strings, numbers, comments
+				for i in range(3):
+				print("easing", i, 0.5)"!
 		}
 	}
 
