@@ -259,6 +259,53 @@ Column {
 		}
 	}
 
+	// ----------------------------------------- a list item that reads Go
+	Column {
+		spacing: 8
+
+		Text {
+			text: "A list item may read a bridge variable"
+			role: "labelLarge"
+		}
+
+		Text {
+			text:  "bridge.uptime is set from Go, so the gauge follows it without a SetData call: every list item is an ordinary value, and the chart rebuilds when it changes."
+			role:  "bodyMedium"
+			wrap:  true
+			width: 640
+		}
+
+		Row {
+			spacing: 20
+			width:   100%
+
+			GaugeChart {
+				width:  240
+				height: 200
+				min:    0
+				max:    100
+
+				ChartSeries {
+					label:  "Uptime"
+					values: [bridge.uptime]
+				}
+			}
+
+			PieChart {
+				width:       320
+				height:      200
+				innerRadius: 0.5
+				legend:      true
+				categories:  ["Direct", "Search", "Social"]
+
+				ChartSeries {
+					values: [bridge.direct, 27, 18]
+					colors: [theme.primary, theme.tertiary, customColor.accent]
+				}
+			}
+		}
+	}
+
 	// ------------------------------------------------ restyled
 	Column {
 		spacing: 8

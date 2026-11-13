@@ -1,0 +1,18 @@
+Window {
+	title:  "Markdown"
+	width:  520
+	height: 620
+
+	Column {
+		flex:    1
+		padding: 24
+
+		Markdown{
+			text: `# Example Title
+						 ## Example Subtitle
+						 - example list elem 1
+						 - example list elem 2
+						 - example list elem 3`
+		}
+	}
+}

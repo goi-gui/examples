@@ -292,6 +292,11 @@ func main() {
 		// selection. SortBy takes the column key the design declared, so no
 		// index is repeated in Go.
 		ui.SetData(w, "people", people)
+		// The Charts page reads these from a list item, which is what lets a
+		// design take one number from Go and keep the rest in the file.
+		ui.SetData(w, "uptime", 99.4)
+		ui.SetData(w, "direct", 42.0)
+		w.SetCustomColor("accent", 0xC62828FF)
 		if table, err := ui.ByID[*ui.Table](w, "tablePeople"); err == nil {
 			showSorted := func(key string, ascending bool, cleared bool) {
 				t, err := ui.ByID[*ui.Text](w, "tableSorted")
