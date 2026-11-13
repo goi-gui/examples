@@ -560,6 +560,15 @@ Column {
 			}
 
 			Text {
+				text: ", and "
+			}
+
+			Text {
+				text: "this run is a link"
+				link: "https://goi.dev"
+			}
+
+			Text {
 				text: ". They wrap together, so a styled word moves to the next line with the rest of the sentence."
 			}
 		}
