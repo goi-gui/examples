@@ -515,6 +515,56 @@ Column {
 		}
 	}
 
+	// ---- rich text: one paragraph whose runs differ. The runs are written as
+	// Text children and become spans when the page is built.
+	Column {
+		spacing: 12
+		width:   520
+
+		Text {
+			text: "Rich text"
+			role: "titleMedium"
+		}
+
+		RichText {
+			role:  "bodyLarge"
+			wrap:  true
+			width: 100%
+
+			Text {
+				text: "Runs come from the file: "
+			}
+
+			Text {
+				text:       "bold and slanted"
+				fontWeight: bold
+				fontStyle:  italic
+			}
+
+			Text {
+				text: ", "
+			}
+
+			Text {
+				text:       "underlined and struck"
+				decoration: underline line-through
+			}
+
+			Text {
+				text: ", "
+			}
+
+			Text {
+				text:  "a theme role keeps following the scheme"
+				color: tertiary
+			}
+
+			Text {
+				text: ". They wrap together, so a styled word moves to the next line with the rest of the sentence."
+			}
+		}
+	}
+
 	// ---- emoji: a rune Roboto has no glyph for falls back to Noto Color Emoji,
 	// the font Android draws emoji with, so text keeps one line and one size.
 	Column {
