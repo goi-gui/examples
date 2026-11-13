@@ -22,12 +22,28 @@ Column {
 			}
 		}
 
+		// The wavy variant is a ribbon: the same progress, drawn as a wave that
+		// keeps the track's stop dot at the end.
+		LinearProgress {
+			variant: wavy
+			value:   0.6
+			width:   responsive {
+				base: 280
+				md: 420
+			}
+		}
+
 		Row {
 			spacing:        24
 			crossAxisAlign: center
 
 			CircularProgress {
 				value: 0.65
+			}
+
+			CircularProgress {
+				variant: wavy
+				value:   0.65
 			}
 
 			LoadingIndicator {}
