@@ -26,35 +26,35 @@ Column {
 			width: 560
 			text:  !"# A document
 
-				Every block becomes an element: a heading is a `RichText` with a role, and this paragraph keeps its markup as runs — **bold**, *slanted*, `code`, ~~struck~~ and [links](https://goi.dev) all draw their own style.
+			         Every block becomes an element: a heading is a `RichText` with a role, and this paragraph keeps its markup as runs — **bold**, *slanted*, `code`, ~~struck~~ and [links](https://goi.dev) all draw their own style.
 
-				## Lists
+			         ## Lists
 
-				- a bullet
-				- another, with a nested run
-				  - nested items indent
-				  - by their depth
+			         - a bullet
+			         - another, with a nested run
+			           - nested items indent
+			           - by their depth
 
-				1. ordered items
-				2. keep the number
+			         1. ordered items
+			         2. keep the number
 
-				## Code and quotes
+			         ## Code and quotes
 
-				```go
-				func main() {
-					fmt.Println("rendered as a Code block")
-				}
-				```
+			         ```go
+			         func main() {
+			         	fmt.Println("rendered as a Code block")
+			         }
+			         ```
 
-				> A quote gets a bar on the left, drawn by a border on the Column that holds it.
+			         > A quote gets a bar on the left, drawn by a border on the Column that holds it.
 
-				---
+			         ---
 
-				| property | type | notes |
-				|---|---:|---|
-				| text | string | the whole document |
-				| scroll | bool | a long document scrolls its Column |
-				"!
+			         | property | type | notes |
+			         |---|---:|---|
+			         | text | string | the whole document |
+			         | scroll | bool | a long document scrolls its Column |
+			         "!
 		}
 	}
 }

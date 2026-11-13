@@ -261,8 +261,8 @@ Column {
 
 		Text {
 			text: !"One
-				Two
-				Three"!
+			        Two
+			        Three"!
 			wrap: true
 		}
 
