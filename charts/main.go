@@ -2,9 +2,9 @@
 //
 // The design file styles the charts with properties (`grid`, `axis`, `legend`,
 // `values`, `stacked`, `horizontal`, `smooth`, `points`, `innerRadius`,
-// `startAngle`, `min`, `max`). The gauge also holds its own numbers, as
-// `categories` and a ChartSeries child; the rest take theirs from Go through
-// SetData, because theirs change.
+// `startAngle`, `min`, `max`, `textColor`, `gridColor`). The gauge and the pie
+// also hold their own numbers and colours, as `categories` and a ChartSeries
+// child; the rest take theirs from Go through SetData, because theirs change.
 //
 // Hovering a point highlights it and shows a tooltip; clicking it fires onSelect
 // with the point's index, which is what the status line under the charts shows.
@@ -35,13 +35,6 @@ var costs = ui.ChartData{
 	Series: []ui.Series{
 		{Label: "Hosting", Values: []float64{4, 5, 6, 6, 7, 8}},
 		{Label: "People", Values: []float64{8, 9, 8, 10, 11, 11}},
-	},
-}
-
-var channels = ui.ChartData{
-	Categories: []string{"Direct", "Search", "Social", "Email"},
-	Series: []ui.Series{
-		{Values: []float64{42, 27, 18, 13}},
 	},
 }
 
@@ -92,11 +85,11 @@ func main() {
 		}
 		bar.SetData(revenue)
 
+		// The pie's numbers and its slice colours come from the design.
 		pie, err := ui.ByID[*ui.PieChart](w, "channels")
 		if err != nil {
 			return err
 		}
-		pie.SetData(channels)
 
 		scatter, err := ui.ByID[*ui.ScatterChart](w, "latency")
 		if err != nil {
@@ -139,7 +132,7 @@ func main() {
 		line.OnSelect(pick("line", revenue))
 		area.OnSelect(pick("area", costs))
 		bar.OnSelect(pick("bar", revenue))
-		pie.OnSelect(pick("pie", channels))
+		pie.OnSelect(pick("pie", pie.Data))
 		scatter.OnSelect(pick("scatter", latency))
 		radar.OnSelect(pick("radar", satisfaction))
 		gauge.OnSelect(pick("gauge", gauge.Data))
