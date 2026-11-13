@@ -2,7 +2,9 @@
 //
 // The design file styles the charts with properties (`grid`, `axis`, `legend`,
 // `values`, `stacked`, `horizontal`, `smooth`, `points`, `innerRadius`,
-// `startAngle`, `min`, `max`); the numbers come from Go through SetData.
+// `startAngle`, `min`, `max`). The gauge also holds its own numbers, as
+// `categories` and a ChartSeries child; the rest take theirs from Go through
+// SetData, because theirs change.
 //
 // Hovering a point highlights it and shows a tooltip; clicking it fires onSelect
 // with the point's index, which is what the status line under the charts shows.
@@ -58,11 +60,6 @@ var satisfaction = ui.ChartData{
 	},
 }
 
-var uptime = ui.ChartData{
-	Categories: []string{"Uptime"},
-	Series:     []ui.Series{{Label: "Uptime", Values: []float64{99.4}}},
-}
-
 func main() {
 	app, err := ui.NewApp()
 	if err != nil {
@@ -113,11 +110,12 @@ func main() {
 		}
 		radar.SetData(satisfaction)
 
+		// The gauge's numbers came from the design, so its data is already
+		// there: nothing to set here.
 		gauge, err := ui.ByID[*ui.GaugeChart](w, "uptime")
 		if err != nil {
 			return err
 		}
-		gauge.SetData(uptime)
 
 		status, err := ui.ByID[*ui.Text](w, "status")
 		if err != nil {
@@ -144,7 +142,7 @@ func main() {
 		pie.OnSelect(pick("pie", channels))
 		scatter.OnSelect(pick("scatter", latency))
 		radar.OnSelect(pick("radar", satisfaction))
-		gauge.OnSelect(pick("gauge", uptime))
+		gauge.OnSelect(pick("gauge", gauge.Data))
 		return nil
 	}); err != nil {
 		fmt.Fprintln(os.Stderr, err)

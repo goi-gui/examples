@@ -1,5 +1,6 @@
-// Charts: each element picks its own look through properties, and Go gives it
-// the numbers with SetData.
+// Charts: each element picks its own look through properties. A chart either
+// holds its numbers itself (`categories` plus one ChartSeries child) or takes
+// them from Go with SetData.
 //
 //	grid, axis    the value lines and the labels
 //	legend        a key for the series
@@ -102,12 +103,18 @@ Window {
 				onSelect: bridge.onPick("radar", event)
 			}
 
+			// A chart can hold its own data: this gauge needs no Go at all.
 			GaugeChart {
 				id:       uptime
 				width:    320
 				height:   260
 				max:      100
 				onSelect: bridge.onPick("gauge", event)
+
+				ChartSeries {
+					label:  "Uptime"
+					values: "99.4"
+				}
 			}
 		}
 
