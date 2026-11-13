@@ -81,13 +81,13 @@ Window {
 				values:      true
 				startAngle:  -90
 				onSelect:    bridge.onPick("pie", event)
-				categories:  "Direct, Search, Social, Email"
+				categories:  ["Direct", "Search", "Social", "Email"]
 
 				// One colour per slice: a role follows the scheme, the literal
 				// is fixed.
 				ChartSeries {
-					values: "42, 27, 18, 13"
-					colors: "primary, tertiary, secondary, #c62828"
+					values: [42, 27, 18, 13]
+					colors: [theme.primary, theme.tertiary, theme.secondary, #c62828]
 				}
 			}
 
@@ -123,7 +123,7 @@ Window {
 
 				ChartSeries {
 					label:  "Uptime"
-					values: "99.4"
+					values: [99.4]
 				}
 			}
 		}
