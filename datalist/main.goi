@@ -46,14 +46,13 @@ Window {
 
 		if bridge.loading {
 			Row {
-				spacing:        12
-				crossAxisAlign: center
+				mainAxisAlign: center
 
-				CircularProgress {}
-
-				Text {
-					text:  "Loading…"
-					color: theme.onSurfaceVariant
+				SVG {
+					src:    "datalist/loading.svg"
+					width:  50
+					height: 50
+					color:  theme.primary
 				}
 			}
 		} else {

@@ -19,17 +19,20 @@ Window {
 	theme:  light
 
 	Column {
-		padding: 16
 		spacing: 12
 
-		Text {
-			text: "Scroll"
-			role: "headlineSmall"
-		}
+		Column {
+			padding: 10
 
-		Text {
-			text: "Drag or wheel the page, and the chip row sideways."
-			role: "bodyMedium"
+			Text {
+				text: "Scroll"
+				role: "headlineSmall"
+			}
+
+			Text {
+				text: "Drag or wheel the page, and the chip row sideways."
+				role: "bodyMedium"
+			}
 		}
 
 		// A Row scrolls horizontally: the chips overflow the 488 dp strip.
@@ -38,6 +41,8 @@ Window {
 			scroll:       true
 			scrollShadow: true
 			spacing:      8
+			paddingLeft:  10
+			paddingRight: 10
 
 			Chip {
 				label: "one"
@@ -84,12 +89,13 @@ Window {
 		// height; flex: 1 works when the parent bounds the main axis too.
 		Column {
 			id:             page
-			height:         340
+			flex:           1
 			scroll:         true
 			scrollShadow:   true
 			scrollbarWidth: 6
 			scrollbarColor: theme.primary
 			spacing:        8
+			padding:        10
 
 			Card {
 				label:      "Card 1"
@@ -142,7 +148,10 @@ Window {
 		// Offsets are plain Go state: SetScrollOffset clamps when read, so a
 		// far value lands on the last page instead of scrolling into the void.
 		Row {
-			spacing: 8
+			spacing:       8
+			padding:       10
+			paddingTop:    0
+			mainAxisAlign: center
 
 			Button {
 				id:      top
@@ -153,32 +162,6 @@ Window {
 			Button {
 				id:    end
 				label: "End"
-			}
-		}
-
-		// Opacity fades the box and everything inside it. A percentage is the
-		// same range: 35% is 0.35.
-		Row {
-			spacing: 12
-
-			Rectangle {
-				width:      80
-				height:     40
-				radius:     8
-				background: theme.primary
-			}
-
-			Rectangle {
-				width:      80
-				height:     40
-				radius:     8
-				background: theme.primary
-				opacity:    35%
-			}
-
-			Text {
-				text: "opacity 1 and 35%"
-				role: "labelMedium"
 			}
 		}
 	}

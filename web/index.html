@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>goi in the browser</title>
+<style>
+	html, body { margin: 0; height: 100%; background: #f6f3fb; }
+	/* The canvas is the window: the app follows this box. */
+	body { display: grid; place-items: center; }
+	canvas { width: min(100vw, 720px); height: min(100vh, 820px); }
+</style>
+</head>
+<body>
+<canvas></canvas>
+<script src="wasm_exec.js"></script>
+<script>
+	const go = new Go();
+	WebAssembly.instantiateStreaming(fetch("goi.wasm"), go.importObject).then((result) => {
+		go.run(result.instance);
+	});
+</script>
+</body>
+</html>

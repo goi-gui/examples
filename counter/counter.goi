@@ -5,7 +5,7 @@ Window {
 	id:     main
 	title:  "Counter"
 	width:  480
-	height: 560
+	height: 400
 	theme:  light
 
 	Column {

@@ -125,7 +125,10 @@ Window {
 
 				for i, p := range bridge.people {
 					TableRow {
-						background: i == 0 ? theme.primary : ""
+						background: conditional {
+							"#00ff0033": i == 0
+							"#ff000033": i == len(bridge.people) - 1
+						}
 
 						TableCell {
 							value: p.name

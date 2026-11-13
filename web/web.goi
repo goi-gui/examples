@@ -1,0 +1,69 @@
+// The same design language as the desktop examples: this file runs unchanged in
+// a browser.
+
+bridge {
+	onStep func(delta int)
+}
+
+Window {
+	id:     web
+	title:  "goi in the browser"
+	width:  560
+	height: 620
+	theme:  light
+
+	Column {
+		padding: 24
+		gap:     16
+		width:   100%
+
+		Text {
+			text: "goi, in a canvas"
+			role: headlineSmall
+		}
+
+		Text {
+			text: "One .goi file, the same tree, laid out and drawn with WebGPU."
+			role: bodyMedium
+		}
+
+		Row {
+			gap:           12
+			mainAxisAlign: center
+
+			Button {
+				icon:    remove
+				variant: tonal
+				onClick: bridge.onStep(-1)
+			}
+
+			Text {
+				id:   count
+				text: "0"
+				role: headlineMedium
+			}
+
+			Button {
+				icon:    add
+				variant: filled
+				onClick: bridge.onStep(1)
+			}
+		}
+
+		Card {
+			width:      100%
+			height:     120
+			label:      "Clicks"
+			supporting: "The number above is the state; this card proves layout inside a browser canvas."
+		}
+
+		LineChart {
+			id:     trend
+			width:  100%
+			height: 220
+			legend: true
+			points: true
+			smooth: true
+		}
+	}
+}

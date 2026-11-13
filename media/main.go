@@ -25,6 +25,11 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
+
+	app.VSync(false)
+	app.MaxFPS(120)
+	app.ShowFPS(true)
+
 	win, err := app.LoadWindow(ui.DirFS("media"), "media.goi",
 		ui.WithHotReload(true), ui.WithSize(900, 720))
 	if err != nil {

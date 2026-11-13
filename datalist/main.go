@@ -45,7 +45,7 @@ func main() {
 	fetch := func() {
 		ui.SetData(win, "loading", true)
 		go func() {
-			time.Sleep(400 * time.Millisecond)
+			time.Sleep(1 * time.Second)
 			// The tree belongs to the UI goroutine, so the result is posted.
 			app.Post(func() {
 				ui.SetData(win, "loading", false)

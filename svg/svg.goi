@@ -29,6 +29,7 @@ Window {
 			padding:        24
 			spacing:        24
 			crossAxisAlign: center
+			scroll:         true
 
 			Card {
 				width:   440
