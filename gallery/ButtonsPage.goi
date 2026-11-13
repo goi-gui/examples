@@ -127,7 +127,7 @@ Column {
 
 			FAB {
 				icon: edit
-				size: sm
+				size: 40
 			}
 
 			FAB {
@@ -157,17 +157,17 @@ Column {
 
 			FAB {
 				icon: edit
-				size: sm
+				size: 40
 			}
 
 			FAB {
 				icon: photo
-				size: sm
+				size: 40
 			}
 
 			FAB {
 				icon: share
-				size: sm
+				size: 40
 			}
 		}
 

@@ -126,19 +126,19 @@ Column {
 			IconButton {
 				icon:    remove
 				variant: text
-				size:    sm
+				size:    32
 			}
 
 			IconButton {
 				icon:    crop_square
 				variant: text
-				size:    sm
+				size:    32
 			}
 
 			IconButton {
 				icon:    close
 				variant: text
-				size:    sm
+				size:    32
 			}
 		}
 

@@ -34,21 +34,21 @@ Window {
 				id:      lnxMin
 				icon:    remove
 				variant: text
-				size:    sm
+				size:    32
 			}
 
 			IconButton {
 				id:      lnxMax
 				icon:    crop_square
 				variant: text
-				size:    sm
+				size:    32
 			}
 
 			IconButton {
 				id:      lnxClose
 				icon:    close
 				variant: text
-				size:    sm
+				size:    32
 			}
 		}
 
@@ -65,21 +65,21 @@ Window {
 				id:      macClose
 				icon:    close
 				variant: text
-				size:    sm
+				size:    32
 			}
 
 			IconButton {
 				id:      macMin
 				icon:    remove
 				variant: text
-				size:    sm
+				size:    32
 			}
 
 			IconButton {
 				id:      macMax
 				icon:    crop_square
 				variant: text
-				size:    sm
+				size:    32
 			}
 
 			Rectangle {
