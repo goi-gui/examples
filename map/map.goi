@@ -1,0 +1,27 @@
+// OpenStreetMap tiles, with a GeoJSON boundary and line drawn over them.
+// Drag to pan, wheel to zoom. The boundary is a demo shape, not a border.
+
+Window {
+	id:     main
+	title:  "goi map"
+	width:  900
+	height: 700
+	theme:  dark
+
+	Column {
+		TopAppBar {
+			label: "Map"
+		}
+
+		Map {
+			id:    world
+			width: 100%
+			flex:  1
+			// The box frames Türkiye, so the first frame needs no panning.
+			bbox:  "25.5,35.8,44.8,42.2"
+			geom:  "goi://regions.geojson"
+			// The tile service is the default; this line documents the template.
+			tiles: "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+		}
+	}
+}

@@ -87,6 +87,9 @@ media:
 markdown:
 	$(RUN) ./markdown
 
+map:
+	$(RUN) ./map
+
 FMT := go run github.com/goi-gui/goi/cmd/goifmt
 
 # Show which window backend the examples would use.
@@ -99,4 +102,4 @@ fmt:
 fmt-list:
 	$(FMT) -l .
 
-.PHONY: search spike counter gallery hello scroll composition theme seed titlebar datalist bridge svg window format fmt fmt-list i18n cursor table league charts media web markdown purego
+.PHONY: search spike counter gallery hello scroll composition theme seed titlebar datalist bridge svg window format fmt fmt-list i18n cursor table league charts media web markdown map purego
