@@ -6,12 +6,15 @@ require github.com/goi-gui/goi v0.2.0
 
 require (
 	git.sr.ht/~jackmordaunt/go-toast v1.1.2 // indirect
+	github.com/Zyko0/go-sdl3 v0.1.3 // indirect
+	github.com/Zyko0/purego-gen v0.0.2 // indirect
 	github.com/akavel/rsrc v0.10.2 // indirect
 	github.com/alecthomas/chroma/v2 v2.27.0 // indirect
 	github.com/caarlos0/env/v11 v11.4.2 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/dchest/jsmin v1.0.0 // indirect
 	github.com/dlclark/regexp2/v2 v2.12.0 // indirect
+	github.com/ebitengine/purego v0.10.2 // indirect
 	github.com/esiqveland/notify v0.14.0 // indirect
 	github.com/fsnotify/fsnotify v1.10.1 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.16 // indirect
