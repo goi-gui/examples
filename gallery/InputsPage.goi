@@ -269,6 +269,18 @@ Column {
 				md: 360
 			}
 		}
+
+		TextField {
+			id:          hex
+			label:       "Hex colour"
+			placeholder: "#ff8800"
+			type:        "0123456789abcdefABCDEF#"
+			supporting:  "0-9, a-f, A-F and #"
+			width:       responsive {
+				base: 280
+				md: 360
+			}
+		}
 	}
 
 	Column {
