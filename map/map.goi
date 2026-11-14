@@ -1,27 +1,101 @@
-// OpenStreetMap tiles, with a GeoJSON boundary and line drawn over them.
-// Drag to pan, wheel to zoom. The boundary is a demo shape, not a border.
+// A place search: the left pane owns the field, the status and the result list;
+// the right pane is the map. The bridge block is the whole connection — Go
+// supplies the values and the two HTTP calls, and the design never knows about
+// them.
+
+bridge {
+	Status   string
+	Loading  bool
+	Selected string
+	Results  []Result
+	onSearch func(query string)
+	onPick   func(id string)
+}
+
+type Result {
+	ID     string
+	Label  string
+	Detail string
+}
 
 Window {
 	id:     main
-	title:  "goi map"
-	width:  900
-	height: 700
-	theme:  dark
+	title:  "goi map — PiriAPI"
+	width:  1100
+	height: 740
+	theme:  app.systemMode
 
-	Column {
-		TopAppBar {
-			label: "Map"
+	Row {
+		width:          100%
+		height:         100%
+		crossAxisAlign: stretch
+
+		// ---------------------------------------------------------- search
+		Column {
+			width:      380
+			padding:    20
+			spacing:    12
+			background: theme.surfaceContainerLow
+
+			Text {
+				text: "Konum ara"
+				role: "headlineSmall"
+			}
+
+			TextField {
+				id:          search
+				label:       "Yer adı"
+				placeholder: "İstanbul, Kadıköy…"
+				onSubmit:    bridge.onSearch(event)
+			}
+
+			LinearProgress {
+				width:   100%
+				visible: bridge.Loading
+			}
+
+			Text {
+				text:  bridge.Status
+				role:  "labelMedium"
+				color: theme.onSurfaceVariant
+			}
+
+			List {
+				width:  100%
+				flex:   1
+				scroll: true
+
+				for _, r := range bridge.Results {
+					ListItem {
+						label:        r.Label
+						supporting:   r.Detail
+						trailingIcon: chevron_right
+						selected:     r.ID == bridge.Selected
+						onClick:      bridge.onPick(r.ID)
+					}
+				}
+			}
+
+			Text {
+				text:  "PiriAPI · veri © OpenStreetMap contributors"
+				role:  "labelSmall"
+				color: theme.onSurfaceVariant
+			}
 		}
 
-		Map {
-			id:    world
-			width: 100%
-			flex:  1
-			// The box frames Türkiye, so the first frame needs no panning.
-			bbox:  "25.5,35.8,44.8,42.2"
-			geom:  "goi://regions.geojson"
-			// The tile service is the default; this line documents the template.
-			tiles: "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+		// ------------------------------------------------------------- map
+		Column {
+			flex:    1
+			padding: 12
+
+			Map {
+				id:          map
+				width:       100%
+				flex:        1
+				radius:      16
+				attribution: "© OpenStreetMap contributors · PiriAPI"
+				// Initial view: the whole world until a place is picked.
+			}
 		}
 	}
 }
