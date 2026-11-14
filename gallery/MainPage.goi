@@ -16,7 +16,7 @@ import LayoutPage "./LayoutPage.goi"
 import TablePage "./TablePage.goi"
 import TypographyPage "./TypographyPage.goi"
 import MarkdownPage "./MarkdownPage.goi"
-import ImagePage "./ImagePage.goi"
+import MediaPage "./MediaPage.goi"
 import ChartsPage "./ChartsPage.goi"
 
 Window {
@@ -87,8 +87,8 @@ Window {
 				}
 
 				NavigationItem {
-					label: "Image"
-					icon:  image
+					label: "Media"
+					icon:  perm_media
 				}
 
 				NavigationItem {
@@ -150,7 +150,7 @@ Window {
 
 					MarkdownPage {}
 
-					ImagePage {}
+					MediaPage {}
 
 					ChartsPage {}
 				}
@@ -211,8 +211,8 @@ Window {
 					}
 
 					NavigationItem {
-						label: "Image"
-						icon:  image
+						label: "Media"
+						icon:  perm_media
 					}
 
 					NavigationItem {
@@ -298,9 +298,9 @@ Window {
 				}
 
 				NavigationItem {
-					id:    drawerImage
-					label: "Image"
-					icon:  image
+					id:    drawerMedia
+					label: "Media"
+					icon:  perm_media
 				}
 
 				NavigationItem {

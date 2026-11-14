@@ -517,6 +517,27 @@ Column {
 		}
 	}
 
+	Column {
+		spacing: 8
+
+		Text {
+			text: "Selectable text"
+			role: "titleMedium"
+		}
+
+		Text {
+			id:         selectableText
+			text:       "Drag across this paragraph to select it, then press Ctrl+C. Text is not selectable unless it opts in, so a label that happens to sit under the pointer keeps behaving like a label."
+			role:       "bodyMedium"
+			wrap:       true
+			selectable: true
+			width:      responsive {
+				base: 280
+				md: 420
+			}
+		}
+	}
+
 	// ---- rich text: one paragraph whose runs differ. The runs are written as
 	// Text children and become spans when the page is built.
 	Column {

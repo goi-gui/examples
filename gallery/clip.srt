@@ -1,0 +1,12 @@
+1
+00:00:00,200 --> 00:00:02,600
+<i>Subtitles</i> come from an SRT file
+
+2
+00:00:02,800 --> 00:00:04,600
+The control bar hides after three
+seconds without the pointer
+
+3
+00:00:04,800 --> 00:00:06,000
+Move the mouse to bring it back

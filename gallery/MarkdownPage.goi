@@ -57,4 +57,42 @@ Column {
 			         "!
 		}
 	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Code"
+			role: "titleMedium"
+		}
+
+		Code {
+			language: go
+			showCopy: true
+			width:    responsive {
+				base: 300
+				md: 520
+			}
+			text:     !"// A highlighted block
+			            func bind(w *ui.Window) error {
+			            	btn := ui.MustByID[*ui.Button](w, "go")
+			            	btn.OnClick(func(ui.ClickEvent) {
+			            		fmt.Println("clicked")
+			            	})
+			            	return nil
+			            }"!
+		}
+
+		Code {
+			language: py
+			variant:  outlined
+			width:    responsive {
+				base: 300
+				md: 520
+			}
+			text:     !"# spans: keywords, strings, numbers, comments
+			            for i in range(3):
+			            print("easing", i, 0.5)"!
+		}
+	}
 }
