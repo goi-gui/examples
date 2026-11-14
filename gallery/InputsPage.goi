@@ -323,7 +323,7 @@ Column {
 				base: 300
 				md: 420
 			}
-			height:      140
+			height:      160
 		}
 	}
 
