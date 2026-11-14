@@ -138,8 +138,12 @@ Column {
 		}
 
 		Tooltip {
-			label: "Tooltip text"
-			width: 120
+			text: "Saves to your library"
+
+			Button {
+				label: "Hover me"
+				icon:  save
+			}
 		}
 	}
 }

@@ -22,7 +22,9 @@ func main() {
 	if err != nil {
 		fail(err)
 	}
-	win, err := app.LoadWindow(design, "web.goi", ui.WithSize(640, 760))
+	// The page can host several apps, each in its own canvas; this one names
+	// the canvas it draws into.
+	win, err := app.LoadWindow(design, "web.goi", ui.WithSize(640, 760), ui.WithCanvas("goi-app"))
 	if err != nil {
 		fail(err)
 	}

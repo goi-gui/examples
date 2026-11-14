@@ -8,11 +8,13 @@
 	html, body { margin: 0; height: 100%; background: #f6f3fb; }
 	/* The canvas is the window: the app follows this box. */
 	body { display: grid; place-items: center; }
-	canvas { width: min(100vw, 720px); height: min(100vh, 820px); }
+	#goi-app { width: min(100vw, 720px); height: min(100vh, 820px); }
 </style>
 </head>
 <body>
-<canvas></canvas>
+<!-- The app names this id with ui.WithCanvas("goi-app"), so a page can hold
+     several canvases and run one app in each. -->
+<canvas id="goi-app"></canvas>
 <script src="wasm_exec.js"></script>
 <script>
 	const go = new Go();
