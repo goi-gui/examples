@@ -417,4 +417,25 @@ Column {
 			}
 		}
 	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Colour picker"
+			role: "titleMedium"
+		}
+
+		Text {
+			id:   colorValue
+			text: "No colour picked"
+			role: "bodySmall"
+		}
+
+		ColorPicker {
+			id:    colorPicker
+			label: "Select colour"
+			text:  "#6750a4"
+		}
+	}
 }
