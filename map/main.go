@@ -34,10 +34,10 @@ type Result struct {
 	Detail string `goi:"detail"`
 }
 
-// GeomData is one polygon of a place: a flat [lon, lat, ...] ring, which is what
+// GeomData is one polygon of a place: a list of [lon, lat] pairs, which is what
 // a Geom's `data` property holds.
 type GeomData struct {
-	Data []float64 `goi:"data"`
+	Data [][]float64 `goi:"data"`
 }
 
 // App state lives outside Bind: Bind runs again after every hot reload, so a
@@ -212,7 +212,7 @@ func showPlace(w *ui.Window, p place) {
 	}
 }
 
-// geoms turns the API's MultiPolygon into one flat ring per polygon. The first
+// geoms turns the API's MultiPolygon into one ring per polygon. The first
 // ring is the outer boundary; a Geom's data is one list, so holes are not drawn.
 func geoms(g [][][][]float64) []GeomData {
 	out := make([]GeomData, 0, len(g))
@@ -221,13 +221,13 @@ func geoms(g [][][][]float64) []GeomData {
 			continue
 		}
 		ring := poly[0]
-		data := make([]float64, 0, len(ring)*2)
+		data := make([][]float64, 0, len(ring))
 		for _, c := range ring {
 			if len(c) >= 2 {
-				data = append(data, c[0], c[1])
+				data = append(data, []float64{c[0], c[1]})
 			}
 		}
-		if len(data) >= 6 {
+		if len(data) >= 3 {
 			out = append(out, GeomData{Data: data})
 		}
 	}

@@ -25,9 +25,9 @@ type Result {
 	Detail string
 }
 
-// GeomData is one polygon: a flat [lon, lat, lon, lat, ...] ring.
+// GeomData is one polygon: a list of [lon, lat] pairs.
 type GeomData {
-	Data []float64
+	Data [][]float64
 }
 
 Window {
@@ -117,12 +117,6 @@ Window {
 						lineColor: theme.primary
 						fillColor: #6750a433
 					}
-				}
-
-				// The search hits, joined in the order the API ranked them.
-				Path {
-					id:        route
-					lineColor: theme.error
 				}
 
 				// A pin at the selected place's centre, hidden until there is one.
