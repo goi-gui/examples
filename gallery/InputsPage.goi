@@ -375,10 +375,11 @@ Column {
 			}
 
 			TimePicker {
-				id:      timeInput
-				variant: input
-				label:   "Enter time"
-				text:    "19:30"
+				id:         timeInput
+				variant:    input
+				label:      "Enter time, 24-hour"
+				text:       "19:30"
+				hourFormat: 24
 			}
 		}
 	}
