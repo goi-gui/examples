@@ -16,6 +16,7 @@ import LayoutPage "./LayoutPage.goi"
 import TablePage "./TablePage.goi"
 import TypographyPage "./TypographyPage.goi"
 import MarkdownPage "./MarkdownPage.goi"
+import MermaidPage "./MermaidPage.goi"
 import MediaPage "./MediaPage.goi"
 import ChartsPage "./ChartsPage.goi"
 
@@ -87,6 +88,11 @@ Window {
 				}
 
 				NavigationItem {
+					label: "Mermaid"
+					icon:  account_tree
+				}
+
+				NavigationItem {
 					label: "Media"
 					icon:  perm_media
 				}
@@ -150,6 +156,8 @@ Window {
 
 					MarkdownPage {}
 
+					MermaidPage {}
+
 					MediaPage {}
 
 					ChartsPage {}
@@ -208,6 +216,11 @@ Window {
 					NavigationItem {
 						label: "Markdown"
 						icon:  article
+					}
+
+					NavigationItem {
+						label: "Mermaid"
+						icon:  account_tree
 					}
 
 					NavigationItem {
@@ -295,6 +308,12 @@ Window {
 					id:    drawerMarkdown
 					label: "Markdown"
 					icon:  article
+				}
+
+				NavigationItem {
+					id:    drawerMermaid
+					label: "Mermaid"
+					icon:  account_tree
 				}
 
 				NavigationItem {
