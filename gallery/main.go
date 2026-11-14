@@ -520,9 +520,16 @@ func main() {
 			}
 		}
 		if cp, err := ui.ByID[*ui.ColorPicker](w, "colorPicker"); err == nil {
-			cp.OnSubmit(func(v string) {
+			picked := func(v string) {
 				if t, err := ui.ByID[*ui.Text](w, "colorValue"); err == nil {
 					t.Text.Set("Picked " + v)
+				}
+			}
+			cp.OnSubmit(picked)
+			cp.OnOK(picked)
+			cp.OnCancel(func(v string) {
+				if t, err := ui.ByID[*ui.Text](w, "colorValue"); err == nil {
+					t.Text.Set("Cancelled " + v)
 				}
 			})
 		}
