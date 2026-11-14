@@ -400,7 +400,7 @@ Column {
 		Text {
 			text:   "Soft shadow"
 			role:   "displaySmall"
-			shadow: 0 4 8 onSurfaceVariant
+			shadow: 0 4 8 theme.onSurfaceVariant
 		}
 
 		Text {
@@ -413,7 +413,7 @@ Column {
 			text:   "Glow"
 			role:   "displaySmall"
 			color:  theme.primary
-			shadow: 0 0 12 primary
+			shadow: 0 0 12 theme.primary
 		}
 
 		// A box shadow borrows box-shadow: offsets, blur, spread and an
