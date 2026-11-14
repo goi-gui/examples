@@ -101,12 +101,13 @@ Window {
 		}
 
 		Audio {
-			width:    100%
-			height:   64
-			src:      "media/clip.mp4"
-			controls: true
-			variant:  wavy
-			color:    theme.tertiary
+			width:        100%
+			height:       64
+			src:          "media/clip.mp4"
+			controls:     true
+			variant:      wavy
+			color:        theme.tertiary
+			surfaceColor: #e8def8
 		}
 
 		Row {
