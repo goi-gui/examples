@@ -365,9 +365,21 @@ Column {
 			role: "bodySmall"
 		}
 
-		TimePicker {
-			id:    timePicker
-			label: "Select time"
+		Row {
+			spacing:        28
+			crossAxisAlign: start
+
+			TimePicker {
+				id:    timePicker
+				label: "Select time"
+			}
+
+			TimePicker {
+				id:      timeInput
+				variant: input
+				label:   "Enter time"
+				text:    "19:30"
+			}
 		}
 	}
 }

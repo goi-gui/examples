@@ -509,12 +509,15 @@ func main() {
 				}
 			})
 		}
-		if tp, err := ui.ByID[*ui.TimePicker](w, "timePicker"); err == nil {
-			tp.OnSubmit(func(v string) {
-				if t, err := ui.ByID[*ui.Text](w, "timeValue"); err == nil {
-					t.Text.Set("Picked " + v)
-				}
-			})
+		picked := func(v string) {
+			if t, err := ui.ByID[*ui.Text](w, "timeValue"); err == nil {
+				t.Text.Set("Picked " + v)
+			}
+		}
+		for _, id := range []string{"timePicker", "timeInput"} {
+			if tp, err := ui.ByID[*ui.TimePicker](w, id); err == nil {
+				tp.OnSubmit(picked)
+			}
 		}
 		return nil
 	}); err != nil {
