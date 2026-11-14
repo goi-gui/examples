@@ -1,4 +1,22 @@
-RUN := go run -ldflags=-linkmode=internal
+# The desktop examples use the purego SDL3 backend by default: no C toolchain and
+# no SDL development package, only the SDL3 runtime library. `make ... PUREGO=0`
+# selects the cgo backend instead (Linux needs the internal linker).
+PUREGO ?= 1
+UNAME := $(shell uname -s)
+ifeq ($(PUREGO),1)
+GO_ENV := CGO_ENABLED=0
+GO_FLAGS := -tags nofakecgo
+LD :=
+else
+GO_ENV := CGO_ENABLED=1
+GO_FLAGS :=
+ifeq ($(UNAME),Linux)
+LD := -ldflags=-linkmode=internal
+else
+LD :=
+endif
+endif
+RUN := $(GO_ENV) go run $(GO_FLAGS) $(LD)
 
 # The browser build: the same design compiled to wasm, served from web/dist.
 web:
@@ -71,10 +89,14 @@ markdown:
 
 FMT := go run github.com/goi-gui/goi/cmd/goifmt
 
+# Show which window backend the examples would use.
+purego:
+	@echo "$(RUN)"
+
 fmt:
 	$(FMT) -w .
 
 fmt-list:
 	$(FMT) -l .
 
-.PHONY: search spike counter gallery hello scroll composition theme seed titlebar datalist bridge svg window format fmt fmt-list i18n cursor table league charts media web markdown
+.PHONY: search spike counter gallery hello scroll composition theme seed titlebar datalist bridge svg window format fmt fmt-list i18n cursor table league charts media web markdown purego
