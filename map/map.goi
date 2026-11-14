@@ -38,20 +38,23 @@ Window {
 			background: theme.surfaceContainerLow
 
 			Text {
-				text: "Konum ara"
+				text: "Search Location"
 				role: "headlineSmall"
 			}
 
 			TextField {
-				id:          search
-				label:       "Yer adı"
-				placeholder: "İstanbul, Kadıköy…"
-				onSubmit:    bridge.onSearch(event)
+				id:       search
+				label:    "Location Name"
+				onSubmit: bridge.onSearch(event)
+				width:    100%
 			}
 
-			LinearProgress {
-				width:   100%
-				visible: bridge.Loading
+			if bridge.Loading {
+				Row {
+					mainAxisAlign: center
+
+					LoadingIndicator {}
+				}
 			}
 
 			Text {
@@ -94,7 +97,8 @@ Window {
 				flex:        1
 				radius:      16
 				attribution: "© OpenStreetMap contributors · PiriAPI"
-				// Initial view: the whole world until a place is picked.
+				lineColor:   theme.primary
+				fillColor:   #6750a433
 			}
 		}
 	}

@@ -38,7 +38,7 @@ type Result struct {
 // value declared inside it would be reset by an edit to the design.
 var (
 	results  []Result
-	status   = "Bir yer adı yazıp Enter'a bas."
+	status   = "Insert a location name and press Enter."
 	selected string
 	// shown is the place on the map, kept so a hot reload puts the boundary and
 	// the camera back instead of falling to the world view.
@@ -117,12 +117,12 @@ func search(w *ui.Window, app *ui.App, query string) {
 		results, selected = nil, ""
 		ui.SetData(w, "Results", nil)
 		ui.SetData(w, "Selected", "")
-		setStatus(w, "Bir yer adı yazıp Enter'a bas.")
+		setStatus(w, "Insert a location name and press Enter.")
 		world(w)
 		return
 	}
 	ui.SetData(w, "Loading", true)
-	setStatus(w, "Aranıyor…")
+	setStatus(w, "Searching…")
 	go func() {
 		var out searchResponse
 		err := get(apiBase+"/fts/search?limit=10&show-names=false&query="+url.QueryEscape(query), &out)
@@ -134,18 +134,18 @@ func search(w *ui.Window, app *ui.App, query string) {
 			if err != nil {
 				results = nil
 				ui.SetData(w, "Results", nil)
-				setStatus(w, "Arama başarısız: "+err.Error())
+				setStatus(w, "Searching failed: "+err.Error())
 				return
 			}
 			results = rows(out.List)
 			ui.SetData(w, "Results", results)
 			switch len(results) {
 			case 0:
-				setStatus(w, "Sonuç bulunamadı.")
+				setStatus(w, "No result found.")
 			case 1:
-				setStatus(w, "1 sonuç. Haritada görmek için seç.")
+				setStatus(w, "1 result. Select to see on map.")
 			default:
-				setStatus(w, fmt.Sprintf("%d sonuç. Haritada görmek için birini seç.", len(results)))
+				setStatus(w, fmt.Sprintf("%d results. Select to see on map.", len(results)))
 			}
 		})
 	}()
@@ -157,7 +157,7 @@ func pick(w *ui.Window, app *ui.App, id string) {
 	seq := pickSeq
 	selected = id
 	ui.SetData(w, "Selected", id)
-	setStatus(w, "Sınır getiriliyor…")
+	setStatus(w, "Fetching boundaries…")
 	go func() {
 		var p place
 		err := get(apiBase+"/places/"+url.PathEscape(id)+"?geom-detail=moderate&show-names=false", &p)
@@ -166,7 +166,7 @@ func pick(w *ui.Window, app *ui.App, id string) {
 				return
 			}
 			if err != nil {
-				setStatus(w, "Yer yüklenemedi: "+err.Error())
+				setStatus(w, "Location can not loaded: "+err.Error())
 				return
 			}
 			showPlace(w, p)
@@ -209,7 +209,7 @@ func rows(ps []place) []Result {
 	for _, p := range ps {
 		detail := strings.ToUpper(p.CountryCode)
 		if p.AdminLevel > 0 {
-			detail = fmt.Sprintf("%s · seviye %d", detail, p.AdminLevel)
+			detail = fmt.Sprintf("%s · level %d", detail, p.AdminLevel)
 		}
 		out = append(out, Result{ID: p.ID, Label: p.LocalName, Detail: detail})
 	}
