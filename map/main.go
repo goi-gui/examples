@@ -34,6 +34,12 @@ type Result struct {
 	Detail string `goi:"detail"`
 }
 
+// GeomData is one polygon of a place: a flat [lon, lat, ...] ring, which is what
+// a Geom's `data` property holds.
+type GeomData struct {
+	Data []float64 `goi:"data"`
+}
+
 // App state lives outside Bind: Bind runs again after every hot reload, so a
 // value declared inside it would be reset by an edit to the design.
 var (
@@ -43,6 +49,9 @@ var (
 	// shown is the place on the map, kept so a hot reload puts the boundary and
 	// the camera back instead of falling to the world view.
 	shown *place
+	// route is the polyline through the search hits, kept as app state so a
+	// hot reload puts the Path back.
+	route []ui.Coord
 	// searchSeq and pickSeq drop the answer of a request the user has already
 	// replaced by typing again or picking another row.
 	searchSeq, pickSeq int
@@ -87,6 +96,13 @@ func main() {
 		ui.SetData(w, "Loading", false)
 		if shown != nil {
 			showPlace(w, *shown)
+		} else {
+			ui.SetData(w, "Geoms", nil)
+			ui.SetData(w, "Marker", nil)
+			ui.SetData(w, "HasPlace", false)
+		}
+		if p, err := ui.ByID[*ui.Path](w, "route"); err == nil {
+			p.Coordinates.Set(route)
 		}
 
 		if err := ui.SetHandler(w, "onSearch", func(query string) {
@@ -139,6 +155,10 @@ func search(w *ui.Window, app *ui.App, query string) {
 			}
 			results = rows(out.List)
 			ui.SetData(w, "Results", results)
+			route = routeOf(out.List)
+			if p, err := ui.ByID[*ui.Path](w, "route"); err == nil {
+				p.Coordinates.Set(route)
+			}
 			switch len(results) {
 			case 0:
 				setStatus(w, "No result found.")
@@ -175,12 +195,15 @@ func pick(w *ui.Window, app *ui.App, id string) {
 	}()
 }
 
-// showPlace points the map at a place: its bbox frames it and its boundary is
-// drawn from coordinates, so no GeoJSON round trip is needed.
+// showPlace points the map at a place: its bbox frames it, one Geom draws each
+// polygon and a Point marks its centre. All of it goes through the bridge, so
+// the design builds the children the same way it would from a file.
 func showPlace(w *ui.Window, p place) {
 	shown = &p
 	m := ui.MustByID[*ui.Map](w, "map")
-	m.SetGeometry(geometry(p.Geom))
+	ui.SetData(w, "Geoms", geoms(p.Geom))
+	ui.SetData(w, "Marker", p.Center)
+	ui.SetData(w, "HasPlace", len(p.Center) == 2)
 	if len(p.BBox) == 4 {
 		m.BBox.Set(p.BBox)
 	} else if len(p.Center) == 2 {
@@ -189,12 +212,50 @@ func showPlace(w *ui.Window, p place) {
 	}
 }
 
+// geoms turns the API's MultiPolygon into one flat ring per polygon. The first
+// ring is the outer boundary; a Geom's data is one list, so holes are not drawn.
+func geoms(g [][][][]float64) []GeomData {
+	out := make([]GeomData, 0, len(g))
+	for _, poly := range g {
+		if len(poly) == 0 {
+			continue
+		}
+		ring := poly[0]
+		data := make([]float64, 0, len(ring)*2)
+		for _, c := range ring {
+			if len(c) >= 2 {
+				data = append(data, c[0], c[1])
+			}
+		}
+		if len(data) >= 6 {
+			out = append(out, GeomData{Data: data})
+		}
+	}
+	return out
+}
+
+// routeOf joins the search hits in rank order, which is the demo's Path.
+func routeOf(ps []place) []ui.Coord {
+	out := make([]ui.Coord, 0, len(ps))
+	for _, p := range ps {
+		if len(p.Center) == 2 {
+			out = append(out, ui.Coord{p.Center[0], p.Center[1]})
+		}
+	}
+	return out
+}
+
 // world returns the map to the whole world when nothing is selected.
 func world(w *ui.Window) {
-	shown = nil
+	shown, route = nil, nil
 	m := ui.MustByID[*ui.Map](w, "map")
+	ui.SetData(w, "Geoms", nil)
+	ui.SetData(w, "Marker", nil)
+	ui.SetData(w, "HasPlace", false)
+	if p, err := ui.ByID[*ui.Path](w, "route"); err == nil {
+		p.Coordinates.Set(nil)
+	}
 	m.BBox.Set(nil)
-	m.SetGeometry(nil)
 	m.SetView(0, 0, 2)
 }
 
@@ -212,30 +273,6 @@ func rows(ps []place) []Result {
 			detail = fmt.Sprintf("%s · level %d", detail, p.AdminLevel)
 		}
 		out = append(out, Result{ID: p.ID, Label: p.LocalName, Detail: detail})
-	}
-	return out
-}
-
-// geometry converts PiriAPI's MultiPolygon coordinates into the map's geometry.
-// The API writes [lon, lat]; ui.Point keeps the two apart by name.
-func geometry(g [][][][]float64) *ui.MapGeometry {
-	if len(g) == 0 {
-		return nil
-	}
-	out := &ui.MapGeometry{}
-	for _, poly := range g {
-		rings := make([][]ui.Point, 0, len(poly))
-		for _, ring := range poly {
-			pts := make([]ui.Point, 0, len(ring))
-			for _, c := range ring {
-				if len(c) < 2 {
-					continue
-				}
-				pts = append(pts, ui.Point{Lat: c[1], Lng: c[0]})
-			}
-			rings = append(rings, pts)
-		}
-		out.Polys = append(out.Polys, rings)
 	}
 	return out
 }

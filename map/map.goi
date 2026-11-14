@@ -2,12 +2,19 @@
 // the right pane is the map. The bridge block is the whole connection — Go
 // supplies the values and the two HTTP calls, and the design never knows about
 // them.
+//
+// Every polygon the place API returns becomes one Geom child, built by the loop
+// from the bridge's list; the marker is a Point with an icon, and the route is a
+// Path the app fills from the search hits.
 
 bridge {
 	Status   string
 	Loading  bool
 	Selected string
+	HasPlace bool
+	Marker   []float64
 	Results  []Result
+	Geoms    []GeomData
 	onSearch func(query string)
 	onPick   func(id string)
 }
@@ -16,6 +23,11 @@ type Result {
 	ID     string
 	Label  string
 	Detail string
+}
+
+// GeomData is one polygon: a flat [lon, lat, lon, lat, ...] ring.
+type GeomData {
+	Data []float64
 }
 
 Window {
@@ -97,8 +109,32 @@ Window {
 				flex:        1
 				radius:      16
 				attribution: "© OpenStreetMap contributors · PiriAPI"
-				lineColor:   theme.primary
-				fillColor:   #6750a433
+
+				// One Geom per polygon of the selected place.
+				for _, g := range bridge.Geoms {
+					Geom {
+						data:      g.Data
+						lineColor: theme.primary
+						fillColor: #6750a433
+					}
+				}
+
+				// The search hits, joined in the order the API ranked them.
+				Path {
+					id:        route
+					lineColor: theme.error
+				}
+
+				// A pin at the selected place's centre, hidden until there is one.
+				Point {
+					visible:    bridge.HasPlace
+					coordinate: bridge.Marker
+
+					IconButton {
+						icon:    location_on
+						variant: filled
+					}
+				}
 			}
 		}
 	}
