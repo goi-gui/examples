@@ -241,6 +241,25 @@ func main() {
 			applyTheme(dark)
 		}
 
+		// Gestures: the card follows a pan and goes home on a double tap or a
+		// long press. The offset lives in the node, so a reload keeps it.
+		if box, err := ui.ByID[*ui.Positioned](w, "dragBox"); err == nil {
+			if knob, err := ui.ByID[*ui.GestureDetector](w, "dragKnob"); err == nil {
+				var x float64
+				knob.OnPanStart(func(ui.PanEvent) { x = box.TranslateX.Get() })
+				knob.OnPanUpdate(func(e ui.PanEvent) {
+					x += e.DX
+					box.TranslateX.Set(x)
+				})
+				knob.OnDoubleTap(func(ui.ClickEvent) { box.TranslateX.Set(0) })
+				knob.OnLongPress(func(ui.ClickEvent) { box.TranslateX.Set(0) })
+				if label, err := ui.ByID[*ui.Text](w, "dragState"); err == nil {
+					knob.OnPanStart(func(ui.PanEvent) { label.Text.Set("Dragging") })
+					knob.OnPanEnd(func(ui.PanEvent) { label.Text.Set("Drag me") })
+				}
+			}
+		}
+
 		// Navigation: a click on a destination reports its index.
 		if rail, err := ui.ByID[*ui.NavigationRail](w, "rail"); err == nil {
 			rail.OnSelect(show)

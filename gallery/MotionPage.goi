@@ -189,4 +189,64 @@ Column {
 			variant: tonal
 		}
 	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Gestures"
+			role: "titleMedium"
+		}
+
+		Text {
+			text:  "A GestureDetector reports a pan, a double tap and a long press beside the click every element has. Drag the card; double-tap it to reset it, or hold it."
+			role:  "bodySmall"
+			wrap:  true
+			width: responsive {
+				base: 280
+				md: 460
+			}
+		}
+
+		Stack {
+			width:  100%
+			height: 180
+
+			Rectangle {
+				width:      100%
+				height:     100%
+				radius:     16
+				background: surfaceContainerHigh
+			}
+
+			Positioned {
+				id:   dragBox
+				left: 16
+				top:  16
+
+				GestureDetector {
+					id:     dragKnob
+					width:  140
+					height: 96
+					radius: 16
+					cursor: grab
+
+					Rectangle {
+						width:      100%
+						height:     100%
+						radius:     16
+						background: primary
+					}
+
+					Text {
+						id:    dragState
+						text:  "Drag me"
+						role:  "labelLarge"
+						color: theme.onPrimary
+						align: center
+					}
+				}
+			}
+		}
+	}
 }

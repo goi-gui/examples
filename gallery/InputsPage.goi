@@ -203,6 +203,30 @@ Column {
 		}
 
 		TextField {
+			label:       "Styled field"
+			placeholder: "Your own box"
+			background:  theme.surfaceContainerHigh
+			borderWidth: 2
+			borderColor: theme.tertiary
+			radius:      18
+			color:       theme.onSurface
+			width:       responsive {
+				base: 280
+				md: 360
+			}
+		}
+
+		Text {
+			text:  "A field takes the design's background, border, radius and color instead of the variant's own."
+			role:  "bodySmall"
+			wrap:  true
+			width: responsive {
+				base: 280
+				md: 360
+			}
+		}
+
+		TextField {
 			label:   "Email"
 			text:    "user@example.com"
 			icon:    mail

@@ -146,6 +146,44 @@ Column {
 		spacing: 10
 
 		Text {
+			text: "Styled by the design"
+			role: "titleMedium"
+		}
+
+		Wrap {
+			spacing: 16
+
+			Button {
+				label:       "Gradient"
+				icon:        palette
+				radius:      12
+				color:       theme.onPrimary
+				borderWidth: 1
+				borderColor: theme.outline
+				background:  "linear-gradient(120deg, theme.primary, theme.tertiary)"
+			}
+
+			Button {
+				label:       "Outlined accent"
+				variant:     text
+				color:       theme.tertiary
+				radius:      10
+				borderWidth: 1.5
+				borderColor: theme.tertiary
+			}
+		}
+
+		Text {
+			text: "background, border, radius, shadow and color replace the variant's own box."
+			role: "bodySmall"
+			wrap: true
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
 			text: "FAB menu"
 			role: "titleMedium"
 		}
