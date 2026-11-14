@@ -105,7 +105,8 @@ Window {
 			height:   64
 			src:      "media/clip.mp4"
 			controls: true
-			seekbar:  wavy
+			variant:  wavy
+			color:    theme.tertiary
 		}
 
 		Row {
