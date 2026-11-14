@@ -247,6 +247,28 @@ Column {
 				md: 360
 			}
 		}
+
+		TextField {
+			label:      "Phone"
+			type:       numeric
+			mask:       "(###) ###-####"
+			supporting: "Digits only, with the mask's punctuation"
+			width:      responsive {
+				base: 280
+				md: 360
+			}
+		}
+
+		TextField {
+			label:      "Ticket"
+			type:       alphanumeric
+			supporting: "Letters and digits only"
+			variant:    outlined
+			width:      responsive {
+				base: 280
+				md: 360
+			}
+		}
 	}
 
 	Column {
