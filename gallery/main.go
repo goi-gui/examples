@@ -36,7 +36,6 @@ var pages = []page{
 	{"pageTable", "Table"},
 	{"pageTypography", "Typography"},
 	{"pageMarkdown", "Markdown"},
-	{"pageMermaid", "Mermaid"},
 	{"pageMedia", "Media"},
 	{"pageCharts", "Charts"},
 }
@@ -46,7 +45,7 @@ var pages = []page{
 var drawerIDs = []string{
 	"drawerButtons", "drawerInputs", "drawerSurfaces", "drawerFeedback",
 	"drawerLayout", "drawerMotion", "drawerTable", "drawerTypography",
-	"drawerMarkdown", "drawerMermaid", "drawerMedia", "drawerCharts",
+	"drawerMarkdown", "drawerMedia", "drawerCharts",
 }
 
 // navIDs are the containers that own a destination selection: the rail and the
