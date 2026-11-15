@@ -2,7 +2,8 @@
 // flips above its anchor instead of leaving the window.
 //
 // A popover is always visible, so the design decides when the panel shows: one
-// bridge value names the open one, and every button toggles it from Go.
+// bridge value names the open one, and every button toggles it from Go. A press
+// anywhere else dismisses it through onClickOutside.
 
 bridge {
 	open   string
@@ -36,7 +37,8 @@ Window {
 				spacing: 28
 
 				Popover {
-					align: start
+					align:          start
+					onClickOutside: bridge.onOpen("")
 
 					Button {
 						label:   "Start"
@@ -55,7 +57,8 @@ Window {
 				}
 
 				Popover {
-					align: center
+					align:          center
+					onClickOutside: bridge.onOpen("")
 
 					Button {
 						label:   "Center"
@@ -74,7 +77,8 @@ Window {
 				}
 
 				Popover {
-					align: end
+					align:          end
+					onClickOutside: bridge.onOpen("")
 
 					Button {
 						label:   "End"
@@ -111,7 +115,8 @@ Window {
 			}
 
 			Popover {
-				align: start
+				align:          start
+				onClickOutside: bridge.onOpen("")
 
 				Button {
 					label:   "Open at the bottom"
