@@ -59,11 +59,6 @@ type galleryRow struct {
 	Supporting string `goi:"supporting"`
 }
 
-// repeatItem is one row of the gallery's Fill demo.
-type repeatItem struct {
-	label, icon string
-}
-
 // person is one row of the Table page, filled with ui.SetData.
 type person struct {
 	Name string `goi:"name"`
@@ -378,23 +373,6 @@ func main() {
 				})
 			}
 		}
-		// The Layout page's repeat demo: one template row, three copies. A
-		// reload rebuilds the tree, so this runs again from Bind and the rows
-		// come back with the page; Fill replaces them instead of stacking.
-		if list, err := ui.ByID[*ui.Column](w, "repeatList"); err == nil {
-			items := []repeatItem{
-				{label: "First copy", icon: "person"},
-				{label: "Second copy", icon: "star"},
-				{label: "Third copy", icon: "photo"},
-			}
-			if err := ui.Fill(w, list, items, func(row *ui.ListItem, it repeatItem) {
-				row.Label.Set(it.label)
-				row.Icon.Set(it.icon)
-			}); err != nil {
-				return err
-			}
-		}
-
 		// The Motion page: the three dots travel the same distance and differ
 		// only in easing. Stops are kept so a second Play cancels the first run
 		// instead of leaving two tweens pulling the same Left property.

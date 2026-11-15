@@ -279,6 +279,39 @@ Column {
 		}
 	}
 
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Popover"
+			role: "titleMedium"
+		}
+
+		// The panel floats out of the flow, so the box reserves room for it.
+		Column {
+			height:         152
+			crossAxisAlign: start
+
+			Popover {
+				align: center
+
+				Button {
+					label: "Share"
+					icon:  share
+				}
+
+				$popover {
+					Card {
+						label:      "Anyone with the link"
+						supporting: "Link sharing is on"
+						width:      260
+						height:     96
+					}
+				}
+			}
+		}
+	}
+
 	// ---- theme: the same switch as the one at the bottom of the
 	// rail. Both drive one piece of app state.
 	Column {
