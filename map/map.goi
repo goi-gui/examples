@@ -92,7 +92,7 @@ Window {
 			}
 
 			Text {
-				text:  "PiriAPI · veri © OpenStreetMap contributors"
+				text:  "PiriAPI · data © OpenStreetMap contributors"
 				role:  "labelSmall"
 				color: theme.onSurfaceVariant
 			}
@@ -114,8 +114,8 @@ Window {
 				for _, g := range bridge.Geoms {
 					Geom {
 						data:      g.Data
-						lineColor: theme.primary
-						fillColor: #6750a433
+						lineColor: red
+						fillColor: #ff000033
 					}
 				}
 
