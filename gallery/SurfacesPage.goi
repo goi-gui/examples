@@ -289,23 +289,29 @@ Column {
 
 		// The panel floats out of the flow, so the box reserves room for it.
 		Column {
-			height:         152
 			crossAxisAlign: start
 
 			Popover {
-				align: center
+				align: start
 
-				Button {
-					label: "Share"
-					icon:  share
+				SplitButton {
+					id:           splitPopover
+					label:        "Share"
+					icon:         share
+					trailingIcon: splitPopover.expanded ? arrow_upward : arrow_downward
+					onClick:      splitPopover.expand()
+					expanded:     true
 				}
 
 				$popover {
 					Card {
-						label:      "Anyone with the link"
-						supporting: "Link sharing is on"
-						width:      260
-						height:     96
+						visible:     splitPopover.expanded
+						label:       "Anyone with the link"
+						supporting:  "Link sharing is on"
+						width:       260
+						height:      96
+						borderWidth: 1
+						borderColor: theme.primary
 					}
 				}
 			}

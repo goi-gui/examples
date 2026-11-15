@@ -223,10 +223,15 @@ Column {
 			role: "titleMedium"
 		}
 
+		// The menu segment's icon follows the button's own state: expand()
+		// toggles it, and the expression reads it back every frame.
 		SplitButton {
-			label: "Split"
-			icon:  add
-			width: 200
+			id:           splitButton
+			label:        "Split"
+			icon:         add
+			width:        200
+			trailingIcon: splitButton.expanded ? arrow_upward : arrow_downward
+			onClick:      splitButton.expand()
 		}
 	}
 
