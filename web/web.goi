@@ -1,94 +1,74 @@
-// The same design language as the desktop examples: this file runs unchanged in
-// a browser.
-
-bridge {
-	onStep func(delta int)
-}
+// The counter, running in a canvas: the same design as examples/counter, so the
+// browser build is one file and no assets.
 
 Window {
-	id:     web
-	title:  "goi in the browser"
-	width:  640
-	height: 760
+	id:     main
+	title:  "Counter"
+	width:  480
+	height: 400
 	theme:  light
 
 	Column {
-		padding: 24
-		gap:     16
-		width:   100%
-		scroll:  true
+		spacing: 0
 
-		Text {
-			text: "goi, in a canvas"
-			role: headlineSmall
+		TopAppBar {
+			id:    appbar
+			label: "Counter"
 		}
 
-		Text {
-			text: "One .goi file, the same tree, laid out and drawn with WebGPU."
-			role: bodyMedium
-		}
+		Column {
+			flex:           1
+			padding:        32
+			spacing:        24
+			crossAxisAlign: center
 
-		Row {
-			gap:           12
-			mainAxisAlign: center
-
-			Button {
-				icon:    remove
-				variant: tonal
-				onClick: bridge.onStep(-1)
-			}
-
-			TextField {
-				id:          name
-				width:       160
-				label:       "Type"
-				placeholder: "type here"
-			}
-
-			Button {
-				icon:    add
+			Card {
 				variant: filled
-				onClick: bridge.onStep(1)
+				width:   360
+
+				Column {
+					spacing:        12
+					crossAxisAlign: center
+
+					Text {
+						text:  "Total"
+						role:  "labelLarge"
+						color: theme.onSurfaceVariant
+					}
+
+					Text {
+						id:    label
+						text:  "0"
+						role:  "displayLarge"
+						color: theme.primary
+					}
+
+					Row {
+						width:     92
+						alignSelf: center
+						spacing:   12
+
+						IconButton {
+							id:      dec
+							icon:    remove
+							variant: outlined
+						}
+
+						IconButton {
+							id:      inc
+							icon:    add
+							variant: filled
+						}
+					}
+
+					Button {
+						id:       reset
+						label:    "Reset"
+						variant:  text
+						disabled: true
+					}
+				}
 			}
-		}
-
-		Video {
-			id:       clip
-			width:    100%
-			height:   220
-			src:      "goi://assets/clip.mp4"
-			controls: true
-			loop:     true
-			muted:    true
-			autoplay: true
-		}
-
-		Button {
-			id:      pick
-			label:   "Pick a file"
-			variant: outlined
-		}
-
-		Text {
-			id:   status
-			text: "0"
-			role: titleMedium
-		}
-
-		Card {
-			width:      100%
-			height:     110
-			label:      "Clicks"
-			supporting: "The number above is the state; this card proves layout inside a browser canvas."
-		}
-
-		LineChart {
-			id:     trend
-			width:  100%
-			height: 200
-			legend: true
-			points: true
-			smooth: true
 		}
 	}
 }
