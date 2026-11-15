@@ -843,4 +843,71 @@ Column {
 			}
 		}
 	}
+
+	Column {
+		spacing: 12
+
+		Text {
+			text: "Scroll snap"
+			role: "titleMedium"
+		}
+
+		Text {
+			text: "The wheel moves one card at a time, a drag settles on the nearer edge, and a fling stops at the next card."
+			role: "bodySmall"
+			wrap: true
+		}
+
+		// A vertical snap area: the axis is the Column's own, so there is no
+		// x/y suffix, and scrollPadding keeps the card off the frame.
+		Column {
+			scroll:         true
+			scrollSnapType: mandatory
+			scrollSnapStop: stop
+			scrollPadding:  12
+			width:          responsive {
+				base: 280
+				md: 420
+			}
+			height:         260
+			radius:         16
+			background:     surfaceContainerHigh
+			padding:        12
+			spacing:        12
+
+			for i := range 4 {
+				Card {
+					label:           formatf("Card %d", i + 1)
+					width:           100%
+					height:          200
+					radius:          12
+					background:      primaryContainer
+					scrollSnapAlign: start
+				}
+			}
+		}
+
+		// The same on a Row: a sideways strip whose cards centre themselves.
+		Row {
+			scroll:         true
+			scrollSnapType: proximity
+			width:          responsive {
+				base: 280
+				md: 420
+			}
+			height:         120
+			spacing:        12
+
+			for i := range 5 {
+				Card {
+					label:           formatf("%d", i + 1)
+					width:           150
+					height:          100
+					radius:          12
+					background:      secondaryContainer
+					scrollSnapAlign: center
+				}
+			}
+		}
+	}
 }
