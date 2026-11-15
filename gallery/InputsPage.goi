@@ -361,9 +361,12 @@ Column {
 			role: "bodySmall"
 		}
 
-		Row {
-			spacing:        28
-			crossAxisAlign: start
+		Grid {
+			columns: responsive {
+				base: 1
+				sm: 2
+			}
+			spacing: 28
 
 			TimePicker {
 				id:    timePicker

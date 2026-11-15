@@ -154,85 +154,24 @@ Window {
 
 					ChartsPage {}
 				}
-
-				// ============================================== motion
-				// ---- compact: bottom bar
-				NavigationBar {
-					id:      navbar
-					visible: responsive {
-						base: true
-						sm: false
-					}
-
-					NavigationItem {
-						label:    "Buttons"
-						icon:     smart_button
-						selected: true
-					}
-
-					NavigationItem {
-						label: "Inputs"
-						icon:  tune
-					}
-
-					NavigationItem {
-						label: "Surfaces"
-						icon:  layers
-					}
-
-					NavigationItem {
-						label: "Feedback"
-						icon:  notifications
-					}
-
-					NavigationItem {
-						label: "Layout"
-						icon:  dashboard
-					}
-
-					NavigationItem {
-						label: "Motion"
-						icon:  animation
-					}
-
-					NavigationItem {
-						label: "Table"
-						icon:  table_chart
-					}
-
-					NavigationItem {
-						label: "Typography"
-						icon:  text_fields
-					}
-
-					NavigationItem {
-						label: "Markdown"
-						icon:  article
-					}
-
-					NavigationItem {
-						label: "Media"
-						icon:  perm_media
-					}
-
-					NavigationItem {
-						label: "Charts"
-						icon:  bar_chart
-					}
-				}
 			}
 		}
 
 		// ---- modal drawer: the same categories, for when a bar or rail is out of
 		// reach, plus the overlay pattern itself.
+		// The pages hold popover panels, which lift their branch above later
+		// siblings. zIndex is the stronger claim, so the drawer and its scrim
+		// stay on top of whatever the page contains.
 		Rectangle {
 			id:         scrim
+			zIndex:     1
 			background: #00000052
 			visible:    false
 		}
 
 		Positioned {
 			id:      drawerFrame
+			zIndex:  2
 			left:    0
 			top:     0
 			bottom:  0

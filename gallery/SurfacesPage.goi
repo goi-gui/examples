@@ -15,14 +15,20 @@ Column {
 		}
 
 		Column {
-			width:      520
+			width:      responsive {
+				base: 100%
+				sm: 520
+			}
 			height:     110
 			radius:     16
 			background: "linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%)"
 		}
 
 		Column {
-			width:      520
+			width:      responsive {
+				base: 100%
+				sm: 520
+			}
 			height:     110
 			radius:     16
 			background: "radial-gradient(circle,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%)"
@@ -30,7 +36,10 @@ Column {
 
 		// A stop may be a colour variable, so a gradient follows the scheme.
 		Column {
-			width:      520
+			width:      responsive {
+				base: 100%
+				sm: 520
+			}
 			height:     110
 			radius:     16
 			background: "linear-gradient(90deg, theme.primary, theme.tertiary 60%, theme.secondary)"
