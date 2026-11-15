@@ -75,7 +75,7 @@ make league
 or:
 
 ```sh
-go run -ldflags=-linkmode=internal ./league
+CGO_ENABLED=0 go run -tags nofakecgo ./league
 ```
 
 Badges are fetched from the network; a team whose badge cannot be downloaded
