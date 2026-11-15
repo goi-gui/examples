@@ -8,7 +8,13 @@
 	html, body { margin: 0; height: 100%; background: #f6f3fb; }
 	/* The canvas is the window: the app follows this box. */
 	body { display: grid; place-items: center; }
-	#goi-app { width: min(100vw, 480px); height: min(100vh, 400px); }
+	#goi-app {
+		width: min(100vw, 480px);
+		height: min(100vh, 400px);
+	}
+	/* The app draws its own focus; a browser outline around the canvas only
+	   shows up as a purple border after the first click. */
+	#goi-app:focus, #goi-app:focus-visible { outline: none; }
 
 	/* The wasm download and first frame take a moment; cover the canvas until
 	   the app dispatches goi-ready from its first presented frame. */
