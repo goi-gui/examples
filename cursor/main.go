@@ -34,10 +34,10 @@ func main() {
 	if err := win.Bind(func(w *ui.Window) error {
 		// The button proves a cursor declaration does not swallow presses: the
 		// tile still counts clicks like any other button.
-		if b, err := ui.ByID[*ui.Button](w, "clickMe"); err == nil {
+		if b, err := w.ByID[*ui.Button]("clickMe"); err == nil {
 			b.OnClick(func(ui.ClickEvent) {
 				count++
-				if n, err := ui.ByID[*ui.Text](w, "clicks"); err == nil {
+				if n, err := w.ByID[*ui.Text]("clicks"); err == nil {
 					n.Text.Set(fmt.Sprintf("%d clicks on the grab button", count))
 				}
 			})

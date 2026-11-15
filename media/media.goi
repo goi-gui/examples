@@ -107,7 +107,7 @@ Window {
 			controls:     true
 			variant:      wavy
 			color:        theme.tertiary
-			surfaceColor: #e8def8
+			surfaceColor: theme.tertiaryContainer
 		}
 
 		Row {

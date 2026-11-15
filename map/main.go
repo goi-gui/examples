@@ -101,7 +101,7 @@ func main() {
 			ui.SetData(w, "Marker", nil)
 			ui.SetData(w, "HasPlace", false)
 		}
-		if p, err := ui.ByID[*ui.Path](w, "route"); err == nil {
+		if p, err := w.ByID[*ui.Path]("route"); err == nil {
 			p.Coordinates.Set(route)
 		}
 
@@ -156,7 +156,7 @@ func search(w *ui.Window, app *ui.App, query string) {
 			results = rows(out.List)
 			ui.SetData(w, "Results", results)
 			route = routeOf(out.List)
-			if p, err := ui.ByID[*ui.Path](w, "route"); err == nil {
+			if p, err := w.ByID[*ui.Path]("route"); err == nil {
 				p.Coordinates.Set(route)
 			}
 			switch len(results) {
@@ -200,7 +200,7 @@ func pick(w *ui.Window, app *ui.App, id string) {
 // the design builds the children the same way it would from a file.
 func showPlace(w *ui.Window, p place) {
 	shown = &p
-	m := ui.MustByID[*ui.Map](w, "map")
+	m := w.MustByID[*ui.Map]("map")
 	ui.SetData(w, "Geoms", geoms(p.Geom))
 	ui.SetData(w, "Marker", p.Center)
 	ui.SetData(w, "HasPlace", len(p.Center) == 2)
@@ -248,11 +248,11 @@ func routeOf(ps []place) []ui.Coord {
 // world returns the map to the whole world when nothing is selected.
 func world(w *ui.Window) {
 	shown, route = nil, nil
-	m := ui.MustByID[*ui.Map](w, "map")
+	m := w.MustByID[*ui.Map]("map")
 	ui.SetData(w, "Geoms", nil)
 	ui.SetData(w, "Marker", nil)
 	ui.SetData(w, "HasPlace", false)
-	if p, err := ui.ByID[*ui.Path](w, "route"); err == nil {
+	if p, err := w.ByID[*ui.Path]("route"); err == nil {
 		p.Coordinates.Set(nil)
 	}
 	m.BBox.Set(nil)

@@ -32,10 +32,10 @@ func main() {
 
 	c := &counter{}
 	err = win.Bind(func(w *ui.Window) error {
-		label := ui.MustByID[*ui.Text](w, "label")
-		inc := ui.MustByID[*ui.IconButton](w, "inc")
-		dec := ui.MustByID[*ui.IconButton](w, "dec")
-		reset := ui.MustByID[*ui.Button](w, "reset")
+		label := w.MustByID[*ui.Text]("label")
+		inc := w.MustByID[*ui.IconButton]("inc")
+		dec := w.MustByID[*ui.IconButton]("dec")
+		reset := w.MustByID[*ui.Button]("reset")
 
 		// render writes the count and keeps the minus disabled at the floor,
 		// so the control never offers an action the state refuses.

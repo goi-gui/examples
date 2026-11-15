@@ -38,15 +38,15 @@ func main() {
 	}
 
 	if err := win.Bind(func(w *ui.Window) error {
-		status, err := ui.ByID[*ui.Text](w, "status")
+		status, err := w.ByID[*ui.Text]("status")
 		if err != nil {
 			return err
 		}
-		video, err := ui.ByID[*ui.Video](w, "video")
+		video, err := w.ByID[*ui.Video]("video")
 		if err != nil {
 			return err
 		}
-		audio, err := ui.ByID[*ui.Audio](w, "audio")
+		audio, err := w.ByID[*ui.Audio]("audio")
 		if err != nil {
 			return err
 		}

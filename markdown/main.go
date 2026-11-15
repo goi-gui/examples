@@ -1,8 +1,7 @@
-// Seed: one colour, a whole scheme. The app builds a light and a dark theme
-// from the same seed with ui.NewThemeFromSeed and defines both by name, so the
-// design selects one with `theme: lightFromSeed` / `theme: darkFromSeed`.
+// Markdown: one document rendered by the Markdown component, from headings and
+// emphasis through lists, quotes and code, in a scrolling column.
 //
-// Run with: go run -ldflags=-linkmode=internal ./seed
+// Run with: go run -ldflags=-linkmode=internal ./markdown
 package main
 
 import (

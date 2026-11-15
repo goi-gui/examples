@@ -32,7 +32,7 @@ func main() {
 	err = win.Bind(func(w *ui.Window) error {
 		// The bridge starts at zero; the design already draws.
 		ui.SetData(w, "count", count)
-		ui.MustByID[*ui.Button](w, "more").OnClick(func(ui.ClickEvent) {
+		w.MustByID[*ui.Button]("more").OnClick(func(ui.ClickEvent) {
 			count++
 			ui.SetData(w, "count", count)
 			ui.SetData(w, "discount", count >= 5)

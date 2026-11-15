@@ -28,7 +28,7 @@ func main() {
 	// StatCard.goi's `value` text inside the Inbox card. The Starred card keeps
 	// its own `starred.value` and its 3.
 	win.Bind(func(w *ui.Window) error {
-		ui.MustByID[*ui.Text](w, "inbox.value").Text.Set("14")
+		w.MustByID[*ui.Text]("inbox.value").Text.Set("14")
 		return nil
 	})
 	if err := app.Run(); err != nil {

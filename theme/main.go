@@ -74,24 +74,24 @@ func main() {
 			name = n
 			w.Root().Theme.Set(n)
 			for i, id := range []string{"segLight", "segDark", "segBrand"} {
-				if seg, err := ui.ByID[*ui.SegmentedButton](w, id); err == nil {
+				if seg, err := w.ByID[*ui.SegmentedButton](id); err == nil {
 					seg.Selected.Set(i == schemeIndex(n))
 				}
 			}
-			if out, err := ui.ByID[*ui.Text](w, "current"); err == nil {
+			if out, err := w.ByID[*ui.Text]("current"); err == nil {
 				out.Text.Set(n)
 			}
-			if sw, err := ui.ByID[*ui.Switch](w, "darkSwitch"); err == nil {
+			if sw, err := w.ByID[*ui.Switch]("darkSwitch"); err == nil {
 				sw.Checked.Set(n == "dark")
 			}
 		}
 		for i, id := range []string{"segLight", "segDark", "segBrand"} {
 			i := i
-			if seg, err := ui.ByID[*ui.SegmentedButton](w, id); err == nil {
+			if seg, err := w.ByID[*ui.SegmentedButton](id); err == nil {
 				seg.OnClick(func(ui.ClickEvent) { apply(schemes[i]) })
 			}
 		}
-		if sw, err := ui.ByID[*ui.Switch](w, "darkSwitch"); err == nil {
+		if sw, err := w.ByID[*ui.Switch]("darkSwitch"); err == nil {
 			sw.OnToggle(func(on bool) {
 				if on {
 					apply("dark")
@@ -100,7 +100,7 @@ func main() {
 				apply("light")
 			})
 		}
-		if shift, err := ui.ByID[*ui.Button](w, "shiftAccent"); err == nil {
+		if shift, err := w.ByID[*ui.Button]("shiftAccent"); err == nil {
 			shift.OnClick(func(ui.ClickEvent) {
 				accents[0], accents[1] = accents[1], accents[0]
 				w.SetCustomColors(map[string]uint32{
@@ -109,10 +109,10 @@ func main() {
 				})
 			})
 		}
-		if add, err := ui.ByID[*ui.IconButton](w, "add"); err == nil {
+		if add, err := w.ByID[*ui.IconButton]("add"); err == nil {
 			add.OnClick(func(ui.ClickEvent) {
 				count++
-				if n, err := ui.ByID[*ui.Text](w, "count"); err == nil {
+				if n, err := w.ByID[*ui.Text]("count"); err == nil {
 					n.Text.Set(strconv.Itoa(count))
 				}
 			})

@@ -54,13 +54,13 @@ func main() {
 		ui.SetData(w, "people", people)
 		ui.SetData(w, "count", len(people))
 
-		table, err := ui.ByID[*ui.Table](w, "people")
+		table, err := w.ByID[*ui.Table]("people")
 		if err != nil {
 			return err
 		}
 		// A header click hands Go the column key and the new direction.
 		table.OnSort(func(s ui.SortOrder) {
-			if t, err := ui.ByID[*ui.Text](w, "sorted"); err == nil {
+			if t, err := w.ByID[*ui.Text]("sorted"); err == nil {
 				dir := "ascending"
 				if !s.Ascending {
 					dir = "descending"
@@ -72,7 +72,7 @@ func main() {
 		// sees, sorted or not. The table is `selectable: multiple`; a single
 		// table would hold at most one.
 		showSelection := func() {
-			detail, err := ui.ByID[*ui.Text](w, "selected")
+			detail, err := w.ByID[*ui.Text]("selected")
 			if err != nil {
 				return
 			}
@@ -95,7 +95,7 @@ func main() {
 			if !table.SortBy(key, ascending) {
 				return
 			}
-			if t, err := ui.ByID[*ui.Text](w, "sorted"); err == nil {
+			if t, err := w.ByID[*ui.Text]("sorted"); err == nil {
 				dir := "ascending"
 				if !ascending {
 					dir = "descending"
@@ -103,21 +103,21 @@ func main() {
 				t.Text.Set(fmt.Sprintf("sorted by %q, %s", key, dir))
 			}
 		}
-		if b, err := ui.ByID[*ui.Button](w, "sortName"); err == nil {
+		if b, err := w.ByID[*ui.Button]("sortName"); err == nil {
 			b.OnClick(func(ui.ClickEvent) { sortBy("name", true) })
 		}
-		if b, err := ui.ByID[*ui.Button](w, "sortAge"); err == nil {
+		if b, err := w.ByID[*ui.Button]("sortAge"); err == nil {
 			b.OnClick(func(ui.ClickEvent) { sortBy("age", false) })
 		}
-		if b, err := ui.ByID[*ui.Button](w, "clearSort"); err == nil {
+		if b, err := w.ByID[*ui.Button]("clearSort"); err == nil {
 			b.OnClick(func(ui.ClickEvent) {
 				table.SortColumn.Set(-1)
-				if t, err := ui.ByID[*ui.Text](w, "sorted"); err == nil {
+				if t, err := w.ByID[*ui.Text]("sorted"); err == nil {
 					t.Text.Set("declaration order")
 				}
 			})
 		}
-		if b, err := ui.ByID[*ui.Button](w, "selectFirstTwo"); err == nil {
+		if b, err := w.ByID[*ui.Button]("selectFirstTwo"); err == nil {
 			b.OnClick(func(ui.ClickEvent) {
 				table.SetSelectedRows(0, 1)
 				showSelection()

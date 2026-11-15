@@ -117,7 +117,7 @@ func main() {
 	if err := win.Bind(func(w *ui.Window) error {
 		// An image that exists only in Go: SetImage takes any image.Image, so a
 		// chart or a screenshot needs no file and no src.
-		if gen, err := ui.ByID[*ui.Image](w, "generated"); err == nil {
+		if gen, err := w.ByID[*ui.Image]("generated"); err == nil {
 			gen.SetImage(gradient(180, 120))
 		}
 		show := func(i int) {
@@ -126,24 +126,24 @@ func main() {
 			}
 			active = i
 			for j, p := range pages {
-				if n, err := ui.ByID[*ui.Column](w, p.id); err == nil {
+				if n, err := w.ByID[*ui.Column](p.id); err == nil {
 					n.SetVisible(j == i)
 				}
 			}
-			if bar, err := ui.ByID[*ui.TopAppBar](w, "appbar"); err == nil {
+			if bar, err := w.ByID[*ui.TopAppBar]("appbar"); err == nil {
 				bar.Label.Set(pages[i].label)
 			}
 			// Every nav surface shows the same selection, whichever one was used.
 			for _, id := range navIDs {
-				if h, _ := ui.ByID[*ui.NavigationRail](w, id); h != nil {
+				if h, _ := w.ByID[*ui.NavigationRail](id); h != nil {
 					selectChildren(h.Base(), i)
 				}
-				if h, _ := ui.ByID[*ui.NavigationBar](w, id); h != nil {
+				if h, _ := w.ByID[*ui.NavigationBar](id); h != nil {
 					selectChildren(h.Base(), i)
 				}
 			}
 			for j, id := range drawerIDs {
-				if item, err := ui.ByID[*ui.NavigationItem](w, id); err == nil {
+				if item, err := w.ByID[*ui.NavigationItem](id); err == nil {
 					item.M3().Selected.Set(j == i)
 				}
 			}
@@ -154,10 +154,10 @@ func main() {
 		// flips at the ends, so a half-open sheet keeps drawing; a second press
 		// mid-slide continues from where it is instead of jumping.
 		const drawerW = 320
-		var drawerStop func()
+		var drawerStop *ui.Tween
 		slideDrawer := func(frame *ui.Positioned, to float64, visibleAfter bool, done func()) {
 			if drawerStop != nil {
-				drawerStop()
+				drawerStop.Stop()
 				drawerStop = nil
 			}
 			from := frame.TranslateX.Get()
@@ -184,8 +184,8 @@ func main() {
 		}
 		setDrawer := func(open bool) {
 			drawerOpen = open
-			scrim, _ := ui.ByID[*ui.Rectangle](w, "scrim")
-			frame, err := ui.ByID[*ui.Positioned](w, "drawerFrame")
+			scrim, _ := w.ByID[*ui.Rectangle]("scrim")
+			frame, err := w.ByID[*ui.Positioned]("drawerFrame")
 			if err != nil {
 				return
 			}
@@ -222,7 +222,7 @@ func main() {
 			}
 			w.Root().Theme.Set(theme)
 			for _, id := range []string{"darkSwitch", "railTheme", "drawerTheme"} {
-				if sw, err := ui.ByID[*ui.Switch](w, id); err == nil {
+				if sw, err := w.ByID[*ui.Switch](id); err == nil {
 					sw.Checked.Set(d)
 				}
 			}
@@ -238,8 +238,8 @@ func main() {
 
 		// Gestures: the card follows a pan and goes home on a double tap or a
 		// long press. The offset lives in the node, so a reload keeps it.
-		if box, err := ui.ByID[*ui.Positioned](w, "dragBox"); err == nil {
-			if knob, err := ui.ByID[*ui.GestureDetector](w, "dragKnob"); err == nil {
+		if box, err := w.ByID[*ui.Positioned]("dragBox"); err == nil {
+			if knob, err := w.ByID[*ui.GestureDetector]("dragKnob"); err == nil {
 				var x float64
 				knob.OnPanStart(func(ui.PanEvent) { x = box.TranslateX.Get() })
 				knob.OnPanUpdate(func(e ui.PanEvent) {
@@ -248,7 +248,7 @@ func main() {
 				})
 				knob.OnDoubleTap(func(ui.ClickEvent) { box.TranslateX.Set(0) })
 				knob.OnLongPress(func(ui.ClickEvent) { box.TranslateX.Set(0) })
-				if label, err := ui.ByID[*ui.Text](w, "dragState"); err == nil {
+				if label, err := w.ByID[*ui.Text]("dragState"); err == nil {
 					knob.OnPanStart(func(ui.PanEvent) { label.Text.Set("Dragging") })
 					knob.OnPanEnd(func(ui.PanEvent) { label.Text.Set("Drag me") })
 				}
@@ -256,15 +256,15 @@ func main() {
 		}
 
 		// Navigation: a click on a destination reports its index.
-		if rail, err := ui.ByID[*ui.NavigationRail](w, "rail"); err == nil {
+		if rail, err := w.ByID[*ui.NavigationRail]("rail"); err == nil {
 			rail.OnSelect(show)
 		}
-		if bar, err := ui.ByID[*ui.NavigationBar](w, "navbar"); err == nil {
+		if bar, err := w.ByID[*ui.NavigationBar]("navbar"); err == nil {
 			bar.OnSelect(show)
 		}
 		for j, id := range drawerIDs {
 			idx := j
-			if item, err := ui.ByID[*ui.NavigationItem](w, id); err == nil {
+			if item, err := w.ByID[*ui.NavigationItem](id); err == nil {
 				item.OnClick(func(ui.ClickEvent) {
 					show(idx)
 					setDrawer(false)
@@ -275,7 +275,7 @@ func main() {
 		// The app-bar leading icon opens the drawer. Its hit area is measured from
 		// the bar's own edge, because a rail beside it moves the bar's left edge
 		// off the window's.
-		if bar, err := ui.ByID[*ui.TopAppBar](w, "appbar"); err == nil {
+		if bar, err := w.ByID[*ui.TopAppBar]("appbar"); err == nil {
 			bar.OnClick(func(e ui.ClickEvent) {
 				local := e.X
 				for n := ui.Node(bar); n != nil; n = n.Base().Parent() {
@@ -286,7 +286,7 @@ func main() {
 				}
 			})
 		}
-		if scrim, err := ui.ByID[*ui.Rectangle](w, "scrim"); err == nil {
+		if scrim, err := w.ByID[*ui.Rectangle]("scrim"); err == nil {
 			scrim.OnClick(func(ui.ClickEvent) { setDrawer(false) })
 		}
 		w.OnKey(func(e ui.KeyEvent) {
@@ -311,9 +311,9 @@ func main() {
 		ui.SetData(w, "uptime", 99.4)
 		ui.SetData(w, "direct", 42.0)
 		w.SetCustomColor("accent", 0xC62828FF)
-		if table, err := ui.ByID[*ui.Table](w, "tablePeople"); err == nil {
+		if table, err := w.ByID[*ui.Table]("tablePeople"); err == nil {
 			showSorted := func(key string, ascending bool, cleared bool) {
-				t, err := ui.ByID[*ui.Text](w, "tableSorted")
+				t, err := w.ByID[*ui.Text]("tableSorted")
 				if err != nil {
 					return
 				}
@@ -328,7 +328,7 @@ func main() {
 				t.Text.Set(fmt.Sprintf("sorted by %q, %s", key, dir))
 			}
 			showSelection := func() {
-				t, err := ui.ByID[*ui.Text](w, "tableSelected")
+				t, err := w.ByID[*ui.Text]("tableSelected")
 				if err != nil {
 					return
 				}
@@ -346,27 +346,27 @@ func main() {
 			table.OnSort(func(s ui.SortOrder) { showSorted(s.Key, s.Ascending, false) })
 			table.OnSelect(func(int) { showSelection() })
 
-			if b, err := ui.ByID[*ui.Button](w, "tableSortName"); err == nil {
+			if b, err := w.ByID[*ui.Button]("tableSortName"); err == nil {
 				b.OnClick(func(ui.ClickEvent) {
 					if table.SortBy("name", true) {
 						showSorted("name", true, false)
 					}
 				})
 			}
-			if b, err := ui.ByID[*ui.Button](w, "tableSortAge"); err == nil {
+			if b, err := w.ByID[*ui.Button]("tableSortAge"); err == nil {
 				b.OnClick(func(ui.ClickEvent) {
 					if table.SortBy("age", false) {
 						showSorted("age", false, false)
 					}
 				})
 			}
-			if b, err := ui.ByID[*ui.Button](w, "tableClearSort"); err == nil {
+			if b, err := w.ByID[*ui.Button]("tableClearSort"); err == nil {
 				b.OnClick(func(ui.ClickEvent) {
 					table.SortColumn.Set(-1)
 					showSorted("", true, true)
 				})
 			}
-			if b, err := ui.ByID[*ui.Button](w, "tableSelectFirstTwo"); err == nil {
+			if b, err := w.ByID[*ui.Button]("tableSelectFirstTwo"); err == nil {
 				b.OnClick(func(ui.ClickEvent) {
 					table.SetSelectedRows(0, 1)
 					showSelection()
@@ -376,10 +376,10 @@ func main() {
 		// The Motion page: the three dots travel the same distance and differ
 		// only in easing. Stops are kept so a second Play cancels the first run
 		// instead of leaving two tweens pulling the same Left property.
-		var easingStops []func()
+		var easingStops []*ui.Tween
 		playEasing := func() {
 			for _, stop := range easingStops {
-				stop()
+				stop.Stop()
 			}
 			easingStops = easingStops[:0]
 			for _, d := range []struct {
@@ -390,7 +390,7 @@ func main() {
 				{"dotStandard", ui.Standard},
 				{"dotEmphasized", ui.Emphasized},
 			} {
-				dot, err := ui.ByID[*ui.Positioned](w, d.id)
+				dot, err := w.ByID[*ui.Positioned](d.id)
 				if err != nil {
 					continue
 				}
@@ -398,24 +398,24 @@ func main() {
 				easingStops = append(easingStops, app.Animate(&dot.Left, 264, 700*time.Millisecond, d.ease))
 			}
 		}
-		if b, err := ui.ByID[*ui.Button](w, "playEasing"); err == nil {
+		if b, err := w.ByID[*ui.Button]("playEasing"); err == nil {
 			b.OnClick(func(ui.ClickEvent) { playEasing() })
 		}
 
 		// One value drives the slider and the progress ring, so the Motion page
 		// shows that any numeric Prop can be animated.
 		valueUp := false
-		if b, err := ui.ByID[*ui.Button](w, "playValue"); err == nil {
+		if b, err := w.ByID[*ui.Button]("playValue"); err == nil {
 			b.OnClick(func(ui.ClickEvent) {
 				valueUp = !valueUp
 				to := 0.9
 				if !valueUp {
 					to = 0.15
 				}
-				if sl, err := ui.ByID[*ui.Slider](w, "motionSlider"); err == nil {
+				if sl, err := w.ByID[*ui.Slider]("motionSlider"); err == nil {
 					app.Animate(&sl.Value, to, 700*time.Millisecond, ui.Standard)
 				}
-				if pg, err := ui.ByID[*ui.CircularProgress](w, "motionProgress"); err == nil {
+				if pg, err := w.ByID[*ui.CircularProgress]("motionProgress"); err == nil {
 					app.Animate(&pg.Value, to, 900*time.Millisecond, ui.Emphasized)
 				}
 			})
@@ -424,20 +424,20 @@ func main() {
 		// The rail switch and the one on the Layout page are both entry points to
 		// the theme.
 		for _, id := range []string{"railTheme", "darkSwitch", "drawerTheme"} {
-			if sw, err := ui.ByID[*ui.Switch](w, id); err == nil {
+			if sw, err := w.ByID[*ui.Switch](id); err == nil {
 				sw.OnToggle(applyTheme)
 			}
 		}
 
 		// The animated Image and SVG demo: one switch drives all three clocks.
-		if sw, err := ui.ByID[*ui.Switch](w, "animPause"); err == nil {
+		if sw, err := w.ByID[*ui.Switch]("animPause"); err == nil {
 			sw.OnToggle(func(paused bool) {
 				for _, id := range []string{"gifImage", "apngImage"} {
-					if im, err := ui.ByID[*ui.Image](w, id); err == nil {
+					if im, err := w.ByID[*ui.Image](id); err == nil {
 						im.Paused.Set(paused)
 					}
 				}
-				if s, err := ui.ByID[*ui.SVG](w, "spinSVG"); err == nil {
+				if s, err := w.ByID[*ui.SVG]("spinSVG"); err == nil {
 					s.Paused.Set(paused)
 				}
 			})
@@ -445,68 +445,68 @@ func main() {
 
 		// loop: false plays one pass and holds the last frame; the switch flips
 		// the same property on every clip.
-		if sw, err := ui.ByID[*ui.Switch](w, "animLoop"); err == nil {
+		if sw, err := w.ByID[*ui.Switch]("animLoop"); err == nil {
 			sw.OnToggle(func(loop bool) {
 				for _, id := range []string{"gifImage", "apngImage"} {
-					if im, err := ui.ByID[*ui.Image](w, id); err == nil {
+					if im, err := w.ByID[*ui.Image](id); err == nil {
 						im.Loop.Set(loop)
 					}
 				}
-				if s, err := ui.ByID[*ui.SVG](w, "spinSVG"); err == nil {
+				if s, err := w.ByID[*ui.SVG]("spinSVG"); err == nil {
 					s.Loop.Set(loop)
 				}
 			})
 		}
 
 		// Wire the stateful controls so the pages behave, not just draw.
-		if sw, err := ui.ByID[*ui.Switch](w, "switchOn"); err == nil {
+		if sw, err := w.ByID[*ui.Switch]("switchOn"); err == nil {
 			sw.OnToggle(func(v bool) { fmt.Println("switch:", v) })
 		}
 		// The FAB menu opens and closes: a closed menu gives its actions no bounds,
 		// so they neither draw nor take a click.
-		if fab, err := ui.ByID[*ui.FABMenu](w, "fabMenu"); err == nil {
+		if fab, err := w.ByID[*ui.FABMenu]("fabMenu"); err == nil {
 			fab.OnClick(func(ui.ClickEvent) {
 				fab.Expanded.Set(!fab.Expanded.Get())
 			})
 		}
-		if cb, err := ui.ByID[*ui.Checkbox](w, "check"); err == nil {
+		if cb, err := w.ByID[*ui.Checkbox]("check"); err == nil {
 			cb.OnToggle(func(v bool) { fmt.Println("checkbox:", v) })
 		}
-		if sl, err := ui.ByID[*ui.Slider](w, "slider"); err == nil {
+		if sl, err := w.ByID[*ui.Slider]("slider"); err == nil {
 			sl.OnChangeValue(func(v float64) { fmt.Printf("slider: %.2f\n", v) })
 		}
-		if f, err := ui.ByID[*ui.TextField](w, "field"); err == nil {
+		if f, err := w.ByID[*ui.TextField]("field"); err == nil {
 			f.OnEdit(func(s string) { fmt.Println("field:", s) })
 		}
 		// The pickers own their value; a click on a cell or the dial sets it and
 		// reports it, so the caption below shows what was picked.
-		if dp, err := ui.ByID[*ui.DatePicker](w, "datePicker"); err == nil {
+		if dp, err := w.ByID[*ui.DatePicker]("datePicker"); err == nil {
 			dp.OnSubmit(func(v string) {
-				if t, err := ui.ByID[*ui.Text](w, "dateValue"); err == nil {
+				if t, err := w.ByID[*ui.Text]("dateValue"); err == nil {
 					t.Text.Set("Picked " + v)
 				}
 			})
 		}
 		picked := func(v string) {
-			if t, err := ui.ByID[*ui.Text](w, "timeValue"); err == nil {
+			if t, err := w.ByID[*ui.Text]("timeValue"); err == nil {
 				t.Text.Set("Picked " + v)
 			}
 		}
 		for _, id := range []string{"timePicker", "timeInput"} {
-			if tp, err := ui.ByID[*ui.TimePicker](w, id); err == nil {
+			if tp, err := w.ByID[*ui.TimePicker](id); err == nil {
 				tp.OnSubmit(picked)
 			}
 		}
-		if cp, err := ui.ByID[*ui.ColorPicker](w, "colorPicker"); err == nil {
+		if cp, err := w.ByID[*ui.ColorPicker]("colorPicker"); err == nil {
 			picked := func(v string) {
-				if t, err := ui.ByID[*ui.Text](w, "colorValue"); err == nil {
+				if t, err := w.ByID[*ui.Text]("colorValue"); err == nil {
 					t.Text.Set("Picked " + v)
 				}
 			}
 			cp.OnSubmit(picked)
 			cp.OnOK(picked)
 			cp.OnCancel(func(v string) {
-				if t, err := ui.ByID[*ui.Text](w, "colorValue"); err == nil {
+				if t, err := w.ByID[*ui.Text]("colorValue"); err == nil {
 					t.Text.Set("Cancelled " + v)
 				}
 			})

@@ -36,7 +36,7 @@ func main() {
 	}
 
 	err = win.Bind(func(w *ui.Window) error {
-		log := ui.MustByID[*ui.Text](w, "log")
+		log := w.MustByID[*ui.Text]("log")
 		add := func(format string, args ...any) {
 			events = append(events, fmt.Sprintf(format, args...))
 			if len(events) > 6 {

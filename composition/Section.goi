@@ -20,8 +20,12 @@ Column {
 			flex: 1
 		}
 
-		$actions {}
+		// The slot is filled by some instances and not others; len is how the
+		// fragment knows which, without a second file.
+		if len($actions) > 0 {
+			$actions
+		}
 	}
 
-	$children {}
+	$children
 }

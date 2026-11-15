@@ -67,37 +67,37 @@ func main() {
 	}
 
 	if err := win.Bind(func(w *ui.Window) error {
-		line, err := ui.ByID[*ui.LineChart](w, "revenue")
+		line, err := w.ByID[*ui.LineChart]("revenue")
 		if err != nil {
 			return err
 		}
 		line.SetData(revenue)
 
-		area, err := ui.ByID[*ui.AreaChart](w, "costs")
+		area, err := w.ByID[*ui.AreaChart]("costs")
 		if err != nil {
 			return err
 		}
 		area.SetData(costs)
 
-		bar, err := ui.ByID[*ui.BarChart](w, "bar")
+		bar, err := w.ByID[*ui.BarChart]("bar")
 		if err != nil {
 			return err
 		}
 		bar.SetData(revenue)
 
 		// The pie's numbers and its slice colours come from the design.
-		pie, err := ui.ByID[*ui.PieChart](w, "channels")
+		pie, err := w.ByID[*ui.PieChart]("channels")
 		if err != nil {
 			return err
 		}
 
-		scatter, err := ui.ByID[*ui.ScatterChart](w, "latency")
+		scatter, err := w.ByID[*ui.ScatterChart]("latency")
 		if err != nil {
 			return err
 		}
 		scatter.SetData(latency)
 
-		radar, err := ui.ByID[*ui.RadarChart](w, "satisfaction")
+		radar, err := w.ByID[*ui.RadarChart]("satisfaction")
 		if err != nil {
 			return err
 		}
@@ -105,12 +105,12 @@ func main() {
 
 		// The gauge's numbers came from the design, so its data is already
 		// there: nothing to set here.
-		gauge, err := ui.ByID[*ui.GaugeChart](w, "uptime")
+		gauge, err := w.ByID[*ui.GaugeChart]("uptime")
 		if err != nil {
 			return err
 		}
 
-		status, err := ui.ByID[*ui.Text](w, "status")
+		status, err := w.ByID[*ui.Text]("status")
 		if err != nil {
 			return err
 		}

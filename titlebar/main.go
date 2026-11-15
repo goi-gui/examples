@@ -28,13 +28,13 @@ func main() {
 		// Both platform layouts exist in the tree; only one is visible, and
 		// binding every id keeps the handler code free of OS checks.
 		for _, id := range []string{"lnxMin", "macMin"} {
-			ui.MustByID[*ui.IconButton](w, id).OnClick(func(ui.ClickEvent) { w.Minimize() })
+			w.MustByID[*ui.IconButton](id).OnClick(func(ui.ClickEvent) { w.Minimize() })
 		}
 		for _, id := range []string{"lnxMax", "macMax"} {
-			ui.MustByID[*ui.IconButton](w, id).OnClick(func(ui.ClickEvent) { w.ToggleMaximize() })
+			w.MustByID[*ui.IconButton](id).OnClick(func(ui.ClickEvent) { w.ToggleMaximize() })
 		}
 		for _, id := range []string{"lnxClose", "macClose"} {
-			ui.MustByID[*ui.IconButton](w, id).OnClick(func(ui.ClickEvent) { w.Close() })
+			w.MustByID[*ui.IconButton](id).OnClick(func(ui.ClickEvent) { w.Close() })
 		}
 		return nil
 	})

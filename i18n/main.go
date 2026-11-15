@@ -39,12 +39,12 @@ func main() {
 		}
 		for _, l := range languages {
 			l := l
-			if b, err := ui.ByID[*ui.Button](w, l.id); err == nil {
+			if b, err := w.ByID[*ui.Button](l.id); err == nil {
 				b.OnClick(func(ui.ClickEvent) { app.SetLanguage(l.code) })
 			}
 		}
 		// An empty code follows the desktop again.
-		if b, err := ui.ByID[*ui.Button](w, "btnSystem"); err == nil {
+		if b, err := w.ByID[*ui.Button]("btnSystem"); err == nil {
 			b.OnClick(func(ui.ClickEvent) { app.SetLanguage("") })
 		}
 		return nil

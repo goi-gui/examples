@@ -23,12 +23,12 @@ func main() {
 	}
 
 	err = win.Bind(func(w *ui.Window) error {
-		page := ui.MustByID[*ui.Column](w, "page")
+		page := w.MustByID[*ui.Column]("page")
 
-		ui.MustByID[*ui.Button](w, "top").OnClick(func(ui.ClickEvent) {
+		w.MustByID[*ui.Button]("top").OnClick(func(ui.ClickEvent) {
 			page.SetScrollOffset(0)
 		})
-		ui.MustByID[*ui.Button](w, "end").OnClick(func(ui.ClickEvent) {
+		w.MustByID[*ui.Button]("end").OnClick(func(ui.ClickEvent) {
 			// Any value past the end reads back as the clamped end, so the
 			// handler needs no knowledge of the content height.
 			page.SetScrollOffset(1e9)

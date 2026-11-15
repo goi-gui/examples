@@ -28,8 +28,8 @@ func main() {
 	names := []string{"primary", "tertiary", "error"}
 
 	if err := win.Bind(func(w *ui.Window) error {
-		icon := ui.MustByID[*ui.SVG](w, "live")
-		label := ui.MustByID[*ui.Text](w, "liveColor")
+		icon := w.MustByID[*ui.SVG]("live")
+		label := w.MustByID[*ui.Text]("liveColor")
 		if err := ui.SetHandler(w, "Pick", func(index int) {
 			icon.Color.Set(colors[index])
 			label.Text.Set(names[index])
@@ -39,7 +39,7 @@ func main() {
 
 		// A document that exists only in Go: no file, no src, just the markup.
 		// SetDataString and SetDataBytes differ only in the argument type.
-		inline := ui.MustByID[*ui.SVG](w, "inline")
+		inline := w.MustByID[*ui.SVG]("inline")
 		docs := []string{
 			`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>`,
 			`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg>`,

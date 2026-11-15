@@ -66,6 +66,62 @@ Column {
 		spacing: 10
 
 		Text {
+			text: "Skeleton"
+			role: "titleMedium"
+		}
+
+		// A paragraph of placeholders: the line sizes are the ones the text will
+		// take, so the page does not jump when the content arrives.
+		Column {
+			spacing: 8
+
+			Skeleton {
+				width:  responsive {
+					base: 280
+					md: 420
+				}
+				height: 16
+			}
+
+			Skeleton {
+				width:  responsive {
+					base: 220
+					md: 340
+				}
+				height: 16
+			}
+
+			Skeleton {
+				width:  responsive {
+					base: 250
+					md: 380
+				}
+				height: 16
+			}
+		}
+
+		// A card-shaped placeholder, with the sweep off: a still block is what a
+		// reduced-motion or screenshot build shows.
+		Skeleton {
+			width:    200
+			height:   96
+			radius:   16
+			animated: false
+		}
+
+		Skeleton {
+			width:     200
+			height:    96
+			radius:    16
+			color:     theme.secondaryContainer
+			highlight: theme.secondary
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
 			text: "Badges"
 			role: "titleMedium"
 		}

@@ -36,25 +36,25 @@ func main() {
 		}
 		render(w)
 
-		if sw, err := ui.ByID[*ui.Switch](w, "lockResize"); err == nil {
+		if sw, err := w.ByID[*ui.Switch]("lockResize"); err == nil {
 			sw.OnToggle(func(on bool) {
 				w.SetResizable(!on)
 				render(w)
 			})
 		}
-		if sw, err := ui.ByID[*ui.Switch](w, "lockMin"); err == nil {
+		if sw, err := w.ByID[*ui.Switch]("lockMin"); err == nil {
 			sw.OnToggle(func(on bool) {
 				w.SetMinimizable(!on)
 				render(w)
 			})
 		}
-		if sw, err := ui.ByID[*ui.Switch](w, "lockMax"); err == nil {
+		if sw, err := w.ByID[*ui.Switch]("lockMax"); err == nil {
 			sw.OnToggle(func(on bool) {
 				w.SetMaximizable(!on)
 				render(w)
 			})
 		}
-		if sw, err := ui.ByID[*ui.Switch](w, "fs"); err == nil {
+		if sw, err := w.ByID[*ui.Switch]("fs"); err == nil {
 			sw.OnToggle(func(on bool) {
 				w.SetFullscreen(on)
 				render(w)
@@ -85,12 +85,12 @@ func main() {
 }
 
 func render(w *ui.Window) {
-	ui.MustByID[*ui.Switch](w, "lockResize").Checked.Set(!w.Resizable())
-	ui.MustByID[*ui.Switch](w, "lockMin").Checked.Set(!w.Minimizable())
-	ui.MustByID[*ui.Switch](w, "lockMax").Checked.Set(!w.Maximizable())
-	ui.MustByID[*ui.Switch](w, "fs").Checked.Set(w.Fullscreen())
-	ui.MustByID[*ui.Text](w, "status").Text.Set(status(w))
-	ui.MustByID[*ui.Text](w, "state").Text.Set(state(w))
+	w.MustByID[*ui.Switch]("lockResize").Checked.Set(!w.Resizable())
+	w.MustByID[*ui.Switch]("lockMin").Checked.Set(!w.Minimizable())
+	w.MustByID[*ui.Switch]("lockMax").Checked.Set(!w.Maximizable())
+	w.MustByID[*ui.Switch]("fs").Checked.Set(w.Fullscreen())
+	w.MustByID[*ui.Text]("status").Text.Set(status(w))
+	w.MustByID[*ui.Text]("state").Text.Set(state(w))
 }
 
 func status(w *ui.Window) string {
