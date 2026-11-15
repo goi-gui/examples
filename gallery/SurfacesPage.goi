@@ -298,9 +298,8 @@ Column {
 					id:           splitPopover
 					label:        "Share"
 					icon:         share
-					trailingIcon: splitPopover.expanded ? arrow_upward : arrow_downward
+					trailingIcon: splitPopover.expanded ? arrow_drop_up : arrow_drop_down
 					onClick:      splitPopover.expand()
-					expanded:     true
 				}
 
 				$popover {
