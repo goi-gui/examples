@@ -1,0 +1,150 @@
+// The popover example: three alignments, and a panel near the bottom edge that
+// flips above its anchor instead of leaving the window.
+//
+// A popover is always visible, so the design decides when the panel shows: one
+// bridge value names the open one, and every button toggles it from Go.
+
+bridge {
+	open   string
+	onOpen func(which string)
+}
+
+Window {
+	title:  "Popover"
+	width:  760
+	height: 560
+	theme:  light
+
+	Column {
+		TopAppBar {
+			label: "Popover"
+		}
+
+		Column {
+			flex:    1
+			padding: 24
+			spacing: 18
+
+			Text {
+				text:  "align places the panel against the anchor's own box. Click a button to open its panel."
+				role:  bodySmall
+				wrap:  true
+				width: 520
+			}
+
+			Row {
+				spacing: 28
+
+				Popover {
+					align: start
+
+					Button {
+						label:   "Start"
+						onClick: bridge.onOpen("start")
+					}
+
+					if bridge.open == "start" {
+						$popover {
+							Card {
+								label:  "Start panel"
+								width:  200
+								height: 88
+							}
+						}
+					}
+				}
+
+				Popover {
+					align: center
+
+					Button {
+						label:   "Center"
+						onClick: bridge.onOpen("center")
+					}
+
+					if bridge.open == "center" {
+						$popover {
+							Card {
+								label:  "Centered panel"
+								width:  220
+								height: 88
+							}
+						}
+					}
+				}
+
+				Popover {
+					align: end
+
+					Button {
+						label:   "End"
+						onClick: bridge.onOpen("end")
+					}
+
+					if bridge.open == "end" {
+						$popover {
+							Card {
+								label:  "End panel"
+								width:  200
+								height: 88
+							}
+						}
+					}
+				}
+			}
+
+			// Room for the open panel, which floats out of the flow.
+			Rectangle {
+				height: 100
+			}
+
+			Text {
+				text:  "Near the bottom the panel flips above its anchor, so it stays on screen; a later sibling cannot paint over it."
+				role:  bodySmall
+				wrap:  true
+				width: 520
+			}
+
+			// Pushes the last popover to the bottom edge.
+			Rectangle {
+				flex: 1
+			}
+
+			Popover {
+				align: start
+
+				Button {
+					label:   "Open at the bottom"
+					onClick: bridge.onOpen("bottom")
+				}
+
+				if bridge.open == "bottom" {
+					$popover {
+						Card {
+							variant: elevated
+							width:   240
+							height:  120
+
+							Column {
+								padding: 8
+								spacing: 2
+
+								MenuItem {
+									label:   "Duplicate"
+									icon:    content_copy
+									onClick: bridge.onOpen("")
+								}
+
+								MenuItem {
+									label:   "Archive"
+									icon:    archive
+									onClick: bridge.onOpen("")
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
