@@ -638,4 +638,47 @@ Column {
 			}
 		}
 	}
+
+	// ---- icons: a standalone glyph is an element of its own, so a page can
+	// size and tint one without a button around it.
+	Column {
+		spacing: 8
+
+		Text {
+			text: "Icons"
+			role: "titleMedium"
+		}
+
+		Row {
+			spacing:        20
+			crossAxisAlign: center
+
+			Icon {
+				icon: home
+			}
+
+			Icon {
+				icon:  favorite
+				size:  32
+				color: primary
+			}
+
+			Icon {
+				icon:  notifications
+				size:  40
+				color: tertiary
+			}
+
+			Icon {
+				icon:  settings
+				size:  48
+				color: onSurfaceVariant
+			}
+		}
+
+		Text {
+			text: "Each glyph fills the shorter side of its box; size is the square shortcut and color takes a role or a hex."
+			role: "bodySmall"
+		}
+	}
 }
