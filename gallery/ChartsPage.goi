@@ -114,6 +114,8 @@ Column {
 			height:     240
 			legend:     true
 			values:     true
+			barRadius:  4
+			barGap:     6
 			categories: ["Direct", "Search", "Social", "Email"]
 
 			ChartSeries {
