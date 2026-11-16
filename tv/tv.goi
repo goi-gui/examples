@@ -88,6 +88,9 @@ Window {
 							background: conditional {
 								theme.primary: i == bridge.selectedChannelIndex
 							}
+							labelColor: conditional {
+								theme.onPrimary: i == bridge.selectedChannelIndex
+							}
 						}
 					}
 				}
