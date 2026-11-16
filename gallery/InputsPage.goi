@@ -238,6 +238,26 @@ Column {
 		}
 
 		TextField {
+			id:          password
+			label:       "Password"
+			text:        "correct horse"
+			obscureText: true
+			leadingIcon: lock
+			variant:     filled
+			width:       responsive {
+				base: 280
+				md: 360
+			}
+
+			$trailing {
+				IconButton {
+					icon:    visibility
+					onClick: password.setObscureText(false)
+				}
+			}
+		}
+
+		TextField {
 			label:       "Supporting text"
 			placeholder: "With a helper line"
 			supporting:  "Shown under the field"
