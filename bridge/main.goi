@@ -48,9 +48,9 @@ Window {
 			spacing: 12
 
 			Button {
-				label:   "Click"
-				icon:    touch_app
-				onClick: bridge.onClick("button")
+				label:       "Click"
+				leadingIcon: touch_app
+				onClick:     bridge.onClick("button")
 			}
 
 			IconButton {

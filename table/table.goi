@@ -31,8 +31,8 @@ Window {
 		spacing: 0
 
 		TopAppBar {
-			label: "Table"
-			icon:  "table_chart"
+			label:       "Table"
+			leadingIcon: "table_chart"
 		}
 
 		Column {

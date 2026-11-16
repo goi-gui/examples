@@ -204,22 +204,52 @@ Column {
 
 			ListItem {
 				label:        "List item"
-				icon:         person
+				leadingIcon:  person
 				trailingIcon: chevron_right
 			}
 
 			ListItem {
-				label:      "Two lines"
-				supporting: "Supporting text"
-				icon:       photo
+				label:       "Two lines"
+				supporting:  "Supporting text"
+				leadingIcon: photo
 			}
 
 			Divider {}
 
 			ListItem {
-				label:    "Selected"
-				icon:     star
-				selected: true
+				label:       "Selected"
+				leadingIcon: star
+				selected:    true
+			}
+
+			ListItem {
+				label:            "Tinted"
+				supporting:       "Each part has its own colour"
+				leadingIcon:      favorite
+				leadingIconColor: theme.tertiary
+				labelColor:       theme.primary
+				supportingColor:  theme.secondary
+			}
+
+			// A body instead of an icon: the slot is centred in the icon square.
+			ListItem {
+				label:      "Slots"
+				supporting: "An avatar and a switch"
+
+				$leading {
+					Rectangle {
+						width:      32
+						height:     32
+						radius:     16
+						background: theme.primaryContainer
+					}
+				}
+
+				$trailing {
+					Switch {
+						checked: true
+					}
+				}
 			}
 		}
 	}
@@ -265,25 +295,25 @@ Column {
 			width: 260
 
 			MenuItem {
-				label: "Cut"
-				icon:  content_cut
+				label:       "Cut"
+				leadingIcon: content_cut
 			}
 
 			MenuItem {
-				label: "Copy"
-				icon:  content_copy
+				label:       "Copy"
+				leadingIcon: content_copy
 			}
 
 			MenuItem {
-				label: "Paste"
-				icon:  content_paste
+				label:       "Paste"
+				leadingIcon: content_paste
 			}
 
 			Divider {}
 
 			MenuItem {
-				label: "More…"
-				icon:  more_horiz
+				label:       "More…"
+				leadingIcon: more_horiz
 			}
 		}
 	}
@@ -306,7 +336,7 @@ Column {
 				SplitButton {
 					id:           splitPopover
 					label:        "Share"
-					icon:         share
+					leadingIcon:  share
 					trailingIcon: splitPopover.expanded ? arrow_drop_up : arrow_drop_down
 					onClick:      splitPopover.expand()
 				}

@@ -483,8 +483,8 @@ Column {
 			spacing: 8
 
 			Chip {
-				label: "Wrap"
-				icon:  event
+				label:       "Wrap"
+				leadingIcon: event
 			}
 
 			Chip {
@@ -550,8 +550,8 @@ Column {
 				bottom: 16
 
 				Chip {
-					label: "bottom right"
-					icon:  star
+					label:       "bottom right"
+					leadingIcon: star
 				}
 			}
 
@@ -838,9 +838,9 @@ Column {
 
 			for _, row := range bridge.rows {
 				ListItem {
-					label:      row.title
-					supporting: row.supporting
-					icon:       circle
+					label:       row.title
+					supporting:  row.supporting
+					leadingIcon: circle
 				}
 			}
 		}

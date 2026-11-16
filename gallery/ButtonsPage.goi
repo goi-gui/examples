@@ -41,8 +41,8 @@ Column {
 			}
 
 			Button {
-				label: "With icon"
-				icon:  add
+				label:       "With icon"
+				leadingIcon: add
 			}
 
 			Button {
@@ -96,15 +96,15 @@ Column {
 			spacing: 8
 
 			Button {
-				label:   "Back"
-				icon:    arrow_back
-				variant: tonal
+				label:       "Back"
+				leadingIcon: arrow_back
+				variant:     tonal
 			}
 
 			Button {
-				label:   "Next"
-				icon:    arrow_forward
-				variant: tonal
+				label:       "Next"
+				leadingIcon: arrow_forward
+				variant:     tonal
 			}
 		}
 
@@ -155,7 +155,7 @@ Column {
 
 			Button {
 				label:       "Gradient"
-				icon:        palette
+				leadingIcon: palette
 				radius:      12
 				color:       theme.onPrimary
 				borderWidth: 1
@@ -228,7 +228,7 @@ Column {
 		SplitButton {
 			id:           splitButton
 			label:        "Split"
-			icon:         add
+			leadingIcon:  add
 			width:        200
 			trailingIcon: splitButton.expanded ? arrow_upward : arrow_downward
 			onClick:      splitButton.expand()

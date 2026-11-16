@@ -20,8 +20,8 @@ Window {
 		spacing: 0
 
 		TopAppBar {
-			label: "SVG"
-			icon:  home
+			label:       "SVG"
+			leadingIcon: home
 		}
 
 		Column {

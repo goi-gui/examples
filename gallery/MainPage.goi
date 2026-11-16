@@ -41,59 +41,59 @@ Window {
 				scroll:        true
 
 				NavigationItem {
-					label:    "Buttons"
-					icon:     smart_button
-					selected: true
+					label:       "Buttons"
+					leadingIcon: smart_button
+					selected:    true
 				}
 
 				NavigationItem {
-					label: "Inputs"
-					icon:  tune
+					label:       "Inputs"
+					leadingIcon: tune
 				}
 
 				NavigationItem {
-					label: "Surfaces"
-					icon:  layers
+					label:       "Surfaces"
+					leadingIcon: layers
 				}
 
 				NavigationItem {
-					label: "Feedback"
-					icon:  notifications
+					label:       "Feedback"
+					leadingIcon: notifications
 				}
 
 				NavigationItem {
-					label: "Layout"
-					icon:  dashboard
+					label:       "Layout"
+					leadingIcon: dashboard
 				}
 
 				NavigationItem {
-					label: "Motion"
-					icon:  animation
+					label:       "Motion"
+					leadingIcon: animation
 				}
 
 				NavigationItem {
-					label: "Table"
-					icon:  table_chart
+					label:       "Table"
+					leadingIcon: table_chart
 				}
 
 				NavigationItem {
-					label: "Typography"
-					icon:  text_fields
+					label:       "Typography"
+					leadingIcon: text_fields
 				}
 
 				NavigationItem {
-					label: "Markdown"
-					icon:  article
+					label:       "Markdown"
+					leadingIcon: article
 				}
 
 				NavigationItem {
-					label: "Media"
-					icon:  perm_media
+					label:       "Media"
+					leadingIcon: perm_media
 				}
 
 				NavigationItem {
-					label: "Charts"
-					icon:  bar_chart
+					label:       "Charts"
+					leadingIcon: bar_chart
 				}
 
 				// The theme lives at the bottom of the rail, where a rail puts its
@@ -118,11 +118,11 @@ Window {
 				flex:    1
 
 				TopAppBar {
-					id:    appbar
-					label: "Buttons"
+					id:          appbar
+					label:       "Buttons"
 					// The hamburger is the compact-only way into the drawer: at
 					// sm and up the rail is on screen, so the bar drops it.
-					icon:  responsive {
+					leadingIcon: responsive {
 						base: menu
 						sm: ""
 					}
@@ -182,70 +182,70 @@ Window {
 				label: "Categories"
 
 				NavigationItem {
-					id:       drawerButtons
-					label:    "Buttons"
-					icon:     smart_button
-					selected: true
+					id:          drawerButtons
+					label:       "Buttons"
+					leadingIcon: smart_button
+					selected:    true
 				}
 
 				NavigationItem {
-					id:    drawerInputs
-					label: "Inputs"
-					icon:  tune
+					id:          drawerInputs
+					label:       "Inputs"
+					leadingIcon: tune
 				}
 
 				NavigationItem {
-					id:    drawerSurfaces
-					label: "Surfaces"
-					icon:  layers
+					id:          drawerSurfaces
+					label:       "Surfaces"
+					leadingIcon: layers
 				}
 
 				NavigationItem {
-					id:    drawerFeedback
-					label: "Feedback"
-					icon:  notifications
+					id:          drawerFeedback
+					label:       "Feedback"
+					leadingIcon: notifications
 				}
 
 				NavigationItem {
-					id:    drawerLayout
-					label: "Layout"
-					icon:  dashboard
+					id:          drawerLayout
+					label:       "Layout"
+					leadingIcon: dashboard
 				}
 
 				NavigationItem {
-					id:    drawerMotion
-					label: "Motion"
-					icon:  animation
+					id:          drawerMotion
+					label:       "Motion"
+					leadingIcon: animation
 				}
 
 				NavigationItem {
-					id:    drawerTable
-					label: "Table"
-					icon:  table_chart
+					id:          drawerTable
+					label:       "Table"
+					leadingIcon: table_chart
 				}
 
 				NavigationItem {
-					id:    drawerTypography
-					label: "Typography"
-					icon:  text_fields
+					id:          drawerTypography
+					label:       "Typography"
+					leadingIcon: text_fields
 				}
 
 				NavigationItem {
-					id:    drawerMarkdown
-					label: "Markdown"
-					icon:  article
+					id:          drawerMarkdown
+					label:       "Markdown"
+					leadingIcon: article
 				}
 
 				NavigationItem {
-					id:    drawerMedia
-					label: "Media"
-					icon:  perm_media
+					id:          drawerMedia
+					label:       "Media"
+					leadingIcon: perm_media
 				}
 
 				NavigationItem {
-					id:    drawerCharts
-					label: "Charts"
-					icon:  bar_chart
+					id:          drawerCharts
+					label:       "Charts"
+					leadingIcon: bar_chart
 				}
 
 				// Same place a rail keeps its own actions: pinned to the bottom,

@@ -30,9 +30,13 @@ func main() {
 
 	err = win.Bind(func(w *ui.Window) error {
 		ui.SetData(w, "channels", channels)
+		ui.SetData(w, "selectedChannelIndex", -1)
 		ui.SetData(w, "selectedChannelURL", "")
-		ui.SetHandler(w, "onChannelPick", func(channelURL string) {
-			ui.SetData(w, "selectedChannelURL", channelURL)
+		ui.SetHandler(w, "onChannelPick", func(index int) {
+			selectedChannel := channels[index]
+			ui.SetData(w, "selectedChannelIndex", index)
+			ui.SetData(w, "selectedChannelName", selectedChannel.Name)
+			ui.SetData(w, "selectedChannelURL", selectedChannel.URL)
 		})
 
 		channelListBG := w.MustByID[*ui.Column]("channelListBG")

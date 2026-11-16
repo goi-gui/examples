@@ -29,8 +29,8 @@ Window {
 			spacing: 24
 
 			TopAppBar {
-				label: "Composition"
-				icon:  "dashboard"
+				label:       "Composition"
+				leadingIcon: "dashboard"
 			}
 
 			Text {
@@ -78,8 +78,8 @@ Window {
 				// $actions is a named slot: only this instance fills it.
 				$actions {
 					Chip {
-						label: "New"
-						icon:  add
+						label:       "New"
+						leadingIcon: add
 					}
 				}
 

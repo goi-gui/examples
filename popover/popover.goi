@@ -135,15 +135,15 @@ Window {
 								spacing: 2
 
 								MenuItem {
-									label:   "Duplicate"
-									icon:    content_copy
-									onClick: bridge.onOpen("")
+									label:       "Duplicate"
+									leadingIcon: content_copy
+									onClick:     bridge.onOpen("")
 								}
 
 								MenuItem {
-									label:   "Archive"
-									icon:    archive
-									onClick: bridge.onOpen("")
+									label:       "Archive"
+									leadingIcon: archive
+									onClick:     bridge.onOpen("")
 								}
 							}
 						}

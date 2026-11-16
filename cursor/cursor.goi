@@ -12,8 +12,8 @@ Window {
 		spacing: 0
 
 		TopAppBar {
-			label: "Cursor"
-			icon:  "ads_click"
+			label:       "Cursor"
+			leadingIcon: "ads_click"
 		}
 
 		Column {

@@ -197,8 +197,8 @@ Column {
 			text: "Saves to your library"
 
 			Button {
-				label: "Hover me"
-				icon:  save
+				label:       "Hover me"
+				leadingIcon: save
 			}
 		}
 	}

@@ -151,8 +151,8 @@ Column {
 			spacing: 8
 
 			Chip {
-				label: "Assist"
-				icon:  event
+				label:       "Assist"
+				leadingIcon: event
 			}
 
 			Chip {
@@ -227,11 +227,11 @@ Column {
 		}
 
 		TextField {
-			label:   "Email"
-			text:    "user@example.com"
-			icon:    mail
-			variant: filled
-			width:   responsive {
+			label:       "Email"
+			text:        "user@example.com"
+			leadingIcon: mail
+			variant:     filled
+			width:       responsive {
 				base: 280
 				md: 360
 			}

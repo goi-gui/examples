@@ -54,9 +54,9 @@ Window {
 		}
 
 		Button {
-			id:    more
-			label: "Add one"
-			icon:  add
+			id:          more
+			label:       "Add one"
+			leadingIcon: add
 		}
 
 		Text {

@@ -141,9 +141,9 @@ Column {
 		}
 
 		Button {
-			id:    playEasing
-			label: "Play"
-			icon:  play_arrow
+			id:          playEasing
+			label:       "Play"
+			leadingIcon: play_arrow
 		}
 	}
 
@@ -183,10 +183,10 @@ Column {
 		}
 
 		Button {
-			id:      playValue
-			label:   "Animate value"
-			icon:    play_arrow
-			variant: tonal
+			id:          playValue
+			label:       "Animate value"
+			leadingIcon: play_arrow
+			variant:     tonal
 		}
 	}
 

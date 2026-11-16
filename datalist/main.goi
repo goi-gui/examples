@@ -64,11 +64,11 @@ Window {
 
 			for _, ticket := range bridge.tickets {
 				ListItem {
-					label:      ticket.title
-					supporting: ticket.requester
-					selected:   ticket.unread
-					icon:       mail
-					onClick:    bridge.onOpen(ticket.title)
+					label:       ticket.title
+					supporting:  ticket.requester
+					selected:    ticket.unread
+					leadingIcon: mail
+					onClick:     bridge.onOpen(ticket.title)
 				}
 			}
 		}

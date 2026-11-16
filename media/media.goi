@@ -47,44 +47,44 @@ Window {
 			gap: 12
 
 			Button {
-				label:   "Play"
-				icon:    play_arrow
-				onClick: video.play()
+				label:       "Play"
+				leadingIcon: play_arrow
+				onClick:     video.play()
 			}
 
 			Button {
-				variant: outlined
-				label:   "Pause"
-				icon:    pause
-				onClick: video.pause()
+				variant:     outlined
+				label:       "Pause"
+				leadingIcon: pause
+				onClick:     video.pause()
 			}
 
 			Button {
-				variant: text
-				label:   "Restart"
-				icon:    replay
-				onClick: video.seek(0)
+				variant:     text
+				label:       "Restart"
+				leadingIcon: replay
+				onClick:     video.seek(0)
 			}
 
 			Button {
-				variant: text
-				label:   "Mute"
-				icon:    volume_off
-				onClick: video.volume(0)
+				variant:     text
+				label:       "Mute"
+				leadingIcon: volume_off
+				onClick:     video.volume(0)
 			}
 
 			Button {
-				variant: text
-				label:   "Full volume"
-				icon:    volume_up
-				onClick: video.volume(1)
+				variant:     text
+				label:       "Full volume"
+				leadingIcon: volume_up
+				onClick:     video.volume(1)
 			}
 
 			Button {
-				variant: text
-				label:   "Fullscreen"
-				icon:    fullscreen
-				onClick: video.toggleFullscreen()
+				variant:     text
+				label:       "Fullscreen"
+				leadingIcon: fullscreen
+				onClick:     video.toggleFullscreen()
 			}
 		}
 
@@ -116,17 +116,17 @@ Window {
 			gap: 12
 
 			Button {
-				variant: outlined
-				label:   "Toggle"
-				icon:    play_pause
-				onClick: audio.toggle()
+				variant:     outlined
+				label:       "Toggle"
+				leadingIcon: play_pause
+				onClick:     audio.toggle()
 			}
 
 			Button {
-				variant: text
-				label:   "Skip 5s"
-				icon:    forward_5
-				onClick: audio.seek(5)
+				variant:     text
+				label:       "Skip 5s"
+				leadingIcon: forward_5
+				onClick:     audio.seek(5)
 			}
 		}
 

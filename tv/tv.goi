@@ -1,8 +1,10 @@
 bridge {
-	channels           []Channel
-	selectedChannelURL string
-	onChannelPick      func(url string)
-	toggleChannelList  func()
+	channels             []Channel
+	selectedChannelIndex int
+	selectedChannelName  string
+	selectedChannelURL   string
+	onChannelPick        func(i int)
+	toggleChannelList    func()
 }
 
 type Channel {
@@ -81,8 +83,11 @@ Window {
 
 					for i, channel := range bridge.channels {
 						ListItem {
-							label:   channel.Name
-							onClick: bridge.onChannelPick(channel.URL)
+							label:      channel.Name
+							onClick:    bridge.onChannelPick(i)
+							background: conditional {
+								theme.primary: i == bridge.selectedChannelIndex
+							}
 						}
 					}
 				}
