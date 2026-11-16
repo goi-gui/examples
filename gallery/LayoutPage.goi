@@ -679,6 +679,64 @@ Column {
 		spacing: 10
 
 		Text {
+			text: "Scale"
+			role: "titleMedium"
+		}
+
+		Text {
+			text: "Layout keeps every box where it was; only the paint stretches."
+			role: "bodySmall"
+			wrap: true
+		}
+
+		Row {
+			spacing:        36
+			crossAxisAlign: center
+
+			Column {
+				width:      60
+				height:     36
+				radius:     8
+				background: theme.secondaryContainer
+				scale:      none
+			}
+
+			Column {
+				width:      60
+				height:     36
+				radius:     8
+				background: theme.secondaryContainer
+				scale:      1.5
+			}
+
+			Column {
+				width:      60
+				height:     36
+				radius:     8
+				background: theme.secondaryContainer
+				scale:      0.5
+			}
+
+			Column {
+				width:      60
+				height:     36
+				radius:     8
+				background: theme.secondaryContainer
+				scale:      1.6 0.6
+			}
+		}
+
+		Text {
+			text:  "scaled text"
+			role:  "titleMedium"
+			scale: 1.4
+		}
+	}
+
+	Column {
+		spacing: 10
+
+		Text {
 			text: "Expressions"
 			role: "titleMedium"
 		}
