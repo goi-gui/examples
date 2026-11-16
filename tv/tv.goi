@@ -1,0 +1,102 @@
+bridge {
+	channels           []Channel
+	selectedChannelURL string
+	onChannelPick      func(url string)
+	toggleChannelList  func()
+}
+
+type Channel {
+	Name string
+	URL  string
+}
+
+Window {
+	title:     "Turkish TV"
+	maximized: true
+	theme:     dark
+
+	Stack {
+		Row {
+			Column {
+				id:         channelListBG
+				width:      400
+				background: red
+			}
+
+			Column {
+				width:          window.width - channelListBG.width
+				mainAxisAlign:  center
+				crossAxisAlign: center
+
+				if bridge.selectedChannelURL != "" {
+					Stack {
+						Video {
+							id:       video
+							src:      bridge.selectedChannelURL
+							width:    100%
+							height:   100%
+							autoplay: true
+							variant:  wavy
+						}
+
+						Positioned {
+							right: 20
+							top:   20
+
+							IconButton {
+								icon:    fullscreen
+								onClick: video.fullscreen()
+							}
+						}
+					}
+				} else {
+					Text {
+						text: "Select a channel to watch"
+					}
+				}
+			}
+		}
+
+		Positioned {
+			left:       0
+			top:        0
+			translateX: -400 + channelListBG.width
+
+			Column {
+				width:      400
+				height:     window.height
+				background: theme.surfaceContainer
+
+				Row {
+					padding: 15
+
+					Text {
+						text: "Turkish TV"
+						role: titleLarge
+					}
+				}
+
+				List {
+					flex: 1
+
+					for i, channel := range bridge.channels {
+						ListItem {
+							label:   channel.Name
+							onClick: bridge.onChannelPick(channel.URL)
+						}
+					}
+				}
+			}
+		}
+
+		Positioned {
+			top:  20
+			left: channelListBG.width + 20
+
+			IconButton {
+				icon:    menu
+				onClick: bridge.toggleChannelList()
+			}
+		}
+	}
+}

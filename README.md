@@ -15,7 +15,8 @@ CGO_ENABLED=0 go run -tags nofakecgo ./counter
 `make counter` does the same, and every example has a target of that name. The
 build is cgo-free: purego loads the SDL3 runtime library at run time, so there is
 no C toolchain to install. A few examples need more than the framework —
-`media` needs `ffmpeg` on `PATH` (or `GOI_FFMPEG`) and `map` needs network access.
+`media` needs `ffmpeg` on `PATH` (or `GOI_FFMPEG`), while `map` and `tv` need
+network access.
 
 ## Start here
 
@@ -226,14 +227,25 @@ HTTP calls.
 
 ### media
 
-Audio and video players. The video below is a live HLS stream with the player's
-own controls, and the two audio bars show the default bar and the `wavy` variant
-with its `surfaceColor` set from a theme role. The buttons drive the same methods
-a design calls by id.
+Audio and video players. The video plays a local clip with its SRT subtitle
+track drawn over the picture, and the two audio bars show the default bar and the
+`wavy` variant with its `surfaceColor` set from a theme role. The buttons drive
+the same methods a design calls by id.
 
 | Light | Dark |
 | --- | --- |
 | ![media in the light scheme](images/media-light.png) | ![media in the dark scheme](images/media-dark.png) |
+
+### tv
+
+A live television player. The channel list is bridge data filled from Go, and
+picking a row sets the URL the `Video` plays; the list itself slides in and out
+with a tween on its width, driven from a Go handler. The channels are public HLS
+streams, so it needs network access.
+
+| Light | Dark |
+| --- | --- |
+| ![tv in the light scheme](images/tv-light.png) | ![tv in the dark scheme](images/tv-dark.png) |
 
 ### search
 
