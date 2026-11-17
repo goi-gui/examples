@@ -94,4 +94,31 @@ Column {
 			            print("easing", i, 0.5)"!
 		}
 	}
+
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Mermaid"
+			role: "titleMedium"
+		}
+
+		Mermaid {
+			width: responsive {
+				base: 300
+				md: 520
+			}
+			data:  !"flowchart LR
+			         A[Start] --> B{Ready?}
+			         B -->|yes| C([Ship])
+			         B -->|no| D[Wait]"!
+		}
+
+		Text {
+			text:  "The source is a block string. The diagram renders when this section is on screen, in a bitmap that follows the theme."
+			role:  "bodySmall"
+			wrap:  true
+			width: 420
+		}
+	}
 }
