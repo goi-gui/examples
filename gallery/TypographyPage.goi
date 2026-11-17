@@ -674,6 +674,13 @@ Column {
 				size:  48
 				color: onSurfaceVariant
 			}
+
+			Icon {
+				icon:       star
+				size:       40
+				color:      tertiary
+				filledIcon: true
+			}
 		}
 
 		Text {
