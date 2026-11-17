@@ -52,18 +52,19 @@ Column {
 		}
 
 		Slider {
-			id:    slider
-			value: 0.4
-			min:   0
-			max:   1
-			width: responsive {
+			id:          slider
+			value:       0.4
+			min:         0
+			max:         1
+			showTooltip: true
+			width:       responsive {
 				base: 280
 				md: 360
 			}
 		}
 
 		Text {
-			text: "Drag the handle, or use the arrow keys."
+			text: "Drag the handle, or use the arrow keys. The value follows the pointer in a bubble."
 			role: "bodySmall"
 		}
 	}
@@ -115,13 +116,14 @@ Column {
 		}
 
 		Slider {
-			variant: range
-			value:   20
-			end:     70
-			min:     0
-			max:     100
-			step:    5
-			width:   responsive {
+			variant:     range
+			value:       20
+			end:         70
+			min:         0
+			max:         100
+			step:        5
+			showTooltip: true
+			width:       responsive {
 				base: 280
 				md: 360
 			}
