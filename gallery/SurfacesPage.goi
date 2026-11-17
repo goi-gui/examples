@@ -258,8 +258,35 @@ Column {
 			role: "titleMedium"
 		}
 
+		// primary stacks an icon over the label and hugs the content with its
+		// indicator; secondary is the shorter, text-only bar.
 		Tabs {
-			width: responsive {
+			variant: primary
+			width:   responsive {
+				base: 100%
+				md: 420
+			}
+
+			Tab {
+				label:       "Flights"
+				leadingIcon: flight
+				selected:    true
+			}
+
+			Tab {
+				label:       "Trips"
+				leadingIcon: luggage
+			}
+
+			Tab {
+				label:       "Explore"
+				leadingIcon: explore
+			}
+		}
+
+		Tabs {
+			variant: secondary
+			width:   responsive {
 				base: 100%
 				md: 420
 			}
