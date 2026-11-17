@@ -426,10 +426,11 @@ Column {
 				}
 				height: 320
 				data:   !"architecture-beta
-				          service a
-				          service b
-
-				          "!
+				          service web(server)[Web]
+				          service api(server)[API]
+				          service db(database)[Database]
+				          web:R --> L:api
+				          api:R --> L:db"!
 			}
 		}
 
