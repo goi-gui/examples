@@ -1038,4 +1038,72 @@ Column {
 			}
 		}
 	}
+
+	// ---- flex: one container, two axes. The direction is a property, so a
+	// Go call or an expression flips the layout without a second subtree.
+	Column {
+		spacing: 8
+
+		Text {
+			text: "Flex"
+			role: "titleMedium"
+		}
+
+		Flex {
+			direction: row
+			spacing:   12
+
+			Rectangle {
+				width:      48
+				height:     48
+				radius:     10
+				background: theme.primary
+			}
+
+			Rectangle {
+				width:      48
+				height:     48
+				radius:     10
+				background: theme.secondaryContainer
+			}
+
+			Rectangle {
+				width:      48
+				height:     48
+				radius:     10
+				background: theme.tertiary
+			}
+		}
+
+		Flex {
+			direction: column
+			spacing:   12
+
+			Rectangle {
+				width:      156
+				height:     20
+				radius:     10
+				background: theme.primary
+			}
+
+			Rectangle {
+				width:      156
+				height:     20
+				radius:     10
+				background: theme.secondaryContainer
+			}
+
+			Rectangle {
+				width:      156
+				height:     20
+				radius:     10
+				background: theme.tertiary
+			}
+		}
+
+		Text {
+			text: "direction row and direction column, from the same element."
+			role: "bodySmall"
+		}
+	}
 }
