@@ -215,7 +215,7 @@ Column {
 				width:      100%
 				height:     100%
 				radius:     16
-				background: surfaceContainerHigh
+				background: theme.surfaceContainerHigh
 			}
 
 			Positioned {
@@ -234,7 +234,7 @@ Column {
 						width:      100%
 						height:     100%
 						radius:     16
-						background: primary
+						background: theme.primary
 					}
 
 					Text {

@@ -153,14 +153,14 @@ Window {
 							width:      64
 							height:     32
 							radius:     8
-							background: brandAccent
+							background: customColor.brandAccent
 						}
 
 						Rectangle {
 							width:      64
 							height:     32
 							radius:     8
-							background: brandTint
+							background: customColor.brandTint
 						}
 					}
 

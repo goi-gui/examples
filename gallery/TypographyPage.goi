@@ -578,7 +578,7 @@ Column {
 
 			Text {
 				text:  "a theme role keeps following the scheme"
-				color: tertiary
+				color: theme.tertiary
 			}
 
 			Text {
@@ -659,25 +659,25 @@ Column {
 			Icon {
 				icon:  favorite
 				size:  32
-				color: primary
+				color: theme.primary
 			}
 
 			Icon {
 				icon:  notifications
 				size:  40
-				color: tertiary
+				color: theme.tertiary
 			}
 
 			Icon {
 				icon:  settings
 				size:  48
-				color: onSurfaceVariant
+				color: theme.onSurfaceVariant
 			}
 
 			Icon {
 				icon:       star
 				size:       40
-				color:      tertiary
+				color:      theme.tertiary
 				filledIcon: true
 			}
 		}

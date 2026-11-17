@@ -40,42 +40,42 @@ Window {
 					width:      12
 					height:     12
 					radius:     999
-					background: primary
+					background: theme.primary
 				}
 
 				Rectangle {
 					width:      20
 					height:     20
 					radius:     999
-					background: primary
+					background: theme.primary
 				}
 
 				Rectangle {
 					width:      32
 					height:     32
 					radius:     999
-					background: primary
+					background: theme.primary
 				}
 
 				Rectangle {
 					width:      48
 					height:     48
 					radius:     999
-					background: tertiary
+					background: theme.tertiary
 				}
 
 				Rectangle {
 					width:      72
 					height:     72
 					radius:     999
-					background: primary
+					background: theme.primary
 				}
 
 				Rectangle {
 					width:      96
 					height:     96
 					radius:     999
-					background: primary
+					background: theme.primary
 				}
 			}
 		}
@@ -96,46 +96,46 @@ Window {
 				Rectangle {
 					width:      64
 					height:     64
-					background: surfaceContainerHighest
+					background: theme.surfaceContainerHighest
 				}
 
 				Rectangle {
 					width:      64
 					height:     64
 					radius:     4
-					background: surfaceContainerHighest
+					background: theme.surfaceContainerHighest
 				}
 
 				Rectangle {
 					width:      64
 					height:     64
 					radius:     12
-					background: surfaceContainerHighest
+					background: theme.surfaceContainerHighest
 				}
 
 				Rectangle {
 					width:      64
 					height:     64
 					radius:     24
-					background: surfaceContainerHighest
+					background: theme.surfaceContainerHighest
 				}
 
 				Rectangle {
 					width:           64
 					height:          64
 					radius:          16
-					background:      surfaceContainerHigh
+					background:      theme.surfaceContainerHigh
 					borderThickness: 1
-					borderColor:     outline
+					borderColor:     theme.outline
 				}
 
 				Rectangle {
 					width:           64
 					height:          64
 					radius:          16
-					background:      surface
+					background:      theme.surface
 					borderThickness: 3
-					borderColor:     primary
+					borderColor:     theme.primary
 				}
 			}
 		}
@@ -207,7 +207,7 @@ Window {
 				src:    "curve.svg"
 				width:  360
 				height: 180
-				color:  primary
+				color:  theme.primary
 			}
 		}
 	}
