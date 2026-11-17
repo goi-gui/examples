@@ -346,6 +346,17 @@ Column {
 			}
 			height:      160
 		}
+
+		TextArea {
+			label:       "Outlined notes"
+			placeholder: "The label sits on the border"
+			variant:     outlined
+			width:       responsive {
+				base: 300
+				md: 420
+			}
+			height:      140
+		}
 	}
 
 	Column {
