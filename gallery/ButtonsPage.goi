@@ -305,4 +305,60 @@ Column {
 			role: "bodySmall"
 		}
 	}
+
+	// ---- ripple: press feedback is a property, so a plain surface can have one
+	// and a control that ripples by default can drop it. Press any of these.
+	Column {
+		spacing: 10
+
+		Text {
+			text: "Ripple"
+			role: "titleMedium"
+		}
+
+		Row {
+			spacing:        12
+			crossAxisAlign: center
+
+			Rectangle {
+				width:      120
+				height:     48
+				radius:     24
+				background: theme.primaryContainer
+				ripple:     true
+			}
+
+			Rectangle {
+				width:      120
+				height:     48
+				radius:     8
+				background: theme.secondaryContainer
+				ripple:     true
+			}
+
+			Image {
+				src:    "goi://sample.jpg"
+				width:  96
+				height: 48
+				radius: 8
+				ripple: true
+			}
+
+			Chip {
+				label:  "Chip, off"
+				ripple: false
+			}
+
+			Button {
+				label:  "Button, off"
+				ripple: false
+			}
+		}
+
+		Text {
+			text: "A pill, a rounded box and a picture with ripple: true; a chip and a button with ripple: false, though both ripple by default. The disc is clipped to the shape it belongs to."
+			role: "bodySmall"
+			wrap: true
+		}
+	}
 }
