@@ -25,12 +25,12 @@ Window {
 			height:  120
 
 			Rectangle {
-				width:       160
-				height:      120
-				radius:      18
-				background:  #3b82f6
-				borderColor: #ffffff
-				borderWidth: 3
+				width:           160
+				height:          120
+				radius:          18
+				background:      #3b82f6
+				borderColor:     #ffffff
+				borderThickness: 3
 			}
 
 			Rectangle {
@@ -41,14 +41,14 @@ Window {
 			}
 
 			Column {
-				width:       160
-				height:      120
-				radius:      8
-				background:  #1b1d22
-				borderColor: #a78bfa
-				borderWidth: 2
-				padding:     16
-				spacing:     6
+				width:           160
+				height:          120
+				radius:          8
+				background:      #1b1d22
+				borderColor:     #a78bfa
+				borderThickness: 2
+				padding:         16
+				spacing:         6
 
 				Text {
 					text:     "Bordered"

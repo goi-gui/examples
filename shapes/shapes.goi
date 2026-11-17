@@ -122,21 +122,21 @@ Window {
 				}
 
 				Rectangle {
-					width:       64
-					height:      64
-					radius:      16
-					background:  surfaceContainerHigh
-					borderWidth: 1
-					borderColor: outline
+					width:           64
+					height:          64
+					radius:          16
+					background:      surfaceContainerHigh
+					borderThickness: 1
+					borderColor:     outline
 				}
 
 				Rectangle {
-					width:       64
-					height:      64
-					radius:      16
-					background:  surface
-					borderWidth: 3
-					borderColor: primary
+					width:           64
+					height:          64
+					radius:          16
+					background:      surface
+					borderThickness: 3
+					borderColor:     primary
 				}
 			}
 		}
