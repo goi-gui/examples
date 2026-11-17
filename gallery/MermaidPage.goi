@@ -1,0 +1,774 @@
+// Mermaid: the same source a Mermaid.js page renders, drawn by the pure-Go
+// renderer. Every diagram type Pele knows is written as data on this page; the
+// component keeps each diagram's aspect and follows the app's colour scheme.
+
+Column {
+	id:             pageMermaid
+	visible:        false
+	spacing:        24
+	padding:        20
+	crossAxisAlign: start
+
+	Column {
+		spacing: 4
+		width:   560
+
+		Text {
+			text: "Mermaid"
+			role: "titleMedium"
+		}
+
+		Text {
+			text:  "Thirty-three diagram types, parsed and drawn in Go: no browser, no Node and no network. Each source is a block string, contained in a 500 by 320 box. The renderer waits until a diagram is on screen and keeps the bitmap sharp at the size the design draws it."
+			role:  "bodySmall"
+			wrap:  true
+			width: 560
+		}
+	}
+
+	Grid {
+		columns: responsive {
+			base: 1
+			md: 2
+		}
+		spacing: 16
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Flowchart"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"flowchart LR
+				            A[Mermaid text] --> B{OK?}
+				            B -->|yes| C([Done])
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Sequence"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"sequenceDiagram
+				          participant Alice
+				          participant Bob
+				          Alice->>Bob: Hello
+				          Bob-->>Alice: Hi
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Class"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"classDiagram
+				          class Animal
+				          Animal : +int age
+				          Animal : +eat()
+				          class Dog
+				          Animal <|-- Dog
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "State"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"stateDiagram-v2
+				          [*] --> Still
+				          Still --> Moving
+				          Moving --> [*]
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Entity relationship"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"erDiagram
+				          CUSTOMER ||--o{ ORDER : places
+				          ORDER ||--|{ LINE-ITEM : contains
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Gantt"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"gantt
+				          title A Gantt
+				          dateFormat YYYY-MM-DD
+				          section A
+				          Task: 2024-01-01, 3d
+				          Other: after Task, 2d
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Pie"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"pie title Pets
+				          "Dogs": 386
+				          "Cats": 85
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Quadrant"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"quadrantChart
+				          x-axis Low --> High
+				          y-axis Low --> High
+				          A: [0.3,0.6]
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "User journey"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"journey
+				          title My day
+				          section Work
+				          Make tea: 5: Me
+				          Do work: 3: Me
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Git graph"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"gitGraph
+				          commit
+				          branch develop
+				          commit
+				          checkout main
+				          commit
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Mindmap"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"mindmap
+				            root((Root))
+				              A
+				              B
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Timeline"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"timeline
+				          section abc-123
+				          2020: A
+				          2021: B
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Sankey"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"sankey-beta
+				          A,B,10
+				          B,C,5
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "XY chart"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"xychart-beta
+				          title Sales
+				          x-axis [jan, feb]
+				          y-axis 0 --> 100
+				          bar [10,20]
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Block"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"block-beta
+				          columns 2
+				          A B
+
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Packet"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"packet-beta
+				          0-10: "test"
+				          11: "single"
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Kanban"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"kanban
+				            root
+				              child1
+				              child2
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Architecture"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"architecture-beta
+				          service a
+				          service b
+
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "C4"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"C4Context
+				          title System
+				          Person(a, "A")
+				          System(b, "B")
+				          Rel(a,b,"uses")
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Requirement"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"requirementDiagram
+				          requirement test_req {
+				          id: test_id
+				          text: the test text.
+				          risk: High
+				          verifymethod: Analysis
+				          }
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Radar"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"radar-beta
+				          axis a["A"], b["B"]
+				          curve c["C"]{1,2}
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Treemap"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"treemap-beta
+				          "Root"
+				            "A": 10
+				            "B": 20
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Venn"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"venn-beta
+				          set A["A"]
+				          set B["B"]
+				          text A "one"
+				          text B "two"
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Ishikawa"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"ishikawa-beta
+				          Problem
+				          Cause A
+				            Subcause A1
+				          Cause B
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Use case"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"usecase-beta
+				          direction LR
+				          actor Customer
+				          Checkout("Place order")
+				          Customer --> Checkout
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "TreeView"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"treeView-beta
+				          root/
+				            src/
+				              index.js
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Swimlane"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"swimlane-beta LR
+				            subgraph Customer
+				              request[Request service]
+				            end
+				            subgraph Support
+				              triage[Triage]
+				            end
+				            request --> triage
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Event modeling"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"eventmodeling
+				          tf 01 ui Shop.Cart
+				          tf 02 cmd AddItem
+				          tf 03 evt ItemAdded
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Wardley"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"wardley-beta
+				          title W
+				          component A [0.5,0.5]
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Cynefin"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"cynefin-beta
+				          clear
+				            "A"
+				          complicated
+				            "B"
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Agentflow"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"agentflow-beta
+				          global
+				            A
+				          end
+				          flow
+				           A --> B --> C
+				          end
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Railroad"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"railroad-beta
+				          rule = sequence(terminal("a"), nonterminal("b")) ;
+				          "!
+			}
+		}
+
+		Column {
+			spacing: 6
+
+			Text {
+				text: "Info"
+				role: "labelLarge"
+			}
+
+			Mermaid {
+				width:  responsive {
+					base: 280
+					md: 500
+				}
+				height: 320
+				data:   !"info
+				          "!
+			}
+		}
+	}
+}
