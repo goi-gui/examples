@@ -76,9 +76,8 @@ Window {
 			}
 
 			List {
-				width:  100%
-				flex:   1
-				scroll: true
+				width: 100%
+				flex:  1
 
 				for _, r := range bridge.Results {
 					ListItem {

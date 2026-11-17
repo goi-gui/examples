@@ -1,6 +1,5 @@
 Column {
 	id:             pageButtons
-	scroll:         true
 	spacing:        24
 	crossAxisAlign: start
 	padding:        20

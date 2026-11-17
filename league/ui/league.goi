@@ -119,7 +119,6 @@ Window {
 		Table {
 			width:        100%
 			flex:         1
-			scroll:       true
 			striped:      true
 			stickyHeader: true
 

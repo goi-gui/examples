@@ -6,7 +6,6 @@ Window {
 	Column {
 		flex:    1
 		padding: 24
-		scroll:  true
 
 		Markdown {
 			text: !"# h1 Heading

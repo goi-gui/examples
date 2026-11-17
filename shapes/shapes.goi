@@ -13,7 +13,6 @@ Window {
 
 	Column {
 		id:             pageShapes
-		scroll:         true
 		spacing:        28
 		padding:        24
 		crossAxisAlign: start

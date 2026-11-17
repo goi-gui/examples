@@ -16,7 +16,6 @@
 Column {
 	id:             pageCharts
 	visible:        false
-	scroll:         true
 	spacing:        24
 	padding:        20
 	crossAxisAlign: start

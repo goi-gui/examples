@@ -19,7 +19,6 @@ Window {
 		Column {
 			id:             page
 			flex:           1
-			scroll:         true
 			padding:        24
 			spacing:        20
 			crossAxisAlign: start

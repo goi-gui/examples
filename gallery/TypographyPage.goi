@@ -6,7 +6,6 @@
 Column {
 	id:             pageTypography
 	visible:        false
-	scroll:         true
 	spacing:        24
 	padding:        20
 	crossAxisAlign: start

@@ -100,7 +100,6 @@ Window {
 
 					Column {
 						flex:          1
-						scroll:        true
 						paddingBottom: responsive {
 							base: 300
 							sm: 0
@@ -140,7 +139,6 @@ Window {
 
 							// Images
 							Flex {
-								scroll:         true
 								scrollSnapType: mandatory
 								direction:      responsive {
 									base: row
@@ -275,7 +273,6 @@ Window {
 									Row {
 										gap:           10
 										flex:          1
-										scroll:        true
 										hideScrollbar: true
 										paddingRight:  20
 

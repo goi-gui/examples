@@ -38,7 +38,6 @@ Window {
 				// Room under the theme switch, so it does not touch the edge.
 				paddingTop:    16
 				paddingBottom: 16
-				scroll:        true
 
 				NavigationItem {
 					label:       "Buttons"

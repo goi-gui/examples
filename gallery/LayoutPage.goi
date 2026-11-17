@@ -10,7 +10,6 @@ type galleryRow {
 Column {
 	id:             pageLayout
 	visible:        false
-	scroll:         true
 	spacing:        24
 	padding:        20
 	crossAxisAlign: start
@@ -917,7 +916,6 @@ Column {
 		// A vertical snap area: the axis is the Column's own, so there is no
 		// x/y suffix, and scrollPadding keeps the card off the frame.
 		Column {
-			scroll:         true
 			scrollSnapType: mandatory
 			scrollSnapStop: stop
 			scrollPadding:  12
@@ -945,7 +943,6 @@ Column {
 
 		// The same on a Row: a sideways strip whose cards centre themselves.
 		Row {
-			scroll:         true
 			scrollSnapType: proximity
 			width:          responsive {
 				base: 280

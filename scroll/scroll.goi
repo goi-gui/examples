@@ -38,7 +38,6 @@ Window {
 		// A Row scrolls horizontally: the chips overflow the 488 dp strip.
 		Row {
 			id:           strip
-			scroll:       true
 			scrollShadow: true
 			spacing:      8
 			paddingLeft:  10
@@ -90,7 +89,6 @@ Window {
 		Column {
 			id:             page
 			flex:           1
-			scroll:         true
 			scrollShadow:   true
 			scrollbarWidth: 6
 			scrollbarColor: theme.primary
