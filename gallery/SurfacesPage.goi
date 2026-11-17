@@ -158,7 +158,6 @@ Column {
 				width:      220
 				label:      "One"
 				supporting: "Scroll sideways"
-				variant:    filled
 			}
 
 			Card {
@@ -171,14 +170,12 @@ Column {
 				width:      220
 				label:      "Three"
 				supporting: "The strip clips"
-				variant:    outlined
 			}
 
 			Card {
 				width:      220
 				label:      "Four"
 				supporting: "Last item"
-				variant:    filled
 			}
 		}
 

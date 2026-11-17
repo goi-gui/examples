@@ -221,7 +221,6 @@ Column {
 			}
 
 			Divider {
-				variant:     vertical
 				height:      24
 				marginLeft:  6
 				marginRight: 6
@@ -240,7 +239,6 @@ Column {
 			}
 
 			Divider {
-				variant:     vertical
 				height:      24
 				marginLeft:  6
 				marginRight: 6

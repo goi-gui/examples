@@ -98,13 +98,11 @@ Column {
 			Button {
 				label:       "Back"
 				leadingIcon: arrow_back
-				variant:     tonal
 			}
 
 			Button {
 				label:       "Next"
 				leadingIcon: arrow_forward
-				variant:     tonal
 			}
 		}
 
