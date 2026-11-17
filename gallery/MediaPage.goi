@@ -51,13 +51,13 @@ Column {
 
 			// No src: Go supplies the bitmap with SetImage.
 			Image {
-				id:          generated
-				width:       180
-				height:      120
-				radius:      12
-				fit:         cover
-				borderColor: theme.primary
-				borderWidth: 1
+				id:              generated
+				width:           180
+				height:          120
+				radius:          12
+				fit:             cover
+				borderColor:     theme.primary
+				borderThickness: 1
 			}
 		}
 

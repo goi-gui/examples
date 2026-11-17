@@ -681,4 +681,27 @@ Column {
 			role: "bodySmall"
 		}
 	}
+
+	// ---- truncation: a long run ends with an ellipsis instead of running
+	// past its box, and a paragraph can be clamped to a line count.
+	Column {
+		spacing: 8
+
+		Text {
+			text: "Truncation"
+			role: "titleMedium"
+		}
+
+		Text {
+			text:     "A title that would run past its box is cut with an ellipsis instead of overflowing the row around it"
+			width:    280
+			truncate: true
+		}
+
+		Text {
+			text:     "A paragraph that is clamped to two lines ends with an ellipsis, so the list keeps its rhythm however long the copy is"
+			width:    280
+			maxLines: 2
+		}
+	}
 }

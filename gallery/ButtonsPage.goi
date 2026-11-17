@@ -154,22 +154,22 @@ Column {
 			spacing: 16
 
 			Button {
-				label:       "Gradient"
-				leadingIcon: palette
-				radius:      12
-				color:       theme.onPrimary
-				borderWidth: 1
-				borderColor: theme.outline
-				background:  "linear-gradient(120deg, theme.primary, theme.tertiary)"
+				label:           "Gradient"
+				leadingIcon:     palette
+				radius:          12
+				color:           theme.onPrimary
+				borderThickness: 1
+				borderColor:     theme.outline
+				background:      "linear-gradient(120deg, theme.primary, theme.tertiary)"
 			}
 
 			Button {
-				label:       "Outlined accent"
-				variant:     text
-				color:       theme.tertiary
-				radius:      10
-				borderWidth: 1.5
-				borderColor: theme.tertiary
+				label:           "Outlined accent"
+				variant:         text
+				color:           theme.tertiary
+				radius:          10
+				borderThickness: 1.5
+				borderColor:     theme.tertiary
 			}
 		}
 

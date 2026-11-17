@@ -203,14 +203,14 @@ Column {
 		}
 
 		TextField {
-			label:       "Styled field"
-			placeholder: "Your own box"
-			background:  theme.surfaceContainerHigh
-			borderWidth: 2
-			borderColor: theme.tertiary
-			radius:      18
-			color:       theme.onSurface
-			width:       responsive {
+			label:           "Styled field"
+			placeholder:     "Your own box"
+			background:      theme.surfaceContainerHigh
+			borderThickness: 2
+			borderColor:     theme.tertiary
+			radius:          18
+			color:           theme.onSurface
+			width:           responsive {
 				base: 280
 				md: 360
 			}
