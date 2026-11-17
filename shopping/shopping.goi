@@ -1,0 +1,554 @@
+Window {
+	theme:  lightFromSeed
+	title:  "Shopping"
+	width:  1000
+	height: 800
+
+	Column {
+		mainAxisAlign:  center
+		crossAxisAlign: center
+
+		Row {
+			NavigationRail {
+				crossAxisAlign: center
+				paddingY:       20
+				background:     theme.surface
+				visible:        responsive {
+					base: false
+					sm: true
+				}
+
+				Icon {
+					icon: diamond
+					size: 40
+				}
+
+				Rectangle {
+					flex: 1
+				}
+
+				NavigationItem {
+					leadingIcon: diamond
+					label:       "Featured"
+					selected:    true
+				}
+
+				NavigationItem {
+					leadingIcon: chair
+					label:       "Apartment"
+				}
+
+				NavigationItem {
+					leadingIcon: watch
+					label:       "Accessories"
+				}
+
+				NavigationItem {
+					leadingIcon: apparel
+					label:       "Apparel"
+				}
+
+				NavigationItem {
+					leadingIcon: potted_plant
+					label:       "Objects"
+				}
+
+				Rectangle {
+					flex: 1
+				}
+			}
+
+			Stack {
+				flex:           1
+				crossAxisAlign: center
+
+				Column {
+					height: window.height
+
+					// mobile top bar
+					Row {
+						crossAxisAlign: center
+						mainAxisAlign:  spaceBetween
+						padding:        20
+						visible:        responsive {
+							base: true
+							sm: false
+						}
+
+						Row {
+							gap: 20
+
+							IconButton {
+								icon:    arrow_left_alt
+								variant: tonal
+							}
+
+							// Title
+							Text {
+								text:     "Child T-shirt"
+								fontSize: 36
+							}
+						}
+
+						// Price
+						Text {
+							role:   titleLarge
+							text:   "$240"
+							weight: 600
+						}
+					}
+
+					Column {
+						flex:          1
+						scroll:        true
+						paddingBottom: responsive {
+							base: 300
+							sm: 0
+						}
+
+						Flex {
+							direction:    responsive {
+								base: column
+								sm: row
+							}
+							padding:      20
+							paddingRight: 0
+
+							// mobile breadcrumb
+							Breadcrumb {
+								visible:      responsive {
+									base: true
+									sm: false
+								}
+								marginBottom: 20
+
+								Text {
+									text:  "Featured"
+									color: theme.onSurfaceVariant
+								}
+
+								Text {
+									text:  "LMBRJK"
+									color: theme.onSurfaceVariant
+								}
+
+								Text {
+									text:  "Tops"
+									color: theme.onSurface
+								}
+							}
+
+							// Images
+							Flex {
+								scroll:         true
+								scrollSnapType: mandatory
+								direction:      responsive {
+									base: row
+									sm: column
+								}
+								width:          responsive {
+									base: 100%
+									sm: 350
+								}
+								paddingRight:   responsive {
+									base: 20
+									sm: 0
+								}
+								gap:            20
+
+								Image {
+									src:             "goi://assets/tshirtmodelpink.jpg"
+									width:           responsive {
+										base: 80%
+										sm: 100%
+									}
+									height:          responsive {
+										base: 400
+										sm: 500
+									}
+									radius:          20
+									scrollSnapAlign: start
+								}
+
+								Image {
+									src:             "goi://assets/tshirtmodelblue.jpg"
+									width:           responsive {
+										base: 80%
+										sm: 100%
+									}
+									height:          responsive {
+										base: 400
+										sm: 200
+									}
+									radius:          20
+									scrollSnapAlign: start
+								}
+
+								Image {
+									src:             "goi://assets/tshirtmodelpurple.jpg"
+									width:           responsive {
+										base: 80%
+										sm: 100%
+									}
+									height:          responsive {
+										base: 400
+										sm: 200
+									}
+									radius:          20
+									scrollSnapAlign: start
+								}
+							}
+
+							// content
+							Column {
+								flex:         1
+								padding:      20
+								paddingRight: 0
+
+								// content top
+								Row {
+									mainAxisAlign: spaceBetween
+									paddingRight:  20
+									visible:       responsive {
+										base: false
+										sm: true
+									}
+
+									// desktop breadcrumb
+									Breadcrumb {
+										Text {
+											text:  "Featured"
+											color: theme.onSurfaceVariant
+										}
+
+										Text {
+											text:  "LMBRJK"
+											color: theme.onSurfaceVariant
+										}
+
+										Text {
+											text:  "Tops"
+											color: theme.onSurface
+										}
+									}
+
+									// Price
+									Text {
+										role:   titleLarge
+										text:   "$240"
+										weight: 600
+									}
+								}
+
+								// Title
+								Text {
+									text:      "Child T-shirt"
+									fontSize:  36
+									marginTop: 20
+									visible:   responsive {
+										base: false
+										sm: true
+									}
+								}
+
+								// Description
+								Column {
+									marginTop:    20
+									paddingRight: 20
+
+									Text {
+										text: "Give your little one the ultimate combination of comfort, durability, and vibrant style with our Everyday Kids' T-Shirt. Crafted with care for active kids, this tee is designed to keep up with every adventure—from playground fun to cozy days at home."
+										wrap: true
+									}
+								}
+
+								// Size
+								Row {
+									marginTop:      20
+									crossAxisAlign: center
+									gap:            20
+
+									Text {
+										text: "Size"
+									}
+
+									Row {
+										gap:           10
+										flex:          1
+										scroll:        true
+										hideScrollbar: true
+										paddingRight:  20
+
+										Chip {
+											label: "00"
+										}
+
+										Chip {
+											label: "02"
+										}
+
+										Chip {
+											label: "04"
+										}
+
+										Chip {
+											label:           "06"
+											background:      theme.primaryContainer
+											borderThickness: 1
+										}
+
+										Chip {
+											label: "08"
+										}
+
+										Chip {
+											label: "10"
+										}
+
+										Chip {
+											label: "12"
+										}
+
+										Chip {
+											label: "14"
+										}
+
+										Chip {
+											label: "16"
+										}
+									}
+								}
+
+								Column {
+									paddingRight: 20
+
+									// Color
+									Row {
+										marginTop:      20
+										crossAxisAlign: center
+										gap:            20
+
+										Text {
+											text: "Color"
+										}
+
+										Row {
+											gap:            10
+											flex:           1
+											crossAxisAlign: center
+
+											Rectangle {
+												background:      #d4a6aa
+												width:           48
+												height:          40
+												radius:          10
+												borderThickness: 2
+												borderColor:     black
+											}
+
+											Rectangle {
+												background: #7babe7
+												width:      40
+												height:     20
+												radius:     10
+											}
+
+											Rectangle {
+												background: #432a80
+												width:      40
+												height:     20
+												radius:     10
+											}
+										}
+									}
+
+									// Buttons
+									Row {
+										marginTop: 20
+										height:    50
+										gap:       10
+
+										Button {
+											variant: tonal
+											label:   "Add to shopping basket"
+											radius:  10
+											flex:    1
+											height:  100%
+										}
+
+										IconButton {
+											icon:    favorite
+											variant: tonal
+											radius:  10
+											height:  100%
+											width:   50
+										}
+									}
+
+									// More Details
+									Row {
+										marginTop:  20
+										background: theme.surfaceVariant
+										padding:    16
+										radius:     10
+
+										Text {
+											text: "More details"
+											role: titleMedium
+										}
+									}
+
+									// Ratings and Reviews
+									Column {
+										padding:    10
+										marginTop:  10
+										gap:        6
+										background: theme.surfaceVariant
+										radius:     10
+
+										// Title
+										Row {
+											padding:        10
+											paddingRight:   0
+											mainAxisAlign:  spaceBetween
+											crossAxisAlign: center
+											background:     theme.surfaceContainer
+											radiusTop:      5
+
+											Text {
+												text: "Ratings and Reviews"
+												role: titleMedium
+											}
+
+											IconButton {
+												icon: keyboard_arrow_up
+											}
+										}
+
+										Column {
+											padding:    10
+											background: theme.surfaceContainer
+											radiusTop:  5
+
+											// Review title
+											Row {
+												background:     theme.surfaceContainer
+												radiusTop:      5
+												crossAxisAlign: center
+												gap:            10
+
+												Row {
+													for range 5 {
+														Icon {
+															icon: star
+															size: 20
+														}
+													}
+												}
+
+												Text {
+													text:     "Perfect transition piece, just need more options"
+													role:     titleSmall
+													truncate: true
+													flex:     1
+												}
+											}
+
+											Text {
+												text:     "I've been living in this t-shirt since it arrived. As someone who is constantly gping from video call to meet friends, it's been a lifesaver. The cornflower color is stunning in person -- bright enough. The cornflower color is stunning in person -- bright enough"
+												wrap:     true
+												maxLines: 4
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+
+				// NavigationBar Bottom
+				Positioned {
+					visible: responsive {
+						base: true
+						sm: false
+					}
+					bottom:  0
+
+					NavigationBar {
+						NavigationItem {
+							leadingIcon: diamond
+							label:       "Featured"
+							selected:    true
+						}
+
+						NavigationItem {
+							leadingIcon: chair
+							label:       "Apartment"
+						}
+
+						NavigationItem {
+							leadingIcon: watch
+							label:       "Accessories"
+						}
+
+						NavigationItem {
+							leadingIcon: apparel
+							label:       "Apparel"
+						}
+
+						NavigationItem {
+							leadingIcon: potted_plant
+							label:       "Objects"
+						}
+					}
+				}
+
+				// Shopping Cart
+				Positioned {
+					bottom: responsive {
+						base: 100
+						sm: 20
+					}
+					right:  responsive {
+						base: -1
+						sm: 20
+					}
+
+					Row {
+						background:     theme.primaryContainer
+						shadow:         2 2 5 #00000033
+						padding:        20
+						radius:         10
+						crossAxisAlign: center
+						gap:            10
+
+						Icon {
+							icon:  shopping_cart
+							color: theme.onPrimaryContainer
+						}
+
+						Image {
+							src:    "goi://assets/shirtmodel.jpg"
+							height: 50
+							width:  30
+							radius: 10
+						}
+
+						Image {
+							src:    "goi://assets/shirtmodel2.jpg"
+							width:  50
+							height: 40
+							radius: 10
+						}
+
+						Text {
+							text: "+1"
+							role: titleMedium
+						}
+					}
+				}
+			}
+		}
+	}
+}

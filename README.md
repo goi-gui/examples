@@ -266,6 +266,22 @@ rows. The switch in the corner changes the scheme through a bridge handler.
 | --- | --- |
 | ![league in the light scheme](images/league-light.png) | ![league in the dark scheme](images/league-dark.png) |
 
+### shopping
+
+A product page: a rail of categories, a picture column, a size and colour
+picker, and a review card. One rose seed builds both schemes with
+`NewThemeFromSeed`, and the design reflows from a desktop rail to a phone
+bottom bar with `responsive`, a `Flex` that turns from a row into a column, and a
+scroll column.
+
+| Desktop, light | Desktop, dark |
+| --- | --- |
+| ![shopping at 1000x800 in the light scheme](images/shopping-light.png) | ![shopping at 1000x800 in the dark scheme](images/shopping-dark.png) |
+
+| Phone, light | Phone, dark |
+| --- | --- |
+| ![shopping at 500x1000 in the light scheme](images/shopping-mobile-light.png) | ![shopping at 500x1000 in the dark scheme](images/shopping-mobile-dark.png) |
+
 ## In the browser
 
 `web` is the counter design compiled to WebAssembly: the same `.goi` file, tree,
