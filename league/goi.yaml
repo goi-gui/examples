@@ -1,0 +1,10 @@
+# Application name and id, used by goi build and packaging.
+name: league
+id: com.example.league
+
+# Build tags passed to goi run and goi build. nofakecgo and
+# CGO_ENABLED=0 are always used; all turns on every optional feature.
+buildFlags: [all]
+
+# Where LoadWindow finds the design files.
+ui: ui

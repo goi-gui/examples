@@ -1,0 +1,129 @@
+// Theme: the built-in light and dark schemes plus a brand scheme the app
+// defines after the window exists, which a .goi file selects with `theme: brand`.
+//
+// Run with: make theme (or cd theme && goi run)
+package main
+
+import (
+	"fmt"
+	"os"
+	"strconv"
+
+	"github.com/goi-gui/goi/ui"
+)
+
+var schemes = []string{"light", "dark", "brand"}
+
+// brand is the light scheme with its own teal primary, so the difference is
+// visible without inventing a whole palette.
+func brand() *ui.Theme {
+	t := *ui.LightTheme()
+	t.Name = "brand"
+	t.Colors.Primary = 0x00695CFF
+	t.Colors.OnPrimary = 0xFFFFFFFF
+	t.Colors.PrimaryContainer = 0xB2DFDBFF
+	t.Colors.OnPrimaryContainer = 0x00251FFF
+	t.Colors.SecondaryContainer = 0xCCE8E3FF
+	t.Colors.OnSecondaryContainer = 0x00201CFF
+	return &t
+}
+
+func schemeIndex(name string) int {
+	for i, s := range schemes {
+		if s == name {
+			return i
+		}
+	}
+	return 0
+}
+
+func main() {
+	app, err := ui.NewApp()
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+	win, err := app.LoadWindow(
+		"Main.goi",
+		ui.WithSize(560, 620),
+	)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+
+	// Themes are defined by the scheme's own Name, after the window exists.
+	win.DefineTheme(brand())
+
+	// The scheme name is app state: a reload rebuilds the nodes, not the choice.
+	name := "light"
+	count := 0
+
+	// Custom colours are plain names the design can read. Defining them here
+	// keeps the .goi file free of literals, and setting one again recolours
+	// whatever uses it.
+	accents := []uint32{0x411F89FF, 0x2C165CFF}
+	win.SetCustomColors(map[string]uint32{
+		"brandAccent": accents[0],
+		"brandTint":   0x2C165CFF,
+	})
+
+	if err := win.Bind(func(w *ui.Window) error {
+		apply := func(n string) {
+			name = n
+			w.Root().Theme.Set(n)
+			for i, id := range []string{"segLight", "segDark", "segBrand"} {
+				if seg, err := w.ByID[*ui.SegmentedButton](id); err == nil {
+					seg.Selected.Set(i == schemeIndex(n))
+				}
+			}
+			if out, err := w.ByID[*ui.Text]("current"); err == nil {
+				out.Text.Set(n)
+			}
+			if sw, err := w.ByID[*ui.Switch]("darkSwitch"); err == nil {
+				sw.Checked.Set(n == "dark")
+			}
+		}
+		for i, id := range []string{"segLight", "segDark", "segBrand"} {
+			i := i
+			if seg, err := w.ByID[*ui.SegmentedButton](id); err == nil {
+				seg.OnClick(func(ui.ClickEvent) { apply(schemes[i]) })
+			}
+		}
+		if sw, err := w.ByID[*ui.Switch]("darkSwitch"); err == nil {
+			sw.OnToggle(func(on bool) {
+				if on {
+					apply("dark")
+					return
+				}
+				apply("light")
+			})
+		}
+		if shift, err := w.ByID[*ui.Button]("shiftAccent"); err == nil {
+			shift.OnClick(func(ui.ClickEvent) {
+				accents[0], accents[1] = accents[1], accents[0]
+				w.SetCustomColors(map[string]uint32{
+					"brandAccent": accents[0],
+					"brandTint":   accents[1],
+				})
+			})
+		}
+		if add, err := w.ByID[*ui.IconButton]("add"); err == nil {
+			add.OnClick(func(ui.ClickEvent) {
+				count++
+				if n, err := w.ByID[*ui.Text]("count"); err == nil {
+					n.Text.Set(strconv.Itoa(count))
+				}
+			})
+		}
+		apply(name)
+		return nil
+	}); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+	if err := app.Run(); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+}

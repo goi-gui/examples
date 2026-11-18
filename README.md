@@ -1,24 +1,26 @@
 # Examples
 
-Each directory here is a complete goi app: a `main.go` that loads one or more
-`.goi` designs, finds the nodes it needs by id and attaches behaviour. The
-screenshots below are those apps, captured in the light scheme and in the dark
-scheme, at the size the app opens with.
+Each directory here is its own goi project, with the layout `goi init` writes:
+`cmd/main.go`, `goi.yaml` and the `.goi` designs under `ui/`. The Go code finds
+the nodes it needs by id and attaches behaviour; the design root and the feature
+tags live in `goi.yaml`. The screenshots below are those apps, captured in the
+light scheme and in the dark scheme, at the size the app opens with.
 
-Run one from this directory — a design is loaded by its relative path, so the
-working directory has to be `examples/`:
+Install the CLI once, then run an example from its own directory:
 
 ```sh
-CGO_ENABLED=0 go run -tags "nofakecgo all" ./counter
+go install github.com/goi-gui/goi/cmd/goi@latest
+make counter          # cd counter && goi run
 ```
 
-`make counter` does the same, and every example has a target of that name. The
-examples enable every optional feature with `-tags all`; a plain build keeps only
-the core and turns on a feature with its own tag (`emoji`, `svg`, `mermaid`,
-`markdown`, `code`, `net`, `dialog`). The build is cgo-free: purego loads the
-SDL3 runtime library at run time, so there is no C toolchain to install. A few examples need more than the framework —
-`media` needs `ffmpeg` on `PATH` (or `GOI_FFMPEG`), while `map` and `tv` need
-network access.
+Every example has a `make` target of that name. `goi run` adds `nofakecgo`, sets
+`CGO_ENABLED=0` and enables every optional feature through
+`buildFlags: [all]`; a plain build keeps only the core and turns on a feature
+with its own tag (`emoji`, `svg`, `mermaid`, `markdown`, `code`, `net`,
+`dialog`). The build is cgo-free: purego loads the SDL3 runtime library at run
+time, so there is no C toolchain to install. A few examples need more than the
+framework — `media` needs `ffmpeg` on `PATH` (or `GOI_FFMPEG`), while `map` and
+`tv` need network access.
 
 ## Start here
 

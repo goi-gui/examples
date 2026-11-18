@@ -1,7 +1,7 @@
-# The desktop examples build cgo-free: purego loads the SDL3 runtime library at
-# run time, so no C toolchain or SDL development package is needed. nofakecgo
-# lets goffi and purego share one fake C runtime.
-RUN := CGO_ENABLED=0 go run -tags "nofakecgo all"
+# Every desktop example is its own goi project: cd into it and goi run reads the
+# goi.yaml there, which carries the buildFlags and the ui directory. Install the
+# CLI first: go install github.com/goi-gui/goi/cmd/goi@latest
+GOI ?= goi
 
 # The browser build: the same design compiled to wasm, served from web/dist.
 web:
@@ -10,79 +10,79 @@ web:
 		echo "serve it with: python3 -m http.server -d web/dist"
 
 search:
-	$(RUN) ./search
+	cd search && $(GOI) run
 
 counter:
-	$(RUN) ./counter
+	cd counter && $(GOI) run
 
 popover:
-	$(RUN) ./popover
+	cd popover && $(GOI) run
 
 gallery:
-	$(RUN) ./gallery
+	cd gallery && $(GOI) run
 
 hello:
-	$(RUN) ./hello
+	cd hello && $(GOI) run
 
 scroll:
-	$(RUN) ./scroll
+	cd scroll && $(GOI) run
 
 composition:
-	$(RUN) ./composition
+	cd composition && $(GOI) run
 
 theme:
-	$(RUN) ./theme
+	cd theme && $(GOI) run
 
 seed:
-	$(RUN) ./seed
+	cd seed && $(GOI) run
 
 i18n:
-	$(RUN) ./i18n
+	cd i18n && $(GOI) run
 
 cursor:
-	$(RUN) ./cursor
+	cd cursor && $(GOI) run
 
 table:
-	$(RUN) ./table
+	cd table && $(GOI) run
 
 titlebar:
-	$(RUN) ./titlebar
+	cd titlebar && $(GOI) run
 
 datalist:
-	$(RUN) ./datalist
+	cd datalist && $(GOI) run
 
 bridge:
-	$(RUN) ./bridge
+	cd bridge && $(GOI) run
 
 svg:
-	$(RUN) ./svg
+	cd svg && $(GOI) run
 
 window:
-	$(RUN) ./window
+	cd window && $(GOI) run
 
 format:
-	$(RUN) ./format
+	cd format && $(GOI) run
 
 league:
-	$(RUN) ./league
+	cd league && $(GOI) run
 
 charts:
-	$(RUN) ./charts
+	cd charts && $(GOI) run
 
 media:
-	$(RUN) ./media
+	cd media && $(GOI) run
 
 markdown:
-	$(RUN) ./markdown
+	cd markdown && $(GOI) run
 
 map:
-	$(RUN) ./map
+	cd map && $(GOI) run
 
 tv:
-	$(RUN) ./tv
+	cd tv && $(GOI) run
 
 shopping:
-	$(RUN) ./shopping
+	cd shopping && $(GOI) run
 
 FMT := go run github.com/goi-gui/goi/cmd/goifmt
 
