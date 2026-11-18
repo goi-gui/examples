@@ -1,11 +1,11 @@
 # The desktop examples build cgo-free: purego loads the SDL3 runtime library at
 # run time, so no C toolchain or SDL development package is needed. nofakecgo
 # lets goffi and purego share one fake C runtime.
-RUN := CGO_ENABLED=0 go run -tags nofakecgo
+RUN := CGO_ENABLED=0 go run -tags "nofakecgo all"
 
 # The browser build: the same design compiled to wasm, served from web/dist.
 web:
-	cd web && GOOS=js GOARCH=wasm go build -ldflags="-s -w" -o dist/goi.wasm . && \
+	cd web && GOOS=js GOARCH=wasm go build -tags all -ldflags="-s -w" -o dist/goi.wasm . && \
 		cp "$$(go env GOROOT)/lib/wasm/wasm_exec.js" dist/ && cp index.html dist/ && \
 		echo "serve it with: python3 -m http.server -d web/dist"
 

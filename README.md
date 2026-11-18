@@ -9,12 +9,14 @@ Run one from this directory — a design is loaded by its relative path, so the
 working directory has to be `examples/`:
 
 ```sh
-CGO_ENABLED=0 go run -tags nofakecgo ./counter
+CGO_ENABLED=0 go run -tags "nofakecgo all" ./counter
 ```
 
 `make counter` does the same, and every example has a target of that name. The
-build is cgo-free: purego loads the SDL3 runtime library at run time, so there is
-no C toolchain to install. A few examples need more than the framework —
+examples enable every optional feature with `-tags all`; a plain build keeps only
+the core and turns on a feature with its own tag (`emoji`, `svg`, `mermaid`,
+`markdown`, `code`, `net`, `dialog`). The build is cgo-free: purego loads the
+SDL3 runtime library at run time, so there is no C toolchain to install. A few examples need more than the framework —
 `media` needs `ffmpeg` on `PATH` (or `GOI_FFMPEG`), while `map` and `tv` need
 network access.
 
