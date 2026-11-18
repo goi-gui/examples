@@ -101,7 +101,7 @@ Window {
 					Column {
 						flex:          1
 						paddingBottom: responsive {
-							base: 300
+							base: 180
 							sm: 0
 						}
 
@@ -519,6 +519,8 @@ Window {
 						radius:         10
 						crossAxisAlign: center
 						gap:            10
+						ripple:         true
+						cursor:         pointer
 
 						Icon {
 							icon:  shopping_cart
