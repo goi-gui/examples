@@ -1,0 +1,16 @@
+Window {
+	title:  "Hello"
+	width:  520
+	height: 360
+	theme:  light
+
+	Column {
+		mainAxisAlign:  center
+		crossAxisAlign: center
+
+		Text {
+			text: "Hello, world!"
+			role: headlineMedium
+		}
+	}
+}

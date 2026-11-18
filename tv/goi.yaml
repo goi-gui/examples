@@ -2,8 +2,11 @@
 name: tv
 id: com.example.tv
 
-# Build tags passed to goi run and goi build. nofakecgo and
-# CGO_ENABLED=0 are always used; all turns on every optional feature.
+# Build tags passed to goi run. nofakecgo and CGO_ENABLED=0 are always
+# used; all turns on every optional feature.
+runFlags: [all]
+
+# Build tags passed to goi build.
 buildFlags: [all]
 
 # Where LoadWindow finds the design files.
