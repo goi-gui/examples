@@ -334,7 +334,7 @@ Column {
 			}
 
 			Image {
-				src:    "goi://sample.jpg"
+				src:    "goi://images/sample.jpg"
 				width:  96
 				height: 48
 				radius: 8

@@ -1,76 +1,49 @@
-// The counter example window: a filled card with the count and a stepper, plus
-// a small text field to show editing.
+bridge {
+	Count   int
+	onInc   func()
+	onDec   func()
+	onReset func()
+}
 
 Window {
-	id:     main
-	title:  "Counter"
-	width:  480
-	height: 400
-	theme:  light
+	title: "Counter"
 
 	Column {
-		spacing: 0
+		crossAxisAlign: center
+		mainAxisAlign:  center
+		gap:            20
 
-		TopAppBar {
-			id:    appbar
-			label: "Counter"
+		Text {
+			text: "Counter"
+			role: titleLarge
 		}
 
-		Column {
-			flex:           1
-			padding:        32
-			spacing:        24
+		Row {
+			gap:            20
 			crossAxisAlign: center
+			mainAxisAlign:  center
 
-			Card {
-				variant: filled
-				width:   360
-
-				Column {
-					spacing:        12
-					crossAxisAlign: center
-
-					Text {
-						text:  "Total"
-						role:  "labelLarge"
-						color: theme.onSurfaceVariant
-					}
-
-					Text {
-						id:    label
-						text:  "0"
-						role:  "displayLarge"
-						color: theme.primary
-					}
-
-					// A Row fills the column's width, so the stepper declares
-					// its own: two 40dp buttons plus the 12dp gap.
-					Row {
-						width:     92
-						alignSelf: center
-						spacing:   12
-
-						IconButton {
-							id:      dec
-							icon:    remove
-							variant: outlined
-						}
-
-						IconButton {
-							id:      inc
-							icon:    add
-							variant: filled
-						}
-					}
-
-					Button {
-						id:       reset
-						label:    "Reset"
-						variant:  text
-						disabled: true
-					}
-				}
+			Button {
+				label:    "-"
+				onClick:  bridge.onDec()
+				disabled: bridge.Count == 0
 			}
+
+			Text {
+				text: formatf("%02d", bridge.Count)
+				role: displayLarge
+			}
+
+			Button {
+				label:   "+"
+				onClick: bridge.onInc()
+			}
+		}
+
+		IconButton {
+			icon:     refresh
+			onClick:  bridge.onReset()
+			disabled: bridge.Count == 0
 		}
 	}
 }

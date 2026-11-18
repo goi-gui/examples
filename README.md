@@ -27,8 +27,8 @@ framework — `media` needs `ffmpeg` on `PATH` (or `GOI_FFMPEG`), while `map` an
 
 ### hello
 
-Nested boxes: radius, border, padding and alignment, with real text. It is the
-visual check for the renderer, and the smallest design in the repository.
+A centred SVG logo and greeting: the smallest complete design, and the check
+that an SVG picks up the scheme's background and keeps its rounded corners.
 
 | Light | Dark |
 | --- | --- |

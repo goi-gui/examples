@@ -48,8 +48,7 @@ Window {
 			Row {
 				mainAxisAlign: center
 
-				SVG {
-					src:    "loading.svg"
+				LoadingIndicator {
 					width:  50
 					height: 50
 					color:  theme.primary

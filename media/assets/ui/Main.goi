@@ -32,8 +32,8 @@ Window {
 			id:                 video
 			width:              100%
 			height:             320
-			src:                "clip.mp4"
-			subtitles:          "clip.srt"
+			src:                "videos/clip.mp4"
+			subtitles:          "videos/clip.srt"
 			subtitleBackground: #00000044
 			fit:                contain
 			controls:           true
@@ -97,7 +97,7 @@ Window {
 			id:       audio
 			width:    100%
 			height:   64
-			src:      "clip.mp4"
+			src:      "videos/clip.mp4"
 			controls: true
 			buffer:   3
 		}
@@ -105,7 +105,7 @@ Window {
 		Audio {
 			width:        100%
 			height:       64
-			src:          "clip.mp4"
+			src:          "videos/clip.mp4"
 			controls:     true
 			variant:      wavy
 			color:        theme.tertiary

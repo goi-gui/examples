@@ -25,14 +25,14 @@ Column {
 
 			// cover crops to fill the box; contain letterboxes.
 			Image {
-				src:    "goi://sample.jpg"
+				src:    "goi://images/sample.jpg"
 				width:  180
 				height: 120
 				radius: 12
 			}
 
 			Image {
-				src:        "goi://sample.jpg"
+				src:        "goi://images/sample.jpg"
 				fit:        contain
 				width:      180
 				height:     120
@@ -41,7 +41,7 @@ Column {
 			}
 
 			Image {
-				src:    "goi://sample.jpg"
+				src:    "goi://images/sample.jpg"
 				fit:    fill
 				width:  180
 				height: 120
@@ -85,14 +85,14 @@ Column {
 
 			Image {
 				id:     gifImage
-				src:    "goi://pulse.gif"
+				src:    "goi://images/pulse.gif"
 				width:  72
 				height: 72
 			}
 
 			Image {
 				id:     apngImage
-				src:    "goi://pulse.png"
+				src:    "goi://images/pulse.png"
 				width:  72
 				height: 72
 			}
@@ -124,14 +124,14 @@ Column {
 			// currentColor takes the design's colour, so one file serves every
 			// theme role.
 			SVG {
-				src:    "goi://star.svg"
+				src:    "goi://images/star.svg"
 				color:  theme.primary
 				width:  48
 				height: 48
 			}
 
 			SVG {
-				src:    "goi://star.svg"
+				src:    "goi://images/star.svg"
 				color:  theme.tertiary
 				width:  48
 				height: 48
@@ -142,7 +142,7 @@ Column {
 			// path interpolation are exercised here.
 			SVG {
 				id:     loadingSVG
-				src:    "goi://loading.svg"
+				src:    "goi://images/loading.svg"
 				width:  56
 				height: 56
 				color:  theme.primary
@@ -152,7 +152,7 @@ Column {
 			// both declared in the file.
 			SVG {
 				id:     spinSVG
-				src:    "goi://spinner.svg"
+				src:    "goi://images/spinner.svg"
 				width:  56
 				height: 56
 			}
@@ -260,8 +260,8 @@ Column {
 				md: 480
 			}
 			height:    240
-			src:       "goi://clip.mp4"
-			subtitles: "goi://clip.srt"
+			src:       "goi://videos/clip.mp4"
+			subtitles: "goi://videos/clip.srt"
 			controls:  true
 			loop:      true
 		}
@@ -292,7 +292,7 @@ Column {
 				md: 420
 			}
 			height:   64
-			src:      "goi://clip.mp4"
+			src:      "goi://videos/clip.mp4"
 			controls: true
 		}
 
@@ -302,7 +302,7 @@ Column {
 				md: 420
 			}
 			height:       64
-			src:          "goi://clip.mp4"
+			src:          "goi://videos/clip.mp4"
 			controls:     true
 			variant:      wavy
 			color:        theme.tertiary

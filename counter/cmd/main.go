@@ -5,69 +5,46 @@
 package main
 
 import (
-	"fmt"
-	"os"
-	"strconv"
-
 	"github.com/goi-gui/goi/ui"
 )
-
-// counter lives outside Bind on purpose: Bind runs again after every hot
-// reload, so state declared inside it would reset on each save.
-type counter struct {
-	n int
-}
 
 func main() {
 	app, err := ui.NewApp()
 	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
+		panic(err)
 	}
+
 	win, err := app.LoadWindow("ui/Main.goi")
 	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
+		panic(err)
 	}
 
-	c := &counter{}
+	// store count variable outside of the binding,
+	// if you don't want reset after hot reload
+	count := 0
+
 	err = win.Bind(func(w *ui.Window) error {
-		label := w.MustByID[*ui.Text]("label")
-		inc := w.MustByID[*ui.IconButton]("inc")
-		dec := w.MustByID[*ui.IconButton]("dec")
-		reset := w.MustByID[*ui.Button]("reset")
-
-		// render writes the count and keeps the minus disabled at the floor,
-		// so the control never offers an action the state refuses.
-		render := func() {
-			label.Text.Set(strconv.Itoa(c.n))
-			dec.Disabled.Set(c.n <= 0)
-			reset.Disabled.Set(c.n == 0)
-		}
-		render()
-
-		inc.OnClick(func(ui.ClickEvent) {
-			c.n++
-			render()
+		ui.SetData(w, "Count", count)
+		ui.SetHandler(w, "onInc", func() {
+			count++
+			ui.SetData(w, "Count", count)
 		})
-		dec.OnClick(func(ui.ClickEvent) {
-			if c.n > 0 {
-				c.n--
-			}
-			render()
+		ui.SetHandler(w, "onDec", func() {
+			count--
+			ui.SetData(w, "Count", count)
 		})
-		reset.OnClick(func(ui.ClickEvent) {
-			c.n = 0
-			render()
+		ui.SetHandler(w, "onReset", func() {
+			count = 0
+			ui.SetData(w, "Count", count)
 		})
 		return nil
 	})
 	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
+		panic(err)
 	}
-	if err := app.Run(); err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
+
+	err = app.Run()
+	if err != nil {
+		panic(err)
 	}
 }

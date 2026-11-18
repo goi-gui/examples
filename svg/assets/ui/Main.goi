@@ -48,21 +48,21 @@ Window {
 						mainAxisAlign: center
 
 						SVG {
-							src:    "goi://star.svg"
+							src:    "goi://images/star.svg"
 							color:  theme.primary
 							width:  48
 							height: 48
 						}
 
 						SVG {
-							src:    "goi://star.svg"
+							src:    "goi://images/star.svg"
 							color:  theme.tertiary
 							width:  48
 							height: 48
 						}
 
 						SVG {
-							src:    "goi://star.svg"
+							src:    "goi://images/star.svg"
 							color:  theme.error
 							width:  48
 							height: 48
@@ -91,7 +91,7 @@ Window {
 
 					SVG {
 						id:     live
-						src:    "goi://star.svg"
+						src:    "goi://images/star.svg"
 						color:  theme.primary
 						width:  72
 						height: 72
@@ -142,7 +142,7 @@ Window {
 					// placeholder until the file lands, and the viewBox sizes
 					// the icon when width and height are omitted.
 					SVG {
-						src:        "https://raw.githubusercontent.com/goi-gui/examples/main/gallery/star.svg"
+						src:        "https://raw.githubusercontent.com/goi-gui/examples/main/gallery/assets/images/star.svg"
 						color:      theme.secondary
 						width:      64
 						height:     64

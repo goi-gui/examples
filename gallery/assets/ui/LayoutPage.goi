@@ -290,7 +290,7 @@ Column {
 				height: 96
 
 				Image {
-					src: "goi://sample.jpg"
+					src: "goi://images/sample.jpg"
 					fit: cover
 				}
 			}
@@ -301,7 +301,7 @@ Column {
 				height: 96
 
 				Image {
-					src: "goi://sample.jpg"
+					src: "goi://images/sample.jpg"
 					fit: cover
 				}
 			}
