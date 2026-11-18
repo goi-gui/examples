@@ -1,5 +1,5 @@
 # Every desktop example is its own goi project: cd into it and goi run reads the
-# goi.yaml there, which carries the buildFlags and the ui directory. Install the
+# goi.yaml there, which carries the buildFlags and the assets directory. Install the
 # CLI first: go install github.com/goi-gui/goi/cmd/goi@latest
 GOI ?= goi
 

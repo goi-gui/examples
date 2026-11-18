@@ -12,7 +12,7 @@ func main() {
 		panic(err)
 	}
 
-	win, err := app.LoadWindow("Main.goi")
+	win, err := app.LoadWindow("ui/Main.goi")
 	if err != nil {
 		panic(err)
 	}

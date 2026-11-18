@@ -9,8 +9,8 @@ runFlags: [all]
 # Build tags passed to goi build.
 buildFlags: [all]
 
-# Where LoadWindow finds the design files.
-ui: ui
+# Where LoadWindow finds the design files and their assets.
+assets: assets
 
 # Directory goi run and goi build execute.
 entrypoint: cmd

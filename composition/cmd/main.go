@@ -18,7 +18,7 @@ func main() {
 	}
 	// The directory is the asset container: imports resolve inside it, and hot
 	// reload watches every file the design reads.
-	win, err := app.LoadWindow("Main.goi",
+	win, err := app.LoadWindow("ui/Main.goi",
 		ui.WithSize(1024, 720))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
