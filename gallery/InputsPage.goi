@@ -320,8 +320,30 @@ Column {
 			}
 		}
 
+		SearchBar {
+			placeholder: "Filter with slots"
+			width:       responsive {
+				base: 280
+				md: 400
+			}
+
+			$leading {
+				IconButton {
+					icon:    tune
+					variant: standard
+				}
+			}
+
+			$trailing {
+				IconButton {
+					icon:    close
+					variant: standard
+				}
+			}
+		}
+
 		Text {
-			text: "Click it and type: the value scrolls and selects."
+			text: "Click it and type: the value scrolls and selects. The second bar puts a leading and a trailing body in the icon squares."
 			role: "bodySmall"
 		}
 	}

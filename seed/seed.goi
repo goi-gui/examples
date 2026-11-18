@@ -1,8 +1,10 @@
 // Seed: one colour, a whole scheme.
 
 bridge {
-	onToggleScheme func(isDark bool)
-	onSetSeedColor func(c color)
+	onToggleScheme    func(isDark bool)
+	onSetSeedColor    func(c string)
+	onOpenSeedPicker  func()
+	onCloseSeedPicker func()
 }
 
 Window {
@@ -47,6 +49,26 @@ Window {
 				marginTop: 40
 			}
 
+			Popover {
+				align: start
+
+				Button {
+					label:   "Choose seed colour"
+					onClick: bridge.onOpenSeedPicker()
+				}
+
+				$popover {
+					ColorPicker {
+						id:       seedPicker
+						visible:  false
+						label:    "Seed colour"
+						text:     "#411f89"
+						onOK:     bridge.onSetSeedColor(event)
+						onCancel: bridge.onCloseSeedPicker()
+					}
+				}
+			}
+
 			Row {
 				spacing:       12
 				mainAxisAlign: center
@@ -57,7 +79,7 @@ Window {
 					height:     30
 					radius:     15
 					cursor:     pointer
-					onClick:    bridge.onSetSeedColor(#411f89)
+					onClick:    bridge.onSetSeedColor("#411f89")
 				}
 
 				Rectangle {
@@ -66,7 +88,7 @@ Window {
 					height:     30
 					radius:     15
 					cursor:     pointer
-					onClick:    bridge.onSetSeedColor(#ff0000)
+					onClick:    bridge.onSetSeedColor("#ff0000")
 				}
 
 				Rectangle {
@@ -75,7 +97,7 @@ Window {
 					height:     30
 					radius:     15
 					cursor:     pointer
-					onClick:    bridge.onSetSeedColor(#00ff00)
+					onClick:    bridge.onSetSeedColor("#00ff00")
 				}
 
 				Rectangle {
@@ -84,7 +106,7 @@ Window {
 					height:     30
 					radius:     15
 					cursor:     pointer
-					onClick:    bridge.onSetSeedColor(#ffff00)
+					onClick:    bridge.onSetSeedColor("#ffff00")
 				}
 			}
 

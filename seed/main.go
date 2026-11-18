@@ -8,6 +8,8 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
+	"strings"
 
 	"github.com/goi-gui/goi/ui"
 )
@@ -37,11 +39,33 @@ func main() {
 
 	defineTheme(win, seed)
 
+	hidePicker := func(w *ui.Window) {
+		if picker, err := w.ByID[*ui.ColorPicker]("seedPicker"); err == nil {
+			picker.SetVisible(false)
+		}
+	}
+
 	if err := win.Bind(func(w *ui.Window) error {
-		ui.SetHandler(w, "onSetSeedColor", func(color uint32) {
+		ui.SetHandler(w, "onSetSeedColor", func(hex string) {
+			color, ok := parseSeed(hex)
+			if !ok {
+				return
+			}
 			seed = color
 			defineTheme(w, seed)
+			hidePicker(w)
 		})
+
+		ui.SetHandler(w, "onOpenSeedPicker", func() {
+			picker, err := w.ByID[*ui.ColorPicker]("seedPicker")
+			if err != nil {
+				return
+			}
+			picker.Text.Set(fmt.Sprintf("#%06x", seed>>8))
+			picker.SetVisible(true)
+		})
+
+		ui.SetHandler(w, "onCloseSeedPicker", func() { hidePicker(w) })
 
 		ui.SetHandler(w, "onToggleScheme", func(isDark bool) {
 			if isDark {
@@ -60,4 +84,21 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
+}
+
+// parseSeed reads the #rrggbb or #rrggbbaa string a ColorPicker reports, and
+// the shorthand preset values as #rrggbb.
+func parseSeed(hex string) (uint32, bool) {
+	h := strings.TrimPrefix(hex, "#")
+	if len(h) == 6 {
+		h += "ff"
+	}
+	if len(h) != 8 {
+		return 0, false
+	}
+	v, err := strconv.ParseUint(h, 16, 32)
+	if err != nil {
+		return 0, false
+	}
+	return uint32(v), true
 }

@@ -162,7 +162,8 @@ window exists, which a `.goi` file selects with `theme: brand`.
 
 One colour, a whole scheme: `ui.NewThemeFromSeed` builds a light and a dark theme
 from the same seed, both defined by name, so the design picks one with
-`theme: lightFromSeed` or `theme: darkFromSeed`.
+`theme: lightFromSeed` or `theme: darkFromSeed`. A button opens the colour
+picker; OK applies the picked colour as the new seed.
 
 | Light | Dark |
 | --- | --- |
