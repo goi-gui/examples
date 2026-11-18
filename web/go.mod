@@ -2,7 +2,7 @@ module github.com/goi-gui/examples/web
 
 go 1.27.3
 
-require github.com/goi-gui/goi v0.29.3-0.20261118194759-f2c884d23ce9
+require github.com/goi-gui/goi v0.29.3
 
 require (
 	git.sr.ht/~jackmordaunt/go-toast v1.1.2 // indirect
