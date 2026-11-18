@@ -3,11 +3,12 @@
 # CLI first: go install github.com/goi-gui/goi/cmd/goi@latest
 GOI ?= goi
 
-# The browser build: the same design compiled to wasm, served from web/dist.
+# The browser build: the same design compiled to wasm with goi build.
 web:
-	cd web && GOOS=js GOARCH=wasm go build -tags all -ldflags="-s -w" -o dist/goi.wasm . && \
-		cp "$$(go env GOROOT)/lib/wasm/wasm_exec.js" dist/ && cp index.html dist/ && \
-		echo "serve it with: python3 -m http.server -d web/dist"
+	cd web && $(GOI) build --os js --arch wasm && \
+		cp "$$(go env GOROOT)/lib/wasm/wasm_exec.js" dist/js-wasm/ && \
+		cp index.html dist/js-wasm/ && \
+		echo "serve it with: python3 -m http.server -d web/dist/js-wasm"
 
 search:
 	cd search && $(GOI) run

@@ -3,20 +3,16 @@
 // Command web runs the counter design in a browser: the same .goi file, tree,
 // layout and painter as the desktop build, drawn with WebGPU into a canvas.
 //
-//	make -C ../examples web && python3 -m http.server -d ../examples/web/dist
+//	make -C ../examples web && python3 -m http.server -d ../examples/web/dist/js-wasm
 package main
 
 import (
-	"embed"
 	"fmt"
 	"os"
 	"strconv"
 
 	"github.com/goi-gui/goi/ui"
 )
-
-//go:embed web.goi
-var design embed.FS
 
 // count lives outside Bind on purpose: Bind runs again on a hot reload, so
 // state declared inside it would reset.
@@ -29,8 +25,8 @@ func main() {
 	}
 	// The page names the canvas the app draws into, so several apps can share
 	// one page.
-	win, err := app.LoadWindow("web.goi",
-		ui.WithAssets(design), ui.WithSize(480, 400), ui.WithCanvas("goi-app"))
+	win, err := app.LoadWindow("Main.goi",
+		ui.WithSize(480, 400), ui.WithCanvas("goi-app"))
 	if err != nil {
 		fail(err)
 	}

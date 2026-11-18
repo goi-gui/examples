@@ -291,9 +291,10 @@ scroll column.
 
 `web` is the counter design compiled to WebAssembly: the same `.goi` file, tree,
 layout and painter as the desktop build, drawn with WebGPU into a canvas.
+`goi build --os js --arch wasm` embeds the design and writes `goi.wasm`.
 
 ```sh
-make web && python3 -m http.server -d web/dist
+make web && python3 -m http.server -d web/dist/js-wasm
 ```
 
 It has no screenshot here; a browser window is not the app's own.
