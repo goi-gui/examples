@@ -85,7 +85,8 @@ tv:
 shopping:
 	cd shopping && $(GOI) run
 
-FMT := go run github.com/goi-gui/goi/cmd/goifmt
+# goi setup installs the formatter next to the CLI.
+FMT ?= goifmt
 
 fmt:
 	$(FMT) -w .

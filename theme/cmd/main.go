@@ -44,7 +44,7 @@ func main() {
 		os.Exit(1)
 	}
 	win, err := app.LoadWindow(
-		"Main.goi",
+		"ui/Main.goi",
 		ui.WithSize(560, 620),
 	)
 	if err != nil {

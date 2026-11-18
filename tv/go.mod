@@ -2,9 +2,7 @@ module github.com/goi-gui/examples/tv
 
 go 1.27.3
 
-replace github.com/goi-gui/goi => ../../goi
-
-require github.com/goi-gui/goi v0.0.0-00010101000000-000000000000
+require github.com/goi-gui/goi v0.29.3-0.20261118181212-acb96f95d77e
 
 require (
 	git.sr.ht/~jackmordaunt/go-toast v1.1.2 // indirect

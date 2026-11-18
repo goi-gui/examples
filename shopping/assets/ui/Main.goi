@@ -155,7 +155,7 @@ Window {
 								gap:            20
 
 								Image {
-									src:             "goi://assets/tshirtmodelpink.jpg"
+									src:             "goi://images/tshirtmodelpink.jpg"
 									width:           responsive {
 										base: 80%
 										sm: 100%
@@ -169,7 +169,7 @@ Window {
 								}
 
 								Image {
-									src:             "goi://assets/tshirtmodelblue.jpg"
+									src:             "goi://images/tshirtmodelblue.jpg"
 									width:           responsive {
 										base: 80%
 										sm: 100%
@@ -183,7 +183,7 @@ Window {
 								}
 
 								Image {
-									src:             "goi://assets/tshirtmodelpurple.jpg"
+									src:             "goi://images/tshirtmodelpurple.jpg"
 									width:           responsive {
 										base: 80%
 										sm: 100%
@@ -528,14 +528,14 @@ Window {
 						}
 
 						Image {
-							src:    "goi://assets/shirtmodel.jpg"
+							src:    "goi://images/shirtmodel.jpg"
 							height: 50
 							width:  30
 							radius: 10
 						}
 
 						Image {
-							src:    "goi://assets/shirtmodel2.jpg"
+							src:    "goi://images/shirtmodel2.jpg"
 							width:  50
 							height: 40
 							radius: 10
