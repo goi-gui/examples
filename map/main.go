@@ -82,8 +82,8 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	win, err := app.LoadWindow(ui.DirFS("map"), "map.goi",
-		ui.WithHotReload(true), ui.WithSize(1100, 740))
+	win, err := app.LoadWindow("map/map.goi",
+		ui.WithSize(1100, 740))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

@@ -24,8 +24,8 @@ func main() {
 	if *msaa > 0 {
 		app.MSAA(*msaa)
 	}
-	if _, err := app.LoadWindow(ui.DirFS("shapes"), "shapes.goi",
-		ui.WithHotReload(true), ui.WithSize(760, 900),
+	if _, err := app.LoadWindow("shapes/shapes.goi",
+		ui.WithSize(760, 900),
 	); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

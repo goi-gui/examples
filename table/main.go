@@ -43,8 +43,8 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	win, err := app.LoadWindow(ui.DirFS("table"), "table.goi",
-		ui.WithHotReload(true), ui.WithSize(900, 760))
+	win, err := app.LoadWindow("table/table.goi",
+		ui.WithSize(900, 760))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

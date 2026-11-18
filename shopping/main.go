@@ -18,8 +18,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	fs := ui.DirFS("./shopping")
-	win, err := app.LoadWindow(fs, "shopping.goi", ui.WithHotReload(true))
+	win, err := app.LoadWindow("shopping/shopping.goi")
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

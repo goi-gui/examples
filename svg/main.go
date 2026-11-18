@@ -16,7 +16,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	win, err := app.LoadWindowFile("svg/svg.goi", ui.WithHotReload(true))
+	win, err := app.LoadWindow("svg/svg.goi")
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

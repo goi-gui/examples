@@ -28,8 +28,8 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	win, err := app.LoadWindow(ui.DirFS("bridge"), "main.goi",
-		ui.WithHotReload(true), ui.WithSize(560, 720))
+	win, err := app.LoadWindow("bridge/main.goi",
+		ui.WithSize(560, 720))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

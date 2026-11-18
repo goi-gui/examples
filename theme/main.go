@@ -43,9 +43,8 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	win, err := app.LoadWindowFile(
+	win, err := app.LoadWindow(
 		"theme/theme.goi",
-		ui.WithHotReload(true),
 		ui.WithSize(560, 620),
 	)
 	if err != nil {

@@ -59,8 +59,8 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	win, err := app.LoadWindow(ui.DirFS("charts"), "charts.goi",
-		ui.WithHotReload(true), ui.WithSize(1100, 820))
+	win, err := app.LoadWindow("charts/charts.goi",
+		ui.WithSize(1100, 820))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

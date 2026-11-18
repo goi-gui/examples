@@ -17,7 +17,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	if _, err := app.LoadWindowFile("hello/hello.goi", ui.WithHotReload(true)); err != nil {
+	if _, err := app.LoadWindow("hello/hello.goi"); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}

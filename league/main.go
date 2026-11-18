@@ -79,9 +79,7 @@ func main() {
 		panic(err)
 	}
 
-	files := ui.DirFS("./league/ui/")
-
-	win, err := app.LoadWindow(files, "league.goi", ui.WithHotReload(true))
+	win, err := app.LoadWindow("league/ui/league.goi")
 	if err != nil {
 		panic(err)
 	}

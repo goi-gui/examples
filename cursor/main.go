@@ -18,9 +18,8 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	win, err := app.LoadWindowFile(
+	win, err := app.LoadWindow(
 		"cursor/cursor.goi",
-		ui.WithHotReload(true),
 		ui.WithSize(760, 720),
 	)
 	if err != nil {

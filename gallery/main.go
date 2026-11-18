@@ -12,7 +12,6 @@ import (
 	"image"
 	"image/color"
 	"os"
-	"path/filepath"
 	"strings"
 	"time"
 
@@ -96,8 +95,7 @@ func main() {
 	if arg := flag.Arg(0); arg != "" {
 		path = arg
 	}
-	win, err := app.LoadWindow(ui.DirFS(filepath.Dir(path)), filepath.Base(path),
-		ui.WithHotReload(true), ui.WithSize(1100, 900))
+	win, err := app.LoadWindow(path, ui.WithSize(1100, 900))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

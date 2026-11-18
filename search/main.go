@@ -12,7 +12,7 @@ func main() {
 		panic(err)
 	}
 
-	win, err := app.LoadWindowFile("search/search.goi", ui.WithHotReload(true))
+	win, err := app.LoadWindow("search/search.goi")
 	if err != nil {
 		panic(err)
 	}

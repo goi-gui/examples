@@ -17,9 +17,8 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	win, err := app.LoadWindowFile(
+	win, err := app.LoadWindow(
 		"markdown/markdown.goi",
-		ui.WithHotReload(true),
 		ui.WithSize(520, 620),
 	)
 	if err != nil {

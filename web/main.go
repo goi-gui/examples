@@ -29,8 +29,8 @@ func main() {
 	}
 	// The page names the canvas the app draws into, so several apps can share
 	// one page.
-	win, err := app.LoadWindow(design, "web.goi",
-		ui.WithSize(480, 400), ui.WithCanvas("goi-app"))
+	win, err := app.LoadWindow("web.goi",
+		ui.WithAssets(design), ui.WithSize(480, 400), ui.WithCanvas("goi-app"))
 	if err != nil {
 		fail(err)
 	}

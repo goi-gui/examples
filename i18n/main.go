@@ -17,9 +17,8 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	win, err := app.LoadWindowFile(
+	win, err := app.LoadWindow(
 		"i18n/Main.goi",
-		ui.WithHotReload(true),
 		ui.WithSize(520, 460),
 	)
 	if err != nil {
