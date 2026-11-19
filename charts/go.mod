@@ -2,7 +2,7 @@ module github.com/goi-gui/examples/charts
 
 go 1.27.3
 
-require github.com/goi-gui/goi v0.30.0
+require github.com/goi-gui/goi v0.30.1
 
 require (
 	git.sr.ht/~jackmordaunt/go-toast v1.1.2 // indirect
