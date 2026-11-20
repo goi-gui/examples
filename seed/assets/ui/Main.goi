@@ -14,7 +14,7 @@ Window {
 	title:  "Seed colour"
 	width:  520
 	height: 620
-	theme:  lightFromSeed
+	theme: lightFromSeed
 
 	Column {
 		spacing: 0
@@ -115,7 +115,7 @@ Window {
 
 			Switch {
 				id:       darkSwitch
-				checked:  false
+				checked:  app.dark
 				iconOn:   dark_mode
 				iconOff:  light_mode
 				label:    app.dark ? "Dark" : "Light"
