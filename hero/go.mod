@@ -2,7 +2,7 @@ module github.com/goi-gui/examples/hero
 
 go 1.27.3
 
-require github.com/goi-gui/goi v0.30.8-0.20261120181322-b39128a0c40d
+require github.com/goi-gui/goi v0.30.8
 
 require (
 	git.sr.ht/~jackmordaunt/go-toast v1.1.2 // indirect
