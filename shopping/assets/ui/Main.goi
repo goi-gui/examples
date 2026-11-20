@@ -464,6 +464,7 @@ Window {
 										}
 
 										Column {
+											visible:      bridge.isReviewsExpanded
 											height:       conditional {
 												0: !bridge.isReviewsExpanded
 												120: bridge.isReviewsExpanded
