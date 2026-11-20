@@ -4,8 +4,9 @@ Each directory here is its own goi project, with the layout `goi init` writes:
 `cmd/main.go`, `goi.yaml`, and the design and its assets under `assets/`, with
 the `.goi` files in `assets/ui/`. The Go code finds the nodes it needs by id and
 attaches behaviour; the assets directory and the feature tags live in
-`goi.yaml`. The screenshots below are those apps, captured in the
-light scheme and in the dark scheme, at the size the app opens with.
+`goi.yaml`. The pictures below are those apps, captured in the
+light scheme and in the dark scheme, at the size the app opens with. Shopping is
+shown as a clip so its colour seeds and theme changes are visible.
 
 Install the CLI once, then run an example from its own directory:
 
