@@ -2,8 +2,10 @@
 
 bridge {
 	onToggleScheme    func(isDark bool)
-	onSetSeedColor    func(c string)
+	onSetSeedColor    func(c color)
 	onOpenSeedPicker  func()
+	pickerOpen        bool
+	pickerText        string
 	onCloseSeedPicker func()
 }
 
@@ -57,14 +59,15 @@ Window {
 					onClick: bridge.onOpenSeedPicker()
 				}
 
-				$popover {
-					ColorPicker {
-						id:       seedPicker
-						visible:  false
-						label:    "Seed colour"
-						text:     "#411f89"
-						onOK:     bridge.onSetSeedColor(event)
-						onCancel: bridge.onCloseSeedPicker()
+				if bridge.pickerOpen {
+					$popover {
+						ColorPicker {
+							id:       seedPicker
+							label:    "Seed colour"
+							text:     bridge.pickerText
+							onOK:     bridge.onSetSeedColor(event)
+							onCancel: bridge.onCloseSeedPicker()
+						}
 					}
 				}
 			}

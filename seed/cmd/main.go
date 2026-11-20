@@ -39,9 +39,7 @@ func main() {
 	defineTheme(win, seed)
 
 	hidePicker := func(w *ui.Window) {
-		if picker, err := w.ByID[*ui.ColorPicker]("seedPicker"); err == nil {
-			picker.SetVisible(false)
-		}
+		ui.SetData(w, "pickerOpen", false)
 	}
 
 	if err := win.Bind(func(w *ui.Window) error {
@@ -55,13 +53,12 @@ func main() {
 			hidePicker(w)
 		})
 
+		ui.SetData(w, "pickerOpen", false)
+		ui.SetData(w, "pickerText", fmt.Sprintf("#%06x", seed>>8))
+
 		ui.SetHandler(w, "onOpenSeedPicker", func() {
-			picker, err := w.ByID[*ui.ColorPicker]("seedPicker")
-			if err != nil {
-				return
-			}
-			picker.Text.Set(fmt.Sprintf("#%06x", seed>>8))
-			picker.SetVisible(true)
+			ui.SetData(w, "pickerText", fmt.Sprintf("#%06x", seed>>8))
+			ui.SetData(w, "pickerOpen", true)
 		})
 
 		ui.SetHandler(w, "onCloseSeedPicker", func() { hidePicker(w) })
