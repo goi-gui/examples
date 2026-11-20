@@ -109,6 +109,9 @@ func main() {
 	active := 0
 	drawerOpen := false
 	dark := false
+	// Whether the shared-element tile is at the large size, kept outside Bind
+	// so a hot reload lands on the same page state.
+	heroBig := false
 	// Until someone uses a theme switch, `theme: app.systemMode` owns the
 	// scheme. The first switch takes it over, and a reload keeps that choice.
 	themeChosen := false
@@ -418,6 +421,24 @@ func main() {
 					app.Animate(&pg.Value, to, 900*time.Millisecond, ui.Emphasized)
 				}
 			})
+		}
+
+		// Shared element: two Heroes carry the same tag, and flipping which one
+		// paints makes the picture fly from the small box into the large one.
+		if small, err := w.ByID[*ui.Hero]("heroSmall"); err == nil {
+			if big, err := w.ByID[*ui.Hero]("heroBig"); err == nil {
+				apply := func() {
+					small.SetVisible(!heroBig)
+					big.SetVisible(heroBig)
+				}
+				apply()
+				if b, err := w.ByID[*ui.Button]("heroToggle"); err == nil {
+					b.OnClick(func(ui.ClickEvent) {
+						heroBig = !heroBig
+						apply()
+					})
+				}
+			}
 		}
 
 		// The rail switch and the one on the Layout page are both entry points to
