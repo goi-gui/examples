@@ -21,9 +21,10 @@ import MediaPage "./MediaPage.goi"
 import ChartsPage "./ChartsPage.goi"
 
 Window {
-	id:    main
-	title: "Material 3 components"
-	theme: app.systemMode
+	id:              main
+	title:           "Material 3 components"
+	theme:           app.systemMode
+	themeTransition: wipe 500ms
 
 	Stack {
 		Row {
