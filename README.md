@@ -275,18 +275,14 @@ rows. The switch in the corner changes the scheme through a bridge handler.
 ### shopping
 
 A product page: a rail of categories, a picture column, a size and colour
-picker, and a review card. One rose seed builds both schemes with
-`NewThemeFromSeed`, and the design reflows from a desktop rail to a phone
-bottom bar with `responsive`, a `Flex` that turns from a row into a column, and a
-scroll column.
+picker, and a review card. Each colour swatch rebuilds both schemes from its
+seed with `NewThemeFromSeed`, and `themeTransition: wipe` carries the change in.
+The design reflows from a desktop rail to a phone bottom bar with `responsive`,
+a `Flex` that turns from a row into a column, and a scroll column.
 
-| Desktop, light | Desktop, dark |
+| Desktop, 1000 × 1000 | Phone, 500 × 1000 |
 | --- | --- |
-| ![shopping at 1000x800 in the light scheme](images/shopping-light.png) | ![shopping at 1000x800 in the dark scheme](images/shopping-dark.png) |
-
-| Phone, light | Phone, dark |
-| --- | --- |
-| ![shopping at 500x1000 in the light scheme](images/shopping-mobile-light.png) | ![shopping at 500x1000 in the dark scheme](images/shopping-mobile-dark.png) |
+| ![shopping on a desktop, dark then light](images/shopping-desktop.gif) | ![shopping on a phone, dark then light](images/shopping-mobile.gif) |
 
 ## In the browser
 

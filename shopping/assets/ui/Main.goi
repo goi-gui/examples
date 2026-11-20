@@ -1,8 +1,27 @@
+bridge {
+	isReviewsExpanded  bool
+	selectedSize       int
+	selectedImageIndex int
+	colors             []color
+	image1Path         string
+	image2Path         string
+	image3Path         string
+	selectedColorIndex int
+	isFavourite        bool
+	onToggleReviews    func()
+	onToggleFavourite  func()
+	onSelectColor      func(index int)
+	onSelectSize       func(size int)
+	onSelectImage      func(index int)
+}
+
 Window {
-	theme:  lightFromSeed
-	title:  "Shopping"
-	width:  1000
-	height: 800
+	theme:           app.systemMode == "light" ? lightFromSeed : darkFromSeed
+	title:           "Shopping"
+	width:           1000
+	height:          1000
+	fontFamily:      "Nunito"
+	themeTransition: wipe 1s
 
 	Column {
 		mainAxisAlign:  center
@@ -15,7 +34,7 @@ Window {
 				background:     theme.surface
 				visible:        responsive {
 					base: false
-					sm: true
+					md: true
 				}
 
 				Icon {
@@ -72,7 +91,7 @@ Window {
 						padding:        20
 						visible:        responsive {
 							base: true
-							sm: false
+							md: false
 						}
 
 						Row {
@@ -102,13 +121,13 @@ Window {
 						flex:          1
 						paddingBottom: responsive {
 							base: 180
-							sm: 0
+							md: 0
 						}
 
 						Flex {
 							direction:    responsive {
 								base: column
-								sm: row
+								md: row
 							}
 							padding:      20
 							paddingRight: 0
@@ -117,7 +136,7 @@ Window {
 							Breadcrumb {
 								visible:      responsive {
 									base: true
-									sm: false
+									md: false
 								}
 								marginBottom: 20
 
@@ -139,62 +158,101 @@ Window {
 
 							// Images
 							Flex {
+								scroll:         responsive {
+									base: true
+									md: false
+								}
 								scrollSnapType: mandatory
 								direction:      responsive {
 									base: row
-									sm: column
+									md: column
 								}
 								width:          responsive {
 									base: 100%
-									sm: 350
+									md: 350
 								}
 								paddingRight:   responsive {
 									base: 20
-									sm: 0
+									md: 0
 								}
 								gap:            20
 
 								Image {
-									src:             "goi://images/tshirtmodelpink.jpg"
+									src:             bridge.image1Path
 									width:           responsive {
 										base: 80%
-										sm: 100%
+										md: 100%
 									}
 									height:          responsive {
-										base: 400
-										sm: 500
+										base: 300
+										md: bridge.selectedImageIndex == 0 && window.width >= 768 ? 500 : 200
 									}
 									radius:          20
 									scrollSnapAlign: start
+									onClick:         bridge.onSelectImage(0)
+									transition:      height 500ms
+									ripple:          true
+									crossfadeSrc:    500ms
 								}
 
 								Image {
-									src:             "goi://images/tshirtmodelblue.jpg"
+									src:             bridge.image2Path
 									width:           responsive {
 										base: 80%
-										sm: 100%
+										md: 100%
 									}
 									height:          responsive {
-										base: 400
-										sm: 200
+										base: 300
+										md: bridge.selectedImageIndex == 1 && window.width >= 768 ? 500 : 200
 									}
 									radius:          20
 									scrollSnapAlign: start
+									onClick:         bridge.onSelectImage(1)
+									transition:      height 500ms
+									ripple:          true
+									crossfadeSrc:    500ms
 								}
 
 								Image {
-									src:             "goi://images/tshirtmodelpurple.jpg"
+									src:             bridge.image3Path
 									width:           responsive {
 										base: 80%
-										sm: 100%
+										md: 100%
 									}
 									height:          responsive {
-										base: 400
-										sm: 200
+										base: 300
+										md: bridge.selectedImageIndex == 2 && window.width >= 768 ? 500 : 200
 									}
 									radius:          20
 									scrollSnapAlign: start
+									onClick:         bridge.onSelectImage(2)
+									transition:      height 500ms
+									ripple:          true
+									crossfadeSrc:    500ms
 								}
+								// for i, imageList := range bridge.images {
+								// 	if i != bridge.selectedColorIndex {
+								// 		continue
+								// 	}
+								// for j, imagePath := range imageList {
+								// 	Image {
+								// 		src:             imagePath
+								// 		width:           responsive {
+								// 			base: 80%
+								// 			md: 100%
+								// 		}
+								// 		height:          responsive {
+								// 			base: 300
+								// 			md: bridge.selectedImageIndex == j && window.width >= 768 ? 500 : 200
+								// 		}
+								// 		radius:          20
+								// 		scrollSnapAlign: start
+								// 		onClick:         bridge.onSelectImage(j)
+								// 		transition:      height 500ms
+								// 		ripple:          true
+								// 	}
+								// }
+								// }
 							}
 
 							// content
@@ -209,7 +267,7 @@ Window {
 									paddingRight:  20
 									visible:       responsive {
 										base: false
-										sm: true
+										md: true
 									}
 
 									// desktop breadcrumb
@@ -240,12 +298,13 @@ Window {
 
 								// Title
 								Text {
-									text:      "Child T-shirt"
-									fontSize:  36
-									marginTop: 20
-									visible:   responsive {
+									text:       "Child T-shirt"
+									fontSize:   36
+									fontWeight: 500
+									marginTop:  20
+									visible:    responsive {
 										base: false
-										sm: true
+										md: true
 									}
 								}
 
@@ -276,42 +335,19 @@ Window {
 										hideScrollbar: true
 										paddingRight:  20
 
-										Chip {
-											label: "00"
-										}
-
-										Chip {
-											label: "02"
-										}
-
-										Chip {
-											label: "04"
-										}
-
-										Chip {
-											label:           "06"
-											background:      theme.primaryContainer
-											borderThickness: 1
-										}
-
-										Chip {
-											label: "08"
-										}
-
-										Chip {
-											label: "10"
-										}
-
-										Chip {
-											label: "12"
-										}
-
-										Chip {
-											label: "14"
-										}
-
-										Chip {
-											label: "16"
+										for i := range 17 {
+											if i % 2 == 0 {
+												Chip {
+													label:      formatf("%02d", i)
+													background: conditional {
+														theme.primaryContainer: i == bridge.selectedSize
+													}
+													labelColor: conditional {
+														theme.onPrimaryContainer: i == bridge.selectedSize
+													}
+													onClick:    bridge.onSelectSize(i)
+												}
+											}
 										}
 									}
 								}
@@ -324,6 +360,7 @@ Window {
 										marginTop:      20
 										crossAxisAlign: center
 										gap:            20
+										height:         50
 
 										Text {
 											text: "Color"
@@ -334,27 +371,17 @@ Window {
 											flex:           1
 											crossAxisAlign: center
 
-											Rectangle {
-												background:      #d4a6aa
-												width:           48
-												height:          40
-												radius:          10
-												borderThickness: 2
-												borderColor:     black
-											}
-
-											Rectangle {
-												background: #7babe7
-												width:      40
-												height:     20
-												radius:     10
-											}
-
-											Rectangle {
-												background: #432a80
-												width:      40
-												height:     20
-												radius:     10
+											for i, c := range bridge.colors {
+												Rectangle {
+													background:      c
+													width:           48
+													height:          bridge.selectedColorIndex == i ? 40 : 20
+													radius:          10
+													borderThickness: bridge.selectedColorIndex == i ? 2 : 0
+													borderColor:     theme.onSurface
+													onClick:         bridge.onSelectColor(i)
+													transition:      height 200ms
+												}
 											}
 										}
 									}
@@ -366,19 +393,27 @@ Window {
 										gap:       10
 
 										Button {
-											variant: tonal
-											label:   "Add to shopping basket"
-											radius:  10
-											flex:    1
-											height:  100%
+											variant:    tonal
+											background: theme.primaryContainer
+											color:      theme.onPrimaryContainer
+											label:      "Add to shopping basket"
+											radius:     10
+											flex:       1
+											height:     100%
 										}
 
 										IconButton {
-											icon:    favorite
-											variant: tonal
-											radius:  10
-											height:  100%
-											width:   50
+											icon:       favorite
+											iconColor:  conditional {
+												red: bridge.isFavourite
+											}
+											filledIcon: bridge.isFavourite
+											variant:    tonal
+											background: theme.primaryContainer
+											radius:     10
+											height:     100%
+											width:      50
+											onClick:    bridge.onToggleFavourite()
 										}
 									}
 
@@ -399,60 +434,72 @@ Window {
 									Column {
 										padding:    10
 										marginTop:  10
-										gap:        6
-										background: theme.surfaceVariant
+										gap:        conditional {
+											0: !bridge.isReviewsExpanded
+											6: bridge.isReviewsExpanded
+										}
+										background: theme.secondaryContainer
 										radius:     10
+										transition: gap 200ms
 
 										// Title
 										Row {
 											padding:        10
-											paddingRight:   0
 											mainAxisAlign:  spaceBetween
 											crossAxisAlign: center
 											background:     theme.surfaceContainer
 											radiusTop:      5
+											radiusBottom:   bridge.isReviewsExpanded ? 0 : 5
+											transition:     radiusBottom 200ms
+											onClick:        bridge.onToggleReviews()
 
 											Text {
 												text: "Ratings and Reviews"
 												role: titleMedium
 											}
 
-											IconButton {
-												icon: keyboard_arrow_up
+											Icon {
+												icon: bridge.isReviewsExpanded ? keyboard_arrow_up : keyboard_arrow_down
 											}
 										}
 
 										Column {
-											padding:    10
-											background: theme.surfaceContainer
-											radiusTop:  5
+											height:       conditional {
+												0: !bridge.isReviewsExpanded
+												120: bridge.isReviewsExpanded
+											}
+											padding:      10
+											background:   theme.surfaceContainer
+											radiusBottom: 5
+											transition:   height 500ms
 
 											// Review title
 											Row {
 												background:     theme.surfaceContainer
-												radiusTop:      5
 												crossAxisAlign: center
 												gap:            10
 
 												Row {
-													for range 5 {
+													for i := range 5 {
 														Icon {
-															icon: star
-															size: 20
+															icon:       star
+															size:       20
+															filledIcon: i < 4
 														}
 													}
 												}
 
 												Text {
-													text:     "Perfect transition piece, just need more options"
-													role:     titleSmall
-													truncate: true
-													flex:     1
+													text:       "Super soft and holds up great in the wash!"
+													role:       titleSmall
+													fontWeight: 600
+													truncate:   true
+													flex:       1
 												}
 											}
 
 											Text {
-												text:     "I've been living in this t-shirt since it arrived. As someone who is constantly gping from video call to meet friends, it's been a lifesaver. The cornflower color is stunning in person -- bright enough. The cornflower color is stunning in person -- bright enough"
+												text:     "Bought this in both pink and purple for my 5-year-old, and they have quickly become her absolute favorite shirts. The cotton is noticeably softer and thicker than most basic kids' tees—no scratchiness at all, which is a huge plus for her sensitive skin. I’ve already washed them several times and there’s been zero shrinking or fading; the colors are still super vibrant. True to size with a great relaxed fit for running around at the playground. Definitely coming back for the blue one!"
 												wrap:     true
 												maxLines: 4
 											}
@@ -468,7 +515,7 @@ Window {
 				Positioned {
 					visible: responsive {
 						base: true
-						sm: false
+						md: false
 					}
 					bottom:  0
 
@@ -505,11 +552,11 @@ Window {
 				Positioned {
 					bottom: responsive {
 						base: 100
-						sm: 20
+						md: 20
 					}
 					right:  responsive {
 						base: -1
-						sm: 20
+						md: 20
 					}
 
 					Row {
