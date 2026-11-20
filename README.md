@@ -93,6 +93,17 @@ instead of leaving the window, and one panel kept open through a bridge value.
 | --- | --- |
 | ![popover in the light scheme](images/popover-light.png) | ![popover in the dark scheme](images/popover-dark.png) |
 
+### hero
+
+One picture, two pages: the card's thumbnail and the detail page's full picture
+are the same `Hero` with a shared `tag`, so opening the page flies the picture
+from one box to the other while the rest of the page swaps. Go only flips a
+bridge bool.
+
+| Light | Dark |
+| --- | --- |
+| ![hero in the light scheme](images/hero-light.png) | ![hero in the dark scheme](images/hero-dark.png) |
+
 ## Data and language
 
 ### bridge

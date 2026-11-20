@@ -19,6 +19,9 @@ counter:
 popover:
 	cd popover && $(GOI) run
 
+hero:
+	cd hero && $(GOI) run
+
 gallery:
 	cd gallery && $(GOI) run
 

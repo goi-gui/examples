@@ -1,0 +1,144 @@
+// Hero: one picture shared by two pages. The same `tag` on both copies makes
+// the picture fly from the card into the detail page instead of swapping.
+
+bridge {
+	detail  bool
+	onOpen  func()
+	onClose func()
+}
+
+Window {
+	id:     main
+	title:  "Hero"
+	width:  720
+	height: 680
+
+	Stack {
+		if bridge.detail {
+			Column {
+				spacing: 0
+
+				TopAppBar {
+					label: "The blue tee"
+				}
+
+				Column {
+					flex:           1
+					padding:        24
+					spacing:        20
+					crossAxisAlign: center
+
+					Hero {
+						tag:      "cover"
+						duration: 450ms
+
+						Image {
+							src:    "goi://images/cover.jpg"
+							width:  672
+							height: 320
+							radius: 24
+							fit:    cover
+						}
+					}
+
+					Text {
+						text: "The blue tee"
+						role: titleLarge
+					}
+
+					Text {
+						text:  "The picture is the same element on both pages. Around it, the page swapped from a card to this view while the tee travelled."
+						role:  bodyMedium
+						wrap:  true
+						width: 600
+					}
+
+					Button {
+						label:   "Back to the list"
+						onClick: bridge.onClose()
+					}
+				}
+			}
+		} else {
+			Column {
+				spacing: 0
+
+				TopAppBar {
+					label: "Hero"
+				}
+
+				Column {
+					flex:           1
+					padding:        32
+					spacing:        24
+					crossAxisAlign: center
+					mainAxisAlign:  center
+
+					Text {
+						text: "One picture, two pages"
+						role: headlineMedium
+					}
+
+					Text {
+						text:  "Open the card and the picture flies into the detail page. The same tag on both copies is what links them."
+						role:  bodyMedium
+						wrap:  true
+						width: 480
+						align: center
+					}
+
+					Card {
+						width:   480
+						variant: filled
+						onClick: bridge.onOpen()
+						ripple:  true
+						cursor:  pointer
+
+						Row {
+							spacing:       16
+							crossAxisAlign: center
+
+							Hero {
+								tag:      "cover"
+								duration: 450ms
+
+								Image {
+									src:    "goi://images/cover.jpg"
+									width:  140
+									height: 140
+									radius: 16
+									fit:    cover
+								}
+							}
+
+							Column {
+								flex:    1
+								spacing: 4
+
+								Text {
+									text: "The blue tee"
+									role: titleMedium
+								}
+
+								Text {
+									text: "Tap to open the full picture"
+									role: bodySmall
+								}
+							}
+
+							Icon {
+								icon:  arrow_forward
+								color: theme.onSurfaceVariant
+							}
+						}
+					}
+
+					Text {
+						text: "Tap the card"
+						role: labelMedium
+					}
+				}
+			}
+		}
+	}
+}
