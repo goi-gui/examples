@@ -340,10 +340,10 @@ Window {
 												Chip {
 													label:      formatf("%02d", i)
 													background: conditional {
-														theme.primaryContainer: i == bridge.selectedSize
+														i == bridge.selectedSize: theme.primaryContainer
 													}
 													labelColor: conditional {
-														theme.onPrimaryContainer: i == bridge.selectedSize
+														i == bridge.selectedSize: theme.onPrimaryContainer
 													}
 													onClick:    bridge.onSelectSize(i)
 												}
@@ -405,7 +405,7 @@ Window {
 										IconButton {
 											icon:       favorite
 											iconColor:  conditional {
-												red: bridge.isFavourite
+												bridge.isFavourite: red
 											}
 											filledIcon: bridge.isFavourite
 											variant:    tonal
@@ -435,8 +435,8 @@ Window {
 										padding:    10
 										marginTop:  10
 										gap:        conditional {
-											0: !bridge.isReviewsExpanded
-											6: bridge.isReviewsExpanded
+											!bridge.isReviewsExpanded: 0
+											bridge.isReviewsExpanded: 6
 										}
 										background: theme.secondaryContainer
 										radius:     10
@@ -466,8 +466,8 @@ Window {
 										Column {
 											visible:      bridge.isReviewsExpanded
 											height:       conditional {
-												0: !bridge.isReviewsExpanded
-												120: bridge.isReviewsExpanded
+												!bridge.isReviewsExpanded: 0
+												bridge.isReviewsExpanded: 120
 											}
 											padding:      10
 											background:   theme.surfaceContainer

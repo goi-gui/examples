@@ -284,6 +284,16 @@ rows. The switch in the corner changes the scheme through a bridge handler.
 | --- | --- |
 | ![league in the light scheme](images/league-light.png) | ![league in the dark scheme](images/league-dark.png) |
 
+### chat
+
+A messaging screen: a scrolling conversation, a composer and periodic incoming
+messages. `autoScroll` follows the newest row while the reader is at the end;
+scrolling up pauses the follow and shows a button back to the latest message.
+
+| Light | Dark |
+| --- | --- |
+| ![chat in the light scheme](images/chat-light.png) | ![chat in the dark scheme](images/chat-dark.png) |
+
 ### shopping
 
 A product page: a rail of categories, a picture column, a size and colour

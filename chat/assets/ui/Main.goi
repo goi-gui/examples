@@ -1,0 +1,140 @@
+bridge {
+	messages      []Message
+	atEnd         bool
+	onSend        func(text string)
+	onSendCurrent func()
+	onScroll      func(x float64, y float64, maxY float64, progress float64, byUser bool)
+	onAtEnd       func()
+	onJump        func()
+}
+
+type Message {
+	author string
+	text   string
+	time   string
+	mine   bool
+}
+
+Window {
+	title:  "Messages"
+	width:  760
+	height: 900
+	theme:  app.systemMode
+
+	Column {
+		width:  100%
+		height: 100%
+
+		// ---- header
+		Row {
+			width:          100%
+			padding:        18
+			gap:            12
+			crossAxisAlign: center
+			background:     theme.surfaceContainer
+
+			Column {
+				gap: 2
+
+				Text {
+					text: "Messages"
+					role: titleLarge
+				}
+
+				Text {
+					text: "Scroll up to read history; new messages wait for you."
+					role: bodySmall
+				}
+			}
+		}
+
+		// ---- the conversation
+		List {
+			id:            chat
+			flex:          1
+			width:         100%
+			spacing:       10
+			padding:       16
+			autoScroll:    true
+			onScroll:      bridge.onScroll(event.x, event.y, event.maxY, event.progress, event.byUser)
+			onScrollToEnd: bridge.onAtEnd()
+
+			for _, m := range bridge.messages {
+				Row {
+					width:         100%
+					mainAxisAlign: conditional {
+						m.mine: end
+						default: start
+					}
+
+					Column {
+						width:      72%
+						padding:    12
+						radius:     16
+						gap:        3
+						background: conditional {
+							m.mine: theme.primaryContainer
+							default: theme.surfaceContainerHigh
+						}
+
+						Text {
+							text: m.author
+							role: labelSmall
+						}
+
+						Text {
+							text: m.text
+							role: bodyMedium
+						}
+
+						Text {
+							text: m.time
+							role: labelSmall
+						}
+					}
+				}
+			}
+		}
+
+		// ---- a jump back to the newest line when history is being read.
+		// The row keeps its height while the button is hidden, so showing it
+		// never changes the list's viewport and starts a layout loop.
+		Row {
+			width:          100%
+			height:         56
+			mainAxisAlign:  center
+			crossAxisAlign: center
+			visible:        !bridge.atEnd
+
+			Button {
+				label:   "Jump to latest"
+				variant: tonal
+				onClick: bridge.onJump()
+			}
+		}
+
+		// ---- composer
+		Row {
+			width:          100%
+			padding:        16
+			gap:            8
+			crossAxisAlign: center
+			background:     theme.surfaceContainer
+
+			TextField {
+				id:       input
+				flex:     1
+				label:    "Message"
+				onSubmit: bridge.onSend(event)
+			}
+
+			IconButton {
+				variant: filled
+				radius:  10
+				size:    56
+				icon:    send
+				onClick: bridge.onSendCurrent()
+			}
+		}
+	}
+}

@@ -85,6 +85,9 @@ map:
 tv:
 	cd tv && $(GOI) run
 
+chat:
+	cd chat && $(GOI) run
+
 shopping:
 	cd shopping && $(GOI) run
 
@@ -97,4 +100,4 @@ fmt:
 fmt-list:
 	$(FMT) -l .
 
-.PHONY: search spike counter popover gallery hello scroll composition theme seed titlebar datalist bridge svg window format fmt fmt-list i18n cursor table league charts media web markdown map tv shopping hero
+.PHONY: search spike counter popover gallery hello scroll composition theme seed titlebar datalist bridge svg window format fmt fmt-list i18n cursor table league charts media web markdown map tv chat shopping hero
