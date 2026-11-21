@@ -464,7 +464,6 @@ Window {
 										}
 
 										Column {
-											visible:      bridge.isReviewsExpanded
 											height:       conditional {
 												!bridge.isReviewsExpanded: 0
 												bridge.isReviewsExpanded: 120
@@ -472,7 +471,11 @@ Window {
 											padding:      10
 											background:   theme.surfaceContainer
 											radiusBottom: 5
-											transition:   height 500ms
+											opacity:      conditional {
+												!bridge.isReviewsExpanded: 0
+												bridge.isReviewsExpanded: 1
+											}
+											transition:   height 500ms, opacity 500ms
 
 											// Review title
 											Row {

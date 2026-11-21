@@ -95,7 +95,7 @@ func main() {
 	if arg := flag.Arg(0); arg != "" {
 		path = arg
 	}
-	win, err := app.LoadWindow(path, ui.WithSize(1100, 900))
+	win, err := app.LoadWindow(path)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

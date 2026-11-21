@@ -25,6 +25,7 @@ Window {
 	title:           "Material 3 components"
 	theme:           app.systemMode
 	themeTransition: wipe 500ms
+	maximized:       true
 
 	Stack {
 		Row {
