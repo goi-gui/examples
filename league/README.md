@@ -43,10 +43,10 @@ Table {
 	for i, team := range bridge.teams {
 		TableRow {
 			background: conditional {
-				"#0000ff66": i == 0 || i == 1
-				"#fa7b1766": i == 2 || i == 3
-				"#34a85366": i == 4
-				"#ff000066": i == 15 || i == 16 || i == 17
+				i == 0 || i == 1: "#0000ff66"
+				i == 2 || i == 3: "#fa7b1766"
+				i == 4: "#34a85366"
+				i == 15 || i == 16 || i == 17: "#ff000066"
 			}
 			/* … one TableCell per column … */
 		}

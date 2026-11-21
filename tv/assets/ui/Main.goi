@@ -86,10 +86,10 @@ Window {
 							label:      channel.Name
 							onClick:    bridge.onChannelPick(i)
 							background: conditional {
-								theme.primary: i == bridge.selectedChannelIndex
+								i == bridge.selectedChannelIndex: theme.primary
 							}
 							labelColor: conditional {
-								theme.onPrimary: i == bridge.selectedChannelIndex
+								i == bridge.selectedChannelIndex: theme.onPrimary
 							}
 						}
 					}
