@@ -6,8 +6,8 @@ id: com.example.gallery
 # used; all turns on every optional feature.
 runFlags: [all]
 
-# Build tags passed to goi build.
-buildFlags: [all]
+# Build tags passed to goi build; auto adds only what the design uses.
+buildFlags: [auto]
 
 # Where LoadWindow finds the design files and their assets.
 assets: assets

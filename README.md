@@ -1,12 +1,12 @@
 # Examples
 
 Each directory here is its own goi project, with the layout `goi init` writes:
-`cmd/main.go`, `goi.yaml`, and the design and its assets under `assets/`, with
-the `.goi` files in `assets/ui/`. The Go code finds the nodes it needs by id and
-attaches behaviour; the assets directory and the feature tags live in
-`goi.yaml`. The pictures below are those apps, captured in the
-light scheme and in the dark scheme, at the size the app opens with. Shopping is
-shown as a clip so its colour seeds and theme changes are visible.
+`cmd/main.go`, `goi.yaml`, `.gitignore`, and the design and its assets under
+`assets/`, with the `.goi` files in `assets/ui/`. The Go code finds the nodes it
+needs by id and attaches behaviour; the assets directory and the feature tags
+live in `goi.yaml`. The pictures below are those apps, captured in the light
+scheme and in the dark scheme, at the size the app opens with. Shopping is shown
+as a clip so its colour seeds and theme changes are visible.
 
 Install the CLI once, then run an example from its own directory:
 
@@ -16,13 +16,13 @@ make counter          # cd counter && goi run
 ```
 
 Every example has a `make` target of that name. `goi run` adds `nofakecgo`, sets
-`CGO_ENABLED=0` and enables every optional feature through
-`buildFlags: [all]`; a plain build keeps only the core and turns on a feature
-with its own tag (`emoji`, `svg`, `mermaid`, `markdown`, `code`, `net`,
-`dialog`). The build is cgo-free: purego loads the SDL3 runtime library at run
-time, so there is no C toolchain to install. A few examples need more than the
-framework — `media` needs `ffmpeg` on `PATH` (or `GOI_FFMPEG`), while `map` and
-`tv` need network access.
+`CGO_ENABLED=0` and enables every optional feature through `runFlags: [all]`.
+`goi build` uses `buildFlags: [auto]`, which scans the designs and adds only the
+features they use (`emoji`, `svg`, `mermaid`, `markdown`, `code`, `net`); file
+dialogs and notifications need no tag. The build is cgo-free: purego loads the
+SDL3 runtime library at run time, so there is no C toolchain to install. A few
+examples need more than the framework — `media` needs `ffmpeg` on `PATH` (or
+`GOI_FFMPEG`), while `map` and `tv` need network access.
 
 ## Start here
 
