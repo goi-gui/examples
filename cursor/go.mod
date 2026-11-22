@@ -2,7 +2,7 @@ module github.com/goi-gui/examples/cursor
 
 go 1.27.3
 
-require github.com/goi-gui/goi v0.31.0
+require github.com/goi-gui/goi v0.31.3
 
 require (
 	git.sr.ht/~jackmordaunt/go-toast v1.1.2 // indirect
