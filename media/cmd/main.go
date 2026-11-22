@@ -30,8 +30,7 @@ func main() {
 	app.MaxFPS(120)
 	app.ShowFPS(true)
 
-	win, err := app.LoadWindow("ui/Main.goi",
-		ui.WithSize(900, 720))
+	win, err := app.LoadWindow("ui/Main.goi")
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

@@ -10,9 +10,11 @@ import StatCard "./StatCard.goi"
 import Section "./Section.goi"
 
 Window {
-	id:    main
-	title: "Composition"
-	theme: light
+	id:     main
+	title:  "Composition"
+	theme:  light
+	width:  1024
+	height: 720
 
 	Row {
 		spacing: 0

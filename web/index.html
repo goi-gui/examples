@@ -39,8 +39,8 @@
 </style>
 </head>
 <body>
-<!-- The app names this id with ui.WithCanvas("goi-app"), so a page can hold
-     several canvases and run one app in each. -->
+<!-- The app takes the first canvas the page has not claimed, so a page can
+     hold several canvases and run one app in each in document order. -->
 <div id="goi-loading" role="status" aria-live="polite" aria-label="Loading goi">
 	<div class="goi-spinner" aria-hidden="true"></div>
 </div>

@@ -4,7 +4,7 @@ go 1.27.3
 
 require (
 	github.com/creack/pty v1.1.24
-	github.com/goi-gui/goi v0.31.4
+	github.com/goi-gui/goi v0.31.5-0.20261122214109-957fb8d725bc
 )
 
 require (

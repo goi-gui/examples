@@ -24,9 +24,7 @@ func main() {
 	if *msaa > 0 {
 		app.MSAA(*msaa)
 	}
-	if _, err := app.LoadWindow("ui/Main.goi",
-		ui.WithSize(760, 900),
-	); err != nil {
+	if _, err := app.LoadWindow("ui/Main.goi"); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}

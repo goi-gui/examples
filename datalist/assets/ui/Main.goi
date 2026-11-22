@@ -20,8 +20,10 @@ type ticket {
 }
 
 Window {
-	id:    main
-	title: "Data"
+	id:     main
+	title:  "Data"
+	width:  520
+	height: 560
 
 	Column {
 		padding: 16

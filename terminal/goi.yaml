@@ -3,11 +3,12 @@ name: terminal
 id: com.example.terminal
 
 # Build tags passed to goi run. nofakecgo and CGO_ENABLED=0 are always
-# used; all turns on every optional feature.
-runFlags: [all]
+# used; all turns on every optional feature. The pty has one reader, so the
+# watcher stays off and a reload cannot open a second one.
+runFlags: [all, nohotreload]
 
 # Build tags passed to goi build; auto adds only what the design uses.
-buildFlags: [auto]
+buildFlags: [auto, nohotreload]
 
 # Where LoadWindow finds the design files and their assets.
 assets: assets

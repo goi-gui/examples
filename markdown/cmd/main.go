@@ -17,10 +17,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	win, err := app.LoadWindow(
-		"ui/Main.goi",
-		ui.WithSize(520, 620),
-	)
+	win, err := app.LoadWindow("ui/Main.goi")
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

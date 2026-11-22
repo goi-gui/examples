@@ -23,10 +23,9 @@ func main() {
 	if err != nil {
 		fail(err)
 	}
-	// The page names the canvas the app draws into, so several apps can share
-	// one page.
-	win, err := app.LoadWindow("ui/Main.goi",
-		ui.WithSize(480, 400), ui.WithCanvas("goi-app"))
+	// The app takes the first canvas the page has not claimed, so several apps
+	// can share one page in document order.
+	win, err := app.LoadWindow("ui/Main.goi")
 	if err != nil {
 		fail(err)
 	}
