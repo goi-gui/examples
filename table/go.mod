@@ -2,7 +2,7 @@ module github.com/goi-gui/examples/table
 
 go 1.27.3
 
-require github.com/goi-gui/goi v0.31.5-0.20261122214109-957fb8d725bc
+require github.com/goi-gui/goi v0.32.0
 
 require (
 	git.sr.ht/~jackmordaunt/go-toast v1.1.2 // indirect
