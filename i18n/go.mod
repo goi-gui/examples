@@ -2,7 +2,7 @@ module github.com/goi-gui/examples/i18n
 
 go 1.27.3
 
-require github.com/goi-gui/goi v0.31.3
+require github.com/goi-gui/goi v0.31.4
 
 require (
 	git.sr.ht/~jackmordaunt/go-toast v1.1.2 // indirect
