@@ -1,0 +1,55 @@
+// A real shell in a terminal component. Go starts the pty; the design only
+// gives the terminal its box.
+Window {
+	title:  "Terminal"
+	width:  1000
+	height: 700
+	theme:  app.systemMode
+
+	Column {
+		width:  100%
+		height: 100%
+		padding: 18
+		gap:     12
+
+		Row {
+			width:          100%
+			mainAxisAlign:  spaceBetween
+			crossAxisAlign: center
+
+			Column {
+				gap: 2
+
+				Text {
+					text: "Terminal"
+					role: titleLarge
+				}
+
+				Text {
+					id:    shellLabel
+					text:  "A real shell in a pty."
+					role:  bodySmall
+					color: theme.onSurfaceVariant
+				}
+			}
+
+			Text {
+				text:  "Ctrl+Shift+C / V"
+				role:  labelMedium
+				color: theme.onSurfaceVariant
+			}
+		}
+
+		Terminal {
+			id:         term
+			flex:       1
+			width:      100%
+			fontSize:   14
+			scrollback: 5000
+			padding:    12
+			radius:     12
+			background: #111318
+			foreground: #e8e8e8
+		}
+	}
+}

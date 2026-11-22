@@ -18,11 +18,13 @@ make counter          # cd counter && goi run
 Every example has a `make` target of that name. `goi run` adds `nofakecgo`, sets
 `CGO_ENABLED=0` and enables every optional feature through `runFlags: [all]`.
 `goi build` uses `buildFlags: [auto]`, which scans the designs and adds only the
-features they use (`emoji`, `svg`, `mermaid`, `markdown`, `code`, `net`); file
-dialogs and notifications need no tag. The build is cgo-free: purego loads the
-SDL3 runtime library at run time, so there is no C toolchain to install. A few
-examples need more than the framework — `media` needs `ffmpeg` on `PATH` (or
-`GOI_FFMPEG`), while `map` and `tv` need network access.
+features they use (`emoji`, `svg`, `mermaid`, `markdown`, `code`, `net`,
+`terminal`); file dialogs and notifications need no tag. The build is cgo-free:
+purego loads the SDL3 runtime library at run time, so there is no C toolchain to
+install. A few examples need more than the framework — `media` needs `ffmpeg` on
+`PATH` (or `GOI_FFMPEG`), `map` and `tv` need network access, and `terminal`
+starts the user's shell through `creack/pty` (an example dependency, not a
+framework one).
 
 ## Start here
 
@@ -220,6 +222,17 @@ Go.
 | Light | Dark |
 | --- | --- |
 | ![svg in the light scheme](images/svg-light.png) | ![svg in the dark scheme](images/svg-dark.png) |
+
+### terminal
+
+A real shell in the window. Go starts the user's `$SHELL` in a pty, the
+`Terminal` component draws the ANSI grid, and typing, Tab, Escape, the arrows,
+selection, copy/paste and the mouse all go to the shell. `exit` closes the
+window through the terminal's `OnExit` event.
+
+| Light | Dark |
+| --- | --- |
+| ![terminal in the light scheme](images/terminal-light.png) | ![terminal in the dark scheme](images/terminal-dark.png) |
 
 ## Whole apps
 
