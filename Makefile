@@ -16,6 +16,9 @@ search:
 counter:
 	cd counter && $(GOI) run
 
+webview:
+	cd webview && $(GOI) run
+
 popover:
 	cd popover && $(GOI) run
 

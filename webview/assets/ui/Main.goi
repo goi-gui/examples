@@ -1,0 +1,34 @@
+Window {
+	title:  "WebView"
+	width:  960
+	height: 640
+
+	Column {
+		padding: 16
+		gap:     12
+
+		Row {
+			gap: 8
+
+			Button { id: home    label: "Embedded page" }
+			Button { id: site    label: "example.com" }
+			Button { id: back    label: "Back" }
+			Button { id: forward label: "Forward" }
+			Button { id: eval    label: "Call JS" }
+			Button { id: reload  label: "Reload" }
+		}
+
+		Text {
+			id:   status
+			text: "The page posts a message as soon as it loads."
+			role: bodySmall
+		}
+
+		WebView {
+			id:     view
+			src:    "goi://ui/site/index.html"
+			width:  window.width - 32
+			height: window.height - 132
+		}
+	}
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>goi WebView — second page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <p class="eyebrow">second file, same folder</p>
+    <h1>Still the same view</h1>
+    <p class="lead">
+      This page is another file next to <code>index.html</code>. It was reached
+      with a relative link, so the view is still one native surface; Back walks
+      the history the engine keeps.
+    </p>
+
+    <div class="row">
+      <button id="tell">Tell Go</button>
+      <output id="said">—</output>
+    </div>
+
+    <p class="more"><a href="index.html">Back to the first page</a></p>
+  </main>
+
+  <script src="bridge.js"></script>
+  <script>
+    document.getElementById("tell").addEventListener("click", () => {
+      goiPost("about page");
+      document.getElementById("said").textContent = "Go was told";
+    });
+  </script>
+</body>
+</html>

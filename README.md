@@ -234,6 +234,17 @@ window through the terminal's `OnExit` event.
 | --- | --- |
 | ![terminal in the light scheme](images/terminal-light.png) | ![terminal in the dark scheme](images/terminal-dark.png) |
 
+### webview
+
+The system web engine embedded in the window. An embedded `goi://` page keeps
+its own CSS and scripts, the page posts to Go through the bridge, and the
+toolbar loads a URL, walks the history, runs JavaScript and reloads. Needs the
+`webview` build tag, or `all`.
+
+| Light | Dark |
+| --- | --- |
+| ![webview in the light scheme](images/webview-light.png) | ![webview in the dark scheme](images/webview-dark.png) |
+
 ## Whole apps
 
 ### charts
