@@ -1,6 +1,6 @@
 // Command popover shows the Popover component: three alignments, a panel that
 // flips above the bottom edge instead of leaving the window, and a design that
-// keeps one panel open through a bridge value.
+// opens one panel through a bridge value and the Popover's show property.
 //
 // Run with: make popover (or cd popover && goi run)
 package main
@@ -29,8 +29,8 @@ func main() {
 	}
 
 	err = win.Bind(func(w *ui.Window) error {
-		// A popover is always visible, so the design hides each panel with an
-		// `if` on this value; clicking the anchor toggles it.
+		// The design shows the panel whose key matches this value; clicking the
+		// anchor toggles it.
 		if err := ui.SetHandler(w, "onOpen", func(which string) {
 			if open == which {
 				open = ""

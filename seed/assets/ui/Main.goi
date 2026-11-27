@@ -14,7 +14,7 @@ Window {
 	title:  "Seed colour"
 	width:  520
 	height: 620
-	theme: lightFromSeed
+	theme:  lightFromSeed
 
 	Column {
 		spacing: 0
@@ -53,21 +53,20 @@ Window {
 
 			Popover {
 				align: start
+				show:  bridge.pickerOpen
 
 				Button {
 					label:   "Choose seed colour"
 					onClick: bridge.onOpenSeedPicker()
 				}
 
-				if bridge.pickerOpen {
-					$popover {
-						ColorPicker {
-							id:       seedPicker
-							label:    "Seed colour"
-							text:     bridge.pickerText
-							onOK:     bridge.onSetSeedColor(event)
-							onCancel: bridge.onCloseSeedPicker()
-						}
+				$popover {
+					ColorPicker {
+						id:       seedPicker
+						label:    "Seed colour"
+						text:     bridge.pickerText
+						onOK:     bridge.onSetSeedColor(event)
+						onCancel: bridge.onCloseSeedPicker()
 					}
 				}
 			}

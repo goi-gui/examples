@@ -1,9 +1,9 @@
 // The popover example: three alignments, and a panel near the bottom edge that
 // flips above its anchor instead of leaving the window.
 //
-// A popover is always visible, so the design decides when the panel shows: one
-// bridge value names the open one, and every button toggles it from Go. A press
-// anywhere else dismisses it through onClickOutside.
+// A panel is shown by the Popover's own `show`, so one bridge value names the
+// open one and every button toggles it from Go. A press anywhere else dismisses
+// it through onClickOutside.
 
 bridge {
 	open   string
@@ -38,6 +38,7 @@ Window {
 
 				Popover {
 					align:          start
+					show:           bridge.open == "start"
 					onClickOutside: bridge.onOpen("")
 
 					Button {
@@ -45,19 +46,18 @@ Window {
 						onClick: bridge.onOpen("start")
 					}
 
-					if bridge.open == "start" {
-						$popover {
-							Card {
-								label:  "Start panel"
-								width:  200
-								height: 88
-							}
+					$popover {
+						Card {
+							label:  "Start panel"
+							width:  200
+							height: 88
 						}
 					}
 				}
 
 				Popover {
 					align:          center
+					show:           bridge.open == "center"
 					onClickOutside: bridge.onOpen("")
 
 					Button {
@@ -65,19 +65,18 @@ Window {
 						onClick: bridge.onOpen("center")
 					}
 
-					if bridge.open == "center" {
-						$popover {
-							Card {
-								label:  "Centered panel"
-								width:  220
-								height: 88
-							}
+					$popover {
+						Card {
+							label:  "Centered panel"
+							width:  220
+							height: 88
 						}
 					}
 				}
 
 				Popover {
 					align:          end
+					show:           bridge.open == "end"
 					onClickOutside: bridge.onOpen("")
 
 					Button {
@@ -85,13 +84,11 @@ Window {
 						onClick: bridge.onOpen("end")
 					}
 
-					if bridge.open == "end" {
-						$popover {
-							Card {
-								label:  "End panel"
-								width:  200
-								height: 88
-							}
+					$popover {
+						Card {
+							label:  "End panel"
+							width:  200
+							height: 88
 						}
 					}
 				}
@@ -116,6 +113,7 @@ Window {
 
 			Popover {
 				align:          start
+				show:           bridge.open == "bottom"
 				onClickOutside: bridge.onOpen("")
 
 				Button {
@@ -123,28 +121,26 @@ Window {
 					onClick: bridge.onOpen("bottom")
 				}
 
-				if bridge.open == "bottom" {
-					$popover {
-						Card {
-							variant: elevated
-							width:   240
-							height:  120
+				$popover {
+					Card {
+						variant: elevated
+						width:   240
+						height:  120
 
-							Column {
-								padding: 8
-								spacing: 2
+						Column {
+							padding: 8
+							spacing: 2
 
-								MenuItem {
-									label:       "Duplicate"
-									leadingIcon: content_copy
-									onClick:     bridge.onOpen("")
-								}
+							MenuItem {
+								label:       "Duplicate"
+								leadingIcon: content_copy
+								onClick:     bridge.onOpen("")
+							}
 
-								MenuItem {
-									label:       "Archive"
-									leadingIcon: archive
-									onClick:     bridge.onOpen("")
-								}
+							MenuItem {
+								label:       "Archive"
+								leadingIcon: archive
+								onClick:     bridge.onOpen("")
 							}
 						}
 					}

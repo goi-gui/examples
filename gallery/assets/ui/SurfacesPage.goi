@@ -20,7 +20,7 @@ Column {
 			}
 			height:     110
 			radius:     16
-			background: "linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%)"
+			background: linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%)
 		}
 
 		Column {
@@ -30,7 +30,7 @@ Column {
 			}
 			height:     110
 			radius:     16
-			background: "radial-gradient(circle,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%)"
+			background: radial-gradient(circle,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%)
 		}
 
 		// A stop may be a colour variable, so a gradient follows the scheme.
@@ -41,7 +41,7 @@ Column {
 			}
 			height:     110
 			radius:     16
-			background: "linear-gradient(90deg, theme.primary, theme.tertiary 60%, theme.secondary)"
+			background: linear-gradient(90deg, theme.primary, theme.tertiary 60%, theme.secondary)
 		}
 
 		Wrap {
@@ -355,6 +355,7 @@ Column {
 
 			Popover {
 				align: start
+				show:  splitPopover.expanded
 
 				SplitButton {
 					id:           splitPopover
@@ -366,7 +367,6 @@ Column {
 
 				$popover {
 					Card {
-						visible:         splitPopover.expanded
 						label:           "Anyone with the link"
 						supporting:      "Link sharing is on"
 						width:           260
