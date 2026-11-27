@@ -19,24 +19,7 @@ func main() {
 		panic(err)
 	}
 
-	// store count variable outside of the binding,
-	// if you don't want reset after hot reload
-	count := 0
-
 	err = win.Bind(func(w *ui.Window) error {
-		ui.SetData(w, "Count", count)
-		ui.SetHandler(w, "onInc", func() {
-			count++
-			ui.SetData(w, "Count", count)
-		})
-		ui.SetHandler(w, "onDec", func() {
-			count--
-			ui.SetData(w, "Count", count)
-		})
-		ui.SetHandler(w, "onReset", func() {
-			count = 0
-			ui.SetData(w, "Count", count)
-		})
 		return nil
 	})
 	if err != nil {

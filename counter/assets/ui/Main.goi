@@ -1,8 +1,17 @@
-bridge {
-	Count   int
-	onInc   func()
-	onDec   func()
-	onReset func()
+setup {
+	var count = 0
+
+	func inc() {
+		count++
+	}
+
+	func dec() {
+		count--
+	}
+
+	func reset() {
+		count = 0
+	}
 }
 
 Window {
@@ -25,25 +34,25 @@ Window {
 
 			Button {
 				label:    "-"
-				onClick:  bridge.onDec()
-				disabled: bridge.Count == 0
+				onClick:  dec()
+				disabled: count == 0
 			}
 
 			Text {
-				text: formatf("%02d", bridge.Count)
+				text: count
 				role: displayLarge
 			}
 
 			Button {
 				label:   "+"
-				onClick: bridge.onInc()
+				onClick: inc()
 			}
 		}
 
 		IconButton {
 			icon:     refresh
-			onClick:  bridge.onReset()
-			disabled: bridge.Count == 0
+			onClick:  reset()
+			disabled: count == 0
 		}
 	}
 }
