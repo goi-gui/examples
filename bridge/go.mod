@@ -2,7 +2,7 @@ module github.com/goi-gui/examples/bridge
 
 go 1.27.3
 
-require github.com/goi-gui/goi v0.33.0
+require github.com/goi-gui/goi v0.33.2
 
 require (
 	git.sr.ht/~jackmordaunt/go-toast v1.1.2 // indirect
@@ -50,6 +50,7 @@ require (
 	github.com/srwiley/rasterx v0.0.0-20220730225603-2ab79fcdd4ef // indirect
 	github.com/tadvi/systray v0.0.0-20190226123456-11a2b8fa57af // indirect
 	github.com/tetratelabs/wazero v1.12.0 // indirect
+	github.com/traefik/yaegi v0.16.3 // indirect
 	github.com/yuin/goldmark v1.8.7 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.2 // indirect
 	go.opentelemetry.io/otel v1.47.0 // indirect
